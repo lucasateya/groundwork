@@ -1,3 +1,0 @@
--e .vercel
-.env.local
-node_modules
