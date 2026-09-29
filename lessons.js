@@ -1,6 +1,11 @@
 // Groundwork — Interview skill path curriculum.
 //
-// Edit lesson wording here; index.html reads INTERVIEW_LESSONS from this file.
+// Edit lesson wording here; index.html reads INTERVIEW_LESSONS and
+// COLLEGE_LESSONS from this file.
+//
+// The Learn path forks: the first 3 INTERVIEW_LESSONS are shared by everyone,
+// the rest of INTERVIEW_LESSONS are the Job branch, and COLLEGE_LESSONS are
+// the College branch. Passing shared lesson 3 unlocks both branches.
 // Each lesson has two kinds of fields:
 //
 // Shown to the learner
@@ -552,5 +557,412 @@ const INTERVIEW_LESSONS = [
     partnerNotes:`Answer their question warmly and briefly (2-3 sentences, realistic details about the library job), then start to wrap up by saying something like "Anything else before we finish up?", which gives them a chance to close strong. If they had no questions, respond politely and wrap up.`,
     skill:`Ending an interview well: asking thoughtful, genuine questions about the job (not "no questions", not things they could easily look up, not leading with time off), and closing with thanks and a clear statement of interest.`,
     criteria:`0 stars: no questions and no closing, or something inappropriate. 1 star: asks only about pay or time off, or a vague question, with no real closing. 2 stars: asks at least one genuine question about the job or next steps, or closes with clear thanks and interest. 3 stars: asks one or two thoughtful questions that show real interest in doing the job well, and closes with warm thanks and a clear, genuine statement of interest.`
+  }
+];
+
+// ═══════════════════════════ COLLEGE BRANCH ═══════════════════════════
+// Practice scenes use fictional schools (Harlow College, Kestrel College…)
+// so no lesson states something untrue about a real college.
+
+const COLLEGE_LESSONS = [
+
+  // ───────────────────────── BEGINNER ─────────────────────────
+
+  { id:'col-why-this-school', tier:'Beginner', title:'Why this school?',
+    summary:`Research a school in 15 minutes and connect it to you.`,
+    intro:[
+      `Almost every college interview gets to it eventually: "So, why this school?" It sounds simple, but it's where a lot of students go blank or say something that could be about any college in the country.`,
+      `The fix isn't memorizing facts. It's spending fifteen minutes finding one or two things you genuinely like, and knowing why they matter to you.`
+    ],
+    sections:[
+      { heading:`What they're really asking`,
+        paragraphs:[
+          `Colleges want students who'll actually show up excited, get involved and stay. When you give a specific reason, it tells them you've pictured yourself there. When you say "it's a great school," it tells them you haven't looked yet.`
+        ] },
+      { heading:`A 15-minute research plan`,
+        points:[
+          `Skim the academics page for your subject. Look for one class, program or project that sounds fun, not just impressive.`,
+          `Look at the student newspaper or the school's social media. What are students actually talking about?`,
+          `Find one tradition, club or place on campus you'd want to be part of.`,
+          `Write one sentence: "I'm excited about ___ because ___." That's your answer.`
+        ] },
+      { heading:`Their thing plus your thing`,
+        paragraphs:[
+          `A great answer has two halves: something specific about the school, and why it connects to you. "They have a first-year research seminar" is half an answer. "…and I've spent a year testing water in our creek for a science fair, so starting research right away is exactly what I want" is a whole one.`
+        ] },
+      { heading:`What to skip`,
+        points:[
+          `Rankings and prestige ("it's a top-20 school").`,
+          `Reasons about other people ("my parents went here").`,
+          `Things that are true everywhere ("good academics", "nice campus").`
+        ] }
+    ],
+    example:{
+      question:`So, of all the colleges out there, why Harlow?`,
+      weak:`It's a really good school and it has a great reputation. And the campus is really pretty.`,
+      strong:`I read that Harlow has a first-year seminar where you do real research with a professor. I've spent the last year testing the water in our town's creek for a science fair project, so the chance to start research right away is exactly what I'm looking for.`,
+      why:`The first answer could be about any college. The second names one real thing and connects it to something the student has actually done.`
+    },
+    setting:`You're meeting Nadia, a Harlow College graduate, at a coffee shop for your alumni interview. Harlow is a small liberal arts college.`,
+    task:`Nadia wants to know why you're applying. Give one specific reason and connect it to you. If you haven't researched Harlow, imagine one real-sounding program you'd look for and explain why it fits you.`,
+    takeaway:`One specific thing about the school, plus why it matters to you. That's a real answer.`,
+    weakHint:`Name one specific thing about the school, like a class, program or tradition, and say how it connects to something you've done or care about.`,
+    strongHint:`Try: "I'm excited about ___ at Harlow because ___ (something you've actually done or care about)."`,
+    counterpart:'Nadia',
+    counterpartRole:`a graduate of Harlow College, a small liberal arts college, conducting a friendly alumni interview with a high school student at a coffee shop`,
+    opening:`Thanks for meeting me! I always like to start here: of all the colleges out there, why Harlow?`,
+    partnerNotes:`React warmly to their answer. Then ask one follow-up that tests how well they've pictured themselves there, such as "What do you think you'd actually do in your first year here?" or "What would you want to get involved in outside of class?" If they only named rankings or prestige, gently ask what specifically draws them.`,
+    skill:`Answering "why this school" with a specific detail about the school (a program, class, tradition or opportunity) connected to the student's own interests or experiences, instead of rankings, prestige or reasons that apply to any college.`,
+    criteria:`0 stars: no reason, or only prestige, rankings or other people's reasons. 1 star: generic reasons that could apply to many colleges ("good academics", "nice campus"). 2 stars: names at least one specific thing about the school and links it to themselves. 3 stars: a specific school detail clearly connected to the student's real experiences or goals, plus a follow-up answer that shows they've pictured themselves on campus.`
+  },
+
+  { id:'col-major', tier:'Beginner', title:'Your major, or being undecided',
+    summary:`Talk about your interests honestly, even if you're undecided.`,
+    intro:[
+      `"What do you want to study?" can feel like a trap if you don't know yet. It isn't. Plenty of students change majors, and admissions people know that better than anyone.`,
+      `What they're really listening for is curiosity: what pulls your attention, and why.`
+    ],
+    sections:[
+      { heading:`Undecided is a real answer`,
+        paragraphs:[
+          `Saying "I'm undecided" is completely fine, as long as it's the start of your answer and not the end. The goal is to show what you're curious about, not to lock yourself into a label.`
+        ] },
+      { heading:`If you have a major in mind`,
+        points:[
+          `Say it, then say what got you interested, ideally with a small story.`,
+          `Mention one thing you want to learn or try in that field.`,
+          `It's fine to add that you're open to exploring.`
+        ] },
+      { heading:`If you're undecided`,
+        points:[
+          `Name two or three interests and one real example for at least one of them.`,
+          `Say what you'd want to explore before choosing.`,
+          `Avoid stopping at "I don't know." It closes the conversation.`
+        ] },
+      { heading:`Skip the "because it pays well"`,
+        paragraphs:[
+          `Money and job security are real concerns, but if that's your only reason, it sounds like you're not interested in the subject itself. Lead with what you find interesting.`
+        ] }
+    ],
+    example:{
+      question:`What do you think you might want to study?`,
+      weak:`I don't know yet.`,
+      strong:`Honestly, I'm not sure yet, and I'm okay with that. I keep coming back to two things: biology, because I loved our dissection unit in AP Bio, and writing, because I edit our school newspaper. I'd love to take both seriously for a year before I choose.`,
+      why:`Both students are undecided. The second one turns that into a picture of a curious person with real interests.`
+    },
+    setting:`You're on a video call with Theo, an admissions counselor at Brightwater University, a mid-sized university.`,
+    task:`Theo asks what you might study. Answer honestly, whether you have a major in mind or not, and show what you're curious about.`,
+    takeaway:`It's not about having a label. Show what you're curious about and why.`,
+    weakHint:`Instead of stopping at "I don't know" or just naming a major, add what got you interested, with one real example.`,
+    strongHint:`Try: "I'm leaning toward ___ (or: I'm not sure yet, but I keep coming back to ___ and ___) because ___. For example, ___."`,
+    counterpart:'Theo',
+    counterpartRole:`an admissions counselor at Brightwater University, a mid-sized university, conducting a video interview with a high school student`,
+    opening:`Great to meet you. Let's talk academics for a minute. What do you think you might want to study here?`,
+    partnerNotes:`React to their answer, then ask one follow-up about their curiosity, such as "What's something you learned recently, in or out of school, that surprised you?" or "What would you want to try in your first year?"`,
+    skill:`Talking about academic interests honestly: whether they have a major in mind or are undecided, they show genuine curiosity with specific interests and at least one real example, rather than a dead-end "I don't know" or a label with no reason.`,
+    criteria:`0 stars: "I don't know" with nothing else, or no real answer. 1 star: names a major or interest but gives no reason, or only money or prestige as the reason. 2 stars: names an interest (or says undecided) and gives a real reason or example. 3 stars: shows genuine curiosity with specific interests and a concrete example, and answers the follow-up with something specific they learned or want to explore.`
+  },
+
+  { id:'col-activities', tier:'Beginner', title:'Your activities and what you learned',
+    summary:`Talk about what you do outside class without reading your resume.`,
+    intro:[
+      `"Tell me about what you do outside of class." The trap here is reciting your whole activities list: "I do NHS, Key Club, soccer, band…"`,
+      `Your interviewer can read a list. What they can't read is what those things mean to you. That's what this lesson is about.`
+    ],
+    sections:[
+      { heading:`Go deep, not wide`,
+        paragraphs:[
+          `Pick the one or two activities you care about most and talk about them in detail. One real story beats ten club names.`
+        ] },
+      { heading:`Everything counts`,
+        points:[
+          `A part-time job, watching your siblings, helping at your place of worship, a gaming club, teaching yourself guitar.`,
+          `Colleges know many students have responsibilities instead of clubs. Those count just as much.`
+        ] },
+      { heading:`The "so what"`,
+        paragraphs:[
+          `After you say what you did, add what you learned or how it changed you. "I learned I can figure out hard things if I'm patient" is the part they'll remember.`
+        ] }
+    ],
+    example:{
+      question:`Tell me about something you do outside of class.`,
+      weak:`I'm in NHS, Key Club, soccer and band, and I volunteer at the hospital on weekends.`,
+      strong:`The thing I care about most is the robotics team. Last year our robot kept failing inspection, so I taught myself to rewire the electrical board from YouTube videos. It taught me I can figure out hard things if I'm patient, which I honestly didn't believe before.`,
+      why:`The first answer is a list. The second picks one thing, tells a quick story and ends with what the student learned about themselves.`
+    },
+    setting:`You're meeting Gabe, a Pinecrest College graduate, at a public library for your alumni interview.`,
+    task:`Gabe asks what you do outside of class. Pick one or two things, go deep, and say what you learned.`,
+    takeaway:`One activity, one story, one thing you learned. That's more memorable than a list.`,
+    weakHint:`Instead of listing activities, pick the one you care about most and tell a quick story about it.`,
+    strongHint:`Try: "The thing I care about most is ___. One time, ___. It taught me ___."`,
+    counterpart:'Gabe',
+    counterpartRole:`a graduate of Pinecrest College conducting a relaxed alumni interview with a high school student at a public library`,
+    opening:`So, school's only part of the picture. Tell me about something you do outside of class.`,
+    partnerNotes:`React with genuine interest to the specific thing they mention, then ask a follow-up about meaning, such as "What's something that taught you about yourself?" or "What's been the hardest part of it?" If they just listed activities, ask which one they care about most.`,
+    skill:`Talking about an extracurricular activity, job or responsibility in depth rather than listing activities: choosing one or two, giving a specific example, and explaining what they learned or how it changed them.`,
+    criteria:`0 stars: no real answer. 1 star: a list of activities with no depth, or a description with no example and no reflection. 2 stars: focuses on one or two activities with a specific detail or example. 3 stars: a specific story about one activity plus a clear, genuine reflection on what they learned or how they grew, and a thoughtful follow-up answer.`
+  },
+
+  // ─────────────────────── INTERMEDIATE ───────────────────────
+
+  { id:'col-real-story', tier:'Intermediate', title:'Tell a real story',
+    summary:`Use STAR, college version: a challenge and what you learned.`,
+    intro:[
+      `"Tell me about a challenge you've faced." Colleges ask this because college is full of challenges, and they want to know how you handle one.`,
+      `You'll use the same STAR shape from the job lessons, with one important addition for college: what you learned.`
+    ],
+    sections:[
+      { heading:`STAR, plus reflection`,
+        points:[
+          `Situation: set the scene in a sentence.`,
+          `Task: what you needed to do.`,
+          `Action: what you did. This should be the longest part.`,
+          `Result: how it turned out.`,
+          `Reflection: what you learned, or how you handle things differently now. For college, this part matters most.`
+        ] },
+      { heading:`Picking your challenge`,
+        paragraphs:[
+          `Choose something real but manageable: a class that knocked you down, a team that wasn't getting along, a job that got hard. It doesn't need to be dramatic. And you never have to share something painful or private you're not comfortable talking about.`
+        ] },
+      { heading:`Say "I", then say what changed`,
+        paragraphs:[
+          `Keep the spotlight on what you did. Then end on the reflection, so the last thing they hear is how you've grown.`
+        ] }
+    ],
+    example:{
+      question:`Tell me about a challenge you've faced and how you handled it.`,
+      weak:`I've faced a lot of challenges, but I always work hard and push through.`,
+      strong:`In tenth grade I got a 54 on my first chemistry test. I'd never failed anything. I started going to my teacher's lunch help sessions twice a week and made flashcards for every unit. I finished the year with a B+. Now I ask for help as soon as I'm confused, instead of waiting until it's a crisis.`,
+      why:`The first answer is a claim. The second is a real moment with a clear action and a reflection that shows growth.`
+    },
+    setting:`You're meeting Imani, an assistant director of admissions at Kestrel College, in the admissions office.`,
+    task:`Imani asks about a challenge. Tell a real story using STAR, and end with what you learned.`,
+    takeaway:`Situation, task, action, result, and then what you learned. The reflection is what colleges remember.`,
+    weakHint:`Pick one real moment, not "I always…". Say what happened, what you did, and what you learned.`,
+    strongHint:`Try: "When ___, I needed to ___. So I ___. In the end, ___. What I learned is ___."`,
+    counterpart:'Imani',
+    counterpartRole:`an assistant director of admissions at Kestrel College conducting a professional, fairly formal admissions interview with a high school student`,
+    opening:`Thanks for coming in today. I'd like to hear about a challenge you've faced. What happened, and how did you handle it?`,
+    partnerNotes:`Acknowledge their story briefly and professionally, then ask a reflective follow-up, such as "What would you do differently if it happened again?" or "How do you think that experience will help you in college?" If they answered in generalities, ask for one specific example.`,
+    skill:`Answering a challenge question with a specific real story in STAR form (situation, task, action, result) with the student's own actions front and center, ending with a genuine reflection on what they learned or how they've changed.`,
+    criteria:`0 stars: no example or a refusal. 1 star: generalities ("I always push through") or a story with no clear action or no reflection. 2 stars: a specific story with a clear action and result, and some reflection. 3 stars: a concise, specific STAR story with the student's own actions at the center and a genuine, specific reflection on growth, plus a thoughtful answer to the follow-up.`
+  },
+
+  { id:'col-knowing-yourself', tier:'Intermediate', title:'Knowing yourself',
+    summary:`Strengths, weaknesses and "How would your friends describe you?"`,
+    intro:[
+      `Some questions aren't about what you've done, but who you are: "How would your friends describe you?" "What's your biggest strength?" "What are you working on?"`,
+      `They feel awkward because you're describing yourself. The trick is to let examples do the bragging for you.`
+    ],
+    sections:[
+      { heading:`Why they ask`,
+        paragraphs:[
+          `Colleges are building a community, not just a class. These questions show whether you know yourself, and whether you're someone others would like living down the hall from.`
+        ] },
+      { heading:`Use real words, then prove them`,
+        points:[
+          `Pick one or two words that are actually true, not the ones you think sound best.`,
+          `Back each one up with a quick, specific example.`,
+          `A little humor or honesty ("my sister would say I'm too organized") makes it real.`
+        ] },
+      { heading:`Weaknesses: honest and growing`,
+        paragraphs:[
+          `If they ask about a weakness, name something real, give a quick example, and spend most of your answer on what you're doing about it. Skip "I'm a perfectionist". Everyone says it, and it sounds like a dodge.`
+        ] }
+    ],
+    example:{
+      question:`How would your friends describe you?`,
+      weak:`They'd say I'm nice and funny, I guess.`,
+      strong:`My friends would say I'm the planner. I'm the one who organizes our study groups and figures out rides to away games. My little sister would add that I'm a bit too organized, which is fair. I'm learning to roll with it when plans change.`,
+      why:`The first is two vague words. The second has a clear identity, a real example, and a bit of honesty that makes it believable.`
+    },
+    setting:`You're on a video call with Omar, a graduate of Alder University who volunteers as an alumni interviewer.`,
+    task:`Omar asks how your friends would describe you, and then about something you're working on. Use real examples and be honest.`,
+    takeaway:`Pick true words, prove them with examples, and be honest about what you're still working on.`,
+    weakHint:`Choose one word that's really true about you and give a quick example that proves it.`,
+    strongHint:`Try: "My friends would say I'm ___. For example, ___." For a weakness: "Something I'm working on is ___, so I've started ___."`,
+    counterpart:'Omar',
+    counterpartRole:`a graduate of Alder University volunteering as an alumni interviewer, meeting a high school student on a friendly video call`,
+    opening:`Here's one I always ask: how would your friends describe you?`,
+    partnerNotes:`React warmly, then ask about growth: "And what's something you're working on getting better at?" If they gave only adjectives, ask for an example of one of them.`,
+    skill:`Describing themselves with honest, specific qualities backed by real examples, and discussing a genuine area of growth (with what they're doing about it) instead of clichés or vague adjectives.`,
+    criteria:`0 stars: no real answer or refuses. 1 star: vague adjectives with no examples, or a cliché weakness like perfectionism. 2 stars: at least one real quality backed by an example, and a reasonable area of growth. 3 stars: specific, honest qualities proven by examples, plus a real weakness or growth area with concrete steps they're taking.`
+  },
+
+  { id:'col-hard-spots', tier:'Intermediate', title:'Hard spots',
+    summary:`A bad grade, a low test score, a gap or a tough year.`,
+    intro:[
+      `Most applicants have something they'd rather not talk about: a bad semester, a low score, a year where life got in the way.`,
+      `If it comes up, a calm, honest answer can actually help you. It shows maturity, and that's exactly what colleges are looking for.`
+    ],
+    sections:[
+      { heading:`Why they ask`,
+        paragraphs:[
+          `Interviewers aren't trying to catch you. They want context: what happened, and whether things have turned around. A dip followed by a recovery tells a strong story.`
+        ] },
+      { heading:`Honest, short, forward`,
+        points:[
+          `Honest: say what happened in one or two sentences.`,
+          `Short: no long backstory, and no blaming teachers or other people.`,
+          `Forward: spend most of your answer on what changed and where things are now.`
+        ] },
+      { heading:`You decide what to share`,
+        paragraphs:[
+          `If the reason is personal, like a family situation or health, you can keep it general: "It was a hard year at home." You never owe an interviewer private details. Your school counselor can also explain context in their letter.`
+        ] }
+    ],
+    example:{
+      question:`I see your grades dipped in tenth grade. Can you tell me what happened that year?`,
+      weak:`Honestly, my teacher that year just didn't like me, so it wasn't really my fault.`,
+      strong:`Tenth grade was a hard year. My family moved in the middle of the fall, and I was working weekends to help out, so my grades slipped. Junior year I made a study schedule and talked to my counselor about my workload, and I got back to A's and B's.`,
+      why:`The first answer blames someone else. The second is honest and brief, and it moves quickly to what changed.`
+    },
+    setting:`You're meeting Rachel Kim, an admissions counselor at Ashford University. For this practice, imagine your grades dipped for one year. Make up a realistic reason if you need to.`,
+    task:`Rachel asks about the dip. Be honest and brief, don't blame anyone, and focus on what changed.`,
+    takeaway:`Honest, short, forward. What you did next matters more than what went wrong.`,
+    weakHint:`Keep what happened to one or two calm sentences without blaming anyone, then talk about what you did to turn it around.`,
+    strongHint:`Try: "That year, ___ was going on, and my grades slipped. Since then, I've ___, and now ___."`,
+    counterpart:'Rachel',
+    counterpartRole:`an admissions counselor at Ashford University conducting a professional admissions interview. You've noticed on the student's transcript that their grades dipped for one year`,
+    opening:`I noticed your grades dipped for one year. Can you tell me a little about what was going on then?`,
+    partnerNotes:`Respond kindly and without judgment. Then ask a forward-looking follow-up, such as "How are things going now?" or "What did that year teach you about yourself?" Never pressure them for private details.`,
+    skill:`Addressing a weak spot on an application (a bad grade, low score, gap or tough year) honestly and briefly, without blaming others and without oversharing, then focusing on what they did to improve and where things stand now.`,
+    criteria:`0 stars: refuses, gets defensive, or says something alarming with no reflection. 1 star: blames teachers or others, or tells a long story with no mention of improvement. 2 stars: an honest, calm explanation that mentions some improvement. 3 stars: brief and honest, no blame, focuses on concrete steps they took and a clear recovery, with a mature, forward-looking follow-up answer.`
+  },
+
+  // ───────────────────────── ADVANCED ─────────────────────────
+
+  { id:'col-curveballs', tier:'Advanced', title:'Curveballs',
+    summary:`"What book have you read lately?", current events, and fun.`,
+    intro:[
+      `Every so often an interviewer throws a question you didn't prepare for: "What book have you read lately?" "What's something in the news you care about?" "What do you do on a free Saturday?"`,
+      `These aren't tests of how smart you are. They're a window into what you're genuinely curious about.`
+    ],
+    sections:[
+      { heading:`Why they ask`,
+        paragraphs:[
+          `Interviewers hear a lot of rehearsed answers. Curveballs show the real you: what you notice, what you wonder about, and how you think on your feet.`
+        ] },
+      { heading:`Anything real counts`,
+        points:[
+          `A book for school, a graphic novel, a long article, a podcast, a documentary or a YouTube series.`,
+          `For the news, pick something you actually care about, even if it's local. You don't need a hot take, just what you noticed and why it matters to you.`,
+          `For fun, be honest. "I bake with my grandma on Sundays" is a great answer.`
+        ] },
+      { heading:`It's okay to pause`,
+        paragraphs:[
+          `"Hmm, let me think" is completely fine. Then answer with one thing and one reason, and let the conversation go from there.`
+        ] }
+    ],
+    example:{
+      question:`What's a book you've read lately that stuck with you? It doesn't have to be for school.`,
+      weak:`Um, I don't really read. I guess the last one was for English class.`,
+      strong:`It's actually a podcast, not a book: a series about how cities decide where to build parks. I'd never thought about it before, and now I notice every empty lot on my way to school. It's made me want to take an urban planning class.`,
+      why:`The student in the strong answer hasn't read a book lately either, but they share something they're genuinely curious about and why it stuck.`
+    },
+    setting:`You're meeting Hollis, a graduate of Westbrook College who's a retired history teacher, at a coffee shop for your alumni interview.`,
+    task:`Hollis likes surprising questions. Answer honestly with one real thing you're curious about, and say why it stuck with you.`,
+    takeaway:`Curveballs are a window into your curiosity. Pick one real thing and say why it matters to you.`,
+    weakHint:`It doesn't have to be a book. Pick one real thing you've read, watched or listened to, and say what stuck with you.`,
+    strongHint:`Try: "Something that's stuck with me lately is ___. I didn't expect ___, and now I ___."`,
+    counterpart:'Hollis',
+    counterpartRole:`a graduate of Westbrook College and retired history teacher conducting a warm but curious alumni interview with a high school student at a coffee shop`,
+    opening:`I like to start somewhere different. What's a book you've read lately that stuck with you? It doesn't have to be for school.`,
+    partnerNotes:`React with genuine curiosity to what they share, then throw one more friendly curveball, such as "What's something in the news lately that you've been thinking about?" or "What do you do on a free Saturday?"`,
+    skill:`Handling unexpected "curveball" questions (a recent book, current events, what they do for fun) with an honest, specific answer that shows genuine curiosity and explains why it matters to them, rather than a blank or rehearsed-sounding reply.`,
+    criteria:`0 stars: no answer or refuses. 1 star: a one-word or dead-end answer ("I don't really read"), or a name with no reason. 2 stars: names one real thing and gives a reason it stuck with them. 3 stars: specific, genuine answers to both questions that show curiosity and personal connection, and sound like a real conversation.`
+  },
+
+  { id:'col-reading-the-room', tier:'Advanced', title:'Alumni vs. admissions officers',
+    summary:`Read the room, from coffee shops to video calls.`,
+    intro:[
+      `College interviews come in two main kinds, and they feel different. An alumni interview is usually a relaxed chat with a graduate. An admissions interview is with someone who works in the admissions office and knows the school inside out.`,
+      `Knowing who you're talking to, and where, helps you match the moment.`
+    ],
+    sections:[
+      { heading:`Two kinds of interviewers`,
+        points:[
+          `Alumni: volunteers who graduated from the school. They usually haven't seen your application, they're often casual, and they love sharing stories from their time there.`,
+          `Admissions officers: staff who read applications. They know the school deeply, tend to be more structured, and often push for specifics.`,
+          `With both, be yourself. Just match their energy and level of formality.`
+        ] },
+      { heading:`Coffee shop interviews`,
+        points:[
+          `Arrive five to ten minutes early. Offer to pay for your own drink.`,
+          `Put your phone away, face down or in your bag.`,
+          `Bring two or three questions, and a pen if you want to jot anything down.`
+        ] },
+      { heading:`Video interviews`,
+        points:[
+          `Camera at eye level, light in front of you (not behind), and a quiet spot.`,
+          `Look at the camera when you're talking, not at your own face.`,
+          `Test your sound first, and have a phone number as a backup in case the call drops.`
+        ] }
+    ],
+    example:{
+      question:`Before we start, how's your senior year going so far?`,
+      weak:`It's fine. Busy.`,
+      strong:`It's been busy in a good way! I'm taking AP Bio and just got to design my own experiment, and I'm captain of the swim team this year. Honestly, college applications are the hardest part, but I'm getting there.`,
+      why:`Small talk still counts. The strong answer is warm, specific and honest, and it gives the interviewer something to follow up on.`
+    },
+    setting:`You're on a video call with Beatriz, an admissions officer at Linden College. It's a more formal admissions interview.`,
+    task:`Beatriz starts with small talk, then gets more serious. Match her professional tone, keep your answers warm and specific, and show you're comfortable on video.`,
+    takeaway:`Know who you're talking to, match their tone, and bring the same warm, specific answers to both.`,
+    weakHint:`Answer in full sentences with one specific detail, and keep a professional but friendly tone.`,
+    strongHint:`Try: "It's been ___! I'm ___ and ___. The hardest part has been ___, but ___."`,
+    counterpart:'Beatriz',
+    counterpartRole:`an admissions officer at Linden College conducting a professional, somewhat formal admissions interview with a high school student over a video call`,
+    opening:`Hi, can you hear me okay? Great, thanks for joining. Before we start, how's your senior year going so far?`,
+    partnerNotes:`Respond politely and professionally to their small talk, then shift to a more formal interview question, such as "What would you want to get out of your first year at Linden?" Keep your tone courteous and a bit more formal than an alumni interviewer would be.`,
+    skill:`Adapting to the interviewer and setting: handling small talk warmly with specific details, then matching a more formal admissions officer's professional tone on a video call with clear, specific, well-organized answers.`,
+    criteria:`0 stars: rude, off-topic, or one-word answers. 1 star: flat or overly casual answers ("It's fine. Busy.") that don't match a professional interview. 2 stars: warm, specific small talk and a reasonably organized answer to the formal question. 3 stars: natural, specific small talk plus a clear, well-organized, professional answer to the formal question that fits the setting.`
+  },
+
+  { id:'col-questions-goodbye', tier:'Advanced', title:'Your questions and the goodbye',
+    summary:`Ask good questions, close well, and send a thank-you.`,
+    intro:[
+      `College interviews almost always end with: "What questions do you have for me?" It's not a formality. It's your chance to show real interest, and it's often the part interviewers remember most.`,
+      `Then there's the goodbye, and one small step most students skip: the thank-you email.`
+    ],
+    sections:[
+      { heading:`Always have questions`,
+        paragraphs:[
+          `"No, I'm good" can sound like you're not that interested. Bring two or three questions, and if one gets answered during the interview, ask a follow-up to something they said instead.`
+        ] },
+      { heading:`Good questions for alumni`,
+        points:[
+          `"What surprised you most about your first year?"`,
+          `"What's a class or professor you still think about?"`,
+          `"If you could do it again, what would you do differently?"`
+        ] },
+      { heading:`Good questions for admissions officers`,
+        points:[
+          `"What do students who really thrive here have in common?"`,
+          `"How do first-years usually get involved in research or clubs?"`,
+          `Skip questions the website answers, and never ask "Will I get in?"`
+        ] },
+      { heading:`The goodbye and the thank-you`,
+        paragraphs:[
+          `Close with thanks and one sentence of genuine interest: "Thank you so much for your time. Talking with you made me even more excited about applying."`,
+          `Within a day, send a short thank-you email of three or four sentences. Mention one specific thing you talked about so it doesn't sound copy-pasted.`
+        ] }
+    ],
+    example:{
+      question:`Well, I've asked you a lot of questions. What questions do you have for me?`,
+      weak:`No, I think I'm good. You covered everything.`,
+      strong:`Yes! What surprised you most about your first year? And if you could go back, is there anything you'd do differently?`,
+      why:`Two genuine questions show curiosity, and they give the interviewer a chance to share their own story, which alumni love.`
+    },
+    setting:`You're finishing your alumni interview with Soraya, a graduate of Harlow College, at a coffee shop.`,
+    task:`Soraya asks what questions you have. Ask one or two genuine questions, then close the interview with thanks and real interest.`,
+    takeaway:`Bring real questions, end with thanks and genuine interest, and send a short thank-you email within a day.`,
+    weakHint:`Ask at least one real question about their experience, and when it wraps up, thank them and say you're interested.`,
+    strongHint:`Try: "What surprised you most about your first year?" Then at the end: "Thank you so much for your time. This made me even more excited about applying."`,
+    counterpart:'Soraya',
+    counterpartRole:`a graduate of Harlow College finishing a friendly alumni interview with a high school student at a coffee shop`,
+    opening:`Well, I've asked you a lot of questions. What questions do you have for me?`,
+    partnerNotes:`Answer their question warmly and briefly (2-3 sentences) with a believable, general personal memory from your time as a student, without stating specific facts about Harlow. Then begin to wrap up with something like "Anything else before we finish up?", which gives them a chance to close well.`,
+    skill:`Ending a college interview well: asking one or two genuine, thoughtful questions suited to the interviewer (not ones the website answers, and never "will I get in"), then closing with thanks and a clear, genuine statement of interest.`,
+    criteria:`0 stars: no questions and no closing, or something inappropriate. 1 star: a vague question or one the website would answer, with no real closing. 2 stars: at least one genuine question, or a clear thank-you and statement of interest. 3 stars: one or two thoughtful, genuine questions suited to an alumni interviewer, plus a warm closing with thanks and real interest.`
   }
 ];

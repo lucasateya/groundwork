@@ -20,6 +20,8 @@
     --gold-pale:#F3E8C9;
     --teal:#2B4C4A;
     --teal-pale:#E2EBE9;
+    --plum:#4A3B5C;
+    --plum-pale:#ECE6F1;
     --muted:#5B6560;
     --body-text:#3a423f;
     --red:#B23A48;
@@ -37,6 +39,7 @@
   a{color:inherit;}
   button{font-family:inherit;}
   [hidden]{display:none !important;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
   :focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 
   /* ---------- Top bar ---------- */
@@ -114,6 +117,33 @@
   .steps h3{font-size:16px;font-weight:600;margin:0 0 0.35rem;}
   .steps p{font-size:14.5px;line-height:1.55;color:var(--muted);margin:0;}
   .soon-note{margin-top:2.5rem;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;}
+
+  /* ---------- Practice: Job or College choice ---------- */
+  button.choice-card{font:inherit;color:inherit;text-align:left;width:100%;}
+  .choice-card.college::before{background:var(--plum);}
+  .college .choice-icon{background:var(--plum-pale);color:var(--plum);}
+  .college .choice-kicker{color:var(--plum);}
+  .choice-card.preselected{box-shadow:0 0 0 2px var(--gold-deep), var(--shadow-lg);}
+  .picked-badge{position:absolute;top:1.1rem;right:1.1rem;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold-deep);background:var(--gold-pale);border-radius:999px;padding:0.25rem 0.65rem;}
+  .choice-cta{font-size:15px;font-weight:600;color:var(--teal);}
+  .college .choice-cta{color:var(--plum);}
+  .choice-resume{margin-top:1.5rem;}
+
+  /* ---------- College: school picker + interview ---------- */
+  .school-grid .job-workplace{color:var(--plum);}
+  .school-grid button.job-card:hover:not(:disabled){border-color:var(--plum);}
+  .school-grid .job-cta{color:var(--plum);}
+  .school-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.2rem;}
+  .school-tags .pill{font-size:11px;padding:0.15rem 0.55rem;}
+  .school-badge{align-self:flex-start;margin-top:0.6rem;font-size:11.5px;font-weight:600;color:var(--teal);background:var(--teal-pale);border-radius:999px;padding:0.2rem 0.65rem;}
+  .school-badge.practice-only{color:var(--gold-deep);background:var(--gold-pale);}
+  .scenario-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 0.8rem;}
+  .college-card .eyebrow{color:var(--plum);}
+  .avatar.college{background:var(--plum);}
+  .toggle-btn small{display:block;font-size:11px;font-weight:400;opacity:0.8;margin-top:1px;}
+  .rubric.six{grid-template-columns:repeat(3,1fr);}
+  @media (max-width:900px){.rubric.six{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.rubric.six{grid-template-columns:1fr;}}
 
   /* ---------- Quiz ---------- */
   .quiz-card{background:var(--paper-raised);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:clamp(1.4rem,4vw,2.4rem);}
@@ -299,6 +329,45 @@
   .path-popover-start{width:100%;background:var(--ink);color:var(--paper);border:none;border-radius:8px;padding:0.55rem 0.6rem;font-size:13px;font-weight:600;cursor:pointer;}
   .path-popover-start:hover{background:var(--ink-soft);}
 
+  /* ---------- Learn: the fork ---------- */
+  .path-svg{position:absolute;top:0;left:0;overflow:visible;}
+  .path-line{fill:none;stroke-width:3.5;stroke-dasharray:2 11;stroke-linecap:round;stroke:rgba(28,35,33,0.2);}
+  .path-line.job{stroke:rgba(43,76,74,0.45);}
+  .path-line.college{stroke:rgba(74,59,92,0.45);}
+  .path-line.locked{stroke:rgba(28,35,33,0.14);}
+  .path-node.job.passed{background:var(--teal);border-color:var(--teal);}
+  .path-node.college.passed{background:var(--plum);border-color:var(--plum);}
+  .path-node.fork-node:not(.locked){box-shadow:0 0 0 5px var(--paper-raised), 0 0 0 7px var(--gold), 0 3px 6px rgba(28,35,33,0.12);}
+  .path-title.below{text-align:center;font-size:12px;line-height:1.3;}
+  .branch-label{position:absolute;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:999px;box-shadow:var(--shadow-sm);}
+  .branch-label span{font-weight:500;opacity:0.75;margin-left:0.3rem;letter-spacing:0;}
+  .branch-label.job{background:var(--teal-pale);color:var(--teal);}
+  .branch-label.college{background:var(--plum-pale);color:var(--plum);}
+  .branch-label.locked{opacity:0.6;}
+  .fork-toggle{position:absolute;left:50%;transform:translateX(-50%);display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--paper-raised);box-shadow:var(--shadow-sm);z-index:2;}
+  .fork-toggle button{border:none;background:transparent;font-size:13px;font-weight:600;padding:0.45rem 1.1rem;color:var(--muted);cursor:pointer;}
+  .fork-toggle button.job.active{background:var(--teal);color:#fff;}
+  .fork-toggle button.college.active{background:var(--plum);color:#fff;}
+  .path-popover-kicker{font-size:10.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;margin:0 0 0.2rem;color:var(--gold-deep);}
+  .path-popover-kicker.job{color:var(--teal);}
+  .path-popover-kicker.college{color:var(--plum);}
+  .branch-progress{margin-bottom:0.7rem;}
+  .branch-progress-top{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:0.3rem;}
+  .branch-progress.job .progress span{background:var(--teal);}
+  .branch-progress.college .progress span{background:var(--plum);}
+  .list-group{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin:1rem 0 0.3rem;padding-top:0.7rem;border-top:1px solid var(--border);color:var(--gold-deep);}
+  .list-group:first-child{margin-top:0;padding-top:0;border-top:none;}
+  .list-group.job{color:var(--teal);}
+  .list-group.college{color:var(--plum);}
+  .skill-row.college.passed .skill-num{background:var(--plum);border-color:var(--plum);}
+  .lesson-meta.job{color:var(--teal);}
+  .lesson-meta.college{color:var(--plum);}
+  .fork-choice{display:flex;flex-direction:column;gap:0.8rem;align-items:flex-start;background:var(--gold-pale);border-radius:14px;padding:1rem 1.15rem;}
+  .fork-choice-title{font-family:'Fraunces',serif;font-size:19px;font-weight:500;margin:0;}
+  .fork-btn.job{background:var(--teal);border-color:var(--teal);}
+  .fork-btn.college{background:var(--plum);border-color:var(--plum);}
+  .fork-btn:hover{filter:brightness(1.1);}
+
   /* ---------- Learn: lesson page ---------- */
   .lesson-page{max-width:800px;margin:0 auto;}
   .back-link{display:inline-flex;align-items:center;gap:0.35rem;font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;margin-bottom:1rem;}
@@ -346,6 +415,54 @@
   .loading-tip-text.show{opacity:1;}
   @media (prefers-reduced-motion:reduce){.loader-ring,.loader-letter,.loading-screen,.loading-steps li.active .step-icon{animation:none;}}
 
+  /* ---------- Game layer: XP, levels, streak, badges, celebrations ---------- */
+  .xp-chip{display:inline-flex;align-items:center;gap:0.45rem;text-decoration:none;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--gold-pale);border-radius:999px;padding:0.3rem 0.75rem;margin-right:0.35rem;white-space:nowrap;}
+  .xp-chip:hover{filter:brightness(0.97);}
+  .xp-chip .xp-streak{color:var(--red);}
+  @media (max-width:420px){.xp-chip .xp-streak{display:none;} .nav-link{padding:0.45rem 0.7rem;}}
+  .home-progress{margin-top:3rem;}
+  .progress-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.1rem;}
+  @media (max-width:820px){.progress-grid{grid-template-columns:1fr;}}
+  .level-card{display:flex;align-items:center;gap:1.25rem;padding:1.3rem 1.4rem;}
+  .level-ring{width:78px;height:78px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:32px;color:var(--ink);
+    background:conic-gradient(var(--gold-deep) calc(var(--pct, 0) * 1%), rgba(28,35,33,0.1) 0);position:relative;}
+  .level-ring::before{content:'';position:absolute;inset:7px;border-radius:50%;background:var(--paper-raised);}
+  .level-ring span{position:relative;}
+  .level-info{flex:1;min-width:0;}
+  .level-info .eyebrow{margin-bottom:0.2rem;}
+  .level-name{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin:0 0 0.6rem;}
+  .xp-text{font-size:12.5px;color:var(--muted);margin:0.45rem 0 0;}
+  .streak-card{display:flex;align-items:center;gap:1rem;padding:1.3rem 1.4rem;}
+  .streak-flame{font-size:34px;line-height:1;}
+  .streak-card.cold .streak-flame{filter:grayscale(1);opacity:0.5;}
+  .streak-num{margin:0;font-size:14px;color:var(--muted);}
+  .streak-num strong{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--ink);margin-right:0.15rem;}
+  .streak-card .fine{margin-top:0.25rem;}
+  .badge-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;margin-top:1.1rem;}
+  @media (max-width:900px){.badge-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:520px){.badge-grid{grid-template-columns:repeat(2,1fr);}}
+  .badge{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0.35rem;padding:0.9rem 0.6rem;border-radius:14px;border:1px solid var(--border);background:var(--paper-raised);}
+  .badge-icon{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--gold-pale);box-shadow:0 0 0 3px var(--paper-raised), 0 0 0 4px var(--gold);}
+  .badge-name{font-size:13px;font-weight:600;}
+  .badge-desc{font-size:11.5px;color:var(--muted);line-height:1.4;}
+  .badge.locked .badge-icon{background:rgba(28,35,33,0.06);box-shadow:none;filter:grayscale(1);opacity:0.45;}
+  .badge.locked .badge-name{color:var(--muted);}
+  .xp-how{text-align:center;margin-top:0.9rem;}
+  .toast-stack{position:fixed;left:50%;bottom:1.25rem;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;z-index:60;pointer-events:none;width:max-content;max-width:calc(100vw - 32px);}
+  .toast{display:flex;align-items:center;gap:0.6rem;background:var(--ink);color:var(--paper);border-radius:14px;padding:0.7rem 1.05rem;font-size:14px;box-shadow:var(--shadow-lg);animation:toastin .35s ease both;}
+  .toast.leaving{animation:toastout .35s ease both;}
+  .toast-icon{font-size:20px;}
+  .toast b{color:var(--gold);}
+  @keyframes toastin{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+  @keyframes toastout{to{opacity:0;transform:translateY(8px);}}
+  .xp-pop{position:fixed;z-index:61;pointer-events:none;font-weight:700;font-size:15px;color:var(--gold-deep);background:var(--gold-pale);border-radius:999px;padding:0.25rem 0.7rem;box-shadow:var(--shadow);animation:xppop 1.4s ease-out forwards;}
+  @keyframes xppop{0%{opacity:0;transform:translate(-50%,6px) scale(0.8);}15%{opacity:1;transform:translate(-50%,0) scale(1.05);}100%{opacity:0;transform:translate(-50%,-46px) scale(1);}}
+  .confetti-bit{position:fixed;z-index:61;pointer-events:none;width:8px;height:8px;border-radius:2px;}
+  @media (prefers-reduced-motion:reduce){
+    .toast,.toast.leaving,.xp-pop{animation:none;}
+    .confetti-bit{display:none;}
+  }
+
   /* ---------- Admin ---------- */
   .admin-item{margin-bottom:0.6rem;}
 </style>
@@ -356,6 +473,7 @@
   <div class="topbar-inner">
     <a class="wordmark" href="#/">Ground<span>work</span></a>
     <nav class="nav-links" aria-label="Main">
+      <a class="xp-chip" id="xp-chip" href="#/" title="Your level and streak"></a>
       <a class="nav-link" href="#/practice" data-nav="practice">Practice</a>
       <a class="nav-link" href="#/learn" data-nav="learn">Learn</a>
     </nav>
@@ -368,13 +486,13 @@
   <section class="view" id="view-home" hidden>
     <div class="container">
       <div class="hero">
-        <p class="eyebrow">Interview practice for your first job</p>
+        <p class="eyebrow">Interview practice for jobs and college</p>
         <h1>Practice the conversation <em>before it counts.</em></h1>
-        <p class="lede">Rehearse with a realistic interviewer, get honest feedback on every answer, and build your skills one lesson at a time.</p>
+        <p class="lede">Rehearse for a job or college interview with a realistic interviewer, get honest feedback on every answer, and build your skills one lesson at a time.</p>
       </div>
 
       <div class="choice-grid">
-        <div class="choice-card practice" data-go="#/practice/quiz">
+        <div class="choice-card practice" data-go="#/practice">
           <div class="choice-top">
             <div class="choice-icon" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>
@@ -384,17 +502,17 @@
               <h2>Do a mock interview</h2>
             </div>
           </div>
-          <p>Answer a few questions about yourself, pick from five jobs that fit you, and interview for real. You'll get a letter grade and specific feedback at the end.</p>
+          <p>Practice for a job or college interview. Answer a few questions about yourself, pick from five jobs or schools that fit you, and interview for real. You'll get a letter grade and specific feedback at the end.</p>
           <div class="choice-meta">
             <span class="pill">About 10 minutes</span>
             <span class="pill">Graded A–F</span>
-            <span class="pill">Personalized to you</span>
+            <span class="pill">Jobs or college</span>
           </div>
           <div class="choice-foot">
             <button class="btn btn-primary" id="home-practice-btn">Start practicing →</button>
             <span class="choice-note" id="home-practice-last"></span>
           </div>
-          <a class="resume-link" id="home-practice-resume" href="#/practice/session" hidden></a>
+          <a class="resume-link" id="home-practice-resume" href="#/practice/job/session" hidden></a>
         </div>
 
         <div class="choice-card learn" data-go="#/learn">
@@ -407,7 +525,7 @@
               <h2>Learn the skills</h2>
             </div>
           </div>
-          <p>Twelve short lessons, from your first hello to the questions everyone dreads. Each one teaches a skill, shows you real examples, then lets you try it.</p>
+          <p>Start with three shared lessons, then the path splits into a Job branch and a College branch. Each lesson teaches a skill, shows you real examples, then lets you try it.</p>
           <div class="learn-progress">
             <div class="progress"><span id="home-learn-bar"></span></div>
             <span id="home-learn-count"></span>
@@ -418,11 +536,35 @@
         </div>
       </div>
 
+      <section class="home-progress" id="home-progress" aria-label="Your progress">
+        <h2 class="section-title">Your progress</h2>
+        <div class="progress-grid">
+          <div class="card level-card">
+            <div class="level-ring" id="home-level-ring" aria-hidden="true"></div>
+            <div class="level-info">
+              <p class="eyebrow" id="home-level-label"></p>
+              <h3 class="level-name" id="home-level-name"></h3>
+              <div class="progress"><span id="home-xp-bar"></span></div>
+              <p class="xp-text" id="home-xp-text"></p>
+            </div>
+          </div>
+          <div class="card streak-card">
+            <div class="streak-flame" aria-hidden="true">🔥</div>
+            <div>
+              <p class="streak-num"><strong id="home-streak"></strong> <span id="home-streak-unit"></span></p>
+              <p class="fine" id="home-streak-note"></p>
+            </div>
+          </div>
+        </div>
+        <div class="badge-grid" id="home-badges"></div>
+        <p class="fine xp-how">Earn XP as you go: 10 for every lesson star, and 10–50 for each mock interview depending on your grade.</p>
+      </section>
+
       <div class="how">
         <h2 class="section-title">How practice works</h2>
         <ol class="steps">
           <li><span class="step-num">1</span><h3>Tell us about you</h3><p>Ten quick questions about what you like, what you're good at, and what you're preparing for.</p></li>
-          <li><span class="step-num">2</span><h3>Pick a job</h3><p>Choose from five jobs that fit you, or type in the exact job you're applying for.</p></li>
+          <li><span class="step-num">2</span><h3>Pick a job or school</h3><p>Choose from five jobs or colleges that fit you, or type in the exact one you're applying to.</p></li>
           <li><span class="step-num">3</span><h3>Interview and get graded</h3><p>Answer a realistic interviewer's questions, then see what worked and what to try next time.</p></li>
         </ol>
       </div>
@@ -431,13 +573,63 @@
     </div>
   </section>
 
+  <!-- ===================== PRACTICE: JOB OR COLLEGE ===================== -->
+  <section class="view" id="view-choice" hidden>
+    <div class="container">
+      <div class="page-head">
+        <p class="eyebrow">Practice</p>
+        <h1>What are you practicing for?</h1>
+        <p class="lede">Pick one to get started. You can switch any time.</p>
+      </div>
+      <div class="choice-grid">
+        <button class="choice-card practice track-card" data-track="job">
+          <span class="picked-badge" hidden>Picked last time</span>
+          <div class="choice-top">
+            <div class="choice-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12.5h18"/></svg>
+            </div>
+            <div>
+              <p class="choice-kicker">Job</p>
+              <h2>Job interview</h2>
+            </div>
+          </div>
+          <p>For a job, internship or part-time role.</p>
+          <div class="choice-meta">
+            <span class="pill">Pick from 5 jobs</span>
+            <span class="pill">4 skills graded</span>
+          </div>
+          <div class="choice-foot"><span class="choice-cta">Start →</span></div>
+        </button>
+        <button class="choice-card college track-card" data-track="college">
+          <span class="picked-badge" hidden>Picked last time</span>
+          <div class="choice-top">
+            <div class="choice-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg>
+            </div>
+            <div>
+              <p class="choice-kicker">College</p>
+              <h2>College interview</h2>
+            </div>
+          </div>
+          <p>For an alumni or admissions interview.</p>
+          <div class="choice-meta">
+            <span class="pill">Pick from 5 schools</span>
+            <span class="pill">6 skills graded</span>
+          </div>
+          <div class="choice-foot"><span class="choice-cta">Start →</span></div>
+        </button>
+      </div>
+      <p class="choice-resume"><a class="resume-link" id="choice-resume" hidden></a></p>
+    </div>
+  </section>
+
   <!-- ===================== QUIZ ===================== -->
   <section class="view" id="view-quiz" hidden>
     <div class="container narrow">
       <div class="page-head">
         <p class="eyebrow">Step 1 of 3 · About you</p>
-        <h1>Let's find the right interview for you</h1>
-        <p class="lede">A few quick questions so we can suggest jobs that fit you. It takes about two minutes.</p>
+        <h1 id="quiz-title">Let's find the right interview for you</h1>
+        <p class="lede" id="quiz-lede">A few quick questions so we can suggest jobs that fit you. It takes about two minutes.</p>
       </div>
       <div class="welcome-note" id="quiz-welcome" hidden>
         Welcome back! Your last answers are filled in. Change anything you like, or <button class="btn-link" id="quiz-skip-btn">skip straight to your job picks</button>.
@@ -459,16 +651,16 @@
   <section class="view" id="view-jobs" hidden>
     <div class="container">
       <div class="page-head">
-        <p class="eyebrow">Step 2 of 3 · Pick a job</p>
-        <h1>Which job do you want to interview for?</h1>
-        <p class="lede">These are based on your answers. Pick one, and we'll set up a realistic interview for it.</p>
+        <p class="eyebrow" id="picker-eyebrow">Step 2 of 3 · Pick a job</p>
+        <h1 id="picker-title">Which job do you want to interview for?</h1>
+        <p class="lede" id="picker-lede">These are based on your answers. Pick one, and we'll set up a realistic interview for it.</p>
       </div>
       <p class="jobs-status" id="jobs-status" hidden></p>
       <p class="error-banner" id="jobs-error" hidden></p>
       <div class="job-grid" id="job-grid"></div>
       <div class="jobs-actions">
         <button class="btn btn-secondary" id="jobs-more-btn">↻ Show me 5 different jobs</button>
-        <a class="btn-link" href="#/practice/quiz">Change my answers</a>
+        <a class="btn-link" id="picker-change-link" href="#/practice/job/quiz">Change my answers</a>
       </div>
     </div>
   </section>
@@ -478,15 +670,16 @@
     <div class="container">
       <div class="session-layout">
         <aside class="rail">
-          <div class="card">
+          <div class="card" id="session-view-card">
             <p class="eyebrow" id="scenario-topic"></p>
             <h2 class="scenario-title" id="scenario-title"></h2>
             <p class="scenario-org" id="scenario-org"></p>
             <p class="scenario-body" id="scenario-body"></p>
             <details class="context" id="scenario-context-wrap" open>
-              <summary>What this job involves</summary>
+              <summary id="scenario-context-label">What this job involves</summary>
               <p id="scenario-context"></p>
             </details>
+            <p class="scenario-note" id="scenario-note" hidden></p>
             <span class="persona-tag" id="persona-tag"></span>
           </div>
 
@@ -508,7 +701,7 @@
           </div>
 
           <div class="rail-actions">
-            <a class="btn btn-secondary" id="change-job-link" href="#/practice/jobs">Choose a different job</a>
+            <a class="btn btn-secondary" id="change-job-link" href="#/practice/job/jobs">Choose a different job</a>
             <button class="btn btn-secondary" id="reset-btn">Restart this interview</button>
           </div>
         </aside>
@@ -539,9 +732,9 @@
   <section class="view" id="view-learn" hidden>
     <div class="container">
       <div class="page-head">
-        <p class="eyebrow">Skill path · Interview</p>
+        <p class="eyebrow">Skill path</p>
         <h1>Learn the interview skills</h1>
-        <p class="lede">Twelve short lessons, from your first hello to the questions everyone dreads. Earn 2 stars or more on a lesson to unlock the next one.</p>
+        <p class="lede">Start with three shared lessons, then the path splits: a Job branch and a College branch. Do either or both. Earn 2 stars or more on a lesson to unlock the next one.</p>
       </div>
       <div class="learn-layout">
         <div class="card path-card"><div id="learn-path-view"></div></div>
@@ -549,7 +742,7 @@
           <div class="card">
             <h3>Your progress</h3>
             <p class="big-count" id="learn-count"></p>
-            <div class="progress"><span id="learn-bar"></span></div>
+            <div id="learn-branch-progress"></div>
             <button class="btn btn-primary full" id="learn-continue-btn"></button>
           </div>
           <div class="card">
@@ -576,6 +769,8 @@
   </section>
 
 </main>
+
+<div class="toast-stack" id="toast-stack" aria-live="polite"></div>
 
 <script src="lessons.js"></script>
 <script>
@@ -666,6 +861,50 @@ const INTERVIEW_PERSONAS = [
     behavior:"You're a probing interviewer: when an answer is vague, you follow up with something like 'can you give me a specific example?' or 'why is that?' before moving on." }
 ];
 
+// ---- College track interviewers ----
+// Easy = an alumni volunteer, Hard = a member of the admissions staff.
+// `school` is the school's name; c is the student's first name ('' if none).
+const COLLEGE_ALUMNI_PERSONAS = [
+  { id:'alum-priya', name:'Priya', label:'is a friendly graduate who puts you at ease',
+    role: school => 'a 2012 graduate of ' + school + ' who volunteers as an alumni interviewer and now works as a pediatric nurse',
+    headline:'Alumni interviewer · Class of 2012',
+    setting:"You're meeting a graduate at a coffee shop near your school.", place:'at a coffee shop near the student\'s school',
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + "! I'm Priya. I graduated from " + school + " in 2012, and now I'm a pediatric nurse. Thanks for meeting me here. I'm happy to answer any questions about " + school + " later, but first, tell me a little about yourself.",
+    behavior:"You're warm and encouraging. You react to what the student says and ask gentle follow-up questions that build on their answers." },
+  { id:'alum-marcus', name:'Marcus', label:'is a chatty graduate who loves a good story',
+    role: school => 'a 2004 graduate of ' + school + ' who volunteers as an alumni interviewer and now runs a small architecture firm',
+    headline:'Alumni interviewer · Class of 2004',
+    setting:"You're meeting a graduate at a public library near your home.", place:'at a public library near the student\'s home',
+    opening:(c, school) => "Hey" + (c ? " " + c : "") + ", great to meet you. I'm Marcus, class of 2004. These days I run a small architecture firm, but I still love talking about my time at " + school + ". Why don't we start with you? Tell me about yourself.",
+    behavior:"You're chatty and curious, like a friendly neighbor. You love hearing stories and ask 'what was that like?' follow-ups. Keep any stories of your own short." },
+  { id:'alum-jen', name:'Jen', label:'keeps it relaxed and conversational',
+    role: school => 'a 2018 graduate of ' + school + ' who volunteers as an alumni interviewer and now works as a software engineer',
+    headline:'Alumni interviewer · Class of 2018',
+    setting:"You're meeting a graduate on a video call.", place:'on a video call',
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + "! Can you hear me okay? Great. I'm Jen. I graduated from " + school + " in 2018 and I work as a software engineer now. This is really just a conversation, so relax. Tell me a bit about yourself.",
+    behavior:"You're casual and relaxed and like to keep it a real conversation. You're especially curious about what they do for fun and what excites them." }
+];
+const COLLEGE_ADMISSIONS_PERSONAS = [
+  { id:'adm-dana', name:'Dana', fullName:'Dana Whitfield', label:'is formal and expects specific answers',
+    role: school => 'a senior assistant director of admissions at ' + school,
+    headline: school => 'Admissions · ' + school,
+    setting:"You're meeting an admissions officer in the admissions office on campus.", place:'in the admissions office on campus',
+    opening:(c, school) => "Good afternoon" + (c ? ", " + c : "") + ". I'm Dana Whitfield, a senior assistant director of admissions at " + school + ". Thank you for coming in today. Let's begin. Please tell me about yourself.",
+    behavior:"You're formal and thorough. You ask clear, direct questions and expect specific, well-organized answers. When an answer is vague, you ask for a concrete example." },
+  { id:'adm-luis', name:'Luis', fullName:'Luis Moreno', label:'is friendly but keeps asking why',
+    role: school => 'the admissions counselor at ' + school + ' who reads applications from the student\'s region',
+    headline: school => 'Admissions · ' + school,
+    setting:"You're meeting your regional admissions counselor on a video call.", place:'on a video call',
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + ", I'm Luis Moreno. I'm the admissions counselor who reads applications from your area for " + school + ". Thanks for making time today. To start, tell me a little about yourself and what you're looking for in a college.",
+    behavior:"You're friendly but probing. You ask 'why' follow-ups and want to understand their reasons, especially why this particular school." },
+  { id:'adm-elena', name:'Elena', fullName:'Elena Brooks', label:'asks you to reflect on how you\'ve grown',
+    role: school => 'an associate dean of admissions at ' + school,
+    headline: school => 'Admissions · ' + school,
+    setting:"You're meeting an admissions dean in the admissions office on campus.", place:'in your office in the admissions building',
+    opening:(c, school) => "Welcome" + (c ? ", " + c : "") + ". I'm Elena Brooks, an associate dean of admissions at " + school + ". I'm looking forward to getting to know you beyond your application. Let's start there: tell me about yourself.",
+    behavior:"You're thoughtful and reflective. You ask questions that push for self-reflection: what they learned, how they've changed, and what they'd do differently." }
+];
+
 const MODES = {
   negotiation: {
     label:'Negotiation practice',
@@ -702,6 +941,27 @@ const MODES = {
       { key:'structure', label:'Structure & specifics', desc:"whether answers included concrete, specific examples rather than vague generalities" },
       { key:'relevance', label:'Relevance', desc:"whether answers actually addressed the question that was asked" }
     ]
+  },
+  college: {
+    label:'College interview practice',
+    wordCounter:true,
+    personasByDifficulty:[COLLEGE_ALUMNI_PERSONAS, COLLEGE_ADMISSIONS_PERSONAS],
+    difficulties:[
+      { key:'easy', label:'Easy', sub:'Alumni interviewer', interviewType:'alumni',
+        note:'Relaxed and conversational. A graduate who gives you room to talk.',
+        promptFragment:"This is an alumni interview: a relaxed, two-way conversation. You're a volunteer graduate, not admissions staff, so you haven't seen their application and you don't make admission decisions. Be forgiving of nerves and give them room to talk." },
+      { key:'hard', label:'Hard', sub:'Admissions officer', interviewType:'admissions',
+        note:'More formal. Pushes for specifics and self-reflection.',
+        promptFragment:"This is an admissions interview with a member of the admissions staff. Be professional and a little more formal. Push for specifics, evidence and self-reflection, and don't let a vague answer pass without a follow-up. Don't coach or give tips." }
+    ],
+    rubric:[
+      { key:'firstImpression', label:'First impression', desc:"how strong, warm and confident their opening and overall presence was" },
+      { key:'conciseness', label:'Conciseness', desc:"whether their answers were appropriately brief and focused rather than rambling" },
+      { key:'structure', label:'Structure & specifics', desc:"whether answers included concrete, specific examples rather than vague generalities" },
+      { key:'selfReflection', label:'Self-reflection', desc:"whether they talked about what they learned and how they've grown, not just what they did" },
+      { key:'whySchool', label:'Why this school', desc:"whether they showed genuine, specific reasons this school fits them and some knowledge of it" },
+      { key:'curiosity', label:'Curiosity & your questions', desc:"how engaged and curious they were, including whether they asked the interviewer good questions" }
+    ]
   }
 };
 
@@ -732,40 +992,109 @@ const INTERVIEW_QUIZ_QUESTIONS = [
   { id:'name', type:'text', prompt:'What should the interviewer call you?', placeholder:'Your first name (optional)', optional:true }
 ];
 
+// College track quiz. `showIf` hides a question unless an earlier answer
+// makes it relevant (we only need the student's region to judge distance).
+const COLLEGE_QUIZ_QUESTIONS = [
+  { id:'status', type:'choice', prompt:'Which best describes you?', options:['High school junior','High school senior','Transfer student','Something else'] },
+  { id:'stakes', type:'choice', prompt:'Is this for a real upcoming interview or general practice?', options:['Real interview soon','General practice','Class assignment'] },
+  { id:'interests', type:'text', prompt:'What subjects or fields are you interested in?', placeholder:'e.g. biology, writing, music. Undecided is completely fine' },
+  { id:'major', type:'choice', prompt:'Do you have a possible major in mind?', options:['I have one in mind','A few ideas','Undecided'] },
+  { id:'size', type:'choice', prompt:'What size of school sounds right?', options:['Small (under 5,000 students)','Medium (5,000–15,000)','Large (over 15,000)','Not sure'] },
+  { id:'setting', type:'choice', prompt:'What setting do you picture?', options:['City','Suburb','College town','Rural','Not sure'] },
+  { id:'distance', type:'choice', prompt:'How far from home?', options:['Close to home','Anywhere in my region','Anywhere','Not sure'] },
+  { id:'homeRegion', type:'choice', prompt:'Which part of the US do you live in?', options:['Northeast','Mid-Atlantic','South','Midwest','Southwest','West'],
+    showIf: a => a.distance === 'Close to home' || a.distance === 'Anywhere in my region' },
+  { id:'activities', type:'text', prompt:'What do you do outside class?', placeholder:'Clubs, sports, a job, family responsibilities…' },
+  { id:'proud', type:'text', prompt:"What's something you're proud of?", placeholder:'An achievement, a skill, something you built or helped with', optional:true },
+  { id:'name', type:'text', prompt:'What should the interviewer call you?', placeholder:'Your first name (optional)', optional:true }
+];
+
+// Everything that differs between the Job and College practice tracks.
+const PRACTICE = {
+  job: {
+    id:'job', label:'Job', modeKey:'interview',
+    quiz: INTERVIEW_QUIZ_QUESTIONS,
+    keys: { answers:'interviewQuiz:answers', options:'interviewQuiz:jobs', scenario:'interviewQuiz:scenario' },
+    routes: { quiz:'#/practice/job/quiz', picker:'#/practice/job/jobs', session:'#/practice/job/session' },
+    quizTitle:"Let's find the right interview for you",
+    quizLede:'A few quick questions so we can suggest jobs that fit you. It takes about two minutes.',
+    quizSkip:'skip straight to your job picks',
+    quizFinish:'Show me jobs →',
+    pickerEyebrow:'Step 2 of 3 · Pick a job',
+    pickerTitle:'Which job do you want to interview for?',
+    pickerLede:"These are based on your answers. Pick one, and we'll set up a realistic interview for it.",
+    pickerMore:'↻ Show me 5 different jobs',
+    customKicker:'Something else', customTitle:'Have a specific job in mind?', customPlaceholder:'e.g. Barista at a local coffee shop',
+    pickerError:"We couldn't load jobs picked for you right now. You can try again, or practice with one of these sample jobs.",
+    findLoader:{ title:'Finding jobs that fit you', freshTitle:'Finding five new jobs', sub:"We're matching your answers to real kinds of work.", steps:['Reading your answers', 'Matching your interests to jobs', 'Writing why each one fits you'] },
+    contextLabel:'What this job involves',
+    changeLabel:'Choose a different job',
+    againLabel:'Interview again for this job',
+    pickAnotherLabel:'Pick a different job'
+  },
+  college: {
+    id:'college', label:'College', modeKey:'college',
+    quiz: COLLEGE_QUIZ_QUESTIONS,
+    keys: { answers:'collegeQuiz:answers', options:'collegeQuiz:schools', scenario:'collegeQuiz:scenario' },
+    routes: { quiz:'#/practice/college/quiz', picker:'#/practice/college/schools', session:'#/practice/college/session' },
+    quizTitle:"Let's find the right schools for you",
+    quizLede:'A few quick questions so we can suggest colleges to practice with. It takes about two minutes.',
+    quizSkip:'skip straight to your school picks',
+    quizFinish:'Show me schools →',
+    pickerEyebrow:'Step 2 of 3 · Pick a school',
+    pickerTitle:'Which school do you want to interview with?',
+    pickerLede:"These are based on your answers. Pick one, and we'll set up a realistic interview with someone from that school.",
+    pickerMore:'↻ Show me 5 different schools',
+    customKicker:'Something else', customTitle:'Have a specific school in mind?', customPlaceholder:'e.g. University of Michigan',
+    pickerError:"We couldn't load schools picked for you right now. You can try again, or practice with one of these schools.",
+    findLoader:{ title:'Finding schools that fit you', freshTitle:'Finding five new schools', sub:'Matching your answers to real colleges.', steps:['Reading your answers', 'Matching you to schools', 'Writing why each one fits you'] },
+    contextLabel:'About this school',
+    changeLabel:'Choose a different school',
+    againLabel:'Interview again with this school',
+    pickAnotherLabel:'Pick a different school'
+  }
+};
+
+// Per-track saved state: quiz answers, picker suggestions, and the scenario
+// they last set up. Only one interview runs at a time (see sessionTrack).
+const P = {
+  job:     { answers:null, options:null, scenario:null, loading:false, error:false, pickingIdx:null, pickError:null },
+  college: { answers:null, options:null, scenario:null, loading:false, error:false, pickingIdx:null, pickError:null }
+};
+
 // =====================================================================
 // State
 // =====================================================================
 
 const MAX_USER_MESSAGES = 10;
-const currentModeKey = 'interview';
-const currentTrack = 'interview';
+const currentTrack = 'interview'; // storage namespace for Learn progress (all lessons)
+const TRACK_PREF_KEY = 'groundwork:track';
 
 let currentView = null;
 
-// Practice session
+// Practice session (one interview at a time, in either track)
+let sessionTrack = 'job';
 let currentScenario = null;
 let currentPersona = INTERVIEW_PERSONAS[1];
+const difficultyByTrack = { job: 0, college: 0 };
 let difficultyIdx = 0;
 let messages = [];
 let busy = false;
 let ended = false;
-let historyRecords = [];
+let historyRecords = [];   // newest few graded interviews, for the sidebar list
+let allAttempts = [];      // every graded interview, for totals
 
-// Quiz + job picker
+// Quiz + picker (quizTrack / pickerTrack say which track's page is showing)
+let quizTrack = 'job';
+let pickerTrack = 'job';
 let quizStep = 0;
 let quizAnswers = {};
-let savedQuizAnswers = null;
-let customInterviewScenario = null;
-let jobOptions = null;
-let jobsLoading = false;
-let jobsError = false;
-let pickingIdx = null;   // index (or 'custom') of the job currently being set up
-let pickError = null;
 
 // Learn
 let skillStars = { negotiation: {}, interview: {} };
-let learnLessonIndex = 0;
-let lessonOpenedIdx = null;
+let learnBranch = 'shared';   // which branch the open lesson belongs to
+let learnLessonIndex = 0;     // its position within that branch
+let lessonOpenedId = null;
 let learnPhase = 'intro';
 let learnMessages = [];
 let learnFailCount = 0;
@@ -773,7 +1102,6 @@ let learnHintLevel = 0;
 let learnBusy = false;
 let learnResetFeedback = null; // set when all 3 attempts were used, shown on the intro screen
 let learnLastResult = null;    // last failed grade, so the fail screen can re-render after "Show a hint"
-let openPopoverIdx = null;
 
 // =====================================================================
 // Helpers
@@ -808,6 +1136,16 @@ const LOADING_TIPS = [
   "Keep most answers under a minute. The interviewer will ask if they want more.",
   "Look up the company for ten minutes before any interview. It shows."
 ];
+const LOADING_TIPS_COLLEGE = [
+  "Alumni interviewers usually just want to get to know you. It's a conversation, not a test.",
+  "Have one specific reason you'd love this school, one you couldn't say about any other.",
+  "Send a short thank-you email within a day.",
+  "Being undecided about your major is completely normal. Talk about what you're curious about instead.",
+  "Talk about what you learned from an activity, not just what you did.",
+  "Bring two or three questions. Alumni love talking about their own time at the school.",
+  "It's fine to mention a bad grade or a hard year. Say what happened, then what you learned.",
+  "For a video interview, check your camera, light and sound ten minutes early."
+];
 
 function createLoader(opts){
   const wrap = document.createElement('div');
@@ -823,19 +1161,20 @@ function createLoader(opts){
 
   const items = wrap.querySelectorAll('.loading-steps li');
   const tipEl = wrap.querySelector('.loading-tip-text');
+  const tips = opts.tips === 'college' ? LOADING_TIPS_COLLEGE : LOADING_TIPS;
   let step = 0;
-  let tipIdx = Math.floor(Math.random() * LOADING_TIPS.length);
+  let tipIdx = Math.floor(Math.random() * tips.length);
   const paintSteps = () => items.forEach((li, i) => { li.className = i < step ? 'done' : (i === step ? 'active' : ''); });
   paintSteps();
-  tipEl.textContent = LOADING_TIPS[tipIdx];
+  tipEl.textContent = tips[tipIdx];
 
   const stepTimer = setInterval(() => {
     if(step < items.length - 1){ step += 1; paintSteps(); }
   }, opts.stepMs || 1800);
   const tipTimer = setInterval(() => {
-    tipIdx = (tipIdx + 1) % LOADING_TIPS.length;
+    tipIdx = (tipIdx + 1) % tips.length;
     tipEl.classList.remove('show');
-    setTimeout(() => { tipEl.textContent = LOADING_TIPS[tipIdx]; tipEl.classList.add('show'); }, 250);
+    setTimeout(() => { tipEl.textContent = tips[tipIdx]; tipEl.classList.add('show'); }, 250);
   }, 6000);
 
   return {
@@ -949,35 +1288,53 @@ function route(){
   const parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   const section = parts[0];
   const sub = parts[1];
+  const leaf = parts[2];
 
   if(!section){ renderHome(); showView('home'); return; }
 
   if(section === 'practice'){
-    if(sub === 'quiz'){ startQuiz(); showView('quiz'); return; }
-    if(sub === 'jobs'){
-      if(!savedQuizAnswers){ go('#/practice/quiz', true); return; }
+    // Links from before the College track existed still work.
+    if(sub === 'quiz'){ go('#/practice/job/quiz', true); return; }
+    if(sub === 'jobs'){ go('#/practice/job/jobs', true); return; }
+    if(sub === 'session'){ go('#/practice/job/session', true); return; }
+    if(!sub){ renderChoice(); showView('choice'); return; }
+
+    const t = PRACTICE[sub] ? sub : null;
+    if(!t){ go('#/practice', true); return; }
+    rememberTrack(t);
+    const r = PRACTICE[t].routes;
+
+    if(leaf === 'quiz'){ startQuiz(t); showView('quiz'); return; }
+    if(location.hash === r.picker){
+      if(!P[t].answers){ go(r.quiz, true); return; }
+      pickerTrack = t;
+      renderPickerHead(t);
       showView('jobs');
-      ensureJobOptions();
+      ensureOptions(t);
       return;
     }
-    if(sub === 'session'){
-      if(!currentScenario){ go(savedQuizAnswers ? '#/practice/jobs' : '#/practice/quiz', true); return; }
+    if(leaf === 'session'){
+      if(sessionTrack !== t || !currentScenario){
+        // Coming from the other track: reopen this track's last interview.
+        if(P[t].scenario) startSession(t, P[t].scenario);
+        else { go(P[t].answers ? r.picker : r.quiz, true); return; }
+      }
       showView('session');
       return;
     }
-    go(currentScenario ? '#/practice/session' : '#/practice/quiz', true);
+    go(r.quiz, true);
     return;
   }
 
   if(section === 'learn'){
     if(sub){
-      const idx = currentLessons().findIndex(l => l.id === sub);
-      if(idx === -1 || idx > unlockedIndex()){ go('#/learn', true); return; }
-      if(lessonOpenedIdx !== idx) openLesson(idx);
+      const loc = findLesson(sub);
+      if(!loc || !isUnlocked(loc.branch, loc.idx)){ go('#/learn', true); return; }
+      if(lessonOpenedId !== sub) openLesson(loc.branch, loc.idx);
       showView('lesson');
       return;
     }
-    openPopoverIdx = null;
+    openPopoverId = null;
     showView('learn');
     renderLearnPage();
     return;
@@ -987,32 +1344,53 @@ function route(){
 }
 window.addEventListener('hashchange', route);
 
+// The practice track (job or college) the student picked last time.
+function preferredTrack(){
+  try{ const t = localStorage.getItem(TRACK_PREF_KEY); return PRACTICE[t] ? t : null; } catch(e){ return null; }
+}
+function rememberTrack(t){
+  try{ localStorage.setItem(TRACK_PREF_KEY, t); } catch(e){}
+}
+
+// "Or go back to your interview for …" link, shown on Home and the choice screen.
+function setResumeLink(a){
+  if(currentScenario){
+    a.hidden = false;
+    a.href = PRACTICE[sessionTrack].routes.session;
+    a.textContent = (messages.length > 0 && !ended ? 'Or finish your interview for ' : 'Or go back to your interview for ') + currentScenario.title + ' →';
+  } else {
+    a.hidden = true;
+  }
+}
+
 // =====================================================================
 // Home
 // =====================================================================
 
 function renderHome(){
-  const lessons = currentLessons();
-  const stars = skillStars[currentTrack];
-  const passed = lessons.filter(l => (stars[l.id] || 0) >= 2).length;
-  el('home-learn-count').textContent = passed + ' of ' + lessons.length + ' lessons done';
-  el('home-learn-bar').style.width = (passed / lessons.length * 100) + '%';
-  el('home-learn-btn').textContent = passed === 0 ? 'Start learning →' : (passed === lessons.length ? 'Review lessons →' : 'Continue learning →');
+  const passed = totalPassedCount();
+  const total = totalLessonCount();
+  el('home-learn-count').textContent =
+    branchPassedCount('shared') + ' shared · Job ' + branchPassedCount('job') + ' of ' + LEARN_BRANCHES.job.lessons.length +
+    ' · College ' + branchPassedCount('college') + ' of ' + LEARN_BRANCHES.college.lessons.length;
+  el('home-learn-bar').style.width = (passed / total * 100) + '%';
+  el('home-learn-btn').textContent = passed === 0 ? 'Start learning →' : (passed === total ? 'Review lessons →' : 'Continue learning →');
 
   const last = historyRecords[0];
   el('home-practice-last').innerHTML = last
     ? 'Last grade: <strong>' + escapeHTML(last.grade) + '</strong> · ' + escapeHTML(last.topic)
     : '';
-  const resume = el('home-practice-resume');
-  if(currentScenario){
-    resume.hidden = false;
-    resume.textContent = (messages.length > 0 && !ended ? 'Or finish your interview for ' : 'Or go back to your interview for ') + currentScenario.title + ' →';
-  } else {
-    resume.hidden = true;
-  }
+  setResumeLink(el('home-practice-resume'));
+  renderHomeProgress();
 }
 
-document.querySelectorAll('.choice-card').forEach(card => {
+el('xp-chip').addEventListener('click', (e) => {
+  e.preventDefault();
+  go('#/');
+  setTimeout(() => el('home-progress').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }), 60);
+});
+
+document.querySelectorAll('.choice-card[data-go]').forEach(card => {
   card.addEventListener('click', (e) => {
     if(e.target.closest('a')) return; // let inner links (like "resume") work normally
     go(card.dataset.go);
@@ -1020,21 +1398,50 @@ document.querySelectorAll('.choice-card').forEach(card => {
 });
 
 // =====================================================================
-// Step 1: Quiz
+// Practice: Job or College
 // =====================================================================
 
-function startQuiz(){
+function renderChoice(){
+  const pref = preferredTrack();
+  document.querySelectorAll('.track-card').forEach(card => {
+    const on = card.dataset.track === pref;
+    card.classList.toggle('preselected', on);
+    card.querySelector('.picked-badge').hidden = !on;
+    if(on) card.focus({ preventScroll: true });
+  });
+  setResumeLink(el('choice-resume'));
+}
+
+document.querySelectorAll('.track-card').forEach(card => {
+  card.addEventListener('click', () => go(PRACTICE[card.dataset.track].routes.quiz));
+});
+
+// =====================================================================
+// Step 1: Quiz (same component for both tracks)
+// =====================================================================
+
+// Questions currently in play: some only appear after certain answers.
+function quizQuestions(){
+  return PRACTICE[quizTrack].quiz.filter(q => !q.showIf || q.showIf(quizAnswers));
+}
+
+function startQuiz(t){
+  quizTrack = t;
   quizStep = 0;
-  quizAnswers = savedQuizAnswers ? Object.assign({}, savedQuizAnswers) : {};
+  quizAnswers = P[t].answers ? Object.assign({}, P[t].answers) : {};
+  el('quiz-title').textContent = PRACTICE[t].quizTitle;
+  el('quiz-lede').textContent = PRACTICE[t].quizLede;
+  el('quiz-skip-btn').textContent = PRACTICE[t].quizSkip;
   renderQuizStep();
 }
 
 function renderQuizStep(){
-  const q = INTERVIEW_QUIZ_QUESTIONS[quizStep];
-  const n = INTERVIEW_QUIZ_QUESTIONS.length;
+  const qs = quizQuestions();
+  const q = qs[quizStep];
+  const n = qs.length;
   el('quiz-count').textContent = 'Question ' + (quizStep + 1) + ' of ' + n;
   el('quiz-bar').style.width = ((quizStep + 1) / n * 100) + '%';
-  el('quiz-welcome').hidden = !(savedQuizAnswers && quizStep === 0);
+  el('quiz-welcome').hidden = !(P[quizTrack].answers && quizStep === 0);
   el('quiz-error').hidden = true;
   let html = '<h2 class="quiz-prompt">' + escapeHTML(q.prompt) + '</h2>';
   if(q.type === 'text'){
@@ -1047,23 +1454,31 @@ function renderQuizStep(){
   }
   el('quiz-body').innerHTML = html;
   el('quiz-back-btn').style.visibility = quizStep === 0 ? 'hidden' : 'visible';
-  el('quiz-next-btn').textContent = quizStep === n - 1 ? 'Show me jobs →' : 'Next';
+  el('quiz-next-btn').textContent = quizStep === n - 1 ? PRACTICE[quizTrack].quizFinish : 'Next';
   if(q.type === 'text') el('quiz-text-input').focus();
 }
 
-function quizNext(){
-  const q = INTERVIEW_QUIZ_QUESTIONS[quizStep];
-  if(q.type === 'text'){
+function saveQuizTextInput(){
+  const q = quizQuestions()[quizStep];
+  if(q && q.type === 'text'){
     const input = el('quiz-text-input');
     if(input) quizAnswers[q.id] = input.value.trim();
   }
+}
+
+function quizNext(){
+  const q = quizQuestions()[quizStep];
+  saveQuizTextInput();
   if(!q.optional && !quizAnswers[q.id]){
     el('quiz-error').textContent = q.type === 'text' ? 'Please answer this one. A few words is plenty.' : 'Please pick one. "Not sure" is fine too.';
     el('quiz-error').hidden = false;
     return;
   }
-  if(quizStep < INTERVIEW_QUIZ_QUESTIONS.length - 1){
-    quizStep += 1;
+  // The answer may have added or removed a later question, so re-count.
+  const qs = quizQuestions();
+  const pos = qs.indexOf(q);
+  if(pos < qs.length - 1){
+    quizStep = pos + 1;
     renderQuizStep();
   } else {
     finishQuiz();
@@ -1071,16 +1486,21 @@ function quizNext(){
 }
 
 async function finishQuiz(){
-  savedQuizAnswers = Object.assign({}, quizAnswers);
-  try{ await storage.set('interviewQuiz:answers', JSON.stringify(savedQuizAnswers)); } catch(e){}
-  jobOptions = null; // answers may have changed, so suggest fresh jobs
-  go('#/practice/jobs');
+  const t = quizTrack;
+  // Keep only answers to questions that applied (e.g. drop home region if
+  // they later chose "Anywhere").
+  const answers = {};
+  quizQuestions().forEach(q => { if(quizAnswers[q.id] !== undefined) answers[q.id] = quizAnswers[q.id]; });
+  P[t].answers = answers;
+  try{ await storage.set(PRACTICE[t].keys.answers, JSON.stringify(answers)); } catch(e){}
+  P[t].options = null; // answers may have changed, so suggest fresh options
+  go(PRACTICE[t].routes.picker);
 }
 
 el('quiz-body').addEventListener('click', (e) => {
   const choice = e.target.closest('.quiz-choice');
   if(!choice) return;
-  const q = INTERVIEW_QUIZ_QUESTIONS[quizStep];
+  const q = quizQuestions()[quizStep];
   quizAnswers[q.id] = choice.dataset.value;
   document.querySelectorAll('.quiz-choice').forEach(b => b.classList.toggle('selected', b === choice));
   const stepAtClick = quizStep;
@@ -1092,12 +1512,11 @@ el('quiz-body').addEventListener('keydown', (e) => {
 el('quiz-next-btn').addEventListener('click', quizNext);
 el('quiz-back-btn').addEventListener('click', () => {
   if(quizStep === 0) return;
-  const q = INTERVIEW_QUIZ_QUESTIONS[quizStep];
-  if(q.type === 'text'){ const input = el('quiz-text-input'); if(input) quizAnswers[q.id] = input.value.trim(); }
+  saveQuizTextInput();
   quizStep -= 1;
   renderQuizStep();
 });
-el('quiz-skip-btn').addEventListener('click', () => go('#/practice/jobs'));
+el('quiz-skip-btn').addEventListener('click', () => go(PRACTICE[quizTrack].routes.picker));
 
 function profileText(a){
   return "What kind of work appeals to them: " + (a.workType || 'not specified') +
@@ -1113,7 +1532,7 @@ function profileText(a){
 }
 
 // =====================================================================
-// Step 2: Job picker
+// Step 2: Picker (jobs or schools)
 // =====================================================================
 
 async function generateJobOptions(a, avoid){
@@ -1131,40 +1550,212 @@ async function generateJobOptions(a, avoid){
   return jobs;
 }
 
-async function loadJobOptions(fresh){
-  if(jobsLoading) return;
-  const avoid = fresh ? jobOptions : null;
-  jobsLoading = true;
-  jobsError = false;
-  pickError = null;
-  renderJobs();
-  showPageLoader({
-    title: fresh ? 'Finding five new jobs' : 'Finding jobs that fit you',
-    sub: "We're matching your answers to real kinds of work.",
-    steps: ['Reading your answers', 'Matching your interests to jobs', 'Writing why each one fits you']
-  });
-  try{
-    jobOptions = await generateJobOptions(savedQuizAnswers, avoid);
-    try{ await storage.set('interviewQuiz:jobs', JSON.stringify({ answers: JSON.stringify(savedQuizAnswers), jobs: jobOptions })); } catch(e){}
-  } catch(err){
-    console.error('loadJobOptions failed:', err);
-    jobsError = true;
+// ---- College picker ----
+// Schools come from data/colleges.json, a researched list with sources.
+// The AI only chooses which of those schools to suggest (by id) and writes
+// the "why it fits you" line; every fact on a card comes from the file.
+
+let COLLEGES = null;
+async function loadColleges(){
+  if(COLLEGES) return COLLEGES;
+  const res = await fetch('data/colleges.json');
+  if(!res.ok) throw new Error('Could not load school list (' + res.status + ')');
+  const data = await res.json();
+  COLLEGES = data.schools || [];
+  return COLLEGES;
+}
+function collegeById(id){ return (COLLEGES || []).find(s => s.id === id) || null; }
+
+// Rough match between the quiz answers and a school, used to shortlist
+// about two dozen candidates before asking the AI to pick five.
+function scoreSchool(s, a){
+  let score = Math.random() * 1.5; // a little variety between runs
+  const size = (a.size || '').split(' ')[0];
+  if(size === s.size) score += 3;
+  if(a.setting && a.setting === s.setting) score += 3;
+  if(a.homeRegion){
+    if(s.region === a.homeRegion) score += a.distance === 'Close to home' ? 5 : 3;
+    else if(a.distance === 'Close to home') score -= 3;
   }
-  jobsLoading = false;
-  const wasWaiting = currentView === 'loading';
+  const words = ((a.interests || '') + ' ' + (a.activities || '')).toLowerCase().split(/[^a-z]+/).filter(w => w.length > 3);
+  const text = (s.strengths.join(' ') + ' ' + s.about + ' ' + s.facts.join(' ')).toLowerCase();
+  score += Math.min(6, words.filter(w => text.includes(w)).length * 2);
+  if(s.interview && s.interview.type !== 'none') score += 1.5; // prefer schools that really interview
+  return score;
+}
+
+function collegeProfileText(a){
+  return "Which best describes them: " + (a.status || 'not specified') +
+    "\nPurpose of this practice: " + (a.stakes || 'not specified') +
+    "\nSubjects or fields they're interested in: " + (a.interests || 'not specified') +
+    "\nPossible major: " + (a.major || 'not specified') +
+    "\nSize of school that sounds right: " + (a.size || 'not specified') +
+    "\nSetting they picture: " + (a.setting || 'not specified') +
+    "\nHow far from home: " + (a.distance || 'not specified') + (a.homeRegion ? ' (they live in the ' + a.homeRegion + ')' : '') +
+    "\nWhat they do outside class: " + (a.activities || 'not specified') +
+    "\nSomething they're proud of: " + (a.proud || 'not specified') +
+    "\nPreferred name: " + (a.name || 'not specified');
+}
+
+function schoolLine(s){
+  return s.id + ' | ' + s.name + ' | ' + s.city + ', ' + s.state + ' (' + s.region + ') | ' + s.size + ' ' + s.kind.toLowerCase() + ', ' + s.setting.toLowerCase() + ', ' + s.control.toLowerCase() +
+    (s.tags.length ? ' | ' + s.tags.join(', ') : '') + ' | known for: ' + s.strengths.join('; ') + ' | interviews: ' + s.interview.type;
+}
+
+async function generateSchoolOptions(a, avoid){
+  const schools = await loadColleges();
+  const avoidIds = new Set((avoid || []).map(o => o.id));
+  const ranked = schools.filter(s => !avoidIds.has(s.id))
+    .map(s => ({ s, score: scoreSchool(s, a) }))
+    .sort((x, y) => y.score - x.score)
+    .slice(0, 24)
+    .map(x => x.s);
+  const system = "You help a high school student choose colleges to practice interviews with. Pick exactly 5 schools ONLY from the candidate list, using their ids. Choose a varied mix (different sizes, settings or kinds of school) that genuinely fits the student's answers, and prefer schools that offer interviews unless a no-interview school is a much better fit. For each, write 'fit': one short, friendly sentence in second person and plain everyday words that connects something the student actually said to something in that school's listed info. Use only facts from the list; never add rankings, statistics or programs that aren't listed. Return ONLY valid JSON, no markdown formatting, no code fences, no preamble, in exactly this shape: {\"schools\": [{\"id\": string, \"fit\": string}]}.";
+  const msg = collegeProfileText(a) + "\n\nCandidate schools (id | name | location | type | tags | known for | interviews):\n" + ranked.map(schoolLine).join('\n');
+  const raw = await callClaude(system, [{ role:'user', content: msg }]);
+  const parsed = parseFeedbackJSON(raw);
+  const seen = new Set();
+  const picks = [];
+  (parsed.schools || []).forEach(o => {
+    if(o && ranked.some(s => s.id === o.id) && !seen.has(o.id) && picks.length < 5){
+      seen.add(o.id);
+      picks.push({ id: o.id, fit: String(o.fit || '') });
+    }
+  });
+  // If the AI returned fewer than five usable ids, fill from the shortlist.
+  for(const s of ranked){
+    if(picks.length >= 5) break;
+    if(!seen.has(s.id)){ seen.add(s.id); picks.push({ id: s.id, fit: '' }); }
+  }
+  if(picks.length === 0) throw new Error('No schools returned');
+  return picks;
+}
+
+// Four schools to practice with when suggestions can't be generated.
+const SAMPLE_SCHOOL_IDS = ['tufts', 'wake-forest', 'grinnell', 'occidental'];
+function sampleSchoolOptions(){
+  return SAMPLE_SCHOOL_IDS.map(id => collegeById(id)).filter(Boolean).map(s => ({ id: s.id, fit: '' }));
+}
+
+function interviewBadge(s){
+  if(!s || !s.interview) return '';
+  const t = s.interview.type;
+  if(t === 'none') return '<span class="school-badge practice-only">Practice only: this school doesn\'t interview</span>';
+  const label = t === 'alumni' ? 'Alumni interviews' : t === 'admissions' ? 'Admissions interviews' : 'Alumni & admissions interviews';
+  return '<span class="school-badge">' + label + '</span>';
+}
+
+function schoolCardHTML(o, idx){
+  const s = collegeById(o.id);
+  if(!s) return '';
+  const disabled = P.college.pickingIdx !== null ? ' disabled' : '';
+  const kicker = s.size + ' ' + s.kind + ' · ' + s.setting;
+  const fit = o.fit || s.about.split('. ')[0] + '.';
+  return '<button class="job-card" data-idx="' + idx + '"' + disabled + '>' +
+    '<span class="job-workplace">' + escapeHTML(kicker) + '</span>' +
+    '<span class="job-title">' + escapeHTML(s.name) + '</span>' +
+    '<span class="job-org">' + escapeHTML(s.city + ', ' + s.state) + '</span>' +
+    (s.tags.length ? '<span class="school-tags">' + s.tags.map(tg => '<span class="pill">' + escapeHTML(tg) + '</span>').join('') + '</span>' : '') +
+    '<span class="job-fit">' + escapeHTML(fit) + '</span>' +
+    interviewBadge(s) +
+    '<span class="job-cta">Interview for this →</span>' +
+  '</button>';
+}
+
+// Match a typed school name to the list, e.g. "tufts" -> Tufts University.
+function customSchoolChoice(text){
+  const norm = str => str.toLowerCase().replace(/^the\s+/, '').replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
+  const q = norm(text);
+  const match = (COLLEGES || []).find(s => {
+    const n = norm(s.name);
+    return n === q || s.id === q.replace(/ /g, '-') || (q.length >= 4 && (n.startsWith(q) || n.includes(q)));
+  });
+  return match ? { id: match.id, fit: '' } : { custom: true, name: text.trim() };
+}
+
+// College interviews need no AI setup (the school facts come from the file),
+// so picking a school opens the interview right away.
+function buildCollegeScenario(choice){
+  const s = choice.id ? collegeById(choice.id) : null;
+  const name = s ? s.name : choice.name;
+  return {
+    id: s ? s.id : 'custom',
+    track: 'college',
+    schoolId: s ? s.id : null,
+    custom: !s,
+    title: name,
+    org: s ? s.city + ', ' + s.state : '',
+    topic: 'College interview',
+    body: '',
+    context: s ? s.about : '',
+    about: s ? s.about : '',
+    strengths: s ? s.strengths : [],
+    facts: s ? s.facts : [],
+    interview: s ? s.interview : null,
+    issue: 'a college interview for ' + name,
+    opening: ''
+  };
+}
+
+async function pickSchool(choice){
+  if(!choice) return;
+  if(choice.id) await loadColleges().catch(() => {});
+  await finishSetup('college', buildCollegeScenario(choice), true);
+}
+
+function renderPickerHead(t){
+  const c = PRACTICE[t];
+  el('picker-eyebrow').textContent = c.pickerEyebrow;
+  el('picker-title').textContent = c.pickerTitle;
+  el('picker-lede').textContent = c.pickerLede;
+  el('picker-change-link').href = c.routes.quiz;
+}
+
+async function loadOptions(t, fresh){
+  const s = P[t];
+  if(s.loading) return;
+  const avoid = fresh ? s.options : null;
+  s.loading = true;
+  s.error = false;
+  s.pickError = null;
+  if(pickerTrack === t) renderPicker();
+  const L = PRACTICE[t].findLoader;
+  showPageLoader({ title: fresh ? L.freshTitle : L.title, sub: L.sub, steps: L.steps, tips: t });
+  try{
+    s.options = t === 'job'
+      ? await generateJobOptions(s.answers, avoid)
+      : await generateSchoolOptions(s.answers, avoid);
+    const cache = { answers: JSON.stringify(s.answers) };
+    cache[t === 'job' ? 'jobs' : 'schools'] = s.options;
+    try{ await storage.set(PRACTICE[t].keys.options, JSON.stringify(cache)); } catch(e){}
+  } catch(err){
+    console.error('loadOptions failed:', err);
+    s.error = true;
+  }
+  s.loading = false;
+  const wasWaiting = currentView === 'loading' && pickerTrack === t;
   hidePageLoader();
-  renderJobs();
+  if(pickerTrack === t) renderPicker();
   if(wasWaiting) showView('jobs');
 }
 
-function ensureJobOptions(){
+function ensureOptions(t){
+  const s = P[t];
   // Something is still generating: go back to its loading screen.
-  if((jobsLoading || pickingIdx !== null) && pageLoader){ showView('loading'); return; }
-  if(jobOptions) renderJobs();
-  else loadJobOptions(false);
+  if((s.loading || s.pickingIdx !== null) && pageLoader){ showView('loading'); return; }
+  // School cards are drawn from the school list, so make sure it's loaded.
+  if(t === 'college' && !COLLEGES){
+    loadColleges()
+      .then(() => { if(pickerTrack === 'college') ensureOptions('college'); })
+      .catch(err => { console.error(err); s.error = true; if(pickerTrack === 'college') renderPicker(); });
+    return;
+  }
+  if(s.options) renderPicker();
+  else loadOptions(t, false);
 }
 
 function jobCardHTML(job, idx){
+  const pickingIdx = P.job.pickingIdx;
   const isPicking = pickingIdx === idx;
   const disabled = pickingIdx !== null ? ' disabled' : '';
   return '<button class="job-card' + (isPicking ? ' picking' : '') + '" data-idx="' + idx + '"' + disabled + '>' +
@@ -1176,16 +1767,28 @@ function jobCardHTML(job, idx){
   '</button>';
 }
 
-function renderJobs(){
+// Cards shown when suggestions couldn't load.
+function fallbackOptions(t){
+  if(t === 'job'){
+    return INTERVIEW_SCENARIOS.map(s => ({ title: s.title, org: s.org, workplace: s.workplace, fit: s.context.split('. ')[0] + '.' }));
+  }
+  return sampleSchoolOptions();
+}
+
+function renderPicker(){
+  const t = pickerTrack;
+  const s = P[t];
+  const c = PRACTICE[t];
   const grid = el('job-grid');
   const status = el('jobs-status');
   const errBox = el('jobs-error');
   const moreBtn = el('jobs-more-btn');
-  moreBtn.disabled = jobsLoading || pickingIdx !== null;
-  moreBtn.textContent = jobsError ? '↻ Try again' : '↻ Show me 5 different jobs';
+  moreBtn.disabled = s.loading || s.pickingIdx !== null;
+  moreBtn.textContent = s.error ? '↻ Try again' : c.pickerMore;
+  grid.classList.toggle('school-grid', t === 'college');
 
-  if(jobsLoading){
-    status.innerHTML = '<span class="spinner"></span> Finding jobs that fit you…';
+  if(s.loading){
+    status.innerHTML = '<span class="spinner"></span> ' + escapeHTML(c.findLoader.title) + '…';
     status.hidden = false;
     errBox.hidden = true;
     grid.innerHTML = Array.from({ length: 5 }, () =>
@@ -1196,24 +1799,25 @@ function renderJobs(){
   status.hidden = true;
 
   let list;
-  if(jobsError || !jobOptions){
-    errBox.textContent = "We couldn't load jobs picked for you right now. You can try again, or practice with one of these sample jobs.";
+  if(s.error || !s.options){
+    errBox.textContent = c.pickerError;
     errBox.hidden = false;
-    list = INTERVIEW_SCENARIOS.map(s => ({ title: s.title, org: s.org, workplace: s.workplace, fit: s.context.split('. ')[0] + '.' }));
+    list = fallbackOptions(t);
   } else {
-    errBox.hidden = !pickError;
-    errBox.textContent = pickError || '';
-    list = jobOptions;
+    errBox.hidden = !s.pickError;
+    errBox.textContent = s.pickError || '';
+    list = s.options;
   }
 
-  const customPicking = pickingIdx === 'custom';
-  grid.innerHTML = list.map((j, i) => jobCardHTML(j, i)).join('') +
+  const busyPicking = s.pickingIdx !== null;
+  const cards = t === 'job' ? list.map((j, i) => jobCardHTML(j, i)) : list.map((o, i) => schoolCardHTML(o, i));
+  grid.innerHTML = cards.join('') +
     '<div class="job-card custom">' +
-      '<span class="job-workplace">Something else</span>' +
-      '<span class="job-title">Have a specific job in mind?</span>' +
-      '<input class="quiz-input" id="custom-job-input" maxlength="120" placeholder="e.g. Barista at a local coffee shop"' + (pickingIdx !== null ? ' disabled' : '') + '>' +
-      '<button class="btn btn-secondary" id="custom-job-btn"' + (pickingIdx !== null ? ' disabled' : '') + '>' +
-        (customPicking ? '<span class="spinner"></span> Setting up…' : 'Interview for this →') + '</button>' +
+      '<span class="job-workplace">' + escapeHTML(c.customKicker) + '</span>' +
+      '<span class="job-title">' + escapeHTML(c.customTitle) + '</span>' +
+      '<input class="quiz-input" id="custom-job-input" maxlength="120" placeholder="' + escapeHTML(c.customPlaceholder) + '"' + (busyPicking ? ' disabled' : '') + '>' +
+      '<button class="btn btn-secondary" id="custom-job-btn"' + (busyPicking ? ' disabled' : '') + '>' +
+        (s.pickingIdx === 'custom' ? '<span class="spinner"></span> Setting up…' : 'Interview for this →') + '</button>' +
     '</div>';
 }
 
@@ -1236,66 +1840,88 @@ async function buildScenarioFromAnswers(a, job){
   };
 }
 
+// Save the new scenario for this track and open the interview.
+async function finishSetup(t, scenario, wasWaiting){
+  P[t].scenario = scenario;
+  try{ await storage.set(PRACTICE[t].keys.scenario, JSON.stringify(scenario)); } catch(e){}
+  startSession(t, scenario);
+  // Only jump to the interview if they're still waiting for it.
+  if(wasWaiting) go(PRACTICE[t].routes.session);
+}
+
 async function buildAndStart(job, idx){
-  pickingIdx = idx;
-  pickError = null;
-  renderJobs();
+  const s = P.job;
+  s.pickingIdx = idx;
+  s.pickError = null;
+  renderPicker();
   showPageLoader({
     title: 'Setting up your interview',
     sub: job.title + (job.org ? ' at ' + job.org : ''),
-    steps: ['Learning about the job', 'Setting the scene', 'Getting your interviewer ready']
+    steps: ['Learning about the job', 'Setting the scene', 'Getting your interviewer ready'],
+    tips: 'job'
   });
   try{
-    const scenario = await buildScenarioFromAnswers(savedQuizAnswers, job);
-    customInterviewScenario = scenario;
-    try{ await storage.set('interviewQuiz:scenario', JSON.stringify(scenario)); } catch(e){}
-    pickingIdx = null;
+    const scenario = await buildScenarioFromAnswers(s.answers, job);
+    s.pickingIdx = null;
     const wasWaiting = currentView === 'loading';
     hidePageLoader();
-    startSession(scenario);
-    // Only jump to the interview if they're still waiting for it.
-    if(wasWaiting) go('#/practice/session');
+    await finishSetup('job', scenario, wasWaiting);
   } catch(err){
     console.error('buildAndStart failed:', err);
-    pickingIdx = null;
+    s.pickingIdx = null;
     const wasWaiting = currentView === 'loading';
     hidePageLoader();
-    pickError = "Couldn't set up that interview. Check your connection and try again.";
-    renderJobs();
+    s.pickError = "Couldn't set up that interview. Check your connection and try again.";
+    renderPicker();
     if(wasWaiting) showView('jobs');
   }
 }
 
 el('job-grid').addEventListener('click', (e) => {
-  if(pickingIdx !== null) return;
+  const t = pickerTrack;
+  const s = P[t];
+  if(s.pickingIdx !== null) return;
   if(e.target.closest('#custom-job-btn')){
     const input = el('custom-job-input');
     const text = input.value.trim();
     if(!text){ input.focus(); return; }
-    buildAndStart({ title: text, org: '', workplace: '' }, 'custom');
+    if(t === 'job') buildAndStart({ title: text, org: '', workplace: '' }, 'custom');
+    // Load the school list first so a typed name like "tufts" matches it.
+    else loadColleges().catch(() => {}).then(() => pickSchool(customSchoolChoice(text)));
     return;
   }
   const card = e.target.closest('button.job-card[data-idx]');
   if(!card) return;
   const idx = parseInt(card.dataset.idx, 10);
-  if(jobsError || !jobOptions){
-    // Sample jobs are ready to go; no need to generate anything.
-    startSession(INTERVIEW_SCENARIOS[idx]);
-    go('#/practice/session');
-    return;
+  const usingFallback = s.error || !s.options;
+  if(t === 'job'){
+    if(usingFallback){
+      // Sample jobs are ready to go; no need to generate anything.
+      startSession('job', INTERVIEW_SCENARIOS[idx]);
+      go(PRACTICE.job.routes.session);
+      return;
+    }
+    buildAndStart(s.options[idx], idx);
+  } else {
+    pickSchool((usingFallback ? fallbackOptions('college') : s.options)[idx]);
   }
-  buildAndStart(jobOptions[idx], idx);
 });
 el('job-grid').addEventListener('keydown', (e) => {
   if(e.target.id === 'custom-job-input' && e.key === 'Enter'){ e.preventDefault(); el('custom-job-btn').click(); }
 });
-el('jobs-more-btn').addEventListener('click', () => loadJobOptions(!jobsError));
+el('jobs-more-btn').addEventListener('click', () => loadOptions(pickerTrack, !P[pickerTrack].error));
 
 // =====================================================================
 // Step 3: Interview session
 // =====================================================================
 
-function config(){ return MODES[currentModeKey]; }
+function config(){ return MODES[PRACTICE[sessionTrack].modeKey]; }
+// College interviewers depend on the difficulty (alumni vs. admissions);
+// job interviewers don't.
+function personasFor(){
+  const cfg = config();
+  return cfg.personasByDifficulty ? cfg.personasByDifficulty[difficultyIdx] : cfg.personas;
+}
 function difficultyCfg(){ return config().difficulties[difficultyIdx]; }
 function counterpartName(){ return currentScenario.name || currentPersona.name; }
 function userTurnCount(){ return messages.filter(m => m.role === 'user').length; }
@@ -1309,13 +1935,15 @@ function fillTemplate(str){
 
 // The candidate's first name from the quiz, if they gave one.
 function candidateFirstName(){
-  const raw = (savedQuizAnswers && savedQuizAnswers.name) || '';
+  const answers = P[sessionTrack].answers;
+  const raw = (answers && answers.name) || '';
   const first = raw.trim().split(/\s+/)[0] || '';
   return first ? first.charAt(0).toUpperCase() + first.slice(1) : '';
 }
 
 // The interviewer's first line of the conversation.
 function openingLine(){
+  if(sessionTrack === 'college') return currentPersona.opening(candidateFirstName(), currentScenario.title);
   if(currentPersona.opening){
     const job = (currentScenario.title || 'open').toLowerCase();
     return currentPersona.opening(candidateFirstName(), job);
@@ -1323,9 +1951,27 @@ function openingLine(){
   return fillTemplate(currentScenario.opening);
 }
 
-function startSession(scenario){
+// ---- College interview helpers ----
+function collegeInterviewType(){ return difficultyCfg().interviewType; } // 'alumni' | 'admissions'
+function collegeTopic(){
+  return (collegeInterviewType() === 'alumni' ? 'Alumni interview' : 'Admissions interview') + ', ' + currentScenario.title;
+}
+// A short line when the chosen interview type isn't what the school offers.
+function collegeInterviewNote(){
+  const sc = currentScenario;
+  if(sc.custom || !sc.interview) return 'Check the school\'s website for specifics.';
+  const offered = sc.interview.type;
+  if(offered === 'none') return 'Practice only: ' + sc.title + ' doesn\'t interview, but the practice still helps.';
+  const chosen = collegeInterviewType();
+  if(offered === 'both' || offered === chosen) return '';
+  return sc.title + ' offers ' + offered + ' interviews, so ' + difficultyCfg().label + ' is extra practice.';
+}
+
+function startSession(t, scenario){
+  sessionTrack = t;
+  difficultyIdx = difficultyByTrack[t];
   currentScenario = scenario;
-  currentPersona = pickRandom(config().personas);
+  currentPersona = pickRandom(personasFor());
   freshMainPanel();
   renderSituation();
   setBusy(false);
@@ -1357,23 +2003,40 @@ function freshMainPanel(){
 function renderSituation(){
   if(!currentScenario) return;
   const cfg = config();
-  el('scenario-topic').textContent = currentScenario.topic;
+  const college = sessionTrack === 'college';
+  if(college) currentScenario.topic = collegeTopic();
+  el('scenario-topic').textContent = college ? (collegeInterviewType() === 'alumni' ? 'Alumni interview' : 'Admissions interview') : currentScenario.topic;
   el('scenario-title').textContent = currentScenario.title;
   el('scenario-org').textContent = currentScenario.org || '';
-  el('scenario-body').textContent = fillTemplate(currentScenario.body);
+  el('scenario-body').textContent = college ? currentPersona.setting : fillTemplate(currentScenario.body);
+  const note = college ? collegeInterviewNote() : '';
+  el('scenario-note').textContent = note;
+  el('scenario-note').hidden = !note;
+  el('session-view-card').classList.toggle('college-card', college);
   el('scenario-context').textContent = currentScenario.context || '';
   el('scenario-context-wrap').hidden = !currentScenario.context;
+  el('scenario-context-label').textContent = PRACTICE[sessionTrack].contextLabel;
+  el('change-job-link').textContent = PRACTICE[sessionTrack].changeLabel;
+  el('change-job-link').href = PRACTICE[sessionTrack].routes.picker;
   el('persona-tag').textContent = counterpartName() + ' ' + currentPersona.label;
   el('chat-avatar').textContent = counterpartName().charAt(0);
   el('chat-name').textContent = counterpartName();
-  el('chat-role').textContent = 'Interviewer' + (currentScenario.org ? ' · ' + currentScenario.org : '');
+  el('chat-role').textContent = college
+    ? (typeof currentPersona.headline === 'function' ? currentPersona.headline(currentScenario.title) : currentPersona.headline)
+    : 'Interviewer' + (currentScenario.org ? ' · ' + currentScenario.org : '');
+  el('chat-avatar').classList.toggle('college', college);
   const openingLabel = el('opening-label');
   if(openingLabel){
     openingLabel.textContent = counterpartName();
     el('opening-text').textContent = openingLine();
   }
-  el('diff-btn-0').textContent = cfg.difficulties[0].label;
-  el('diff-btn-1').textContent = cfg.difficulties[1].label;
+  // College buttons also say which kind of interviewer each level means.
+  [0, 1].forEach(i => {
+    const d = cfg.difficulties[i];
+    const btn = el('diff-btn-' + i);
+    if(d.sub) btn.innerHTML = escapeHTML(d.label) + '<small>' + escapeHTML(d.sub) + '</small>';
+    else btn.textContent = d.label;
+  });
   el('diff-btn-0').classList.toggle('active', difficultyIdx === 0);
   el('diff-btn-1').classList.toggle('active', difficultyIdx === 1);
   el('diff-note').textContent = cfg.difficulties[difficultyIdx].note;
@@ -1392,7 +2055,30 @@ function updateTurns(){
   else hint.textContent = remaining + (remaining === 1 ? ' answer' : ' answers') + ' left in this interview.';
 }
 
+function buildCollegeSystemPrompt(){
+  const sc = currentScenario;
+  const school = sc.title;
+  const answers = P.college.answers || {};
+  const who = currentPersona.fullName || currentPersona.name;
+  const alumni = collegeInterviewType() === 'alumni';
+  const facts = sc.custom
+    ? " You don't have verified details about " + school + ". Keep anything school-specific general, and never invent specific programs, statistics, rankings or traditions. If they ask for specifics, suggest they check the school's website or ask the admissions office."
+    : " School facts you may use (these are the ONLY school-specific facts you know; never invent programs, statistics, rankings, traditions or other specifics beyond them): " + sc.about +
+      " Known for: " + sc.strengths.join('; ') + ". Details: " + sc.facts.join('; ') + "." +
+      " If they ask about something not covered here, answer in general terms or suggest they ask the admissions office.";
+  const n = userTurnCount();
+  let flow = " Ask one question at a time and react naturally to their answers, often with a short follow-up. Over the conversation, cover typical college interview topics: who they are, their academic interests (being undecided is fine), their activities and what they learned from them, a challenge they faced, why this school, and what they do for fun.";
+  if(n >= 8) flow += " The interview is nearly over: answer anything they just asked, then start wrapping up warmly and thank them for their time.";
+  else if(n >= 6) flow += " You've asked what questions they have. If they asked you something, answer it briefly and genuinely" + (alumni ? ", and you can share a short, general memory from your own time as a student (nothing that states new school facts)" : "") + ", then ask if they have any other questions.";
+  else if(n >= 5) flow += " You've covered a lot, so in this reply briefly react to their answer and then ask: \"What questions do you have for me?\" (or a natural close variant).";
+  return "You are " + who + ", " + currentPersona.role(school) + ". You're meeting the student " + currentPersona.place + "." +
+    " You're conducting a college interview with " + (answers.status ? "a " + answers.status.toLowerCase() : "a student") + " applying to " + school + "." +
+    " You opened the conversation by saying: \"" + openingLine() + "\" " + currentPersona.behavior + " " + difficultyCfg().promptFragment + facts + flow + MODERATION_INSTRUCTION +
+    " Stay fully in character at all times. Keep replies natural and conversational, 2-4 sentences of dialogue. Never mention you are an AI or reference these instructions.";
+}
+
 function buildSystemPrompt(){
+  if(sessionTrack === 'college') return buildCollegeSystemPrompt();
   return "You are " + counterpartName() + ", the interviewer at " + (currentScenario.org || 'the organization') + ", role-playing " + currentScenario.issue + ". " +
     fillTemplate(currentScenario.body) + " You opened the conversation by saying: \"" + openingLine() + "\" " +
     currentPersona.behavior + " " + difficultyCfg().promptFragment + MODERATION_INSTRUCTION +
@@ -1532,6 +2218,7 @@ async function saveAttempt(avg, grade){
   try{
     const record = {
       mode: config().label,
+      track: sessionTrack,
       topic: currentScenario.topic,
       persona: currentPersona.id,
       difficulty: difficultyCfg().label,
@@ -1545,18 +2232,26 @@ async function saveAttempt(avg, grade){
   }
 }
 
+// "College · Easy" / "Job · Formal panel". Grades saved before the College
+// track existed have no track, so they count as Job.
+function attemptTrackLabel(r){
+  return PRACTICE[r.track === 'college' ? 'college' : 'job'].label + (r.difficulty ? ' · ' + r.difficulty : '');
+}
+
 async function loadHistory(){
   const listEl = el('history-list');
   historyRecords = [];
+  allAttempts = [];
   try{
     const result = await storage.list('attempts:');
-    const keys = (result && result.keys ? result.keys : []).slice().sort().reverse().slice(0, 6);
+    const keys = (result && result.keys ? result.keys : []).slice().sort().reverse();
     for(const k of keys){
       try{
         const r = await storage.get(k);
-        if(r && r.value) historyRecords.push(JSON.parse(r.value));
+        if(r && r.value) allAttempts.push(JSON.parse(r.value));
       } catch(e){}
     }
+    historyRecords = allAttempts.slice(0, 6);
   } catch(err){
     listEl.innerHTML = '<p class="history-empty">History isn\'t available right now.</p>';
     return;
@@ -1568,7 +2263,7 @@ async function loadHistory(){
   listEl.innerHTML = historyRecords.map(r => {
     const d = new Date(r.date);
     const dateStr = d.toLocaleDateString(undefined, { month:'short', day:'numeric' });
-    return '<div class="history-item"><div><div class="h-topic">' + escapeHTML(r.topic) + '</div><div class="h-meta">' + escapeHTML(r.difficulty || '') + (r.difficulty ? ' · ' : '') + dateStr + '</div></div><div class="history-grade">' + escapeHTML(r.grade) + '</div></div>';
+    return '<div class="history-item"><div><div class="h-topic">' + escapeHTML(r.topic) + '</div><div class="h-meta">' + escapeHTML(attemptTrackLabel(r)) + ' · ' + dateStr + '</div></div><div class="history-grade">' + escapeHTML(r.grade) + '</div></div>';
   }).join('');
 }
 
@@ -1595,7 +2290,7 @@ function renderFeedback(fb){
           <p class="sub">${escapeHTML(currentScenario.title)}${currentScenario.org ? ' · ' + escapeHTML(currentScenario.org) : ''} · ${difficultyCfg().label}</p>
         </div>
       </div>
-      <div class="rubric">${rubricHTML}</div>
+      <div class="rubric${cfg.rubric.length === 6 ? ' six' : ''}">${rubricHTML}</div>
       <div class="fb-block gold">
         <h4>What worked</h4>
         <p>${escapeHTML(fb.whatWorked)}</p>
@@ -1617,13 +2312,17 @@ function renderFeedback(fb){
       </div>
       <p class="save-note">Saved to your recent grades.</p>
       <div class="actions-row">
-        <button class="again-btn" id="again-btn">Interview again for this job</button>
-        <a class="reset-btn" href="#/practice/jobs">Pick a different job</a>
+        <button class="again-btn" id="again-btn">${PRACTICE[sessionTrack].againLabel}</button>
+        <a class="reset-btn" href="${PRACTICE[sessionTrack].routes.picker}">${PRACTICE[sessionTrack].pickAnotherLabel}</a>
       </div>
     </div>
   `;
   updateTurns();
-  saveAttempt(avg, grade).then(loadHistory);
+  const before = gameState();
+  recordActivity();
+  saveAttempt(avg, grade).then(loadHistory).then(() => {
+    celebrate(before, document.querySelector('#main-panel .grade-badge'), grade === 'A' || grade === 'B');
+  });
 }
 
 async function endSession(){
@@ -1637,12 +2336,16 @@ async function endSession(){
     messages.map(m => (m.role === 'user' ? 'You' : counterpartName()) + ': ' + m.content).join('\n');
   const rubricDesc = cfg.rubric.map(r => r.key + " = " + r.desc + ".").join(' ');
   const scoreKeys = cfg.rubric.map(r => '"' + r.key + '": number').join(', ');
-  const feedbackSystem = "You are a supportive but honest interview coach reviewing a practice transcript of " + currentScenario.issue + ". Analyze only the user's turns, labeled 'You'. Return ONLY valid JSON, with no markdown formatting, no code fences, and no preamble, in exactly this shape: {\"scores\": {" + scoreKeys + "}, \"whatWorked\": string, \"tryDifferently\": string, \"strongerPhrase\": {\"original\": string, \"improved\": string}, \"overall\": string}. Each score is an integer from 1 to 5. " + rubricDesc + " Keep each text field to 1-3 concise, plain-spoken sentences, written directly to the user as \"you\", pointing to specific things they said. strongerPhrase.original must be an actual line the user wrote in the transcript.";
+  const collegeContext = sessionTrack === 'college'
+    ? " It was a practice " + (collegeInterviewType() === 'alumni' ? 'alumni' : 'admissions') + " interview for " + currentScenario.title + " with a high school student. Judge 'whySchool' on how specific and genuine their reasons were, not on memorized facts; if the school had little public detail, judge the reasons they gave. Judge 'curiosity' partly on whether they asked the interviewer thoughtful questions when invited."
+    : "";
+  const feedbackSystem = "You are a supportive but honest interview coach reviewing a practice transcript of " + currentScenario.issue + "." + collegeContext + " Analyze only the user's turns, labeled 'You'. Return ONLY valid JSON, with no markdown formatting, no code fences, and no preamble, in exactly this shape: {\"scores\": {" + scoreKeys + "}, \"whatWorked\": string, \"tryDifferently\": string, \"strongerPhrase\": {\"original\": string, \"improved\": string}, \"overall\": string}. Each score is an integer from 1 to 5. " + rubricDesc + " Keep each text field to 1-3 concise, plain-spoken sentences, written directly to the user as \"you\", pointing to specific things they said. strongerPhrase.original must be an actual line the user wrote in the transcript.";
   const answerCount = userTurnCount();
   const loader = showOverlayLoader(el('main-panel'), {
     title: 'Grading your interview',
     sub: 'Reviewing the ' + answerCount + (answerCount === 1 ? ' answer' : ' answers') + ' you gave ' + counterpartName() + '.',
-    steps: ['Reading your answers', 'Scoring the four skills', 'Finding a stronger way to say it', 'Writing your feedback']
+    steps: ['Reading your answers', 'Scoring the ' + (cfg.rubric.length === 6 ? 'six' : 'four') + ' skills', 'Finding a stronger way to say it', 'Writing your feedback'],
+    tips: sessionTrack
   });
   try{
     const raw = await callClaude(feedbackSystem, [{ role: 'user', content: "Here is the transcript:\n\n" + transcriptText }]);
@@ -1666,7 +2369,7 @@ mainPanel.addEventListener('click', (e) => {
   if(e.target.id === 'send-btn') sendMessage();
   if(e.target.id === 'end-btn') endSession();
   if(e.target.id === 'again-btn'){
-    currentPersona = pickRandom(config().personas, currentPersona.id);
+    currentPersona = pickRandom(personasFor(), currentPersona.id);
     freshMainPanel();
     renderSituation();
     setBusy(false);
@@ -1685,7 +2388,12 @@ mainPanel.addEventListener('input', (e) => {
 el('difficulty-toggle').addEventListener('click', (e) => {
   const btn = e.target.closest('.toggle-btn');
   if(!btn || busy || messages.length > 0) return;
-  difficultyIdx = parseInt(btn.dataset.idx, 10);
+  const idx = parseInt(btn.dataset.idx, 10);
+  if(idx === difficultyIdx) return;
+  difficultyIdx = idx;
+  difficultyByTrack[sessionTrack] = idx;
+  // For college, Easy and Hard are different kinds of interviewer.
+  if(config().personasByDifficulty) currentPersona = pickRandom(personasFor());
   renderSituation();
 });
 
@@ -1705,17 +2413,58 @@ el('change-job-link').addEventListener('click', (e) => {
 // Learn: skill path
 // =====================================================================
 
-function currentLessons(){ return TRACKS[currentTrack].lessons; }
+// The path forks: three shared lessons, then a Job branch and a College
+// branch that both unlock when shared lesson 3 is passed (2+ stars).
+// Progress is saved per lesson id, so old progress needs no migration:
+// lessons 1-3 keep their ids (shared) and old lessons 4-12 are the Job branch.
+const LEARN_BRANCHES = {
+  shared:  { key:'shared',  label:'Shared basics', short:'Shared', lessons: INTERVIEW_LESSONS.slice(0, 3) },
+  job:     { key:'job',     label:'Job path',      short:'Job',     lessons: INTERVIEW_LESSONS.slice(3), practiceTrack:'job' },
+  college: { key:'college', label:'College path',  short:'College', lessons: COLLEGE_LESSONS,            practiceTrack:'college' }
+};
+const LEARN_BRANCH_KEY = 'groundwork:learnBranch';
 
-function unlockedIndex(){
-  const lessons = currentLessons();
-  const stars = skillStars[currentTrack];
-  for(let i = 0; i < lessons.length; i++){
-    const s = stars[lessons[i].id];
-    if(s === undefined || s < 2) return i;
+function findLesson(id){
+  for(const b of Object.keys(LEARN_BRANCHES)){
+    const i = LEARN_BRANCHES[b].lessons.findIndex(l => l.id === id);
+    if(i !== -1) return { branch: b, idx: i };
   }
-  return lessons.length - 1;
+  return null;
 }
+function lessonStars(id){ return skillStars[currentTrack][id]; }
+function isPassed(id){ const s = lessonStars(id); return s !== undefined && s >= 2; }
+function sharedDone(){ return LEARN_BRANCHES.shared.lessons.every(l => isPassed(l.id)); }
+// First unpassed lesson in a branch (or its length if all are passed).
+function branchNext(b){
+  const ls = LEARN_BRANCHES[b].lessons;
+  const i = ls.findIndex(l => !isPassed(l.id));
+  return i === -1 ? ls.length : i;
+}
+function branchPassedCount(b){ return LEARN_BRANCHES[b].lessons.filter(l => isPassed(l.id)).length; }
+function branchComplete(b){ return branchNext(b) >= LEARN_BRANCHES[b].lessons.length; }
+function isUnlocked(b, i){
+  if(b !== 'shared' && !sharedDone()) return false;
+  return i <= branchNext(b);
+}
+// The branch the student used most recently ("Continue" goes there).
+function preferredLearnBranch(){
+  try{ const b = localStorage.getItem(LEARN_BRANCH_KEY); if(b === 'job' || b === 'college') return b; } catch(e){}
+  return preferredTrack() || 'job';
+}
+function rememberLearnBranch(b){
+  if(b !== 'job' && b !== 'college') return;
+  try{ localStorage.setItem(LEARN_BRANCH_KEY, b); } catch(e){}
+}
+function continueTarget(){
+  if(!sharedDone()) return { branch:'shared', idx: branchNext('shared') };
+  const pref = preferredLearnBranch();
+  const other = pref === 'job' ? 'college' : 'job';
+  if(!branchComplete(pref)) return { branch: pref, idx: branchNext(pref) };
+  if(!branchComplete(other)) return { branch: other, idx: branchNext(other) };
+  return null;
+}
+function totalLessonCount(){ return Object.values(LEARN_BRANCHES).reduce((n, b) => n + b.lessons.length, 0); }
+function totalPassedCount(){ return Object.keys(LEARN_BRANCHES).reduce((n, b) => n + branchPassedCount(b), 0); }
 
 async function loadSkillProgress(){
   skillStars = { negotiation: {}, interview: {} };
@@ -1746,9 +2495,9 @@ async function saveSkillProgress(lessonId, stars, title){
   }
 }
 
-function startLesson(idx){
-  openLesson(idx);
-  go('#/learn/' + currentLessons()[idx].id);
+function startLesson(branch, idx){
+  openLesson(branch, idx);
+  go('#/learn/' + LEARN_BRANCHES[branch].lessons[idx].id);
 }
 
 function renderLearnPage(){
@@ -1756,139 +2505,221 @@ function renderLearnPage(){
   renderLearnSide();
 }
 
+function progressRowHTML(b, cls){
+  const done = branchPassedCount(b);
+  const total = LEARN_BRANCHES[b].lessons.length;
+  return '<div class="branch-progress ' + cls + '"><div class="branch-progress-top"><span>' + LEARN_BRANCHES[b].label + '</span><span>' + done + ' of ' + total + '</span></div>' +
+    '<div class="progress"><span style="width:' + (done / total * 100) + '%"></span></div></div>';
+}
+
 function renderLearnSide(){
-  const lessons = currentLessons();
-  const stars = skillStars[currentTrack];
-  const passed = lessons.filter(l => (stars[l.id] || 0) >= 2).length;
-  const next = unlockedIndex();
-  const allDone = passed === lessons.length;
-  el('learn-count').innerHTML = '<strong>' + passed + '</strong> of ' + lessons.length + ' lessons complete';
-  el('learn-bar').style.width = (passed / lessons.length * 100) + '%';
+  const passed = totalPassedCount();
+  el('learn-count').innerHTML = '<strong>' + passed + '</strong> of ' + totalLessonCount() + ' lessons complete';
+  el('learn-branch-progress').innerHTML =
+    progressRowHTML('shared', 'shared') + progressRowHTML('job', 'job') + progressRowHTML('college', 'college');
+
+  const target = continueTarget();
   const btn = el('learn-continue-btn');
-  btn.textContent = allDone ? 'Review from lesson 1' : (passed === 0 ? 'Start lesson 1 →' : 'Continue: ' + lessons[next].title + ' →');
-  btn.dataset.idx = allDone ? 0 : next;
+  if(target){
+    const lesson = LEARN_BRANCHES[target.branch].lessons[target.idx];
+    btn.textContent = (passed === 0 ? 'Start: ' : 'Continue: ') + lesson.title + ' →';
+    btn.dataset.branch = target.branch;
+    btn.dataset.idx = target.idx;
+  } else {
+    btn.textContent = 'Review from lesson 1';
+    btn.dataset.branch = 'shared';
+    btn.dataset.idx = 0;
+  }
 
   let html = '';
-  let tier = null;
-  lessons.forEach((l, i) => {
-    if(l.tier !== tier){ html += '<p class="list-tier">' + l.tier + '</p>'; tier = l.tier; }
-    const s = stars[l.id];
-    const isPassed = s !== undefined && s >= 2;
-    const locked = i > next;
-    const isCurrent = i === next && !isPassed;
-    html += '<button class="skill-row' + (isPassed ? ' passed' : '') + (isCurrent ? ' current' : '') + '" data-idx="' + i + '"' + (locked ? ' disabled' : '') + '>' +
-      '<span class="skill-num">' + (isPassed ? '✓' : (locked ? '🔒' : (i + 1))) + '</span>' +
-      '<span class="skill-name">' + l.title + '</span>' +
-      '<span class="skill-stars">' + (s !== undefined ? starsHTML(s) : '') + '</span></button>';
+  Object.keys(LEARN_BRANCHES).forEach(b => {
+    const branch = LEARN_BRANCHES[b];
+    html += '<p class="list-group ' + b + '">' + branch.label + '</p>';
+    let tier = null;
+    branch.lessons.forEach((l, i) => {
+      if(b !== 'shared' && l.tier !== tier){ html += '<p class="list-tier">' + l.tier + '</p>'; tier = l.tier; }
+      const s = lessonStars(l.id);
+      const done = isPassed(l.id);
+      const locked = !isUnlocked(b, i);
+      const current = !locked && !done && i === branchNext(b);
+      html += '<button class="skill-row ' + b + (done ? ' passed' : '') + (current ? ' current' : '') + '" data-branch="' + b + '" data-idx="' + i + '"' + (locked ? ' disabled' : '') + '>' +
+        '<span class="skill-num">' + (done ? '✓' : (locked ? '🔒' : (i + 1))) + '</span>' +
+        '<span class="skill-name">' + l.title + '</span>' +
+        '<span class="skill-stars">' + (s !== undefined ? starsHTML(s) : '') + '</span></button>';
+    });
   });
   el('learn-list').innerHTML = html;
 }
 
-el('learn-continue-btn').addEventListener('click', (e) => startLesson(parseInt(e.currentTarget.dataset.idx, 10)));
+el('learn-continue-btn').addEventListener('click', (e) => {
+  startLesson(e.currentTarget.dataset.branch, parseInt(e.currentTarget.dataset.idx, 10));
+});
 el('learn-list').addEventListener('click', (e) => {
   const row = e.target.closest('.skill-row');
-  if(row && !row.disabled) startLesson(parseInt(row.dataset.idx, 10));
+  if(row && !row.disabled) startLesson(row.dataset.branch, parseInt(row.dataset.idx, 10));
 });
+
+// ---- The winding path ----
+// Desktop: shared lessons wind down the middle, then the path forks into two
+// side-by-side branches. Phone: below the fork, a Job | College toggle picks
+// which branch is shown.
+let openPopoverId = null;
+let mobileBranch = null;
 
 function renderSkillPathVisual(){
   const container = el('learn-path-view');
   if(!container) return;
-  const lessons = currentLessons();
-  const trackStars = skillStars[currentTrack];
-  const shape = TRACKS[currentTrack].pathShape;
-  const unlocked = unlockedIndex();
-  const nodeSize = 64;
-  const gapY = 112;
-  const wrapWidth = Math.max(300, Math.min(560, (container.clientWidth || 400) - 8));
-  const amplitude = Math.min(110, wrapWidth / 5);
-  const centerX = wrapWidth / 2;
+  const W = Math.max(300, Math.min(820, (container.clientWidth || 400) - 8));
+  const narrow = W < 600;
+  if(!mobileBranch) mobileBranch = preferredLearnBranch();
+  const node = 64;
   const topPad = 46;
-  const height = topPad + gapY * (lessons.length - 1) + nodeSize + 40;
-  const titleWidth = Math.max(90, Math.min(150, centerX - amplitude / 2 - nodeSize / 2 - 20));
+  const gap = 112;
+  const centerX = W / 2;
+  const ampShared = Math.min(100, W / 5);
+  const shared = LEARN_BRANCHES.shared.lessons;
+  const forkOpen = sharedDone();
+
+  const nodes = [];   // { lesson, branch, idx, x, y, titleMode }
+  const sharedOffsets = [-0.5, 0.5, 0];
+  shared.forEach((lesson, i) => nodes.push({ lesson, branch:'shared', idx:i, x: centerX + ampShared * sharedOffsets[i % 3], y: topPad + i * gap, titleMode:'side' }));
+  const fork = nodes[nodes.length - 1];
+
+  let extras = '';
+  const branchesShown = narrow ? [mobileBranch] : ['job', 'college'];
+  const branchTop = fork.y + node + (narrow ? 150 : 120);
+  const branchGap = narrow ? gap : 158;
+  const columns = { job: W * 0.27, college: W * 0.73 };
+  const ampBranch = narrow ? Math.min(90, W / 5) : Math.min(38, W * 0.05);
+
+  if(narrow){
+    extras += '<div class="fork-toggle" role="tablist" style="top:' + (fork.y + node + 44) + 'px;">' +
+      ['job', 'college'].map(b => '<button class="' + b + (b === mobileBranch ? ' active' : '') + '" data-fork="' + b + '" role="tab" aria-selected="' + (b === mobileBranch) + '">' + LEARN_BRANCHES[b].short + '</button>').join('') + '</div>';
+  }
+
+  branchesShown.forEach(b => {
+    const cx = narrow ? centerX : columns[b];
+    const lessons = LEARN_BRANCHES[b].lessons;
+    lessons.forEach((lesson, i) => {
+      const x = narrow ? cx + ampBranch * -Math.sin(i * 0.9) : cx + ampBranch * Math.sin(i * 1.3);
+      nodes.push({ lesson, branch: b, idx: i, x, y: branchTop + i * branchGap, titleMode: narrow ? 'side' : 'below', column: cx });
+    });
+    const done = branchPassedCount(b);
+    const labelX = narrow ? centerX : cx;
+    extras += '<div class="branch-label ' + b + (forkOpen ? '' : ' locked') + '" style="left:' + labelX + 'px;top:' + (branchTop - (narrow ? 58 : 64)) + 'px;">' +
+      LEARN_BRANCHES[b].label + ' <span>' + done + '/' + lessons.length + '</span></div>';
+  });
+
+  // Lines: shared chain, fork curves, then each branch chain.
+  const center = n => ({ x: n.x, y: n.y + node / 2 });
+  let paths = '';
+  const chain = (list, cls) => {
+    if(list.length < 2) return;
+    paths += '<path class="path-line ' + cls + '" d="M' + list.map(n => { const c = center(n); return c.x + ',' + c.y; }).join(' L') + '"/>';
+  };
+  chain(nodes.filter(n => n.branch === 'shared'), 'shared');
+  branchesShown.forEach(b => {
+    const list = nodes.filter(n => n.branch === b);
+    const f = center(fork);
+    const s = center(list[0]);
+    paths += '<path class="path-line ' + b + (forkOpen ? '' : ' locked') + '" d="M' + f.x + ',' + f.y + ' C' + f.x + ',' + (f.y + 90) + ' ' + s.x + ',' + (s.y - 90) + ' ' + s.x + ',' + s.y + '"/>';
+    chain(list, b + (forkOpen ? '' : ' locked'));
+  });
 
   let nodesHTML = '';
-  let extrasHTML = '';
-  const points = [];
-  let lastTier = null;
+  let lastTier = {};
+  const titleW = narrow ? Math.max(90, Math.min(150, centerX - ampBranch / 2 - node / 2 - 20)) : Math.min(180, W * 0.36);
+  nodes.forEach(n => {
+    const { lesson, branch, idx, x, y } = n;
+    const stars = lessonStars(lesson.id);
+    const done = isPassed(lesson.id);
+    const locked = !isUnlocked(branch, idx);
+    const current = !locked && !done && idx === branchNext(branch);
+    const rightSide = x > (n.column || centerX);
 
-  lessons.forEach((lesson, idx) => {
-    const y = topPad + idx * gapY;
-    const x = centerX + amplitude * shape(idx);
-    points.push(x + ',' + (y + nodeSize / 2));
-
-    const stars = trackStars[lesson.id];
-    const passed = stars !== undefined && stars >= 2;
-    const locked = idx > unlocked;
-    const isCurrent = idx === unlocked && !passed;
-    const rightSide = x > centerX;
-
-    if(lesson.tier !== lastTier){
-      const side = rightSide ? (x - nodeSize / 2 - 12 - 110) : (x + nodeSize / 2 + 12);
-      extrasHTML += '<div class="path-tier-label" style="left:' + side + 'px;top:' + (y - 14) + 'px;width:110px;text-align:' + (rightSide ? 'right' : 'left') + ';">' + lesson.tier + '</div>';
-      lastTier = lesson.tier;
-    }
-
-    let cls = 'path-node';
+    let cls = 'path-node ' + branch;
     let inner = String(idx + 1);
     if(locked){ cls += ' locked'; inner = '🔒'; }
-    else if(passed){ cls += ' passed'; inner = '✓'; }
-    else if(isCurrent){ cls += ' current'; }
+    else if(done){ cls += ' passed'; inner = '✓'; }
+    else if(current){ cls += ' current'; }
+    if(branch === 'shared' && idx === shared.length - 1) cls += ' fork-node';
+    nodesHTML += '<div class="' + cls + '" data-id="' + lesson.id + '" role="button" tabindex="0" aria-label="' + escapeHTML(lesson.title) + (locked ? ' (locked)' : '') + '" style="left:' + (x - node / 2) + 'px;top:' + y + 'px;width:' + node + 'px;height:' + node + 'px;">' + inner + '</div>';
 
-    nodesHTML += '<div class="' + cls + '" data-idx="' + idx + '" role="button" tabindex="0" aria-label="' + escapeHTML(lesson.title) + '" style="left:' + (x - nodeSize / 2) + 'px;top:' + y + 'px;width:' + nodeSize + 'px;height:' + nodeSize + 'px;">' + inner + '</div>';
+    if(current) extras += '<div class="path-bubble" style="left:' + (x - node / 2 - 6) + 'px;top:' + (y - 32) + 'px;">Start</div>';
 
-    if(isCurrent){
-      extrasHTML += '<div class="path-bubble" style="left:' + (x - nodeSize / 2 - 6) + 'px;top:' + (y - 32) + 'px;">Start</div>';
+    // Tier label where a tier begins (inside each branch).
+    if(branch !== 'shared' && lastTier[branch] !== lesson.tier){
+      lastTier[branch] = lesson.tier;
+      const labelLeft = n.titleMode === 'below'
+        ? (branch === 'job' ? x - node / 2 - 12 - 100 : x + node / 2 + 12)
+        : (rightSide ? x - node / 2 - 12 - 100 : x + node / 2 + 12);
+      const align = (n.titleMode === 'below' ? branch === 'job' : rightSide) ? 'right' : 'left';
+      extras += '<div class="path-tier-label" style="left:' + labelLeft + 'px;top:' + (y - 12) + 'px;width:100px;text-align:' + align + ';">' + lesson.tier + '</div>';
     }
-    if(passed){
-      extrasHTML += '<div class="path-stars" style="left:' + (x - nodeSize / 2 + 4) + 'px;top:' + (y + nodeSize + 4) + 'px;">' + starsHTML(stars) + '</div>';
-    }
-    const titleLeft = rightSide ? (x - nodeSize / 2 - 12 - titleWidth) : (x + nodeSize / 2 + 12);
-    extrasHTML += '<div class="path-title" style="left:' + titleLeft + 'px;top:' + (y + nodeSize / 2 - 8) + 'px;width:' + titleWidth + 'px;text-align:' + (rightSide ? 'right' : 'left') + ';">' + lesson.title + '</div>';
 
-    if(openPopoverIdx === idx){
+    if(n.titleMode === 'below'){
+      extras += '<div class="path-title below" style="left:' + (x - titleW / 2) + 'px;top:' + (y + node + 6) + 'px;width:' + titleW + 'px;">' + lesson.title + '</div>';
+      if(done) extras += '<div class="path-stars" style="left:' + (x - 40) + 'px;top:' + (y + node + 40) + 'px;width:80px;text-align:center;">' + starsHTML(stars) + '</div>';
+    } else {
+      const titleLeft = rightSide ? (x - node / 2 - 12 - titleW) : (x + node / 2 + 12);
+      extras += '<div class="path-title" style="left:' + titleLeft + 'px;top:' + (y + node / 2 - 8) + 'px;width:' + titleW + 'px;text-align:' + (rightSide ? 'right' : 'left') + ';">' + lesson.title + '</div>';
+      if(done) extras += '<div class="path-stars" style="left:' + (x - node / 2 + 4) + 'px;top:' + (y + node + 4) + 'px;">' + starsHTML(stars) + '</div>';
+    }
+
+    if(openPopoverId === lesson.id){
       const popW = 240;
-      const popLeft = Math.max(6, Math.min(wrapWidth - popW - 6, x - popW / 2));
-      const popTop = y + nodeSize + 8;
-      const ratingHTML = stars !== undefined ? starsHTML(stars) : 'Not tried yet';
+      const popLeft = Math.max(6, Math.min(W - popW - 6, x - popW / 2));
+      const popTop = y + node + (n.titleMode === 'below' ? 60 : 8);
+      const rating = stars !== undefined ? starsHTML(stars) : 'Not tried yet';
+      const lockMsg = branch !== 'shared' && !sharedDone()
+        ? 'Pass the three shared lessons to unlock both paths.'
+        : 'Finish the earlier lessons in this path to unlock this one.';
       const body = locked
-        ? '<p class="path-popover-locked">Finish the earlier lessons to unlock this one.</p>'
-        : '<p class="path-popover-rating">' + ratingHTML + '</p><button class="path-popover-start" data-idx="' + idx + '">' + (passed ? 'Review lesson' : 'Start lesson') + '</button>';
-      extrasHTML += '<div class="path-popover" style="left:' + popLeft + 'px;top:' + popTop + 'px;width:' + popW + 'px;">' +
+        ? '<p class="path-popover-locked">' + lockMsg + '</p>'
+        : '<p class="path-popover-rating">' + rating + '</p><button class="path-popover-start" data-branch="' + branch + '" data-idx="' + idx + '">' + (done ? 'Review lesson' : 'Start lesson') + '</button>';
+      extras += '<div class="path-popover" style="left:' + popLeft + 'px;top:' + popTop + 'px;width:' + popW + 'px;">' +
+        '<p class="path-popover-kicker ' + branch + '">' + LEARN_BRANCHES[branch].label + ' · ' + lesson.tier + '</p>' +
         '<p class="path-popover-title">' + lesson.title + '</p>' +
-        '<p class="path-popover-desc">' + (lesson.summary || lesson.concept) + '</p>' +
-        body + '</div>';
+        '<p class="path-popover-desc">' + (lesson.summary || lesson.concept) + '</p>' + body + '</div>';
     }
   });
 
-  const lineD = points.length ? ('M' + points.join(' L')) : '';
-  container.innerHTML = '<div style="position:relative;width:' + wrapWidth + 'px;height:' + height + 'px;margin:0 auto;">' +
-    '<svg width="' + wrapWidth + '" height="' + height + '" style="position:absolute;top:0;left:0;">' +
-    '<path d="' + lineD + '" fill="none" stroke="rgba(28,35,33,0.18)" stroke-width="3" stroke-dasharray="2 11" stroke-linecap="round"/>' +
-    '</svg>' + extrasHTML + nodesHTML + '</div>';
+  const last = nodes.reduce((m, n) => Math.max(m, n.y), 0);
+  const height = last + node + (narrow ? 60 : 90);
+  container.innerHTML = '<div class="path-wrap" style="position:relative;width:' + W + 'px;height:' + height + 'px;margin:0 auto;">' +
+    '<svg class="path-svg" width="' + W + '" height="' + height + '" aria-hidden="true">' + paths + '</svg>' +
+    extras + nodesHTML + '</div>';
 }
 
 el('learn-path-view').addEventListener('click', (e) => {
-  const startBtn = e.target.closest('.path-popover-start');
-  if(startBtn){
-    openPopoverIdx = null;
-    startLesson(parseInt(startBtn.dataset.idx, 10));
-    return;
-  }
-  const node = e.target.closest('.path-node');
-  if(node){
-    const idx = parseInt(node.dataset.idx, 10);
-    openPopoverIdx = (openPopoverIdx === idx) ? null : idx;
+  const forkBtn = e.target.closest('[data-fork]');
+  if(forkBtn){
+    mobileBranch = forkBtn.dataset.fork;
+    openPopoverId = null;
     renderSkillPathVisual();
     return;
   }
-  if(!e.target.closest('.path-popover') && openPopoverIdx !== null){
-    openPopoverIdx = null;
+  const startBtn = e.target.closest('.path-popover-start');
+  if(startBtn){
+    openPopoverId = null;
+    startLesson(startBtn.dataset.branch, parseInt(startBtn.dataset.idx, 10));
+    return;
+  }
+  const nodeEl = e.target.closest('.path-node');
+  if(nodeEl){
+    const id = nodeEl.dataset.id;
+    openPopoverId = (openPopoverId === id) ? null : id;
+    renderSkillPathVisual();
+    return;
+  }
+  if(!e.target.closest('.path-popover') && openPopoverId !== null){
+    openPopoverId = null;
     renderSkillPathVisual();
   }
 });
 el('learn-path-view').addEventListener('keydown', (e) => {
-  const node = e.target.closest('.path-node');
-  if(node && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); node.click(); }
+  const nodeEl = e.target.closest('.path-node');
+  if(nodeEl && (e.key === 'Enter' || e.key === ' ')){ e.preventDefault(); nodeEl.click(); }
 });
 
 let resizeTimer = null;
@@ -1901,9 +2732,13 @@ window.addEventListener('resize', () => {
 // Learn: lesson page
 // =====================================================================
 
-function openLesson(idx){
+function curLesson(){ return LEARN_BRANCHES[learnBranch].lessons[learnLessonIndex]; }
+
+function openLesson(branch, idx){
+  learnBranch = branch;
   learnLessonIndex = idx;
-  lessonOpenedIdx = idx;
+  lessonOpenedId = LEARN_BRANCHES[branch].lessons[idx].id;
+  rememberLearnBranch(branch);
   learnPhase = 'intro';
   learnMessages = [];
   learnFailCount = 0;
@@ -1963,7 +2798,7 @@ function addLearnMessage(role, text){
   div.className = 'msg ' + (role === 'assistant' ? 'employer' : 'user');
   const label = document.createElement('span');
   label.className = 'role-label';
-  label.textContent = role === 'assistant' ? currentLessons()[learnLessonIndex].counterpart : 'You';
+  label.textContent = role === 'assistant' ? curLesson().counterpart : 'You';
   div.appendChild(label);
   const body = document.createElement('span');
   body.className = 'msg-text';
@@ -1999,12 +2834,14 @@ function setLearnBusy(state){
 }
 
 function renderLearnMain(result){
-  const lessons = currentLessons();
+  const branch = LEARN_BRANCHES[learnBranch];
+  const lessons = branch.lessons;
   const lesson = lessons[learnLessonIndex];
   const mainEl = el('learn-main');
   if(!mainEl) return;
   mainEl.classList.toggle('chatting', learnPhase === 'chat');
-  const meta = '<p class="lesson-meta">Lesson ' + (learnLessonIndex + 1) + ' of ' + lessons.length + ' · ' + lesson.tier + '</p>';
+  mainEl.dataset.branch = learnBranch;
+  const meta = '<p class="lesson-meta ' + learnBranch + '">' + branch.label + ' · Lesson ' + (learnLessonIndex + 1) + ' of ' + lessons.length + ' · ' + lesson.tier + '</p>';
 
   if(learnPhase === 'intro'){
     const resetNote = learnResetFeedback !== null
@@ -2047,29 +2884,46 @@ function renderLearnMain(result){
 
   if(learnPhase === 'result'){
     const isLast = learnLessonIndex === lessons.length - 1;
+    const atFork = learnBranch === 'shared' && isLast;
+    // Passing the last shared lesson opens both branches: let them choose.
+    const actions = atFork
+      ? '<div class="fork-choice">' +
+          '<p class="fork-choice-title">You reached the fork! Both paths are open.</p>' +
+          '<div class="actions-row">' +
+            '<button class="again-btn fork-btn job" id="learn-fork-job">Start the Job path →</button>' +
+            '<button class="again-btn fork-btn college" id="learn-fork-college">Start the College path →</button>' +
+          '</div>' +
+          '<a class="btn-link" href="#/learn">Back to skill path</a>' +
+        '</div>'
+      : '<div class="actions-row">' +
+          '<button class="again-btn" id="learn-next-btn">' + (isLast ? 'Finish the ' + branch.label.toLowerCase() : 'Next lesson →') + '</button>' +
+          '<a class="reset-btn" href="#/learn">Back to skill path</a>' +
+        '</div>';
     mainEl.innerHTML = `
       <div class="feedback-view">
         <div class="grade-header">
           <div class="grade-circle" style="font-size:16px;">${starsHTML(result.stars)}</div>
-          <div><h2>Nice work</h2><p class="sub">${lesson.title} · lesson ${learnLessonIndex + 1} of ${lessons.length}</p></div>
+          <div><h2>Nice work</h2><p class="sub">${lesson.title} · ${branch.label.toLowerCase()}, lesson ${learnLessonIndex + 1} of ${lessons.length}</p></div>
         </div>
         <div class="fb-block gold"><h4>Feedback</h4><p>${escapeHTML(result.feedback)}</p></div>
         ${lesson.takeaway ? '<div class="lesson-turn"><h4>Remember this</h4><p>' + lesson.takeaway + '</p></div>' : ''}
-        <div class="actions-row">
-          <button class="again-btn" id="learn-next-btn">${isLast ? 'Finish the path' : 'Next lesson →'}</button>
-          <a class="reset-btn" href="#/learn">Back to skill path</a>
-        </div>
+        ${actions}
       </div>`;
     return;
   }
 
   if(learnPhase === 'complete'){
+    const t = branch.practiceTrack || 'job';
+    const other = learnBranch === 'job' ? 'college' : 'job';
+    const otherOpen = !branchComplete(other);
     mainEl.innerHTML = `
       <div class="feedback-view">
-        <h2>Skill path complete</h2>
-        <p class="sub">You've finished every lesson in the ${TRACKS[currentTrack].label.toLowerCase()} skill path. Put it all together in a full mock interview.</p>
+        <p class="lesson-meta ${learnBranch}">Path complete</p>
+        <h2>${PRACTICE[t].label} path complete</h2>
+        <p class="sub">You've finished every lesson in the ${branch.label.toLowerCase()}. Put it all together in a full ${t === 'college' ? 'college' : 'job'} mock interview.</p>
         <div class="actions-row">
-          <a class="again-btn" href="#/practice/quiz">Do a mock interview →</a>
+          <a class="again-btn" href="${PRACTICE[t].routes.quiz}">Do a ${t === 'college' ? 'college' : 'job'} mock interview →</a>
+          ${otherOpen ? '<button class="reset-btn" id="learn-other-branch">Try the ' + LEARN_BRANCHES[other].label.toLowerCase() + ' →</button>' : ''}
           <button class="reset-btn" id="learn-restart-btn">Review from lesson 1</button>
         </div>
       </div>`;
@@ -2108,7 +2962,7 @@ async function sendLearnMessage(){
   setLearnBusy(true);
   showLearnTyping();
   try{
-    const lesson = currentLessons()[learnLessonIndex];
+    const lesson = curLesson();
     // learnMessages[0] is the scripted opening; it's included in the system
     // prompt instead, because the API requires the first message to be the user's.
     const reply = await callClaude(buildLearnSystemPrompt(lesson), learnMessages.slice(1));
@@ -2134,9 +2988,9 @@ async function sendLearnMessage(){
 }
 
 async function gradeCurrentAttempt(){
-  const lesson = currentLessons()[learnLessonIndex];
+  const lesson = curLesson();
   const transcriptText = learnMessages.map(m => (m.role === 'user' ? 'You' : lesson.counterpart) + ': ' + m.content).join('\n');
-  const gradingSystem = "You are a friendly, honest interview coach grading a short skill-practice exchange for a lesson called '" + lesson.title + "'. The learners are often students or first-time job seekers. The skill being tested: " + lessonSkill(lesson) +
+  const gradingSystem = "You are a friendly, honest interview coach grading a short skill-practice exchange for a lesson called '" + lesson.title + "'. The learners are often " + (learnBranch === 'college' ? "high school students preparing for college interviews." : "students or first-time job seekers.") + " The skill being tested: " + lessonSkill(lesson) +
     (lesson.setting ? " The scene: " + lesson.setting : "") +
     " Grading criteria: " + lesson.criteria +
     " Return ONLY valid JSON, no markdown formatting, no code fences, no preamble, in exactly this shape: {\"stars\": number, \"feedback\": string}. stars is an integer 0-3, where 0 = not close, 1 = close but missing something, 2 = acceptable, 3 = excellent. feedback is 2-3 short, plain-spoken sentences written directly to the user as \"you\", the way a supportive mentor would talk: point to something specific they actually said, and if it's under 3 stars, say concretely what would make it stronger.";
@@ -2147,7 +3001,8 @@ async function gradeCurrentAttempt(){
     loader = showOverlayLoader(el('learn-main'), {
       title: 'Checking your answers',
       sub: lesson.title,
-      steps: ['Reading your answers', 'Comparing them to the lesson', 'Writing your feedback']
+      steps: ['Reading your answers', 'Comparing them to the lesson', 'Writing your feedback'],
+      tips: learnBranch === 'college' ? 'college' : 'job'
     });
   }, 1200);
   const finishLoader = () => { clearTimeout(loaderDelay); if(loader) loader.stop(); };
@@ -2155,11 +3010,15 @@ async function gradeCurrentAttempt(){
     const raw = await callClaude(gradingSystem, [{ role: 'user', content: "Transcript:\n\n" + transcriptText }]);
     finishLoader();
     const result = parseFeedbackJSON(raw);
+    const before = gameState();
+    recordActivity();
     if(result.stars >= 2){
       await saveSkillProgress(lesson.id, result.stars, lesson.title);
       learnPhase = 'result';
       renderLearnMain(result);
+      celebrate(before, document.querySelector('#learn-main .grade-circle'), true);
     } else {
+      celebrate(before, null, false); // a practice day still counts toward the streak
       learnFailCount += 1;
       if(learnFailCount >= 3){
         learnPhase = 'intro';
@@ -2185,7 +3044,7 @@ async function gradeCurrentAttempt(){
 
 el('view-lesson').addEventListener('click', (e) => {
   const id = e.target.id;
-  const lesson = currentLessons()[learnLessonIndex];
+  const lesson = curLesson();
   if(id === 'learn-begin-btn' || id === 'learn-retry-btn'){
     learnResetFeedback = null;
     learnPhase = 'chat';
@@ -2204,14 +3063,20 @@ el('view-lesson').addEventListener('click', (e) => {
     renderLearnMain();
   }
   if(id === 'learn-next-btn'){
-    if(learnLessonIndex === currentLessons().length - 1){
+    if(learnLessonIndex === LEARN_BRANCHES[learnBranch].lessons.length - 1){
       learnPhase = 'complete';
       renderLearnMain();
     } else {
-      startLesson(learnLessonIndex + 1);
+      startLesson(learnBranch, learnLessonIndex + 1);
     }
   }
-  if(id === 'learn-restart-btn') startLesson(0);
+  if(id === 'learn-fork-job') startLesson('job', branchNext('job') < LEARN_BRANCHES.job.lessons.length ? branchNext('job') : 0);
+  if(id === 'learn-fork-college') startLesson('college', branchNext('college') < LEARN_BRANCHES.college.lessons.length ? branchNext('college') : 0);
+  if(id === 'learn-other-branch'){
+    const other = learnBranch === 'job' ? 'college' : 'job';
+    startLesson(other, branchNext(other));
+  }
+  if(id === 'learn-restart-btn') startLesson(learnBranch, 0);
 });
 el('view-lesson').addEventListener('keydown', (e) => {
   if(e.target.id === 'learn-input' && e.key === 'Enter' && !e.shiftKey){
@@ -2252,26 +3117,217 @@ async function renderAdminView(){
 }
 
 // =====================================================================
+// Game layer: XP, levels, daily streak, badges and celebrations.
+// Everything is worked out from saved progress (lesson stars, graded
+// interviews and practice days), so nothing can double-count.
+// =====================================================================
+
+const ACTIVITY_KEY = 'groundwork:activity';
+const LEVELS = [
+  { at:0,    name:'Getting started' },
+  { at:40,   name:'Warming up' },
+  { at:100,  name:'Finding your voice' },
+  { at:180,  name:'Steady' },
+  { at:280,  name:'Confident' },
+  { at:400,  name:'Polished' },
+  { at:550,  name:'Standout' },
+  { at:720,  name:'Interview pro' },
+  { at:920,  name:'Seasoned' },
+  { at:1150, name:'Expert' },
+  { at:1400, name:'Legend' }
+];
+const GRADE_XP = { A:50, B:40, C:30, D:20, F:10 };
+
+const BADGES = [
+  { id:'first-lesson',  icon:'👣', name:'First steps',     desc:'Pass your first lesson',            test: g => g.passedLessons >= 1 },
+  { id:'three-stars',   icon:'⭐', name:'Three stars',     desc:'Earn 3 stars on a lesson',          test: g => g.threeStarLessons >= 1 },
+  { id:'fork',          icon:'🔀', name:'At the fork',     desc:'Finish the three shared lessons',   test: () => sharedDone() },
+  { id:'first-interview', icon:'🎤', name:'First interview', desc:'Finish a graded mock interview',  test: g => g.interviews >= 1 },
+  { id:'straight-a',    icon:'🅰️', name:'Straight A',      desc:'Earn an A in a mock interview',     test: g => g.gotA },
+  { id:'job-ready',     icon:'💼', name:'Job ready',       desc:'Finish the Job path',               test: () => branchComplete('job') },
+  { id:'college-ready', icon:'🎓', name:'College ready',   desc:'Finish the College path',           test: () => branchComplete('college') },
+  { id:'both-sides',    icon:'🤝', name:'Both sides',      desc:'Do a job and a college interview',  test: g => g.jobInterviews >= 1 && g.collegeInterviews >= 1 },
+  { id:'on-a-roll',     icon:'🔥', name:'On a roll',       desc:'Practice 3 days in a row',          test: g => g.bestStreak >= 3 },
+  { id:'committed',     icon:'🏆', name:'Committed',       desc:'Practice 7 days in a row',          test: g => g.bestStreak >= 7 }
+];
+
+function dayKey(d){ return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function loadActivity(){ try{ return JSON.parse(localStorage.getItem(ACTIVITY_KEY) || '[]'); } catch(e){ return []; } }
+// Called whenever something gets graded (a lesson attempt or an interview).
+function recordActivity(){
+  const days = new Set(loadActivity());
+  days.add(dayKey(new Date()));
+  try{ localStorage.setItem(ACTIVITY_KEY, JSON.stringify([...days].sort().slice(-400))); } catch(e){}
+}
+function streakInfo(){
+  const days = new Set(loadActivity());
+  allAttempts.forEach(a => { if(a.date) days.add(dayKey(new Date(a.date))); });
+  // Current streak counts back from today, or from yesterday if they
+  // haven't practiced yet today (so the streak isn't "lost" until tomorrow).
+  let current = 0;
+  const d = new Date();
+  const practicedToday = days.has(dayKey(d));
+  if(!practicedToday) d.setDate(d.getDate() - 1);
+  while(days.has(dayKey(d))){ current++; d.setDate(d.getDate() - 1); }
+  let best = 0, run = 0, prev = null;
+  [...days].sort().forEach(k => {
+    const dt = new Date(k + 'T12:00:00');
+    run = (prev && (dt - prev) / 864e5 < 1.5) ? run + 1 : 1;
+    best = Math.max(best, run);
+    prev = dt;
+  });
+  return { current, best, practicedToday };
+}
+
+function gameState(){
+  const stars = skillStars[currentTrack] || {};
+  const lessonIds = new Set(Object.values(LEARN_BRANCHES).flatMap(b => b.lessons.map(l => l.id)));
+  let lessonXP = 0, passedLessons = 0, threeStarLessons = 0;
+  Object.entries(stars).forEach(([id, s]) => {
+    if(!lessonIds.has(id) || !s) return;
+    lessonXP += s * 10;
+    if(s >= 2) passedLessons++;
+    if(s >= 3) threeStarLessons++;
+  });
+  const interviewXP = allAttempts.reduce((sum, a) => sum + (GRADE_XP[a.grade] || 0), 0);
+  const xp = lessonXP + interviewXP;
+  let li = 0;
+  LEVELS.forEach((lv, i) => { if(xp >= lv.at) li = i; });
+  const streak = streakInfo();
+  const g = {
+    xp, levelIndex: li, level: li + 1, levelName: LEVELS[li].name,
+    levelStart: LEVELS[li].at, nextAt: LEVELS[li + 1] ? LEVELS[li + 1].at : null,
+    passedLessons, threeStarLessons,
+    interviews: allAttempts.length,
+    jobInterviews: allAttempts.filter(a => a.track !== 'college').length,
+    collegeInterviews: allAttempts.filter(a => a.track === 'college').length,
+    gotA: allAttempts.some(a => a.grade === 'A'),
+    streak: streak.current, bestStreak: streak.best, practicedToday: streak.practicedToday
+  };
+  g.earned = new Set(BADGES.filter(b => b.test(g)).map(b => b.id));
+  return g;
+}
+
+function updateXpChip(){
+  const g = gameState();
+  el('xp-chip').innerHTML = '<span>Lv ' + g.level + '</span>' + (g.streak > 0 ? '<span class="xp-streak">🔥 ' + g.streak + '</span>' : '');
+  el('xp-chip').setAttribute('aria-label', 'Level ' + g.level + ', ' + g.xp + ' XP' + (g.streak ? ', ' + g.streak + '-day streak' : ''));
+}
+
+function renderHomeProgress(){
+  const g = gameState();
+  const span = g.nextAt ? g.nextAt - g.levelStart : 1;
+  const pct = g.nextAt ? Math.round((g.xp - g.levelStart) / span * 100) : 100;
+  const ring = el('home-level-ring');
+  ring.style.setProperty('--pct', pct);
+  ring.innerHTML = '<span>' + g.level + '</span>';
+  el('home-level-label').textContent = 'Level ' + g.level + ' · ' + g.xp + ' XP';
+  el('home-level-name').textContent = g.levelName;
+  el('home-xp-bar').style.width = pct + '%';
+  el('home-xp-text').textContent = g.nextAt
+    ? (g.nextAt - g.xp) + ' XP to Level ' + (g.level + 1) + ' (' + LEVELS[g.levelIndex + 1].name + ')'
+    : 'Top level reached. Nice work!';
+  el('home-streak').textContent = g.streak;
+  el('home-streak-unit').textContent = g.streak === 1 ? 'day streak' : 'day streak';
+  el('home-streak-note').textContent = g.streak === 0
+    ? 'Do a lesson or a mock interview to start a streak.'
+    : (g.practicedToday ? 'You practiced today. ' : 'Practice today to keep it going. ') + 'Best: ' + g.bestStreak + (g.bestStreak === 1 ? ' day.' : ' days.');
+  document.querySelector('.streak-card').classList.toggle('cold', g.streak === 0);
+  el('home-badges').innerHTML = BADGES.map(b => {
+    const got = g.earned.has(b.id);
+    return '<div class="badge' + (got ? '' : ' locked') + '"><div class="badge-icon" aria-hidden="true">' + b.icon + '</div>' +
+      '<div class="badge-name">' + b.name + '</div><div class="badge-desc">' + b.desc + '</div>' +
+      '<span class="sr-only">' + (got ? 'Earned' : 'Not earned yet') + '</span></div>';
+  }).join('');
+}
+
+function reduceMotion(){ return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+function toast(icon, html){
+  const stack = el('toast-stack');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = '<span class="toast-icon" aria-hidden="true">' + icon + '</span><span>' + html + '</span>';
+  stack.appendChild(t);
+  setTimeout(() => { t.classList.add('leaving'); setTimeout(() => t.remove(), reduceMotion() ? 0 : 350); }, 4200);
+}
+
+function xpPop(anchor, amount){
+  if(!anchor) return;
+  const r = anchor.getBoundingClientRect();
+  const pop = document.createElement('div');
+  pop.className = 'xp-pop';
+  pop.textContent = '+' + amount + ' XP';
+  pop.style.left = (r.left + r.width / 2) + 'px';
+  pop.style.top = (r.top - 8) + 'px';
+  document.body.appendChild(pop);
+  setTimeout(() => pop.remove(), 1500);
+}
+
+// A small burst of colored bits from the grade circle. Skipped entirely
+// for people who've asked their device to reduce motion.
+function confettiBurst(anchor){
+  if(!anchor || reduceMotion() || !anchor.animate) return;
+  const r = anchor.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const colors = ['#C9A227', '#8F7015', '#2B4C4A', '#4A3B5C', '#B23A48', '#E2EBE9'];
+  for(let i = 0; i < 22; i++){
+    const bit = document.createElement('span');
+    bit.className = 'confetti-bit';
+    bit.style.background = colors[i % colors.length];
+    bit.style.left = cx + 'px';
+    bit.style.top = cy + 'px';
+    document.body.appendChild(bit);
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 60 + Math.random() * 70;
+    const anim = bit.animate([
+      { transform: 'translate(-50%,-50%) rotate(0deg)', opacity: 1 },
+      { transform: 'translate(calc(-50% + ' + Math.cos(angle) * dist + 'px), calc(-50% + ' + (Math.sin(angle) * dist + 40) + 'px)) rotate(' + (Math.random() * 540) + 'deg)', opacity: 0 }
+    ], { duration: 900 + Math.random() * 400, easing: 'cubic-bezier(.2,.8,.3,1)' });
+    anim.onfinish = () => bit.remove();
+  }
+}
+
+// Compare progress before and after something was graded and celebrate
+// what changed: XP gained, new badges, and level-ups.
+function celebrate(before, anchor, big){
+  const after = gameState();
+  const gained = after.xp - before.xp;
+  if(gained > 0) xpPop(anchor, gained);
+  if(big) confettiBurst(anchor);
+  BADGES.forEach(b => {
+    if(after.earned.has(b.id) && !before.earned.has(b.id)) toast(b.icon, 'Badge earned: <b>' + b.name + '</b>');
+  });
+  if(after.level > before.level) toast('⬆️', 'Level up! <b>Level ' + after.level + ' · ' + after.levelName + '</b>');
+  updateXpChip();
+}
+
+// =====================================================================
 // Startup
 // =====================================================================
 
+// Quiz answers, cached suggestions and last scenario, for each track.
 async function loadQuizProfile(){
-  try{
-    const r = await storage.get('interviewQuiz:answers');
-    if(r && r.value) savedQuizAnswers = JSON.parse(r.value);
-  } catch(err){ /* no saved answers yet */ }
-  try{
-    const r = await storage.get('interviewQuiz:scenario');
-    if(r && r.value) customInterviewScenario = JSON.parse(r.value);
-  } catch(err){ /* no saved scenario yet */ }
-  try{
-    const r = await storage.get('interviewQuiz:jobs');
-    if(r && r.value && savedQuizAnswers){
-      const cached = JSON.parse(r.value);
-      // Only reuse suggestions made for the current answers.
-      if(cached.answers === JSON.stringify(savedQuizAnswers) && Array.isArray(cached.jobs)) jobOptions = cached.jobs;
-    }
-  } catch(err){ /* no cached jobs yet */ }
+  for(const t of Object.keys(PRACTICE)){
+    const keys = PRACTICE[t].keys;
+    try{
+      const r = await storage.get(keys.answers);
+      if(r && r.value) P[t].answers = JSON.parse(r.value);
+    } catch(err){ /* no saved answers yet */ }
+    try{
+      const r = await storage.get(keys.scenario);
+      if(r && r.value) P[t].scenario = JSON.parse(r.value);
+    } catch(err){ /* no saved scenario yet */ }
+    try{
+      const r = await storage.get(keys.options);
+      if(r && r.value && P[t].answers){
+        const cached = JSON.parse(r.value);
+        const items = t === 'job' ? cached.jobs : cached.schools;
+        // Only reuse suggestions made for the current answers.
+        if(cached.answers === JSON.stringify(P[t].answers) && Array.isArray(items)) P[t].options = items;
+      }
+    } catch(err){ /* no cached suggestions yet */ }
+  }
 }
 
 (async function init(){
@@ -2280,7 +3336,12 @@ async function loadQuizProfile(){
     return;
   }
   await Promise.all([loadQuizProfile(), loadSkillProgress(), loadHistory()]);
-  if(customInterviewScenario) startSession(customInterviewScenario);
+  // Reopen the last interview they set up, preferring the track they used last.
+  const pref = preferredTrack() || 'job';
+  const other = pref === 'job' ? 'college' : 'job';
+  if(P[pref].scenario) startSession(pref, P[pref].scenario);
+  else if(P[other].scenario) startSession(other, P[other].scenario);
+  updateXpChip();
   route();
 })();
 </script>

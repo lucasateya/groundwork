@@ -1,0 +1,1372 @@
+{
+  "about": "Curated list of real US colleges for Groundwork's College interview track. Every fact comes from the school's own website (see each entry's sources). Interview policies change every year: re-check before relying on them.",
+  "fields": {
+    "size": "Small = under 5,000 undergraduates, Medium = 5,000-15,000, Large = over 15,000",
+    "setting": "City | Suburb | College town | Rural",
+    "region": "Northeast | Mid-Atlantic | South | Midwest | Southwest | West",
+    "interview.type": "alumni | admissions | both | none (none = the school doesn't offer evaluative interviews; Groundwork labels it 'Practice only')",
+    "interview.status": "short plain description from the official page"
+  },
+  "schools": [
+    {
+      "id": "tufts",
+      "name": "Tufts University",
+      "city": "Medford", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 6900, "setting": "Suburb", "tags": [],
+      "strengths": ["Research university with a liberal arts feel", "Top Carnegie research classification"],
+      "facts": [
+        "Every first-year lights a candle on the President's Lawn on their first night, to honor Charles Tufts",
+        "Tuftonia's Day celebrates the university's birthday with a campus carnival at the end of spring semester",
+        "Students paint the Medford Cannon and guard it until dawn so no one paints over their design"
+      ],
+      "about": "Tufts is a research university on a hilltop just outside Boston, about a mile from Davis Square in Somerville. It has about 6,900 undergraduates and dates back to 1852.",
+      "interview": { "type": "alumni", "status": "Optional alumni interview for first-year applicants; you opt in on the Common App. Usually held in a public place like a coffee shop or library." },
+      "sources": ["https://admissions.tufts.edu/files/resources/2013-training-module-interviewing-final.pdf", "https://admissions.tufts.edu/discover-tufts/tufts-traditions/", "https://admissions.tufts.edu/discover-tufts/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "bowdoin",
+      "name": "Bowdoin College",
+      "city": "Brunswick", "state": "ME", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Liberal arts", "Strong ties to the state of Maine"],
+      "facts": [
+        "A lobster bake welcomes students each fall, and seniors share another the night before Commencement",
+        "Saying a friendly hello to people on campus is a tradition that dates back to the 1960s",
+        "Ivies is the spring celebration that marks the end of the long Maine winter"
+      ],
+      "about": "Bowdoin is a small liberal arts college in the town of Brunswick, Maine, chartered in 1794. It's known for a close-knit community and a strong connection to Maine.",
+      "interview": { "type": "both", "status": "Interviews strongly encouraged but not required. Offered in person or virtually with admissions staff, students, or alumni." },
+      "sources": ["https://www.bowdoin.edu/admissions/connect/index.html", "https://admissions.bowdoin.edu/portal/alumni_interview", "https://www.bowdoin.edu/about/history-traditions/index.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "middlebury",
+      "name": "Middlebury College",
+      "city": "Middlebury", "state": "VT", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Rural", "tags": [],
+      "strengths": ["Environmental studies", "International studies", "Languages"],
+      "facts": [
+        "Students take one intensive course during January, called J-Term",
+        "February graduates ski down the Middlebury Snow Bowl in caps and gowns",
+        "Its Winter Carnival, started in 1923, is the oldest student-run carnival in the country"
+      ],
+      "about": "Middlebury is a small liberal arts college in central Vermont, between the Green Mountains and the Adirondacks. It's nationally known for environmental studies and international studies.",
+      "interview": { "type": "alumni", "status": "Optional alumni interview by video or phone; request it in your applicant portal after applying. Not guaranteed, and no on-campus interviews." },
+      "sources": ["https://www.middlebury.edu/college/admissions/apply/interview", "https://www.middlebury.edu/about/history-and-traditions", "https://www.middlebury.edu/about/quick-facts"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "wesleyan",
+      "name": "Wesleyan University",
+      "city": "Middletown", "state": "CT", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2900, "setting": "College town", "tags": [],
+      "strengths": ["Open curriculum", "47 majors", "7:1 student-faculty ratio"],
+      "facts": [
+        "Its open curriculum has no required core; you build your own plan with your advisor each semester",
+        "You can combine majors, minors and certificates in your own mix",
+        "Wesleyan has been in Middletown, Connecticut since 1831"
+      ],
+      "about": "Wesleyan is a liberal arts university of about 2,900 undergraduates in the small city of Middletown, Connecticut. It's known for its open curriculum, where you design your own path.",
+      "interview": { "type": "none", "status": "No evaluative interview. Optional WesChats with current students are informal and not part of your application." },
+      "sources": ["https://www.wesleyan.edu/admission/apply/interviews.html", "https://www.wesleyan.edu/about/at-a-glance.html", "https://www.wesleyan.edu/academics/undergraduate-academics/open-curriculum/index.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "brown",
+      "name": "Brown University",
+      "city": "Providence", "state": "RI", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 7272, "setting": "City", "tags": [],
+      "strengths": ["Open Curriculum", "Program in Liberal Medical Education"],
+      "facts": [
+        "The Open Curriculum, adopted in 1969, has no general education requirements",
+        "Students choose a 'concentration' instead of a major",
+        "The campus sits on College Hill, overlooking downtown Providence"
+      ],
+      "about": "Brown is a research university in Providence, Rhode Island, with about 7,300 undergraduates. Its Open Curriculum lets students design their own education.",
+      "interview": { "type": "none", "status": "No interviews since 2019-20. Brown instead invites an optional short video introduction." },
+      "sources": ["https://admission.brown.edu/ask/admission-process", "https://www.brown.edu/admission/undergraduate/apply/first-year-applicants/alumni-interview", "https://www.brown.edu/academics/undergraduate/open-curriculum", "https://admission.brown.edu/ask/about-brown"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "dartmouth",
+      "name": "Dartmouth College",
+      "city": "Hanover", "state": "NH", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Small", "undergrads": 4310, "setting": "College town", "tags": [],
+      "strengths": ["Liberal arts focus at a research university", "Flexible year-round D-Plan calendar"],
+      "facts": [
+        "The D-Plan quarter system includes 'sophomore summer' on campus",
+        "First-years start with an outdoor orientation trip led by returning students",
+        "Winter Carnival has been held for over 100 years, with a bonfire on the Green"
+      ],
+      "about": "Dartmouth is a small research university in Hanover, New Hampshire, on the Connecticut River, founded in 1769. It has about 4,300 undergraduates and a strong liberal arts focus.",
+      "interview": { "type": "alumni", "status": "Optional alumni interview, in person or virtual. Alumni contact you after you apply; not everyone can be offered one." },
+      "sources": ["https://admissions.dartmouth.edu/glossary-term/alumni-interview", "https://admissions.dartmouth.edu/glossary-question/how-do-i-get-interview", "https://admissions.dartmouth.edu/history-traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "williams",
+      "name": "Williams College",
+      "city": "Williamstown", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2100, "setting": "Rural", "tags": [],
+      "strengths": ["Liberal arts", "Close work with faculty"],
+      "facts": [
+        "On Mountain Day each fall, classes are canceled so everyone can hike, with cider donuts and a picnic",
+        "Mountain Day traces back to 'Chip Day' and 'Gravel Day' holidays from around 1800",
+        "About 2,100 students learn closely alongside faculty"
+      ],
+      "about": "Williams is a small liberal arts college of about 2,100 students in Williamstown, Massachusetts, in the mountains of the Berkshires. It's known for close relationships between students and faculty.",
+      "interview": { "type": "none", "status": "No evaluative interviews. Seniors can request an optional, non-evaluative conversation with an admission officer or alum that doesn't affect decisions." },
+      "sources": ["https://www.williams.edu/admission-aid/how-to-apply/first-year/", "https://www.williams.edu/about/", "https://specialcollections.williams.edu/williams-history/mountain-day/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "smith",
+      "name": "Smith College",
+      "city": "Northampton", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2500, "setting": "College town", "tags": ["Women's college"],
+      "strengths": ["Open curriculum", "Picker Engineering Program", "Over 1,000 courses in 83 areas of study"],
+      "facts": [
+        "Smith's only required course is a writing-intensive class in your first year",
+        "In 2004 it graduated the first engineers from a U.S. women's college",
+        "The 147-acre campus sits in the lively small city of Northampton"
+      ],
+      "about": "Smith is a women's liberal arts college of about 2,500 students in Northampton, Massachusetts. Its open curriculum lets you mix subjects freely, and it was the first U.S. women's college to graduate engineers.",
+      "interview": { "type": "both", "status": "Optional interview for first-year applicants, usually with an alum volunteer; admission counselors and student interviewers also interview. Request it through your applicant portal." },
+      "sources": ["https://www.smith.edu/admission-aid/interviews", "https://www.smith.edu/admission-aid/apply-smith/first-year-applicants", "https://www.smith.edu/academics/our-approach-learning/open-curriculum", "https://www.smith.edu/academics/departments-programs-courses/engineering"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "wellesley",
+      "name": "Wellesley College",
+      "city": "Wellesley", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2300, "setting": "Suburb", "tags": ["Women's college"],
+      "strengths": ["Liberal arts", "Students from 47 states and 50+ countries"],
+      "facts": [
+        "Seniors in graduation robes race wooden hoops down Tupelo Lane; the winner gets tossed into Lake Waban",
+        "On a surprise Lake Day each fall, classes are canceled for carnival rides and games",
+        "Every sophomore class since 1879 has planted a tree"
+      ],
+      "about": "Wellesley is a women's liberal arts college of just under 2,300 students, 12 miles west of Boston. It's known for traditions like hooprolling and Lake Day.",
+      "interview": { "type": "none", "status": "Wellesley does not offer interviews as part of the admission process." },
+      "sources": ["https://www.wellesley.edu/admission-aid/faqs", "https://www.wellesley.edu/news-events/commencement/traditions", "https://calendar.wellesley.edu/about/collegehistory/traditions/hooprolling"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "northeastern",
+      "name": "Northeastern University",
+      "city": "Boston", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Large", "undergrads": 19000, "setting": "City", "tags": [],
+      "strengths": ["Co-op (paid, full-time work terms)", "Experiential learning", "Computer science", "Engineering"],
+      "facts": [
+        "Students alternate classes with full-time co-op jobs, usually about six months long",
+        "You can do up to two co-ops in four years, and you don't pay tuition while on co-op",
+        "Co-ops happen around Boston and around the world"
+      ],
+      "about": "Northeastern is a research university in the middle of Boston. It's built around co-op, where students alternate semesters of classes with full-time jobs related to their studies.",
+      "interview": { "type": "none", "status": "No alumni or on-campus interviews. Northeastern will consider third-party video interviews (InitialView, Vericant)." },
+      "sources": ["https://admissions.northeastern.edu/application-information/required-materials/", "https://www.northeastern.edu/co-op/", "https://catalog.northeastern.edu/undergraduate/academic-policies-procedures/cooperative-education/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "boston-university",
+      "name": "Boston University",
+      "city": "Boston", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Large private research university", "Communication", "Fine arts and theatre"],
+      "facts": [
+        "Commonwealth Avenue runs right through the Charles River Campus, with a Green Line stop",
+        "New first-years spend a day volunteering around Boston before classes start",
+        "BU was the first coeducational college in Massachusetts"
+      ],
+      "about": "Boston University is a large private research university in the heart of Boston, with more than 37,000 students in total. Its main campus stretches along Commonwealth Avenue by the Charles River.",
+      "interview": { "type": "none", "status": "Interviews aren't required and aren't offered for most first-year applicants (except some special programs like accelerated medical/dental and theatre)." },
+      "sources": ["https://www.bu.edu/admissions/apply/faqs-helpful-forms/faqs/", "https://www.bu.edu/summer/about-bu/", "https://www.bu.edu/articles/2023/did-you-know-10-fun-facts-about-bu/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "wpi",
+      "name": "Worcester Polytechnic Institute",
+      "city": "Worcester", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Tech institute",
+      "size": "Medium", "undergrads": 5453, "setting": "City", "tags": ["Tech/engineering"],
+      "strengths": ["Project-based learning", "Engineering", "Global Projects Program"],
+      "facts": [
+        "The year is split into seven-week terms, with three courses at a time",
+        "About 85 percent of undergraduates travel off campus for at least one project",
+        "First-years start with the Great Problems Seminar"
+      ],
+      "about": "WPI is a tech-focused university in Worcester, Massachusetts, known for project-based learning. Students work on real team projects at 50+ project centers on six continents.",
+      "interview": { "type": "none", "status": "WPI doesn't offer admission interviews; you can book a one-on-one meeting with a counselor instead." },
+      "sources": ["https://www.wpi.edu/admissions/undergraduate/visit/campus/interviews", "https://www.wpi.edu/project-based-learning/project-based-education/10-things-to-know-wpi-plan", "https://www.wpi.edu/project-based-learning/project-based-education/global-project-program", "https://www.wpi.edu/offices/strategic-initiatives-university-analytics/data-dashboards/enrollment"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "olin",
+      "name": "Olin College of Engineering",
+      "city": "Needham", "state": "MA", "region": "Northeast",
+      "control": "Private", "kind": "Tech institute",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": ["Tech/engineering"],
+      "strengths": ["Engineering", "Hands-on, team-based design"],
+      "facts": [
+        "Finalists are invited to Candidates' Weekend, which includes a student-run Design Challenge",
+        "Olin evaluates teamwork, communication and collaboration, not tricky technical puzzles",
+        "It's one of the only colleges that uses a Candidates' Weekend in admissions"
+      ],
+      "about": "Olin is a very small engineering college outside Boston built around hands-on, team-based projects. Finalists visit for Candidates' Weekend, with an interview and a group exercise.",
+      "interview": { "type": "admissions", "status": "Invited finalists must attend Candidates' Weekend, which includes an evaluated individual interview and group exercise (virtual for students outside the continental U.S.)." },
+      "sources": ["https://olin.edu/admission/apply/admission-process", "https://www.olin.edu/blogs/what-makes-candidates-weekend-unique"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uvm",
+      "name": "University of Vermont",
+      "city": "Burlington", "state": "VT", "region": "Northeast",
+      "control": "Public", "kind": "Public university",
+      "size": "Medium", "undergrads": 11600, "setting": "College town", "tags": [],
+      "strengths": ["Environment and sustainability", "Health sciences"],
+      "facts": [
+        "UVM stands for Universitas Viridis Montis, Latin for 'University of the Green Mountains'",
+        "Chartered in 1791, it was the fifth college in New England",
+        "The campus looks out over Lake Champlain and the Adirondack Mountains"
+      ],
+      "about": "The University of Vermont is a public university of about 11,600 undergraduates in Burlington, Vermont's largest city, next to Lake Champlain. It's known for its focus on the environment and health.",
+      "interview": { "type": "none", "status": "Interviews aren't part of UVM's first-year application steps; you can book a video chat with an admissions counselor to ask questions." },
+      "sources": ["https://www.uvm.edu/admissions/undergraduate/how-apply-first-years", "https://admissions.uvm.edu/portal/online-COD", "https://catalogue.uvm.edu/undergraduate/aboutuniv/", "https://www.uvm.edu/admissions/undergraduate/living-burlington"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "risd",
+      "name": "Rhode Island School of Design",
+      "city": "Providence", "state": "RI", "region": "Northeast",
+      "control": "Private", "kind": "Art and design school",
+      "size": "Small", "undergrads": null, "setting": "City", "tags": ["Arts"],
+      "strengths": ["Art and design", "Brown|RISD Dual Degree"],
+      "facts": [
+        "All first-years take the same studio program, Experimental and Foundation Studies: drawing, design and spatial dynamics",
+        "A five-year dual degree with Brown gives you a RISD BFA plus a Brown bachelor's",
+        "You apply with a portfolio of 12–20 recent pieces"
+      ],
+      "about": "RISD is an art and design school in Providence, Rhode Island, next door to Brown. Every first-year starts with the same foundation studio year before choosing a major.",
+      "interview": { "type": "none", "status": "No admission interviews; RISD offers portfolio reviews and info sessions instead. A portfolio is part of the application." },
+      "sources": ["https://www.risd.edu/admissions/first-year/apply-risd", "https://www.risd.edu/admissions/first-year/portfolio-reviews", "https://www.risd.edu/academics/risd-brown-programs-and-opportunities", "https://info.risd.edu/experimental-and-foundation-studies-division/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "columbia",
+      "name": "Columbia University",
+      "city": "New York", "state": "NY", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["The Core Curriculum", "Engineering (Columbia Engineering)", "Life in New York City"],
+      "facts": [
+        "Every Columbia College student takes the Core Curriculum, created in 1919",
+        "Frontiers of Science became part of the Core in 2004",
+        "The main campus is in Morningside Heights in Manhattan"
+      ],
+      "about": "Columbia is a research university in New York City's Morningside Heights. Undergraduates in Columbia College share the Core Curriculum, small seminars on great works that date back to 1919.",
+      "interview": { "type": "none", "status": "Alumni interviews were discontinued starting fall 2023; interviews are not part of the application." },
+      "sources": ["https://undergrad.admissions.columbia.edu/interviews", "https://www.college.columbia.edu/news/announcement-alumni-admissions-interviews", "https://www.college.columbia.edu/core-curriculum"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "cornell",
+      "name": "Cornell University",
+      "city": "Ithaca", "state": "NY", "region": "Northeast",
+      "control": "Private", "kind": "Research university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Wide range of colleges and majors", "Architecture", "Engineering", "Agriculture and life sciences"],
+      "facts": [
+        "Founded on the idea of 'an institution where any person can find instruction in any study'",
+        "On Dragon Day, first-year architecture students parade a giant dragon that battles an engineering phoenix",
+        "Slope Day celebrates the last day of classes on Libe Slope"
+      ],
+      "about": "Cornell is a large research university in Ithaca, New York, founded in 1865. It has more than 1,000 student organizations and famous traditions like Dragon Day and Slope Day.",
+      "interview": { "type": "none", "status": "Cornell doesn't offer true interviews (except Architecture, which requires a video interview). Optional alumni 'contact meetings' are informal and not interviews." },
+      "sources": ["https://faq.enrollment.cornell.edu/kb/article/179-does-cornell-require-personal-interviews/", "https://admissions.cornell.edu/community/blog/lets-talk-about-cornell-admissions-interviews", "https://admit.cornell.edu/student-life/traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "vassar",
+      "name": "Vassar College",
+      "city": "Poughkeepsie", "state": "NY", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2450, "setting": "College town", "tags": [],
+      "strengths": ["Liberal arts", "A pioneer in women's education, coeducational since 1969"],
+      "facts": [
+        "Founder's Day, first held in 1866 as a surprise birthday party for Matthew Vassar, now ends with carnival rides and fireworks",
+        "Vassar was founded in 1861 as a pioneer in women's education",
+        "Poughkeepsie is a small city on the Hudson River, about 75 miles north of New York City"
+      ],
+      "about": "Vassar is a liberal arts college of about 2,450 students in Poughkeepsie, New York, on the Hudson River. It was founded in 1861 for women and has been coeducational since 1969.",
+      "interview": { "type": "alumni", "status": "Optional alumni interviews for domestic first-year applicants after you apply. They're informational, not evaluative, and not everyone can get one." },
+      "sources": ["https://www.vassar.edu/admission/apply/requirements/interviews/", "https://www.vassar.edu/about", "https://vcencyclopedia.vassar.edu/vassar-traditions/founders-day/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "hamilton",
+      "name": "Hamilton College",
+      "city": "Clinton", "state": "NY", "region": "Northeast",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 1850, "setting": "Rural", "tags": [],
+      "strengths": ["Open curriculum", "Writing and speaking", "All classes taught by professors"],
+      "facts": [
+        "There are no distribution requirements, but you take three writing-intensive courses",
+        "About 15 percent of students are the first in their family to attend college",
+        "The 1,350-acre hilltop campus dates back to 1793"
+      ],
+      "about": "Hamilton is a liberal arts college of about 1,850 students on a hilltop in Clinton, New York. It has an open curriculum and a strong focus on clear writing and speaking.",
+      "interview": { "type": "admissions", "status": "Interviews strongly encouraged. Mostly by video, some on campus in fall, with admission officers or trained Hamilton seniors." },
+      "sources": ["https://www.hamilton.edu/admission/interviews", "https://www.hamilton.edu/about/facts", "https://www.hamilton.edu/academics/open-curriculum/open-curriculum"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "penn",
+      "name": "University of Pennsylvania",
+      "city": "Philadelphia", "state": "PA", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Four undergraduate schools: Arts & Sciences, Engineering, Nursing and Wharton (business)", "Combining liberal arts with professional schools"],
+      "facts": [
+        "Penn calls itself America's first university, with a history dating to 1740",
+        "On Hey Day, juniors parade across campus in straw hats and red T-shirts, carrying canes, to become seniors",
+        "Undergraduates can take classes across all four undergraduate schools"
+      ],
+      "about": "Penn is a research university in Philadelphia with four undergraduate schools, including Wharton and Nursing. Its history dates to 1740.",
+      "interview": { "type": "none", "status": "Penn no longer offers alumni conversations as part of the application process." },
+      "sources": ["https://admissions.upenn.edu/how-to-apply/preparing-your-application/alumni-conversations", "https://www.upenn.edu/about", "https://archives.upenn.edu/exhibits/penn-history/traditions/hey-day/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "princeton",
+      "name": "Princeton University",
+      "city": "Princeton", "state": "NJ", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 5200, "setting": "College town", "tags": [],
+      "strengths": ["Senior thesis with a faculty adviser", "Residential colleges", "Undergraduate focus at a research university"],
+      "facts": [
+        "Every senior writes a thesis or does a major independent project, one-on-one with a professor",
+        "First-years are randomly placed in one of seven residential colleges",
+        "New students are welcomed in the Pre-rade by running through FitzRandolph Gate"
+      ],
+      "about": "Princeton is a research university of about 5,200 undergraduates in Princeton, New Jersey. Every senior works one-on-one with a professor on a thesis, and students live in residential colleges.",
+      "interview": { "type": "alumni", "status": "Optional alumni interview after you apply (you can opt out). 30–45 minute informal conversation; not guaranteed everywhere." },
+      "sources": ["https://admission.princeton.edu/apply/application-checklist", "https://alumni.princeton.edu/our-community/alumni-association/princeton-schools-committee", "https://admission.princeton.edu/academics/senior-thesis", "https://admission.princeton.edu/community/residential-colleges-housing"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "swarthmore",
+      "name": "Swarthmore College",
+      "city": "Swarthmore", "state": "PA", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 1640, "setting": "Suburb", "tags": [],
+      "strengths": ["Honors Program", "Engineering at a liberal arts college", "Scott Arboretum campus"],
+      "facts": [
+        "In the Honors Program, outside experts travel to campus to give students oral exams",
+        "It's one of few liberal arts colleges with an undergraduate engineering program",
+        "The 425-acre campus is the Scott Arboretum, with over 4,000 kinds of plants"
+      ],
+      "about": "Swarthmore is a liberal arts college of about 1,640 students outside Philadelphia. Its campus is an arboretum, and it offers engineering alongside the liberal arts.",
+      "interview": { "type": "both", "status": "Optional virtual or in-person interviews for U.S. first-year applicants with a current student (Admissions Fellow) or an alum. No disadvantage if you don't interview." },
+      "sources": ["https://www.swarthmore.edu/admissions-aid/request-interview", "https://www.swarthmore.edu/meet-swarthmore/swarthmore-numbers", "https://www.swarthmore.edu/meet-swarthmore/what%E2%80%99s-distinctive-about-swarthmore"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "haverford",
+      "name": "Haverford College",
+      "city": "Haverford", "state": "PA", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": [],
+      "strengths": ["Student-run Honor Code", "Liberal arts", "Classes with nearby Bryn Mawr College"],
+      "facts": [
+        "The Honor Code, in place since 1896, is written and governed entirely by students",
+        "Students serve on hiring committees and run more than 140 clubs",
+        "Haverford has Quaker roots that shape its values of equality and community"
+      ],
+      "about": "Haverford is a liberal arts college outside Philadelphia on an arboretum campus. It's known for academic rigor and an Honor Code run entirely by students.",
+      "interview": { "type": "both", "status": "Interviews recommended but not required. All by Zoom, with admission staff, senior interviewers, or alumni; all valued equally." },
+      "sources": ["https://www.haverford.edu/admission/applying/application-instructions", "https://admission.haverford.edu/portal/zoom_interview", "https://www.haverford.edu/about"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "bryn-mawr",
+      "name": "Bryn Mawr College",
+      "city": "Bryn Mawr", "state": "PA", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": ["Women's college"],
+      "strengths": ["Liberal arts", "Graduate school alongside the college since 1885"],
+      "facts": [
+        "At Lantern Night, each first-year receives a lantern in their class color to 'light her way through college'",
+        "Grand May Day, held every four years since 1900, fills the day with dancing, plays and concerts",
+        "Major traditions end with the whole community singing together at Step Sing"
+      ],
+      "about": "Bryn Mawr is a women's liberal arts college outside Philadelphia, founded in 1885. It's known for traditions like Lantern Night and May Day.",
+      "interview": { "type": "both", "status": "Not required but strongly encouraged. On campus or on Zoom, with admissions or alumnae interviewers; you can interview once." },
+      "sources": ["https://www.brynmawr.edu/admissions-aid/apply/admissions-interviews", "https://www.brynmawr.edu/admissions/alumna-interviews", "https://www.brynmawr.edu/student-experience/college-traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "carnegie-mellon",
+      "name": "Carnegie Mellon University",
+      "city": "Pittsburgh", "state": "PA", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": ["Tech/engineering"],
+      "strengths": ["Computer science", "Engineering", "Drama", "Architecture"],
+      "facts": [
+        "Buggy, a 100-year-old race of engine-free vehicles around Schenley Park, is the highlight of Spring Carnival",
+        "Buggies can hit about 35 mph and are designed and built by student teams",
+        "Spring Carnival has been held in some form for more than 100 years"
+      ],
+      "about": "Carnegie Mellon is a research university in Pittsburgh known for computer science, engineering and the arts. Its Spring Carnival features Buggy, a student-built race that's over 100 years old.",
+      "interview": { "type": "none", "status": "No interviews for most applicants (Architecture uses Zoom interviews; Drama uses auditions and portfolios)." },
+      "sources": ["https://www.cmu.edu/admission/admission/admission-faq", "https://www.cmu.edu/buggy/", "https://www.cmu.edu/admission/campus-experience/traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "penn-state",
+      "name": "Penn State University Park",
+      "city": "State College", "state": "PA", "region": "Mid-Atlantic",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Large public research university", "Agricultural sciences and food science"],
+      "facts": [
+        "THON is a 46-hour, student-run dance marathon that has raised over $200 million for kids with cancer",
+        "The Berkey Creamery is the largest university creamery in the U.S.",
+        "Penn State was founded as an agricultural college"
+      ],
+      "about": "Penn State's main campus is a large public university in State College, Pennsylvania. It's famous for THON, a huge student-run charity dance marathon, and its campus ice cream.",
+      "interview": { "type": "none", "status": "Interviews aren't typically part of first-year admission (only some special programs and arts majors)." },
+      "sources": ["https://www.psu.edu/resources/first-year-students/application-review", "https://agsci.psu.edu/about/history/the-creamery", "https://www.psu.edu/news/impact/story/sales-creamery-flavor-support-thon-fight-against-childhood-cancer"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "johns-hopkins",
+      "name": "Johns Hopkins University",
+      "city": "Baltimore", "state": "MD", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 5000, "setting": "City", "tags": [],
+      "strengths": ["Undergraduate research", "Engineering", "Public health and medicine connections"],
+      "facts": [
+        "About 70 percent of undergraduates do research outside their classes",
+        "Hopkins was the nation's first research university",
+        "The Homewood campus has red-brick buildings and green quads in North Baltimore"
+      ],
+      "about": "Johns Hopkins is a research university in Baltimore where about 5,000 undergraduates study on the Homewood campus. Most undergraduates take part in research.",
+      "interview": { "type": "none", "status": "Johns Hopkins doesn't offer interviews in undergraduate admissions." },
+      "sources": ["https://apply.jhu.edu/frequently-asked-questions/", "https://www.jhu.edu/life/campuses/homewood/", "https://apply.jhu.edu/academics/learning-at-hopkins/undergraduate-research/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "georgetown",
+      "name": "Georgetown University",
+      "city": "Washington", "state": "DC", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["International affairs (Walsh School of Foreign Service)", "Internships in Washington, DC"],
+      "facts": [
+        "It's the oldest Catholic and Jesuit university in the U.S., founded in 1789",
+        "The School of Foreign Service, founded in 1919, is the oldest school of international affairs in the U.S.",
+        "Students intern near the State Department, World Bank and think tanks"
+      ],
+      "about": "Georgetown is a Jesuit university in Washington, DC, founded in 1789. It's known for international affairs and public service.",
+      "interview": { "type": "alumni", "status": "Alumni interview required for all first-year applicants (waived only where no alumni are available). You arrange it after applying." },
+      "sources": ["https://uadmissions.georgetown.edu/alumni-interview/", "https://www.georgetown.edu/about/key-facts/", "https://sfs.georgetown.edu/about/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "howard",
+      "name": "Howard University",
+      "city": "Washington", "state": "DC", "region": "Mid-Atlantic",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": ["HBCU"],
+      "strengths": ["The only HBCU with an R1 research designation", "14 schools and colleges", "Fine arts (Chadwick A. Boseman College of Fine Arts)"],
+      "facts": [
+        "Howard's first Homecoming game, in 1924, helped start a national tradition",
+        "Homecoming draws more than 100,000 people each fall",
+        "Yardfest brings major music artists to campus"
+      ],
+      "about": "Howard is a historically Black research university in Washington, DC, founded in 1867. Its Homecoming is one of the biggest celebrations in college life.",
+      "interview": { "type": "none", "status": "Interviews aren't part of general first-year admission (music and acting programs use auditions with interviews)." },
+      "sources": ["https://admission.howard.edu/undergraduate/first-year", "https://finearts.howard.edu/admissions/audition-interview-portfolio-review", "https://thedig.howard.edu/all-stories/first-howard-university-homecoming"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "umd",
+      "name": "University of Maryland",
+      "city": "College Park", "state": "MD", "region": "Mid-Atlantic",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": 31000, "setting": "Suburb", "tags": [],
+      "strengths": ["100+ majors across 12 colleges", "Living-learning programs (College Park Scholars, Honors College)"],
+      "facts": [
+        "Students rub the nose of the Testudo terrapin statue for good luck, especially at finals",
+        "College Park Scholars offers 13 themed two-year living-learning programs",
+        "UMD was founded in 1856"
+      ],
+      "about": "The University of Maryland is a large public research university in College Park, near Washington, DC, with 31,000+ undergraduates. Many first-years join themed living-learning programs.",
+      "interview": { "type": "none", "status": "Interviews aren't listed as part of the first-year application." },
+      "sources": ["https://admissions.umd.edu/apply/freshman-applicants", "https://umd.edu/about/facts", "https://umd.edu/about/history"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "duke",
+      "name": "Duke University",
+      "city": "Durham", "state": "NC", "region": "South",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Research university", "School spirit and basketball"],
+      "facts": [
+        "All first-years live together on East Campus, then move to West Campus in the 'Bricks to Stone' tradition",
+        "Students camp in tents for weeks in Krzyzewskiville to get seats at big basketball games",
+        "Duke Chapel's 210-foot tower holds a 50-bell carillon; its chief designer, Julian Abele, was America's first Black architect of renown"
+      ],
+      "about": "Duke is a research university in Durham, North Carolina, with a Gothic West Campus centered on Duke Chapel. First-years all live together on East Campus.",
+      "interview": { "type": "alumni", "status": "Optional alumni interview by video or phone after you apply. Duke can't interview everyone and prioritizes some applicants." },
+      "sources": ["https://admissions.duke.edu/alumni-interviews/", "https://facts.duke.edu/", "https://admissions.duke.edu/school-spirit-and-community/", "https://chapel.duke.edu/about-chapel/history-architecture/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "unc",
+      "name": "University of North Carolina at Chapel Hill",
+      "city": "Chapel Hill", "state": "NC", "region": "South",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["The oldest public university in the U.S.", "Large public research university"],
+      "facts": [
+        "On the first day of classes, students take a 'First Sip' from the Old Well for good luck",
+        "UNC was chartered in 1789, making it the nation's oldest public university",
+        "Its debate societies, founded in 1795, are the oldest student groups on campus"
+      ],
+      "about": "UNC–Chapel Hill is the oldest public university in the country, in the college town of Chapel Hill, North Carolina. The Old Well is its best-known symbol.",
+      "interview": { "type": "none", "status": "UNC does not use interviews in its admissions review." },
+      "sources": ["https://admissions.unc.edu/faqs/can-i-interview-with-the-admissions-committee/", "https://www.unc.edu/about/history-and-traditions/", "https://www.unc.edu/discover/the-old-well-you-never-knew/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "davidson",
+      "name": "Davidson College",
+      "city": "Davidson", "state": "NC", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Student-run Honor Code", "Liberal arts"],
+      "facts": [
+        "Thanks to the Honor Code, final exams are unproctored and self-scheduled",
+        "The night before exams, students gather for the Midnight Scream",
+        "Faculty and staff serve students a late-night breakfast during finals week"
+      ],
+      "about": "Davidson is a liberal arts college near Charlotte, North Carolina, with a student-run Honor Code that dates to its founding in 1837. Students schedule their own unproctored final exams.",
+      "interview": { "type": "none", "status": "Davidson doesn't offer evaluative interviews; you can chat informally with current students instead." },
+      "sources": ["https://www.davidson.edu/admission-and-financial-aid/admission-process-help/frequently-asked-questions", "https://www.davidson.edu/about/history-traditions", "https://www.davidson.edu/offices-and-services/registrar/course-offerings/self-scheduled-exam-procedures"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "wake-forest",
+      "name": "Wake Forest University",
+      "city": "Winston-Salem", "state": "NC", "region": "South",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 5500, "setting": "City", "tags": [],
+      "strengths": ["Small classes at a university (10:1 student-faculty ratio)", "50+ majors"],
+      "facts": [
+        "After big wins, students 'roll the Quad' by covering the center of campus with toilet paper streamers",
+        "More than half of undergraduate classes have fewer than 20 students",
+        "Project Pumpkin brings local kids to campus for a student-run fall festival"
+      ],
+      "about": "Wake Forest is a university of about 5,500 undergraduates in Winston-Salem, North Carolina, with small classes and a liberal arts focus. It's famous for rolling the Quad after big wins.",
+      "interview": { "type": "admissions", "status": "Optional 20–30 minute Zoom interview with an admissions representative for seniors who've applied; request within five days of applying. Not everyone can be accommodated." },
+      "sources": ["https://admissions.wfu.edu/connect/interviews/", "https://traditions.campuslife.wfu.edu/tradtions-experiences/", "https://admissions.wfu.edu/experience-wake-forest/student-life/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "emory",
+      "name": "Emory University",
+      "city": "Atlanta", "state": "GA", "region": "South",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Liberal arts at a research university", "Two starting points: the Atlanta campus or Oxford College"],
+      "facts": [
+        "You can start at the Atlanta campus or spend two years at the small Oxford College campus 38 miles away",
+        "Dooley, a skeleton called the 'Lord of Misrule', is Emory's unofficial mascot",
+        "During Dooley's Week, Dooley interrupts classes and pops up around campus"
+      ],
+      "about": "Emory is a research university in Atlanta with a strong liberal arts focus. Students can begin at the Atlanta campus or at Oxford College, a small campus nearby.",
+      "interview": { "type": "alumni", "status": "No interviews with admission staff. A small number of first-year applicants in certain cities may be invited to an alumni interview." },
+      "sources": ["https://apply.emory.edu/apply/faqs", "https://apply.web.emory.edu/discover/about/index.html", "https://emoryhistory.emory.edu/customs/dooley/index.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "spelman",
+      "name": "Spelman College",
+      "city": "Atlanta", "state": "GA", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2700, "setting": "City", "tags": ["HBCU", "Women's college"],
+      "strengths": ["Education of women of African descent", "Liberal arts and sciences", "Atlanta University Center Consortium"],
+      "facts": [
+        "Students wear white dresses for formal ceremonies, a tradition dating to 1900",
+        "Each class receives its own emblem and colors, passed down since 1927",
+        "Students can cross-register at Morehouse and Clark Atlanta and share the Woodruff Library"
+      ],
+      "about": "Spelman is a historically Black liberal arts college for women in Atlanta, founded in 1881, with more than 2,700 students. It's part of the Atlanta University Center with Morehouse and Clark Atlanta.",
+      "interview": { "type": "none", "status": "Interviews aren't mentioned in Spelman's first-year application requirements or FAQ." },
+      "sources": ["https://www.spelman.edu/admissions/applying-to-spelman/first-time-student-applicant.html", "https://www.spelman.edu/admissions/frequently-asked-questions.html", "https://www.spelman.edu/about/history-in-brief.html", "https://www.spelman.edu/_1_Docs-and-Files/alumnae/spelman-history-and-traditions-brochure.pdf"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "morehouse",
+      "name": "Morehouse College",
+      "city": "Atlanta", "state": "GA", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2200, "setting": "City", "tags": ["HBCU", "Men's college"],
+      "strengths": ["Leadership and service", "#1 producer of Black men who earn doctorates", "Most Rhodes Scholars of any HBCU"],
+      "facts": [
+        "Morehouse is the nation's only historically Black private liberal arts college for men",
+        "Crown Forum is a required community gathering that dates back to the college's early years",
+        "Becoming a 'Morehouse Man' centers on service and social responsibility"
+      ],
+      "about": "Morehouse is a historically Black liberal arts college for men in Atlanta, founded in 1867, with more than 2,200 students. It's known for producing leaders and scholars.",
+      "interview": { "type": "admissions", "status": "Not a standard step, but Morehouse says applicants may be invited to interview during the review process. Confirm details with admissions." },
+      "sources": ["https://morehouse.edu/admissions/blog/navigating-the-college-admissions-process", "https://morehouse.edu/about/facts-and-figures/", "https://morehouse.edu/admissions/blog/the-qualities-of-a-morehouse-man"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "georgia-tech",
+      "name": "Georgia Institute of Technology",
+      "city": "Atlanta", "state": "GA", "region": "South",
+      "control": "Public", "kind": "Tech institute",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": ["Tech/engineering"],
+      "strengths": ["Engineering", "Computing", "Public tech university in a big city"],
+      "facts": [
+        "The Ramblin' Wreck, a 1930 Ford Model A, leads the football team onto the field",
+        "Students build their own contraptions for the Ramblin' Wreck Parade, held since 1932",
+        "Students call themselves Ramblin' Wrecks"
+      ],
+      "about": "Georgia Tech is a public technology university in the middle of Atlanta, known for engineering and computing. Its mascot is a vintage car called the Ramblin' Wreck.",
+      "interview": { "type": "none", "status": "Interviews are not part of admission at Georgia Tech (no alumni or staff interviews)." },
+      "sources": ["https://admission.gatech.edu/first-year/interview", "https://traditions.gatech.edu/ramblinreck.html", "https://traditions.gatech.edu/reckparade.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "vanderbilt",
+      "name": "Vanderbilt University",
+      "city": "Nashville", "state": "TN", "region": "South",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 6900, "setting": "City", "tags": [],
+      "strengths": ["Residential Commons for first-years", "Research university in Nashville"],
+      "facts": [
+        "All first-years live on The Martha Rivers Ingram Commons in one of 10 houses, each with a faculty head",
+        "The Commons Ball each February transforms the Commons Center for a themed dance",
+        "Nashville has more than 20,000 live music performances a year"
+      ],
+      "about": "Vanderbilt is a research university of about 6,900 undergraduates in the middle of Nashville. All first-years live together on The Ingram Commons.",
+      "interview": { "type": "none", "status": "Vanderbilt doesn't offer interviews through admissions; optional video submissions via Glimpse or InitialView instead." },
+      "sources": ["https://admissions.vanderbilt.edu/faq/", "https://admissions.vanderbilt.edu/profile/", "https://www.vanderbilt.edu/residentialcolleges/ingram-commons/programs/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "rice",
+      "name": "Rice University",
+      "city": "Houston", "state": "TX", "region": "Southwest",
+      "control": "Private", "kind": "Research university",
+      "size": "Small", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Residential college system", "Research university"],
+      "facts": [
+        "Every student is randomly assigned to one of 11 residential colleges for all four years",
+        "Beer Bike, dating to 1957, is a relay race between the colleges (water for those under 21)",
+        "Rice has no fraternities or sororities"
+      ],
+      "about": "Rice is a research university in Houston where every student belongs to one of 11 residential colleges. Traditions like Beer Bike bring the colleges together.",
+      "interview": { "type": "both", "status": "Recommended but optional and not guaranteed. Virtual interviews with a Rice alum or current student after you apply." },
+      "sources": ["https://admission.rice.edu/apply/first-year-domestic-applicants", "https://news.rice.edu/news/2011/story-behind-rice-traditions", "https://alumni.rice.edu/about-beer-bike"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "tulane",
+      "name": "Tulane University",
+      "city": "New Orleans", "state": "LA", "region": "South",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 8200, "setting": "City", "tags": [],
+      "strengths": ["Public service requirement", "70+ majors and minors", "Learning through New Orleans"],
+      "facts": [
+        "Tulane was the first private research university to require public service to graduate",
+        "First-years take a TIDES course that explores a niche interest and New Orleans",
+        "CACTUS, founded in 1966, is one of the oldest student-run volunteer groups in the country"
+      ],
+      "about": "Tulane is a research university of about 8,200 undergraduates in New Orleans. Every student does public service as part of graduating.",
+      "interview": { "type": "alumni", "status": "Optional interviews and coffee chats; not interviewing won't hurt your chances." },
+      "sources": ["https://apply.tulane.edu/portal/tulaneinterviews", "https://admission.tulane.edu/apply/alumni-interview-program", "https://cps.tulane.edu/public-service-requirement", "https://admission.tulane.edu/academics/degrees-requirements/core-curriculum"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uva",
+      "name": "University of Virginia",
+      "city": "Charlottesville", "state": "VA", "region": "South",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Student-run Honor System", "Jefferson's Academical Village (a UNESCO World Heritage site)"],
+      "facts": [
+        "Top fourth-years are chosen by their peers to live in rooms on the historic Lawn",
+        "The student-run Honor System dates to 1842; new students sign the Honor Code at Convocation",
+        "The Lawn hosts traditions like Lighting of the Lawn and Rotunda Sing"
+      ],
+      "about": "UVA is a public university in Charlottesville, Virginia, founded by Thomas Jefferson. Its original Academical Village is a UNESCO World Heritage site, and students run its Honor System.",
+      "interview": { "type": "none", "status": "UVA does not offer interviews for undergraduate admission." },
+      "sources": ["https://admission.virginia.edu/faqs", "https://studentaffairs.virginia.edu/about/students-traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "william-mary",
+      "name": "William & Mary",
+      "city": "Williamsburg", "state": "VA", "region": "South",
+      "control": "Public", "kind": "Public university",
+      "size": "Medium", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Public university with a liberal arts feel", "History and government"],
+      "facts": [
+        "At the Yule Log ceremony, students toss holly into the fire in the Wren Building's Great Hall for good luck",
+        "The Yule Log tradition began in 1930",
+        "Students decorate the Wren portico trees with paper doves carrying messages of gratitude"
+      ],
+      "about": "William & Mary is a public university in historic Williamsburg, Virginia, with a small-college feel. Its Wren Building is the heart of traditions like the Yule Log ceremony.",
+      "interview": { "type": "admissions", "status": "Optional 20–30 minute interviews with trained W&M seniors, in summer for rising seniors and fall for seniors. Fewer than 20% of applicants interview; no disadvantage if you don't." },
+      "sources": ["https://www.wm.edu/admission/undergraduateadmission/how-to-apply/first-year-applicants/application-checklist/optional-application-materials/on-campus-interview/", "https://www.wm.edu/sites/yulelog/", "https://www.wm.edu/about/traditions/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "hampton",
+      "name": "Hampton University",
+      "city": "Hampton", "state": "VA", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": ["HBCU"],
+      "strengths": ["Historic HBCU", "Waterfront campus on the Chesapeake Bay"],
+      "facts": [
+        "The Emancipation Oak was the site of the first Southern reading of the Emancipation Proclamation in 1863",
+        "National Geographic named the Emancipation Oak one of the 10 Great Trees of the World",
+        "Booker T. Washington graduated from Hampton and went on to help found Tuskegee"
+      ],
+      "about": "Hampton is a historically Black university founded in 1868, on the waterfront near the mouth of the Chesapeake Bay in Virginia. Its Emancipation Oak is a landmark of American history.",
+      "interview": { "type": "none", "status": "Interviews aren't listed in Hampton's freshman application requirements." },
+      "sources": ["https://home.hamptonu.edu/admissions/admission-requirements-for-freshman-students/", "https://home.hamptonu.edu/about/emancipation-oak/", "https://home.hamptonu.edu/about/history/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "xavier-la",
+      "name": "Xavier University of Louisiana",
+      "city": "New Orleans", "state": "LA", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2586, "setting": "City", "tags": ["HBCU"],
+      "strengths": ["Pre-medical and health sciences", "Pharmacy", "STEM research"],
+      "facts": [
+        "Xavier is the only historically Black Catholic university in the U.S.",
+        "It's a national leader in sending Black students to medical school",
+        "Its College of Pharmacy is one of the top producers of Black pharmacists"
+      ],
+      "about": "Xavier is a historically Black Catholic university in New Orleans, founded in 1915. It's known nationally for preparing students for medicine and pharmacy.",
+      "interview": { "type": "none", "status": "Interviews aren't part of Xavier's general freshman application (the College of Pharmacy has its own process)." },
+      "sources": ["https://www.xula.edu/admissions/undergraduate-admission/firsttimefreshmen/index.html", "https://www.xula.edu/about/factsandfigures/index.html", "https://www.xula.edu/collegeofpharmacy/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "famu",
+      "name": "Florida A&M University",
+      "city": "Tallahassee", "state": "FL", "region": "South",
+      "control": "Public", "kind": "Public university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": ["HBCU"],
+      "strengths": ["Pharmacy and public health", "The Marching 100"],
+      "facts": [
+        "The Marching 100 band has been refined for over a century",
+        "FAMU's pharmacy program is the only one in the U.S. with a fully accredited Institute of Public Health",
+        "FAMU enrolls nearly 10,000 students from across the U.S. and 70+ countries"
+      ],
+      "about": "FAMU is a public, historically Black university in Tallahassee, Florida, with nearly 10,000 students. It's famous for the Marching 100 and its pharmacy program.",
+      "interview": { "type": "none", "status": "Interviews aren't a general freshman requirement (some programs, like the College of Education, have their own interview)." },
+      "sources": ["https://admissions.famu.edu/student-types/freshman.php", "https://www.famu.edu/about-famu/index.php", "https://cssah.famu.edu/departments-and-centers/marching-100/index.php", "https://pharmacy.famu.edu/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uf",
+      "name": "University of Florida",
+      "city": "Gainesville", "state": "FL", "region": "South",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Large public research university", "School spirit"],
+      "facts": [
+        "Gator Growl, started in 1923, is the nation's largest student-run pep rally",
+        "The football stadium is nicknamed 'The Swamp'",
+        "There are more Gator statues on campus than statues of people in Gainesville"
+      ],
+      "about": "The University of Florida is a large public research university in Gainesville. It's known for huge school spirit, from the Gator Chomp to Gator Growl.",
+      "interview": { "type": "none", "status": "Interviews aren't part of standard freshman admission (the School of Music requires one)." },
+      "sources": ["https://admissions.ufl.edu/apply/freshman/", "https://news.ufl.edu/2023/10/100-years-of-gator-growl/", "https://team.studentlife.ufl.edu/onboarding/uf-traditions/fun-facts/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "berea",
+      "name": "Berea College",
+      "city": "Berea", "state": "KY", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "College town", "tags": ["Work college"],
+      "strengths": ["No tuition", "Work program: every student has a campus job", "Commitment to Appalachia"],
+      "facts": [
+        "Berea hasn't charged tuition since 1892",
+        "Every student works at least 10 hours a week in one of 100+ campus job programs",
+        "Founded in 1855 by abolitionists, it was the first interracial and coeducational college in the South"
+      ],
+      "about": "Berea is a tuition-free liberal arts college in Kentucky for promising students with limited financial resources, especially from Appalachia. Every student works a campus job.",
+      "interview": { "type": "admissions", "status": "Not a formal interview, but conversations with an Admissions Specialist are part of how Berea evaluates applicants." },
+      "sources": ["https://www.berea.edu/admissions/admission-information/admission-requirements", "https://www.berea.edu/about/quick-facts", "https://www.berea.edu/no-tuition"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "sewanee",
+      "name": "Sewanee: The University of the South",
+      "city": "Sewanee", "state": "TN", "region": "South",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Rural", "tags": [],
+      "strengths": ["Liberal arts", "13,000-acre Domain for the outdoors", "Student-run Honor Code"],
+      "facts": [
+        "The 13,000-acre Domain has trails, bluffs, caves and a 19-mile Perimeter Trail",
+        "Students with academic distinction wear academic gowns to class as members of the Order of the Gown",
+        "Drivers tap their car roof to collect their 'Sewanee angel' as they pass through the gates"
+      ],
+      "about": "Sewanee is a small liberal arts university on a 13,000-acre mountain campus in Tennessee called the Domain. It's known for traditions like the Order of the Gown.",
+      "interview": { "type": "admissions", "status": "Optional 20–25 minute conversations with admission counselors (not offered November–early March), plus non-evaluative interviews with trained seniors." },
+      "sources": ["https://new.sewanee.edu/admission-aid/visit/campus-visit-options/virtual-appointments/", "https://new.sewanee.edu/admission-aid/application-process/application-review/first-year-applicants/frequently-asked-questions/", "https://new.sewanee.edu/campus-life/connecting/order-of-the-gown/", "https://new.sewanee.edu/academics/the-honor-code/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uchicago",
+      "name": "University of Chicago",
+      "city": "Chicago", "state": "IL", "region": "Midwest",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["The Core curriculum", "Economics", "Intense intellectual culture"],
+      "facts": [
+        "Scav Hunt, started in 1987, is a four-day scavenger hunt where teams build, perform and solve hundreds of odd items",
+        "Scav teams once built a working nuclear reactor in a dorm, in 1999",
+        "The campus is in the Hyde Park neighborhood of Chicago"
+      ],
+      "about": "The University of Chicago is a research university in Chicago's Hyde Park neighborhood, known for intense intellectual curiosity. Its famous tradition is Scav Hunt, the world's largest scavenger hunt.",
+      "interview": { "type": "none", "status": "No on-campus or alumni interviews. UChicago highly recommends an optional two-minute video profile instead." },
+      "sources": ["https://collegeadmissions.uchicago.edu/apply/application/optional-materials/", "https://scavhunt.uchicago.edu/lore/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "northwestern",
+      "name": "Northwestern University",
+      "city": "Evanston", "state": "IL", "region": "Midwest",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 8300, "setting": "Suburb", "tags": [],
+      "strengths": ["Journalism and communication", "Quarter system with many courses", "Dance Marathon"],
+      "facts": [
+        "Students paint 'The Rock' in the middle of the night, after guarding it for 24 hours",
+        "Dance Marathon, started in 1975, now raises more than $1 million a year",
+        "On the quarter system, students usually take 12 courses a year"
+      ],
+      "about": "Northwestern is a research university of about 8,300 undergraduates in Evanston, just north of Chicago on Lake Michigan. It runs on quarters and is known for traditions like painting The Rock.",
+      "interview": { "type": "none", "status": "Northwestern no longer offers alumni interviews. Optional 'Cat Chats' with alumni are non-evaluative conversations before you apply." },
+      "sources": ["https://admissions.northwestern.edu/apply/admission-interviews.html", "https://admissions.northwestern.edu/visit/experience/alumni-conversations.html", "https://www.northwestern.edu/about/facts.html", "https://www.northwestern.edu/about/history/the-rock.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "michigan",
+      "name": "University of Michigan",
+      "city": "Ann Arbor", "state": "MI", "region": "Midwest",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Large public research university", "School of Music, Theatre & Dance", "Engineering"],
+      "facts": [
+        "Legend says stepping on the bronze block M on the Diag before your first exam means you'll fail it",
+        "Michigan Stadium, 'The Big House', is the largest college football stadium in the U.S.",
+        "Each new class takes a Block M photo together on the field of The Big House"
+      ],
+      "about": "The University of Michigan is a large public research university in Ann Arbor, one of the country's classic college towns. The Diag and The Big House are at the center of campus life.",
+      "interview": { "type": "none", "status": "Michigan doesn't interview most undergraduate applicants (only some music, theatre, dance and dental hygiene programs)." },
+      "sources": ["https://lsa.umich.edu/lsa/alumni-friends/get-connected/college-connections/request-an-interview.html", "https://teamdynamix.umich.edu/TDClient/154/Portal/KB/ArticleDet?ID=7510", "https://admissions.umich.edu/explore-visit/life-michigan", "https://tour.umich.edu/text-based/tours/diag/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "notre-dame",
+      "name": "University of Notre Dame",
+      "city": "Notre Dame", "state": "IN", "region": "Midwest",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": 8600, "setting": "Suburb", "tags": [],
+      "strengths": ["Residence hall communities", "Catholic research university"],
+      "facts": [
+        "Each of 33 residence halls has its own chapel, mascot, colors and traditions; there's no Greek system",
+        "Students avoid the Golden Dome's front steps until graduation, or legend says they won't graduate on time",
+        "Leftover gold leaf from regilding the Dome goes into football helmet paint and diplomas"
+      ],
+      "about": "Notre Dame is a Catholic research university of about 8,600 undergraduates in northern Indiana. Most students live in one of 33 residence halls, each with its own traditions.",
+      "interview": { "type": "none", "status": "Interviews are not part of Notre Dame's evaluation; the essays play that role." },
+      "sources": ["https://admissions.nd.edu/apply/faqs/", "https://residentiallife.nd.edu/undergraduate/residence-halls/", "https://admissions.nd.edu/visit-engage/stories-news/college-bound-notre-dame-traditions/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "washu",
+      "name": "Washington University in St. Louis",
+      "city": "St. Louis", "state": "MO", "region": "Midwest",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "Suburb", "tags": [],
+      "strengths": ["Research university", "Campus next to Forest Park"],
+      "facts": [
+        "Thurtene, founded in 1907, is the oldest and largest student-run carnival in the U.S.",
+        "At Thurtene, students build multi-story facades and write their own shows",
+        "The Danforth Campus sits beside St. Louis's Forest Park"
+      ],
+      "about": "WashU is a research university in St. Louis, next to the city's huge Forest Park. Its Thurtene Carnival is the oldest student-run carnival in the country.",
+      "interview": { "type": "none", "status": "No formal admissions interviews listed; students can book one optional, informal 15–20 minute 'Bear Chat' with a current student." },
+      "sources": ["https://admissions.wustl.edu/how-to-apply/interview/", "https://students.wustl.edu/thurtene-carnival/", "https://source.wustl.edu/2024/04/thurtene-returns-to-campus-and-its-roots-april-19-21/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "carleton",
+      "name": "Carleton College",
+      "city": "Northfield", "state": "MN", "region": "Midwest",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2007, "setting": "College town", "tags": [],
+      "strengths": ["Undergraduate teaching", "Liberal arts", "Trimester calendar"],
+      "facts": [
+        "Students secretly 'steal' and flash a bust of the poet Schiller at big events, a tradition since 1957",
+        "New students toss Frisbees into the Bald Spot to officially become Carleton students",
+        "Every Friday, students 'mail' flowers to friends through campus mailboxes"
+      ],
+      "about": "Carleton is a liberal arts college of about 2,000 students in the river town of Northfield, Minnesota. It's known for great teaching, a trimester calendar and a quirky sense of humor.",
+      "interview": { "type": "both", "status": "Optional interviews with admissions staff, student Admissions Fellows, or alumni representatives, in person or by video. Request before January 1." },
+      "sources": ["https://www.carleton.edu/admissions/apply/steps/interview/", "https://www.carleton.edu/about/carleton-at-a-glance/", "https://www.carleton.edu/admissions/explore/outside-class/traditions/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "grinnell",
+      "name": "Grinnell College",
+      "city": "Grinnell", "state": "IA", "region": "Midwest",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 1700, "setting": "Rural", "tags": [],
+      "strengths": ["Individually advised curriculum", "Self-governance"],
+      "facts": [
+        "The only required course outside your major is the First-Year Tutorial",
+        "Self-governance gives students real responsibility instead of lots of rules",
+        "You build your academic plan with a faculty adviser"
+      ],
+      "about": "Grinnell is a liberal arts college of about 1,700 students in Grinnell, Iowa. There's no core curriculum; you design your path with an adviser, and students largely govern themselves.",
+      "interview": { "type": "admissions", "status": "Optional interviews with admission staff on campus, off campus or online (from June of junior year). After Nov. 15, only for students who've applied." },
+      "sources": ["https://www.grinnell.edu/admission/visit/on-campus/interviews", "https://www.grinnell.edu/admission/why-grinnell/academics/individually-advised", "https://www.grinnell.edu/campus-life/self-governance"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "oberlin",
+      "name": "Oberlin College and Conservatory",
+      "city": "Oberlin", "state": "OH", "region": "Midwest",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2400, "setting": "College town", "tags": ["Arts"],
+      "strengths": ["Conservatory of Music", "Double degree in music and liberal arts", "Winter Term projects"],
+      "facts": [
+        "Oberlin launched the nation's first music-and-liberal-arts double degree in 1910",
+        "Students can rent two original artworks each semester for $5 apiece",
+        "Every January, Winter Term lets students do an immersive project anywhere in the world"
+      ],
+      "about": "Oberlin is a liberal arts college with about 2,400 arts and sciences students, plus a famous Conservatory of Music, in Oberlin, Ohio. Students do Winter Term projects every January.",
+      "interview": { "type": "both", "status": "Optional 20–30 minute interviews with admissions staff, a current student or an alum (U.S. applicants). Book at least two weeks ahead; slots can fill up." },
+      "sources": ["https://www.oberlin.edu/admissions-and-aid/arts-and-sciences/interviews-college-arts-sciences", "https://www.oberlin.edu/admissions-and-aid/double-degree-program", "https://www.oberlin.edu/winter-term", "https://www.oberlin.edu/news/art-rental-behind-scenes-look"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "kenyon",
+      "name": "Kenyon College",
+      "city": "Gambier", "state": "OH", "region": "Midwest",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Rural", "tags": [],
+      "strengths": ["Writing", "The Kenyon Review literary magazine", "Fully residential campus"],
+      "facts": [
+        "Middle Path, a 10-foot-wide gravel walk, runs the length of campus",
+        "First-years walk Middle Path as part of Opening Convocation",
+        "All students live on campus, and the tiny village of Gambier sits in the middle of it"
+      ],
+      "about": "Kenyon is a residential liberal arts college in the small village of Gambier, Ohio, known for writing and the Kenyon Review. Middle Path runs through the heart of campus.",
+      "interview": { "type": "both", "status": "Recommended but not required. Virtual interviews with a Kenyon student fellow, plus alumni interviews in select U.S. cities." },
+      "sources": ["https://www.kenyon.edu/admissions-aid/apply-to-kenyon/interviews/", "https://www.kenyon.edu/kenyon-on-a-tour/middle-path/", "https://www.kenyon.edu/kenyon-on-a-tour/village-of-gambier/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "macalester",
+      "name": "Macalester College",
+      "city": "St. Paul", "state": "MN", "region": "Midwest",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Internationalism", "Study abroad", "Internships in the Twin Cities"],
+      "facts": [
+        "Macalester was the first U.S. college to fly the United Nations flag, every day since 1950",
+        "Flags on campus represent the home countries of current students",
+        "About 60 percent of students study abroad"
+      ],
+      "about": "Macalester is a liberal arts college in St. Paul, Minnesota, with students from 49 states and over 100 countries. It's known for its international focus and city location.",
+      "interview": { "type": "admissions", "status": "Optional 30-minute virtual interview with a Macalester staff member once you've started your application; it becomes part of your file." },
+      "sources": ["https://www.macalester.edu/admissions/us-admissions/faq/interviews/", "https://www.macalester.edu/about/", "https://www.macalester.edu/admissions/trivia/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "ohio-state",
+      "name": "The Ohio State University",
+      "city": "Columbus", "state": "OH", "region": "Midwest",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Large public research university", "School spirit"],
+      "facts": [
+        "In Script Ohio, the marching band spells out Ohio and a senior sousaphone player 'dots the i'",
+        "Students jump into Mirror Lake before the Michigan game",
+        "The O-H-I-O chant dates back to 1942"
+      ],
+      "about": "Ohio State is a large public research university in Columbus, Ohio's capital. It's known for huge school spirit, from Script Ohio to Mirror Lake.",
+      "interview": { "type": "none", "status": "Interviews aren't part of Ohio State's first-year application steps for the Columbus campus." },
+      "sources": ["https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step", "https://undergrad.osu.edu/life-on-campus/spirit-and-tradition"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uw-madison",
+      "name": "University of Wisconsin–Madison",
+      "city": "Madison", "state": "WI", "region": "Midwest",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Large public research university", "Lakeside campus life"],
+      "facts": [
+        "The Memorial Union Terrace on Lake Mendota is famous for its sunburst-colored chairs",
+        "Students have held giant snowball fights for the 'Battle for Bascom' on Bascom Hill",
+        "After every home football game, the marching band plays the 'Fifth Quarter'"
+      ],
+      "about": "UW–Madison is a large public research university in Wisconsin's capital, set between two lakes. The Memorial Union Terrace on Lake Mendota is a campus favorite.",
+      "interview": { "type": "none", "status": "Interviews aren't part of UW–Madison's first-year application requirements." },
+      "sources": ["https://admissions.wisc.edu/apply-as-a-freshman/", "https://union.wisc.edu/visit/memorial-union", "https://news.wisc.edu/homecoming-week-2025/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "purdue",
+      "name": "Purdue University",
+      "city": "West Lafayette", "state": "IN", "region": "Midwest",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": ["Tech/engineering"],
+      "strengths": ["Engineering", "Aeronautics and astronautics", "150+ majors"],
+      "facts": [
+        "Purdue is called the 'Cradle of Astronauts'; Neil Armstrong and Eugene Cernan studied there",
+        "All engineering students share a first-year engineering core before picking a major",
+        "Graduating aerospace engineers fly paper airplanes toward the stage at commencement"
+      ],
+      "about": "Purdue is a large public university in West Lafayette, Indiana, known for engineering. So many graduates have become astronauts that it's called the Cradle of Astronauts.",
+      "interview": { "type": "none", "status": "Interviews aren't part of general first-year admission (some music programs use auditions and interviews)." },
+      "sources": ["https://admissions.purdue.edu/become-student/first-year-criteria/", "https://www.purdue.edu/space/", "https://www.purdue.edu/futureengineers/aeronautical-and-astronautical-engineering/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "rose-hulman",
+      "name": "Rose-Hulman Institute of Technology",
+      "city": "Terre Haute", "state": "IN", "region": "Midwest",
+      "control": "Private", "kind": "Tech institute",
+      "size": "Small", "undergrads": 2100, "setting": "College town", "tags": ["Tech/engineering"],
+      "strengths": ["Undergraduate engineering", "STEM teaching"],
+      "facts": [
+        "U.S. News has ranked it the No. 1 undergraduate engineering program for 28 straight years",
+        "It focuses on undergraduates, with about 2,100 of them and only about 70 graduate students",
+        "The campus covers 1,300 acres in Terre Haute, Indiana"
+      ],
+      "about": "Rose-Hulman is a small engineering and science college in Terre Haute, Indiana, focused almost entirely on undergraduates. It's known for hands-on teaching.",
+      "interview": { "type": "none", "status": "No Rose-Hulman interviews; U.S. applicants can send an optional Glimpse video instead." },
+      "sources": ["https://www.rose-hulman.edu/admissions-and-aid/the-application-process/application-and-deadlines/index.html", "https://www.rose-hulman.edu/about-us/get-to-know-rose-hulman/fast-facts.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "ut-austin",
+      "name": "The University of Texas at Austin",
+      "city": "Austin", "state": "TX", "region": "Southwest",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Large public research university", "Life in Austin"],
+      "facts": [
+        "The UT Tower is lit orange to celebrate wins and milestones, sometimes with numbers spelled out in office lights",
+        "The Hook 'em Horns hand sign was created in 1955 using shadow puppets",
+        "The campus is nicknamed the Forty Acres, the size of the original land grant"
+      ],
+      "about": "UT Austin is a large public research university in the middle of Austin, Texas. Its Tower glows burnt orange to celebrate big moments.",
+      "interview": { "type": "none", "status": "UT Austin does not provide interviews for general admission." },
+      "sources": ["https://admissions.utexas.edu/apply/frequently-asked-questions/", "https://www.utexas.edu/about/longhorn-traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "asu",
+      "name": "Arizona State University",
+      "city": "Tempe", "state": "AZ", "region": "Southwest",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Innovation", "Barrett, The Honors College", "Access for first-generation students"],
+      "facts": [
+        "About 40 percent of undergraduates are the first in their family to go to college",
+        "Barrett, The Honors College has its own residential campus in Tempe",
+        "ASU has been ranked No. 1 in the U.S. for innovation by U.S. News"
+      ],
+      "about": "Arizona State is a very large public university based in Tempe, known for innovation and for welcoming first-generation students. Its Barrett Honors College has its own campus.",
+      "interview": { "type": "none", "status": "ASU doesn't require admission interviews; the application takes about 30 minutes and needs no essay." },
+      "sources": ["https://admission.asu.edu/apply/first-year/admission", "https://www.asu.edu/about/facts-and-figures", "https://barretthonors.asu.edu/about"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "trinity-tx",
+      "name": "Trinity University",
+      "city": "San Antonio", "state": "TX", "region": "Southwest",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2500, "setting": "City", "tags": [],
+      "strengths": ["Liberal arts with pre-professional programs", "8:1 student-faculty ratio", "100+ majors and minors"],
+      "facts": [
+        "New students climb Murchison Tower during orientation",
+        "Birthday tradition: getting dunked in Miller Fountain",
+        "Major Declaration Day celebrates when students choose their major"
+      ],
+      "about": "Trinity is a liberal arts university of about 2,500 students on a hilltop overlooking downtown San Antonio, Texas. It pairs small classes with pre-professional programs.",
+      "interview": { "type": "admissions", "status": "Interviews with an admissions representative, virtually or in your hometown. Schedule before your application deadline." },
+      "sources": ["https://admissions.trinity.edu/portal/interviews", "https://trinity.edu/about", "https://trinity.edu/about/community"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "stanford",
+      "name": "Stanford University",
+      "city": "Stanford", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Research university",
+      "size": "Medium", "undergrads": null, "setting": "Suburb", "tags": [],
+      "strengths": ["Research university in Silicon Valley", "Engineering and computer science"],
+      "facts": [
+        "At Commencement, graduates enter the stadium in costume for the 'Wacky Walk'",
+        "Full Moon on the Quad is a winter tradition centered on gratitude",
+        "Students recently revived traditions like the Band Run and Midnight Breakfast"
+      ],
+      "about": "Stanford is a research university in the heart of Silicon Valley, near Palo Alto, California. It's known for engineering, entrepreneurship and playful traditions like the Wacky Walk.",
+      "interview": { "type": "alumni", "status": "Optional alumni interview, in person or by video, offered to some applicants in interview areas depending on availability." },
+      "sources": ["https://admission.stanford.edu/apply/first-year/interview.html", "https://news.stanford.edu/stories/2025/06/class-2025-wacky-walk", "https://exhibits.stanford.edu/stanford-stories/feature/student-traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "pomona",
+      "name": "Pomona College",
+      "city": "Claremont", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": [],
+      "strengths": ["Liberal arts", "The Claremont Colleges consortium (2,700+ courses)", "Classes averaging 15 students"],
+      "facts": [
+        "The number 47 is Pomona's unofficial mascot, celebrated every April 7 (4/7)",
+        "Students can take classes at all five undergraduate Claremont Colleges, within one square mile",
+        "Professors teach every class; there are no teaching assistants leading courses"
+      ],
+      "about": "Pomona is a liberal arts college in Claremont, California, about 35 miles east of Los Angeles. It's the founding member of the Claremont Colleges, so students get a small college with big-university resources.",
+      "interview": { "type": "none", "status": "Pomona doesn't offer staff or alumni interviews for U.S. applicants (international applicants may submit third-party interviews)." },
+      "sources": ["https://www.pomona.edu/admissions/apply", "https://www.pomona.edu/about/claremont-colleges", "https://www.pomona.edu/about/traditions"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "harvey-mudd",
+      "name": "Harvey Mudd College",
+      "city": "Claremont", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Tech institute",
+      "size": "Small", "undergrads": 800, "setting": "Suburb", "tags": ["Tech/engineering"],
+      "strengths": ["STEM with the liberal arts", "The Clinic program with real clients", "Part of the Claremont Colleges"],
+      "facts": [
+        "Students take nearly a third of their classes in humanities, social sciences and the arts",
+        "In Clinic, junior and senior teams solve real technical problems for companies, since 1963",
+        "Everyone starts with the Common Core, courses from every department"
+      ],
+      "about": "Harvey Mudd is a college of about 800 students in Claremont, California, for science, engineering and math, with a strong liberal arts side. Its Clinic program has students solve real problems for real companies.",
+      "interview": { "type": "both", "status": "Optional 30-minute online interviews with senior interns or admission officers (mid-September to early December), or an alumni interview. One interview per student." },
+      "sources": ["https://www.hmc.edu/admission/connect/interviews/", "https://www.hmc.edu/clinic/", "https://www.hmc.edu/academics/common-core-curriculum/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "colorado-college",
+      "name": "Colorado College",
+      "city": "Colorado Springs", "state": "CO", "region": "West",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 2034, "setting": "City", "tags": [],
+      "strengths": ["The Block Plan: one course at a time", "Outdoors near Pikes Peak"],
+      "facts": [
+        "On the Block Plan, you take one course at a time in 3.5-week blocks",
+        "Every block ends with a four-and-a-half-day Block Break",
+        "The Aspen bike trip, a 160-mile ride, is the longest-running Block Break tradition"
+      ],
+      "about": "Colorado College is a liberal arts college of about 2,000 students in Colorado Springs, three miles from the mountains. Students take one class at a time on the Block Plan.",
+      "interview": { "type": "both", "status": "Optional virtual informational interviews with student admission ambassadors or alumni; not evaluative and not required." },
+      "sources": ["https://www.coloradocollege.edu/admission/apply/first-year-students.html", "https://www.coloradocollege.edu/basics/blockplan/", "https://www.coloradocollege.edu/basics/blockplan/blockbreak/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "caltech",
+      "name": "California Institute of Technology",
+      "city": "Pasadena", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Tech institute",
+      "size": "Small", "undergrads": null, "setting": "City", "tags": ["Tech/engineering"],
+      "strengths": ["Science and engineering", "Honor Code with take-home exams", "Small research-focused community"],
+      "facts": [
+        "On secret Ditch Day, seniors leave behind puzzles and challenges for underclassmen to solve",
+        "Houses share family-style dinners every weeknight",
+        "The Honor Code lets professors give take-home exams"
+      ],
+      "about": "Caltech is a small science and engineering university in Pasadena, California. Students live in houses with their own customs and famous traditions like Ditch Day.",
+      "interview": { "type": "none", "status": "Interviews aren't part of Caltech's first-year application; you can talk with admissions or current students at events instead." },
+      "sources": ["https://www.admissions.caltech.edu/apply/first-year-applicants", "https://www.admissions.caltech.edu/why-caltech/student-life/traditions-pranks", "https://www.admissions.caltech.edu/why-caltech/student-life/honor-code"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "scripps",
+      "name": "Scripps College",
+      "city": "Claremont", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": ["Women's college"],
+      "strengths": ["Core Curriculum in Interdisciplinary Humanities", "Part of the Claremont Colleges"],
+      "facts": [
+        "Afternoon Tea has been held every Wednesday since 1931",
+        "Each graduating class paints its design on the Graffiti Wall",
+        "First-years enter through the library's East Door, which opens again only when they graduate"
+      ],
+      "about": "Scripps is a women's liberal arts college founded in 1926 in Claremont, California, with a historic campus at the base of the San Gabriel Mountains. It's part of the Claremont Colleges.",
+      "interview": { "type": "admissions", "status": "Interviews with a Scripps admission counselor or senior admission ambassador (alumni interviews currently at capacity)." },
+      "sources": ["https://www.scrippscollege.edu/admission/interview-with-scripps", "https://www.scrippscollege.edu/about/glance/traditions", "https://www.scrippscollege.edu/academics/core-curriculum-in-interdisciplinary-humanities"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "occidental",
+      "name": "Occidental College",
+      "city": "Los Angeles", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Diplomacy and world affairs", "Liberal arts in Los Angeles", "40+ majors"],
+      "facts": [
+        "Through Oxy at the UN, students spend a fall semester interning at the United Nations in New York",
+        "The Spanish Colonial-style campus sits on 120 acres in northeast Los Angeles",
+        "More than half of students are domestic students of color or international students"
+      ],
+      "about": "Occidental is a liberal arts college in the Eagle Rock neighborhood of Los Angeles. It's known for diplomacy and world affairs, including a semester at the United Nations.",
+      "interview": { "type": "both", "status": "Optional but encouraged interviews with alumni volunteers or current students; evaluated if you do one, no disadvantage if you don't." },
+      "sources": ["https://www.oxy.edu/admission-aid/apply/interviews", "https://www.oxy.edu/about-oxy/our-campus", "https://www.oxy.edu/academics/areas-study/diplomacy-world-affairs/kahane-un-program"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uc-berkeley",
+      "name": "University of California, Berkeley",
+      "city": "Berkeley", "state": "CA", "region": "West",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Public research university", "26 Nobel Prizes awarded to faculty"],
+      "facts": [
+        "Sather Tower (the Campanile) is the second-tallest freestanding clock and bell tower in the world",
+        "Berkeley has the only full-time university carillonist in North America",
+        "Students rub the stone sphere near the Campanile for good luck"
+      ],
+      "about": "UC Berkeley is a large public research university in Berkeley, California, across the bay from San Francisco. Its Campanile tower is the campus's best-known landmark.",
+      "interview": { "type": "none", "status": "UC Berkeley does not conduct interviews; the Personal Insight Questions play that role." },
+      "sources": ["https://admissions.berkeley.edu/application-faqs/", "https://visit.berkeley.edu/campus-attractions/campanile-sather-tower/history-campanile/about"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "usc",
+      "name": "University of Southern California",
+      "city": "Los Angeles", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Research university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Research university in Los Angeles", "Film and cinematic arts", "Engineering (Viterbi)"],
+      "facts": [
+        "Students kick the flagpole on Trousdale Parkway for good luck on the way to games",
+        "The Tommy Trojan statue lists the ideal Trojan: faithful, scholarly, skillful, courageous, ambitious",
+        "USC's official mascot is Traveler, a white horse"
+      ],
+      "about": "USC is a large private research university near downtown Los Angeles, founded in 1880. It's known for school spirit and programs like film and engineering.",
+      "interview": { "type": "none", "status": "USC does not conduct on- or off-campus interviews for prospective students." },
+      "sources": ["https://ask.usc.edu/s/article/000001768", "https://www.usc.edu/usc-traditions/", "https://today.usc.edu/from-tommy-to-traveler-to-tirebiter-it-wouldnt-be-troy-without-traditions/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "reed",
+      "name": "Reed College",
+      "city": "Portland", "state": "OR", "region": "West",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": 1267, "setting": "City", "tags": [],
+      "strengths": ["Senior thesis for every student", "Humanities 110", "Intense academics"],
+      "facts": [
+        "Every senior writes a thesis and gets their own library space to work in",
+        "At Renn Fayre, seniors turn in theses, burn their drafts in a bonfire and parade through the library",
+        "All first-years take Humanities 110, a yearlong study of foundational texts"
+      ],
+      "about": "Reed is a liberal arts college of about 1,300 students in Portland, Oregon, known for serious academics. Every senior writes a thesis, celebrated at Renn Fayre.",
+      "interview": { "type": "admissions", "status": "Optional, casual and non-evaluative 20–30 minute interviews on campus, virtually or at off-campus events. One per applicant." },
+      "sources": ["https://www.reed.edu/admission-aid/visit/interview-faq.html", "https://www.reed.edu/admission-aid/this-is-reed/reed-by-the-numbers.html", "https://www.reed.edu/academics/thesis.html"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "whitman",
+      "name": "Whitman College",
+      "city": "Walla Walla", "state": "WA", "region": "West",
+      "control": "Private", "kind": "Liberal arts college",
+      "size": "Small", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Liberal arts", "Outdoor Program with weekend trips"],
+      "facts": [
+        "The Outdoor Program, since 1975, runs beginner-friendly trips most weekends",
+        "The campus has about one tree for every student",
+        "The A Cappella Showcase has run for more than 85 years"
+      ],
+      "about": "Whitman is a small liberal arts college one block from downtown Walla Walla, Washington, among wheat fields and the Blue Mountains. Its Outdoor Program is a big part of campus life.",
+      "interview": { "type": "admissions", "status": "Optional, relaxed two-way interviews for seniors, on campus, virtually or off campus. U.S. applicants can also send a Glimpse video." },
+      "sources": ["https://www.whitman.edu/admission-and-aid/whitman-on-the-road/admission-interviews", "https://www.whitman.edu/about", "https://www.whitman.edu/life-at-whitman/outdoor-program"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "uw-seattle",
+      "name": "University of Washington",
+      "city": "Seattle", "state": "WA", "region": "West",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "City", "tags": [],
+      "strengths": ["Large public research university", "Pacific Northwest setting"],
+      "facts": [
+        "Cherry trees in the Quad bloom each spring and draw thousands of visitors",
+        "There are 29 Yoshino cherry trees in the Quad, about 90 years old",
+        "About 28 percent of first-years are first-generation students"
+      ],
+      "about": "The University of Washington is a large public research university in Seattle with views of Mount Rainier. Its cherry blossoms in the Quad are a spring tradition.",
+      "interview": { "type": "none", "status": "UW does not conduct formal interviews for admission." },
+      "sources": ["https://admit.washington.edu/contact/have-a-question/", "https://www.washington.edu/cherryblossoms/", "https://www.washington.edu/about/why-the-university-of-washington/"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "calarts",
+      "name": "California Institute of the Arts",
+      "city": "Valencia", "state": "CA", "region": "West",
+      "control": "Private", "kind": "Art and design school",
+      "size": "Small", "undergrads": null, "setting": "Suburb", "tags": ["Arts"],
+      "strengths": ["Animation", "Film, music, theater and dance", "Collaboration across the arts"],
+      "facts": [
+        "CalArts was founded in 1961 by Walt and Roy Disney",
+        "Its character and experimental animation programs have trained generations of filmmakers",
+        "Artists are encouraged to collaborate across programs, like film with music"
+      ],
+      "about": "CalArts is an arts college in Valencia, near Los Angeles, founded by Walt Disney. It's famous for animation and encourages artists to work across music, film, theater, dance and art.",
+      "interview": { "type": "admissions", "status": "Each program requires a portfolio and/or audition; faculty may invite you to a 15–20 minute interview, in person or virtual." },
+      "sources": ["https://calarts.edu/admissions-aid/admissions/application-process", "https://calarts.edu/history", "https://calarts.edu/about-calarts"],
+      "lastChecked": "2026-09-28"
+    },
+    {
+      "id": "cu-boulder",
+      "name": "University of Colorado Boulder",
+      "city": "Boulder", "state": "CO", "region": "West",
+      "control": "Public", "kind": "Public university",
+      "size": "Large", "undergrads": null, "setting": "College town", "tags": [],
+      "strengths": ["Public research university", "Outdoors at the foot of the Flatirons"],
+      "facts": [
+        "Ralphie, a live buffalo, charges across the field at home football games, led by student handlers",
+        "The Flatirons rock formations above campus are about 300 million years old",
+        "More than 100 students try out each year to be Ralphie Runners"
+      ],
+      "about": "CU Boulder is a large public university in Boulder, Colorado, at the foot of the Flatirons. Its live buffalo mascot, Ralphie, leads the team onto the field.",
+      "interview": { "type": "none", "status": "CU Boulder's Office of Admissions does not host interviews." },
+      "sources": ["https://www.colorado.edu/admissions/process/first-year/faqs", "https://www.colorado.edu/alumni/2026/08/12/top-10-facts-about-ralphie-cu-boulders-live-mascot", "https://www.colorado.edu/today/2016/02/29/cu-traditions-hiking-flatirons"],
+      "lastChecked": "2026-09-28"
+    }
+  ]
+}
