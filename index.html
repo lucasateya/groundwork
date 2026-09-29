@@ -137,6 +137,10 @@
   .school-tags .pill{font-size:11px;padding:0.15rem 0.55rem;}
   .school-badge{align-self:flex-start;margin-top:0.6rem;font-size:11.5px;font-weight:600;color:var(--teal);background:var(--teal-pale);border-radius:999px;padding:0.2rem 0.65rem;}
   .school-badge.practice-only{color:var(--gold-deep);background:var(--gold-pale);}
+  .school-level{display:inline-flex;align-items:center;gap:0.45rem;align-self:flex-start;margin-top:0.45rem;font-size:12px;font-weight:600;color:var(--plum);}
+  .level-dots{display:inline-flex;gap:3px;}
+  .level-dots i{width:7px;height:7px;border-radius:50%;background:var(--border);}
+  .level-dots i.on{background:var(--plum);}
   .scenario-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 0.8rem;}
   .college-card .eyebrow{color:var(--plum);}
   .avatar.college{background:var(--plum);}
@@ -1045,7 +1049,7 @@ const PRACTICE = {
     quizFinish:'Show me schools →',
     pickerEyebrow:'Step 2 of 3 · Pick a school',
     pickerTitle:'Which school do you want to interview with?',
-    pickerLede:"These are based on your answers. Pick one, and we'll set up a realistic interview with someone from that school.",
+    pickerLede:"These are based on your answers, from a reach school down to more accessible ones. Pick one, and we'll set up a realistic interview with someone from that school.",
     pickerMore:'↻ Show me 5 different schools',
     customKicker:'Something else', customTitle:'Have a specific school in mind?', customPlaceholder:'e.g. University of Michigan',
     pickerError:"We couldn't load schools picked for you right now. You can try again, or practice with one of these schools.",
@@ -1580,7 +1584,7 @@ function scoreSchool(s, a){
     else if(a.distance === 'Close to home') score -= 3;
   }
   const words = ((a.interests || '') + ' ' + (a.activities || '')).toLowerCase().split(/[^a-z]+/).filter(w => w.length > 3);
-  const text = (s.strengths.join(' ') + ' ' + s.about + ' ' + s.facts.join(' ')).toLowerCase();
+  const text = (s.strengths.join(' ') + ' ' + (s.knownFor || []).join(' ') + ' ' + s.about + ' ' + s.facts.join(' ')).toLowerCase();
   score += Math.min(6, words.filter(w => text.includes(w)).length * 2);
   if(s.interview && s.interview.type !== 'none') score += 1.5; // prefer schools that really interview
   return score;
@@ -1604,39 +1608,64 @@ function schoolLine(s){
     (s.tags.length ? ' | ' + s.tags.join(', ') : '') + ' | known for: ' + s.strengths.join('; ') + ' | interviews: ' + s.interview.type;
 }
 
+// Five slots, from hardest to get into down to more accessible, so every
+// list mixes one reach school with progressively easier ones.
+const SCHOOL_SLOTS = [1, 2, 3, 4, 5];
+const SELECTIVITY_LABELS = { 1: 'Most selective', 2: 'Very selective', 3: 'Selective', 4: 'Moderately selective', 5: 'More accessible' };
+
+// Best-matching schools for one slot. Falls back to the neighboring levels,
+// then to schools already shown, so a slot is never empty.
+function slotCandidates(schools, a, tier, avoidIds, taken){
+  const pool = extra => schools.filter(s => !taken.has(s.id) && (extra || !avoidIds.has(s.id)));
+  const near = (list, d) => list.filter(s => Math.abs((s.selectivity || 3) - tier) <= d);
+  let group = [];
+  for(const [d, extra] of [[0, false], [1, false], [0, true], [1, true], [4, true]]){
+    group = near(pool(extra), d);
+    if(group.length >= 2) break;
+  }
+  return group.map(s => ({ s, score: scoreSchool(s, a) + (s.selectivity === tier ? 2 : 0) }))
+    .sort((x, y) => y.score - x.score)
+    .slice(0, 5)
+    .map(x => x.s);
+}
+
 async function generateSchoolOptions(a, avoid){
   const schools = await loadColleges();
   const avoidIds = new Set((avoid || []).map(o => o.id));
-  const ranked = schools.filter(s => !avoidIds.has(s.id))
-    .map(s => ({ s, score: scoreSchool(s, a) }))
-    .sort((x, y) => y.score - x.score)
-    .slice(0, 24)
-    .map(x => x.s);
-  const system = "You help a high school student choose colleges to practice interviews with. Pick exactly 5 schools ONLY from the candidate list, using their ids. Choose a varied mix (different sizes, settings or kinds of school) that genuinely fits the student's answers, and prefer schools that offer interviews unless a no-interview school is a much better fit. For each, write 'fit': one short, friendly sentence in second person and plain everyday words that connects something the student actually said to something in that school's listed info. Use only facts from the list; never add rankings, statistics or programs that aren't listed. Return ONLY valid JSON, no markdown formatting, no code fences, no preamble, in exactly this shape: {\"schools\": [{\"id\": string, \"fit\": string}]}.";
-  const msg = collegeProfileText(a) + "\n\nCandidate schools (id | name | location | type | tags | known for | interviews):\n" + ranked.map(schoolLine).join('\n');
+  const taken = new Set();
+  const groups = SCHOOL_SLOTS.map(tier => {
+    const g = slotCandidates(schools, a, tier, avoidIds, taken);
+    g.forEach(s => taken.add(s.id));
+    return g;
+  });
+  const system = "You help a high school student choose colleges to practice interviews with. The candidates come in 5 numbered groups, ordered from most selective to most accessible. Pick exactly ONE school from EACH group, using its id, so the student gets a spread from a reach school to more accessible ones. Within each group choose the school that genuinely fits the student's answers best, and prefer schools that offer interviews unless a no-interview school is a much better fit. For each, write 'fit': one short, friendly sentence in second person and plain everyday words that connects something the student actually said to something in that school's listed info. Use only facts from the list; never add rankings, admission rates, statistics or programs that aren't listed. Return ONLY valid JSON, no markdown formatting, no code fences, no preamble, in exactly this shape, in group order: {\"schools\": [{\"group\": number, \"id\": string, \"fit\": string}]}.";
+  const msg = collegeProfileText(a) + "\n\nCandidate schools (id | name | location | type | tags | known for | interviews):\n" +
+    groups.map((g, i) => 'Group ' + (i + 1) + ' (' + SELECTIVITY_LABELS[SCHOOL_SLOTS[i]].toLowerCase() + '):\n' + g.map(schoolLine).join('\n')).join('\n\n');
   const raw = await callClaude(system, [{ role:'user', content: msg }]);
   const parsed = parseFeedbackJSON(raw);
-  const seen = new Set();
-  const picks = [];
-  (parsed.schools || []).forEach(o => {
-    if(o && ranked.some(s => s.id === o.id) && !seen.has(o.id) && picks.length < 5){
-      seen.add(o.id);
-      picks.push({ id: o.id, fit: String(o.fit || '') });
-    }
-  });
-  // If the AI returned fewer than five usable ids, fill from the shortlist.
-  for(const s of ranked){
-    if(picks.length >= 5) break;
-    if(!seen.has(s.id)){ seen.add(s.id); picks.push({ id: s.id, fit: '' }); }
-  }
+  const returned = (parsed.schools || []).filter(o => o && o.id);
+  // Keep one school per group, in order. If the AI skipped a group or used
+  // an id from the wrong group, use that group's best match instead.
+  const picks = groups.map(g => {
+    const hit = returned.find(o => g.some(s => s.id === o.id));
+    if(hit) return { id: hit.id, fit: String(hit.fit || '') };
+    return g.length ? { id: g[0].id, fit: '' } : null;
+  }).filter(Boolean);
   if(picks.length === 0) throw new Error('No schools returned');
   return picks;
 }
 
-// Four schools to practice with when suggestions can't be generated.
-const SAMPLE_SCHOOL_IDS = ['tufts', 'wake-forest', 'grinnell', 'occidental'];
+// Schools to practice with when suggestions can't be generated, one per level.
+const SAMPLE_SCHOOL_IDS = ['brown', 'emory', 'occidental', 'uw-madison', 'temple'];
 function sampleSchoolOptions(){
   return SAMPLE_SCHOOL_IDS.map(id => collegeById(id)).filter(Boolean).map(s => ({ id: s.id, fit: '' }));
+}
+
+function selectivityBadge(s){
+  if(!s || !s.selectivity) return '';
+  return '<span class="school-level lvl-' + s.selectivity + '" title="Approximate, based on recent admission rates">' +
+    '<span class="level-dots" aria-hidden="true">' + [1,2,3,4,5].map(n => '<i' + (n <= 6 - s.selectivity ? ' class="on"' : '') + '></i>').join('') + '</span>' +
+    escapeHTML(SELECTIVITY_LABELS[s.selectivity]) + '</span>';
 }
 
 function interviewBadge(s){
@@ -1655,8 +1684,9 @@ function schoolCardHTML(o, idx){
   const fit = o.fit || s.about.split('. ')[0] + '.';
   return '<button class="job-card" data-idx="' + idx + '"' + disabled + '>' +
     '<span class="job-workplace">' + escapeHTML(kicker) + '</span>' +
+    selectivityBadge(s) +
     '<span class="job-title">' + escapeHTML(s.name) + '</span>' +
-    '<span class="job-org">' + escapeHTML(s.city + ', ' + s.state) + '</span>' +
+    '<span class="job-org">' + escapeHTML([s.city + ', ' + s.state, s.founded ? 'Founded ' + s.founded : '', s.athletics ? s.athletics.nickname : ''].filter(Boolean).join(' · ')) + '</span>' +
     (s.tags.length ? '<span class="school-tags">' + s.tags.map(tg => '<span class="pill">' + escapeHTML(tg) + '</span>').join('') + '</span>' : '') +
     '<span class="job-fit">' + escapeHTML(fit) + '</span>' +
     interviewBadge(s) +
@@ -1673,6 +1703,19 @@ function customSchoolChoice(text){
     return n === q || s.id === q.replace(/ /g, '-') || (q.length >= 4 && (n.startsWith(q) || n.includes(q)));
   });
   return match ? { id: match.id, fit: '' } : { custom: true, name: text.trim() };
+}
+
+// Reference details (founding year, athletics, well-known programs) the
+// interviewer may mention, phrased as short facts.
+function schoolExtraFacts(s){
+  const out = [];
+  if(s.founded) out.push('Founded in ' + s.founded);
+  if(s.research === 'R1') out.push('Top-tier (R1) research classification');
+  if(s.affiliation) out.push('Religious affiliation: ' + s.affiliation);
+  const a = s.athletics;
+  if(a && a.nickname) out.push('Teams: the ' + a.nickname + (a.mascot ? ', mascot ' + a.mascot : '') + (a.conference ? ', ' + a.conference : ''));
+  if(s.knownFor && s.knownFor.length) out.push('Well-known schools and programs: ' + s.knownFor.join(', '));
+  return out;
 }
 
 // College interviews need no AI setup (the school facts come from the file),
@@ -1693,6 +1736,7 @@ function buildCollegeScenario(choice){
     about: s ? s.about : '',
     strengths: s ? s.strengths : [],
     facts: s ? s.facts : [],
+    extra: s ? schoolExtraFacts(s) : [],
     interview: s ? s.interview : null,
     issue: 'a college interview for ' + name,
     opening: ''
@@ -2067,6 +2111,7 @@ function buildCollegeSystemPrompt(){
     ? " You don't have verified details about " + school + ". Keep anything school-specific general, and never invent specific programs, statistics, rankings or traditions. If they ask for specifics, suggest they check the school's website or ask the admissions office."
     : " School facts you may use (these are the ONLY school-specific facts you know; never invent programs, statistics, rankings, traditions or other specifics beyond them): " + sc.about +
       " Known for: " + sc.strengths.join('; ') + ". Details: " + sc.facts.join('; ') + "." +
+      ((sc.extra || []).length ? " More background: " + sc.extra.join('; ') + "." : '') +
       " If they ask about something not covered here, answer in general terms or suggest they ask the admissions office.";
   const n = userTurnCount();
   let flow = " Ask one question at a time and react naturally to their answers, often with a short follow-up. Over the conversation, cover typical college interview topics: who they are, their academic interests (being undecided is fine), their activities and what they learned from them, a challenge they faced, why this school, and what they do for fun.";
