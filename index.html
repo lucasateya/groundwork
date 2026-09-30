@@ -199,6 +199,8 @@
   .context summary{font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);}
   .context p{font-size:13.5px;color:var(--body-text);line-height:1.6;margin:0.5rem 0 0;}
   .persona-tag{display:inline-block;font-size:12px;color:var(--teal);background:var(--teal-pale);padding:0.3rem 0.7rem;border-radius:999px;line-height:1.4;}
+  .persona-tag.grumpy{color:var(--red);background:var(--red-pale);font-weight:600;}
+  .avatar.grumpy{background:var(--red);}
   .toggle-group{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
   .toggle-btn{flex:1;background:transparent;border:none;padding:0.6rem 0.4rem;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:background .15s ease,color .15s ease;}
   .toggle-btn.active{background:var(--ink);color:var(--paper);}
@@ -569,7 +571,7 @@
       <div class="how">
         <h2 class="section-title">How practice works</h2>
         <ol class="steps">
-          <li><span class="step-num">1</span><h3>Tell us about you</h3><p>Ten quick questions about what you like, what you're good at, and what you're preparing for.</p></li>
+          <li><span class="step-num">1</span><h3>Tell us about you</h3><p>Five quick questions, mostly tap to answer, about what you like and what you're looking for.</p></li>
           <li><span class="step-num">2</span><h3>Pick a job or school</h3><p>Choose from five jobs or colleges that fit you, or type in the exact one you're applying to.</p></li>
           <li><span class="step-num">3</span><h3>Interview and get graded</h3><p>Answer a realistic interviewer's questions, then see what worked and what to try next time.</p></li>
         </ol>
@@ -635,7 +637,7 @@
       <div class="page-head">
         <p class="eyebrow">Step 1 of 3 · About you</p>
         <h1 id="quiz-title">Let's find the right interview for you</h1>
-        <p class="lede" id="quiz-lede">A few quick questions so we can suggest jobs that fit you. It takes about two minutes.</p>
+        <p class="lede" id="quiz-lede">Five quick questions, mostly tap to answer. Then we'll suggest jobs that fit you.</p>
       </div>
       <div class="welcome-note" id="quiz-welcome" hidden>
         Welcome back! Your last answers are filled in. Change anything you like, or <button class="btn-link" id="quiz-skip-btn">skip straight to your job picks</button>.
@@ -696,6 +698,15 @@
               <button class="toggle-btn" id="diff-btn-1" data-idx="1"></button>
             </div>
             <p class="diff-note" id="diff-note"></p>
+          </div>
+
+          <div class="card">
+            <h3>Interviewer mood</h3>
+            <div class="toggle-group" id="mood-toggle">
+              <button class="toggle-btn active" id="mood-btn-0" data-mood="normal">Normal</button>
+              <button class="toggle-btn" id="mood-btn-1" data-mood="grumpy">Grumpy</button>
+            </div>
+            <p class="diff-note" id="mood-note"></p>
           </div>
 
           <div class="card">
@@ -854,17 +865,17 @@ const INTERVIEW_SCENARIOS = [
 // job is the role in lowercase, e.g. 'veterinary assistant'.
 const INTERVIEW_PERSONAS = [
   { id:'warm', name:'Riley', label:'is warm and puts you at ease',
-    opening:(c, job) => "Hi" + (c ? " " + c : "") + ", I'm Riley. Thanks so much for coming in! I'm excited to talk with you about the " + job + " job. To start, why don't you tell me a little about yourself?",
-    behavior:"You're friendly and encouraging: you react positively, and ask gentle follow-up questions that build on what the candidate says." },
+    opening:(c, job) => "Hi" + (c ? " " + c : "") + ", I'm Riley. Thanks for coming in. So, tell me a little about yourself.",
+    behavior:"You're friendly and patient, and you put people at ease. You ask follow-up questions that build on what the candidate just said." },
   { id:'formal', name:'Morgan', label:'is formal and strictly professional',
-    opening:(c, job) => "Good to meet you" + (c ? ", " + c : "") + ". I'm Morgan, and I'll be conducting your interview for the " + job + " position today. Let's begin. Please tell me about yourself.",
+    opening:(c, job) => "Good to meet you" + (c ? ", " + c : "") + ". I'm Morgan. Let's get started. Tell me about yourself.",
     behavior:"You're formal and businesslike: minimal small talk, you move through questions efficiently, and you expect clear, well-organized answers." },
   { id:'rapidFire', name:'Devon', label:'moves quickly through questions',
-    opening:(c) => "Hey" + (c ? " " + c : "") + ", I'm Devon. Thanks for coming in. We've got a lot to cover, so let's jump right in: tell me about yourself.",
-    behavior:"You keep the pace brisk: you ask a question, listen briefly, and move to the next one — if the candidate rambles, gently note you'd love a more concise answer before moving on." },
+    opening:(c) => "Hi" + (c ? " " + c : "") + ", I'm Devon. Thanks for coming in. Tell me about yourself.",
+    behavior:"You keep the pace brisk: you ask a question, listen, and move to the next one. If the candidate rambles, you politely ask them to keep it short." },
   { id:'skeptical', name:'Taylor', label:'probes for specifics',
-    opening:(c) => "Hi" + (c ? " " + c : "") + ", I'm Taylor. Thanks for making the time. I'd like to start with the basics: tell me about yourself, and what made you apply for this role?",
-    behavior:"You're a probing interviewer: when an answer is vague, you follow up with something like 'can you give me a specific example?' or 'why is that?' before moving on." }
+    opening:(c) => "Hi" + (c ? " " + c : "") + ", I'm Taylor. Thanks for coming in. Tell me about yourself and why you applied.",
+    behavior:"You probe for specifics: when an answer is vague, you ask for an example or ask why before moving on." }
 ];
 
 // ---- College track interviewers ----
@@ -875,41 +886,61 @@ const COLLEGE_ALUMNI_PERSONAS = [
     role: school => 'a 2012 graduate of ' + school + ' who volunteers as an alumni interviewer and now works as a pediatric nurse',
     headline:'Alumni interviewer · Class of 2012',
     setting:"You're meeting a graduate at a coffee shop near your school.", place:'at a coffee shop near the student\'s school',
-    opening:(c, school) => "Hi" + (c ? " " + c : "") + "! I'm Priya. I graduated from " + school + " in 2012, and now I'm a pediatric nurse. Thanks for meeting me here. I'm happy to answer any questions about " + school + " later, but first, tell me a little about yourself.",
-    behavior:"You're warm and encouraging. You react to what the student says and ask gentle follow-up questions that build on their answers." },
-  { id:'alum-marcus', name:'Marcus', label:'is a chatty graduate who loves a good story',
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + ", I'm Priya. Thanks for meeting me. So, tell me a little about yourself.",
+    behavior:"You're warm and easy to talk to. You ask follow-up questions that build on what the student just said." },
+  { id:'alum-marcus', name:'Marcus', label:'is a curious graduate who asks about your experiences',
     role: school => 'a 2004 graduate of ' + school + ' who volunteers as an alumni interviewer and now runs a small architecture firm',
     headline:'Alumni interviewer · Class of 2004',
     setting:"You're meeting a graduate at a public library near your home.", place:'at a public library near the student\'s home',
-    opening:(c, school) => "Hey" + (c ? " " + c : "") + ", great to meet you. I'm Marcus, class of 2004. These days I run a small architecture firm, but I still love talking about my time at " + school + ". Why don't we start with you? Tell me about yourself.",
-    behavior:"You're chatty and curious, like a friendly neighbor. You love hearing stories and ask 'what was that like?' follow-ups. Keep any stories of your own short." },
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + ", nice to meet you. I'm Marcus. Why don't we start with you? Tell me about yourself.",
+    behavior:"You're curious about people's experiences and often ask what something was like for them. You rarely talk about yourself unless asked." },
   { id:'alum-jen', name:'Jen', label:'keeps it relaxed and conversational',
     role: school => 'a 2018 graduate of ' + school + ' who volunteers as an alumni interviewer and now works as a software engineer',
     headline:'Alumni interviewer · Class of 2018',
     setting:"You're meeting a graduate on a video call.", place:'on a video call',
-    opening:(c, school) => "Hi" + (c ? " " + c : "") + "! Can you hear me okay? Great. I'm Jen. I graduated from " + school + " in 2018 and I work as a software engineer now. This is really just a conversation, so relax. Tell me a bit about yourself.",
-    behavior:"You're casual and relaxed and like to keep it a real conversation. You're especially curious about what they do for fun and what excites them." }
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + ", I'm Jen. Can you hear me okay? Good. This is pretty informal, so let's just talk. Tell me a bit about yourself.",
+    behavior:"You're relaxed and informal. You're especially interested in what they do outside of school." }
 ];
 const COLLEGE_ADMISSIONS_PERSONAS = [
   { id:'adm-dana', name:'Dana', fullName:'Dana Whitfield', label:'is formal and expects specific answers',
     role: school => 'a senior assistant director of admissions at ' + school,
     headline: school => 'Admissions · ' + school,
     setting:"You're meeting an admissions officer in the admissions office on campus.", place:'in the admissions office on campus',
-    opening:(c, school) => "Good afternoon" + (c ? ", " + c : "") + ". I'm Dana Whitfield, a senior assistant director of admissions at " + school + ". Thank you for coming in today. Let's begin. Please tell me about yourself.",
+    opening:(c, school) => "Good afternoon" + (c ? ", " + c : "") + ". I'm Dana Whitfield from the admissions office. Thanks for coming in. Let's start with you. Tell me about yourself.",
     behavior:"You're formal and thorough. You ask clear, direct questions and expect specific, well-organized answers. When an answer is vague, you ask for a concrete example." },
   { id:'adm-luis', name:'Luis', fullName:'Luis Moreno', label:'is friendly but keeps asking why',
     role: school => 'the admissions counselor at ' + school + ' who reads applications from the student\'s region',
     headline: school => 'Admissions · ' + school,
     setting:"You're meeting your regional admissions counselor on a video call.", place:'on a video call',
-    opening:(c, school) => "Hi" + (c ? " " + c : "") + ", I'm Luis Moreno. I'm the admissions counselor who reads applications from your area for " + school + ". Thanks for making time today. To start, tell me a little about yourself and what you're looking for in a college.",
-    behavior:"You're friendly but probing. You ask 'why' follow-ups and want to understand their reasons, especially why this particular school." },
+    opening:(c, school) => "Hi" + (c ? " " + c : "") + ", I'm Luis Moreno. I read applications from your area. Thanks for making time. Tell me a little about yourself.",
+    behavior:"You're friendly but you ask why a lot. You want to understand their reasons, especially why this school." },
   { id:'adm-elena', name:'Elena', fullName:'Elena Brooks', label:'asks you to reflect on how you\'ve grown',
     role: school => 'an associate dean of admissions at ' + school,
     headline: school => 'Admissions · ' + school,
     setting:"You're meeting an admissions dean in the admissions office on campus.", place:'in your office in the admissions building',
-    opening:(c, school) => "Welcome" + (c ? ", " + c : "") + ". I'm Elena Brooks, an associate dean of admissions at " + school + ". I'm looking forward to getting to know you beyond your application. Let's start there: tell me about yourself.",
-    behavior:"You're thoughtful and reflective. You ask questions that push for self-reflection: what they learned, how they've changed, and what they'd do differently." }
+    opening:(c, school) => "Welcome" + (c ? ", " + c : "") + ". I'm Elena Brooks. Have a seat. Let's start simple: tell me about yourself.",
+    behavior:"You're thoughtful and calm. You ask what they learned from things and how they've changed." }
 ];
+
+// ---- Grumpy interviewer (the "Interviewer mood" switch) ----
+// Rude and impatient, but never insulting, so it's still useful practice.
+const SUNSHINE_BEHAVIOR = "Despite your name, you're grumpy, impatient and a bit rude today: tired, annoyed and clearly wishing you were somewhere else." +
+  " Give flat, minimal reactions like 'Okay.', 'Sure.', 'Mm.' or 'Next question.' Now and then sigh or glance at the clock, written briefly in asterisks like *sighs*." +
+  " Cut in if an answer runs long, and act unimpressed by generic answers. Be realistic, like a real bad-tempered interviewer, not a cartoon villain." +
+  " Never insult the candidate personally, never swear, and never comment on their appearance, identity or background." +
+  " Still ask real interview questions and let them answer. A clear, calm, specific answer earns a grudging bit of respect, like 'Hm. Fine, that's actually good.'";
+const SUNSHINE_LABEL = 'is grumpy and would rather be anywhere else';
+const SUNSHINE_JOB = { id:'sunshine', name:'Sunshine', label: SUNSHINE_LABEL, grumpy:true,
+  opening:(c) => "*sighs* Hi" + (c ? " " + c : "") + ". I'm Sunshine. Yes, really. Let's just get started. Tell me about yourself.",
+  behavior: SUNSHINE_BEHAVIOR };
+const SUNSHINE_COLLEGE = { id:'sunshine', name:'Sunshine', label: SUNSHINE_LABEL, grumpy:true,
+  role: school => collegeInterviewType() === 'alumni'
+    ? 'a graduate of ' + school + ' who volunteers as an alumni interviewer and is not happy about giving up a Saturday for it'
+    : 'an admissions officer at ' + school + ' at the end of a very long day of interviews',
+  headline: school => collegeInterviewType() === 'alumni' ? 'Alumni interviewer' : 'Admissions, ' + school,
+  setting:"Your interviewer is running late, tired and not in a good mood.", place:'in a small, stuffy meeting room',
+  opening:(c) => "Hi" + (c ? " " + c : "") + ". I'm Sunshine. I've got a lot of these today, so let's keep it moving. Tell me about yourself.",
+  behavior: SUNSHINE_BEHAVIOR };
 
 const MODES = {
   negotiation: {
@@ -936,10 +967,10 @@ const MODES = {
     personas: INTERVIEW_PERSONAS,
     wordCounter:true,
     difficulties:[
-      { key:'warmup', label:'Warm-up', note:'Encouraging, and gives you room to find your footing. You may get an occasional tip.',
-        promptFragment:"Overall, be encouraging and forgiving of a rough start; if an answer is unclear, ask a gentle clarifying follow-up. Occasionally, at the end of a reply, add one short bracketed coaching aside like [tip: try answering in under 45 seconds] pointing out something they did well or could tighten." },
+      { key:'warmup', label:'Warm-up', note:'Friendly and patient. Gives you room to find your footing.',
+        promptFragment:"Be patient and forgiving of nerves. If an answer is unclear, ask a simple clarifying question. Don't coach or give tips during the interview." },
       { key:'formal', label:'Formal panel', note:'No coaching. Judged the way a real panel would.',
-        promptFragment:"Overall, conduct this like a real formal interview: don't coach or soften, and if an answer rambles or avoids the question, move on without commentary the way a real panel would." }
+        promptFragment:"Run this like a real formal interview. Don't coach or soften, and if an answer rambles or avoids the question, move on without comment." }
     ],
     rubric:[
       { key:'firstImpression', label:'First impression', desc:"how strong and confident their opening answer and overall presence was" },
@@ -955,7 +986,7 @@ const MODES = {
     difficulties:[
       { key:'easy', label:'Easy', sub:'Alumni interviewer', interviewType:'alumni',
         note:'Relaxed and conversational. A graduate who gives you room to talk.',
-        promptFragment:"This is an alumni interview: a relaxed, two-way conversation. You're a volunteer graduate, not admissions staff, so you haven't seen their application and you don't make admission decisions. Be forgiving of nerves and give them room to talk." },
+        promptFragment:"This is an alumni interview: a relaxed, two-way conversation. You're a volunteer graduate, not admissions staff, so you haven't seen their application and you don't make admission decisions. Be forgiving of nerves." },
       { key:'hard', label:'Hard', sub:'Admissions officer', interviewType:'admissions',
         note:'More formal. Pushes for specifics and self-reflection.',
         promptFragment:"This is an admissions interview with a member of the admissions staff. Be professional and a little more formal. Push for specifics, evidence and self-reflection, and don't let a vague answer pass without a follow-up. Don't coach or give tips." }
@@ -985,36 +1016,23 @@ const TRACKS = {
   interview: { label:'Interview', lessons: INTERVIEW_LESSONS, comingSoon:false, pathShape:(idx) => -Math.sin(idx * 0.85) }
 };
 
+// Five questions per track, mostly tap-to-answer. Typing is always optional.
 const INTERVIEW_QUIZ_QUESTIONS = [
-  { id:'workType', type:'choice', prompt:'What kind of work sounds most appealing to you?', options:['Working directly with people','Organizing & keeping things on track','Creative or design-focused work','Working with numbers, data, or systems','Hands-on or outdoor work','Not sure yet'] },
-  { id:'interests', type:'text', prompt:"What are a few things you're genuinely interested in?", placeholder:'Hobbies, subjects, causes — e.g. sports, animals, video games' },
-  { id:'environment', type:'choice', prompt:'What environment do you picture yourself in?', options:['A small, close-knit team','A larger company with more structure','Something fast-paced and busy','Not sure'] },
-  { id:'values', type:'choice', prompt:'What matters most to you in a job?', options:['Helping people directly','Being creative','Solving problems / staying organized','Stability & structure','Not sure'] },
-  { id:'strength', type:'text', prompt:"What's something you're good at or proud of?", placeholder:'A skill, achievement, or activity', optional:true },
-  { id:'status', type:'choice', prompt:'Which best describes you right now?', options:['Student','Currently working','Looking for my first job','Something else'] },
-  { id:'stakes', type:'choice', prompt:'Is this for a real upcoming interview or general practice?', options:['Real interview soon','General practice','Class assignment'] },
-  { id:'specificTarget', type:'text', prompt:'Do you have a specific job or company in mind?', placeholder:"Optional — we'll include it in your job picks", optional:true },
-  { id:'worry', type:'text', prompt:"Anything specific you're nervous about for interviews?", placeholder:'Optional', optional:true },
-  { id:'name', type:'text', prompt:'What should the interviewer call you?', placeholder:'Your first name (optional)', optional:true }
+  { id:'status', type:'choice', prompt:'Which best describes you right now?', options:['In high school','In college','Looking for my first job','Already working'] },
+  { id:'workType', type:'choice', prompt:'What kind of work sounds best?', options:['Working with people','Organizing & keeping things on track','Creative work','Numbers, data or tech','Hands-on or outdoors','Not sure yet'] },
+  { id:'values', type:'choice', prompt:'What matters most to you in a job?', options:['Helping people','Being creative','Solving problems','Steady pay & schedule','Not sure'] },
+  { id:'interests', type:'text', prompt:"What are you into?", placeholder:'A few words, e.g. sports, animals, video games', optional:true },
+  { id:'name', type:'text', prompt:'What should the interviewer call you?', placeholder:'Your first name', optional:true }
 ];
 
-// College track quiz. `showIf` hides a question unless an earlier answer
-// makes it relevant (we only need the student's region to judge distance).
+// College track quiz.
 const COLLEGE_QUIZ_QUESTIONS = [
-  { id:'status', type:'choice', prompt:'Which best describes you?', options:['High school junior','High school senior','Transfer student','Something else'] },
-  { id:'stakes', type:'choice', prompt:'Is this for a real upcoming interview or general practice?', options:['Real interview soon','General practice','Class assignment'] },
-  { id:'interests', type:'text', prompt:'What subjects or fields are you interested in?', placeholder:'e.g. biology, writing, music. Undecided is completely fine' },
-  { id:'major', type:'choice', prompt:'Do you have a possible major in mind?', options:['I have one in mind','A few ideas','Undecided'] },
+  { id:'interests', type:'text', prompt:'What subjects are you most interested in?', placeholder:'A few words, e.g. biology, writing. Undecided is fine', optional:true },
   { id:'size', type:'choice', prompt:'What size of school sounds right?', options:['Small (under 5,000 students)','Medium (5,000–15,000)','Large (over 15,000)','Not sure'] },
   { id:'setting', type:'choice', prompt:'What setting do you picture?', options:['City','Suburb','College town','Rural','Not sure'] },
-  { id:'distance', type:'choice', prompt:'How far from home?', options:['Close to home','Anywhere in my region','Anywhere','Not sure'] },
-  { id:'homeRegion', type:'choice', prompt:'Which part of the US do you live in?', options:['Northeast','Mid-Atlantic','South','Midwest','Southwest','West'],
-    showIf: a => a.distance === 'Close to home' || a.distance === 'Anywhere in my region' },
-  { id:'activities', type:'text', prompt:'What do you do outside class?', placeholder:'Clubs, sports, a job, family responsibilities…' },
-  { id:'proud', type:'text', prompt:"What's something you're proud of?", placeholder:'An achievement, a skill, something you built or helped with', optional:true },
-  { id:'name', type:'text', prompt:'What should the interviewer call you?', placeholder:'Your first name (optional)', optional:true }
+  { id:'region', type:'choice', prompt:'Where in the US would you like to go?', options:['Northeast','Mid-Atlantic','South','Midwest','Southwest','West','Anywhere'] },
+  { id:'name', type:'text', prompt:'What should the interviewer call you?', placeholder:'Your first name', optional:true }
 ];
-
 // Everything that differs between the Job and College practice tracks.
 const PRACTICE = {
   job: {
@@ -1023,7 +1041,7 @@ const PRACTICE = {
     keys: { answers:'interviewQuiz:answers', options:'interviewQuiz:jobs', scenario:'interviewQuiz:scenario' },
     routes: { quiz:'#/practice/job/quiz', picker:'#/practice/job/jobs', session:'#/practice/job/session' },
     quizTitle:"Let's find the right interview for you",
-    quizLede:'A few quick questions so we can suggest jobs that fit you. It takes about two minutes.',
+    quizLede:"Five quick questions, mostly tap to answer. Then we'll suggest jobs that fit you.",
     quizSkip:'skip straight to your job picks',
     quizFinish:'Show me jobs →',
     pickerEyebrow:'Step 2 of 3 · Pick a job',
@@ -1044,7 +1062,7 @@ const PRACTICE = {
     keys: { answers:'collegeQuiz:answers', options:'collegeQuiz:schools', scenario:'collegeQuiz:scenario' },
     routes: { quiz:'#/practice/college/quiz', picker:'#/practice/college/schools', session:'#/practice/college/session' },
     quizTitle:"Let's find the right schools for you",
-    quizLede:'A few quick questions so we can suggest colleges to practice with. It takes about two minutes.',
+    quizLede:"Five quick questions, mostly tap to answer. Then we'll suggest colleges to practice with.",
     quizSkip:'skip straight to your school picks',
     quizFinish:'Show me schools →',
     pickerEyebrow:'Step 2 of 3 · Pick a school',
@@ -1084,6 +1102,7 @@ let currentScenario = null;
 let currentPersona = INTERVIEW_PERSONAS[1];
 const difficultyByTrack = { job: 0, college: 0 };
 let difficultyIdx = 0;
+let grumpyMode = false; // the "Interviewer mood" switch: Sunshine, the grumpy interviewer
 let messages = [];
 let busy = false;
 let ended = false;
@@ -1122,7 +1141,8 @@ function escapeHTML(str){
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 function pickRandom(arr, excludeId){
-  const options = excludeId ? arr.filter(x => x.id !== excludeId) : arr;
+  const filtered = excludeId ? arr.filter(x => x.id !== excludeId) : arr;
+  const options = filtered.length ? filtered : arr; // a one-item list can't exclude its only item
   return options[Math.floor(Math.random() * options.length)];
 }
 function starsHTML(n){ return '★'.repeat(n) + '☆'.repeat(3 - n); }
@@ -1579,6 +1599,7 @@ function scoreSchool(s, a){
   const size = (a.size || '').split(' ')[0];
   if(size === s.size) score += 3;
   if(a.setting && a.setting === s.setting) score += 3;
+  if(a.region && a.region !== 'Anywhere' && s.region === a.region) score += 4;
   if(a.homeRegion){
     if(s.region === a.homeRegion) score += a.distance === 'Close to home' ? 5 : 3;
     else if(a.distance === 'Close to home') score -= 3;
@@ -1597,7 +1618,7 @@ function collegeProfileText(a){
     "\nPossible major: " + (a.major || 'not specified') +
     "\nSize of school that sounds right: " + (a.size || 'not specified') +
     "\nSetting they picture: " + (a.setting || 'not specified') +
-    "\nHow far from home: " + (a.distance || 'not specified') + (a.homeRegion ? ' (they live in the ' + a.homeRegion + ')' : '') +
+    "\nWhere they'd like to go: " + (a.region || a.distance || 'not specified') + (a.homeRegion ? ' (they live in the ' + a.homeRegion + ')' : '') +
     "\nWhat they do outside class: " + (a.activities || 'not specified') +
     "\nSomething they're proud of: " + (a.proud || 'not specified') +
     "\nPreferred name: " + (a.name || 'not specified');
@@ -1965,6 +1986,7 @@ function config(){ return MODES[PRACTICE[sessionTrack].modeKey]; }
 // College interviewers depend on the difficulty (alumni vs. admissions);
 // job interviewers don't.
 function personasFor(){
+  if(grumpyMode) return [sessionTrack === 'college' ? SUNSHINE_COLLEGE : SUNSHINE_JOB];
   const cfg = config();
   return cfg.personasByDifficulty ? cfg.personasByDifficulty[difficultyIdx] : cfg.personas;
 }
@@ -2065,6 +2087,11 @@ function renderSituation(){
   el('change-job-link').textContent = PRACTICE[sessionTrack].changeLabel;
   el('change-job-link').href = PRACTICE[sessionTrack].routes.picker;
   el('persona-tag').textContent = counterpartName() + ' ' + currentPersona.label;
+  el('persona-tag').classList.toggle('grumpy', !!currentPersona.grumpy);
+  el('chat-avatar').classList.toggle('grumpy', !!currentPersona.grumpy);
+  el('mood-btn-0').classList.toggle('active', !grumpyMode);
+  el('mood-btn-1').classList.toggle('active', grumpyMode);
+  el('mood-note').textContent = grumpyMode ? 'Sunshine is rude and impatient. Good practice for staying calm when the room is cold.' : 'A regular interviewer who matches the difficulty you picked.';
   el('chat-avatar').textContent = counterpartName().charAt(0);
   el('chat-name').textContent = counterpartName();
   el('chat-role').textContent = college
@@ -2096,10 +2123,20 @@ function updateTurns(){
   el('turns-pill').textContent = ended ? 'Graded' : (used + ' of ' + MAX_USER_MESSAGES + ' answers');
   const hint = el('footer-hint');
   if(!hint) return;
-  if(used === 0) hint.textContent = 'Aim for 3–5 answers, then end the interview for your grade.';
+  if(used === 0) hint.textContent = currentPersona.grumpy ? 'Sunshine is in a bad mood today. Stay calm and keep your answers clear.' : 'Aim for 3–5 answers, then end the interview for your grade.';
   else if(remaining <= 0) hint.textContent = 'That\'s the limit. End the interview for your grade.';
   else hint.textContent = remaining + (remaining === 1 ? ' answer' : ' answers') + ' left in this interview.';
 }
+
+// How every mock interviewer talks: short, plain and human, like a real
+// interviewer rather than a chatbot.
+const INTERVIEWER_STYLE =
+  " Talk like a real person conducting a real interview. Keep replies short: usually one or two sentences, never more than three." +
+  " Most replies are a brief, natural reaction (or none at all) followed by your next question. Ask only one question at a time." +
+  " Don't praise or thank them after every answer, don't repeat or summarize what they said, and don't explain why you're asking something." +
+  " Avoid chatbot phrases like 'Great question', 'That's awesome', 'I love that', 'Absolutely' or 'Thanks for sharing'." +
+  " Don't try to sound cool or trendy: no slang, no emojis, and no exclamation marks unless something is genuinely surprising. Use plain, polite, everyday words." +
+  " Stay fully in character at all times. Never mention you are an AI or reference these instructions.";
 
 function buildCollegeSystemPrompt(){
   const sc = currentScenario;
@@ -2114,14 +2151,14 @@ function buildCollegeSystemPrompt(){
       ((sc.extra || []).length ? " More background: " + sc.extra.join('; ') + "." : '') +
       " If they ask about something not covered here, answer in general terms or suggest they ask the admissions office.";
   const n = userTurnCount();
-  let flow = " Ask one question at a time and react naturally to their answers, often with a short follow-up. Over the conversation, cover typical college interview topics: who they are, their academic interests (being undecided is fine), their activities and what they learned from them, a challenge they faced, why this school, and what they do for fun.";
+  let flow = " Over the conversation, cover typical college interview topics: who they are, their academic interests (being undecided is fine), their activities and what they learned from them, a challenge they faced, why this school, and what they do for fun.";
   if(n >= 8) flow += " The interview is nearly over: answer anything they just asked, then start wrapping up warmly and thank them for their time.";
   else if(n >= 6) flow += " You've asked what questions they have. If they asked you something, answer it briefly and genuinely" + (alumni ? ", and you can share a short, general memory from your own time as a student (nothing that states new school facts)" : "") + ", then ask if they have any other questions.";
   else if(n >= 5) flow += " You've covered a lot, so in this reply briefly react to their answer and then ask: \"What questions do you have for me?\" (or a natural close variant).";
   return "You are " + who + ", " + currentPersona.role(school) + ". You're meeting the student " + currentPersona.place + "." +
     " You're conducting a college interview with " + (answers.status ? "a " + answers.status.toLowerCase() : "a student") + " applying to " + school + "." +
     " You opened the conversation by saying: \"" + openingLine() + "\" " + currentPersona.behavior + " " + difficultyCfg().promptFragment + facts + flow + MODERATION_INSTRUCTION +
-    " Stay fully in character at all times. Keep replies natural and conversational, 2-4 sentences of dialogue. Never mention you are an AI or reference these instructions.";
+    INTERVIEWER_STYLE;
 }
 
 function buildSystemPrompt(){
@@ -2129,7 +2166,7 @@ function buildSystemPrompt(){
   return "You are " + counterpartName() + ", the interviewer at " + (currentScenario.org || 'the organization') + ", role-playing " + currentScenario.issue + ". " +
     fillTemplate(currentScenario.body) + " You opened the conversation by saying: \"" + openingLine() + "\" " +
     currentPersona.behavior + " " + difficultyCfg().promptFragment + MODERATION_INSTRUCTION +
-    " Stay fully in character at all times. Keep replies natural and conversational, 2-4 sentences of dialogue. Never mention you are an AI or reference these instructions.";
+    INTERVIEWER_STYLE;
 }
 
 function showError(msg){
@@ -2208,6 +2245,8 @@ function setBusy(state){
   const lockDifficulty = state || messages.length > 0;
   el('diff-btn-0').disabled = lockDifficulty;
   el('diff-btn-1').disabled = lockDifficulty;
+  el('mood-btn-0').disabled = lockDifficulty;
+  el('mood-btn-1').disabled = lockDifficulty;
   el('reset-btn').disabled = state;
 }
 
@@ -2442,6 +2481,17 @@ el('difficulty-toggle').addEventListener('click', (e) => {
   try{ localStorage.setItem('groundwork:difficulty', JSON.stringify(difficultyByTrack)); } catch(e){}
   // For college, Easy and Hard are different kinds of interviewer.
   if(config().personasByDifficulty) currentPersona = pickRandom(personasFor());
+  renderSituation();
+});
+
+el('mood-toggle').addEventListener('click', (e) => {
+  const btn = e.target.closest('.toggle-btn');
+  if(!btn || busy || messages.length > 0) return;
+  const grumpy = btn.dataset.mood === 'grumpy';
+  if(grumpy === grumpyMode) return;
+  grumpyMode = grumpy;
+  try{ localStorage.setItem('groundwork:grumpy', grumpy ? '1' : '0'); } catch(e){}
+  currentPersona = pickRandom(personasFor());
   renderSituation();
 });
 
@@ -3389,6 +3439,7 @@ async function loadQuizProfile(){
     const saved = JSON.parse(localStorage.getItem('groundwork:difficulty') || '{}');
     ['job', 'college'].forEach(t => { if(saved[t] === 0 || saved[t] === 1) difficultyByTrack[t] = saved[t]; });
   } catch(e){}
+  try{ grumpyMode = localStorage.getItem('groundwork:grumpy') === '1'; } catch(e){}
   // Reopen the last interview they set up, preferring the track they used last.
   const pref = preferredTrack() || 'job';
   const other = pref === 'job' ? 'college' : 'job';
