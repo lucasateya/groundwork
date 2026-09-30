@@ -76,7 +76,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: rude, one-word, off-topic, or opens with complaints. 1 star: polite but minimal (short, flat answers with nothing given back), or long and rehearsed-sounding. 2 stars: friendly, natural answers of about the right length with at least one moment of warmth or appreciation. 3 stars: warm and natural throughout, answers in a sentence or two, shows appreciation, and gives something back that keeps the conversation going.`
   },
 
-  { id:'int-about-yourself', tier:'Beginner', title:'Tell me about yourself',
+  { id:'int-about-yourself', tier:'Beginner', title:'“Tell me about yourself”',
     summary:`The question almost every interview starts with.`,
     intro:[
       `"So, tell me about yourself." It sounds like the easiest question in the world, and it's the one people freeze on most. Where do you even start?`,
@@ -161,7 +161,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: doesn't answer the questions asked. 1 star: answers eventually, but the point is buried, vague, or runs long (roughly over 100 words) with filler. 2 stars: states the answer early and stays mostly on point, though the supporting detail may be generic. 3 stars: both answers lead with a direct answer in the first sentence, back it with one concrete detail, and stay under about 60 words each.`
   },
 
-  { id:'int-why-this-job', tier:'Beginner', title:'Why this job?',
+  { id:'int-why-this-job', tier:'Beginner', title:'“Why do you want this job?”',
     summary:`Show you want this job, not just any job.`,
     intro:[
       `"Why do you want to work here?" There's an honest answer in most people's heads: "Because I need money, and you were hiring." That's fine. It's true for almost everyone.`,
@@ -251,7 +251,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: no example at all, or a refusal. 1 star: speaks in generalities ("I always...", "I'm the kind of person who...") or the story has no clear action or result. 2 stars: a real, specific example with a recognizable situation, action, and result, even if one part is thin or they say "we" more than "I". 3 stars: a concise, specific story that clearly covers situation, task, action, and result, with the candidate's own actions front and center and a concrete outcome, and a thoughtful follow-up answer.`
   },
 
-  { id:'int-no-experience', tier:'Intermediate', title:`"I don't have experience"`,
+  { id:'int-no-experience', tier:'Intermediate', title:'“What experience do you have?”',
     summary:`Your life counts as experience. Here's how to use it.`,
     intro:[
       `If you're going for your first job, there's a question you're probably dreading: "What experience do you have?" It can feel like the honest answer is "none."`,
@@ -294,7 +294,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: says they have nothing, or apologizes and stops. 1 star: mentions something from their life but doesn't connect it to the job, or opens by apologizing for lacking experience. 2 stars: names a specific non-work experience and connects it to at least one skill useful for this job. 3 stars: confidently leads with a specific experience, clearly translates it into skills that matter for this job, and connects it concretely to the work when asked the follow-up.`
   },
 
-  { id:'int-working-with-people', tier:'Intermediate', title:'Working with other people',
+  { id:'int-working-with-people', tier:'Intermediate', title:'Working with others',
     summary:`Talk about teamwork and disagreements like an adult.`,
     intro:[
       `Almost every job means working with people you didn't choose: coworkers, managers, customers. So interviewers love questions like "Tell me about a time you disagreed with someone."`,
@@ -338,7 +338,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: refuses, claims to never have conflicts, or describes behaving badly with no reflection. 1 star: a real example, but it blames or belittles the other person, or shows no listening or resolution. 2 stars: a real disagreement handled respectfully with some kind of resolution. 3 stars: a specific, believable story showing they listened, respected the other person, and reached a practical resolution, plus a thoughtful follow-up about what they learned or would do.`
   },
 
-  { id:'int-what-would-you-do', tier:'Intermediate', title:'"What would you do if...?"',
+  { id:'int-what-would-you-do', tier:'Intermediate', title:'“What would you do if…?”',
     summary:`Think out loud through situations you haven't faced yet.`,
     intro:[
       `Some questions aren't about your past at all. They drop you into a made-up situation: "A customer is yelling at you. What do you do?"`,
@@ -382,7 +382,7 @@ const INTERVIEW_LESSONS = [
 
   // ───────────────────────── ADVANCED ─────────────────────────
 
-  { id:'int-weakness', tier:'Advanced', title:'The weakness question',
+  { id:'int-weakness', tier:'Advanced', title:'“What’s your biggest weakness?”',
     summary:`Be honest about a weakness without hurting yourself.`,
     intro:[
       `"What's your biggest weakness?" It feels like a trap: be too honest and you're out, dodge it and you sound fake.`,
@@ -427,7 +427,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: refuses, claims to have no weaknesses, or names something disqualifying for an office job with no plan. 1 star: a cliché fake weakness (perfectionism, working too hard, caring too much), or a real weakness with no mention of improvement. 2 stars: a real, reasonable weakness plus some effort to improve, even if vague. 3 stars: an honest, specific weakness that isn't central to the job, a brief real example, concrete steps they're taking, and a believable follow-up answer, ending on a confident note.`
   },
 
-  { id:'int-awkward-questions', tier:'Advanced', title:'Awkward questions',
+  { id:'int-awkward-questions', tier:'Advanced', title:'Gaps, quitting and bad moments',
     summary:`Handle questions about quitting, gaps, or bad moments.`,
     intro:[
       `Sooner or later, an interviewer will ask about something you'd rather skip: a job you left quickly, a gap in your schedule, a bad grade, a time you got in trouble.`,
@@ -511,7 +511,7 @@ const INTERVIEW_LESSONS = [
     criteria:`0 stars: refuses to answer, or is rude or demanding. 1 star: vague ("whenever", "whatever you pay") or overpromises, or caves on everything immediately under pressure. 2 stars: gives specific availability and addresses pay in some concrete way (a number, a range, or asking about starting pay). 3 stars: specific, honest availability with clear limits, a researched or reasonable pay range stated confidently but openly, and a calm, thoughtful response to the pressure in the follow-up (accepting, asking a question, or offering a reasonable compromise).`
   },
 
-  { id:'int-closing-strong', tier:'Advanced', title:'Your questions and the goodbye',
+  { id:'int-closing-strong', tier:'Advanced', title:'Asking questions and closing',
     summary:`Ask good questions and leave a strong last impression.`,
     intro:[
       `"Well, that's all my questions. Do you have any questions for me?" This is where a lot of people relax, say "Nope, I'm good!", and walk out.`,
@@ -568,7 +568,7 @@ const COLLEGE_LESSONS = [
 
   // ───────────────────────── BEGINNER ─────────────────────────
 
-  { id:'col-why-this-school', tier:'Beginner', title:'Why this school?',
+  { id:'col-why-this-school', tier:'Beginner', title:'“Why this school?”',
     summary:`Research a school in 15 minutes and connect it to you.`,
     intro:[
       `Almost every college interview gets to it eventually: "So, why this school?" It sounds simple, but it's where a lot of students go blank or say something that could be about any college in the country.`,
@@ -616,7 +616,7 @@ const COLLEGE_LESSONS = [
     criteria:`0 stars: no reason, or only prestige, rankings or other people's reasons. 1 star: generic reasons that could apply to many colleges ("good academics", "nice campus"). 2 stars: names at least one specific thing about the school and links it to themselves. 3 stars: a specific school detail clearly connected to the student's real experiences or goals, plus a follow-up answer that shows they've pictured themselves on campus.`
   },
 
-  { id:'col-major', tier:'Beginner', title:'Your major, or being undecided',
+  { id:'col-major', tier:'Beginner', title:'Your major, even if undecided',
     summary:`Talk about your interests honestly, even if you're undecided.`,
     intro:[
       `"What do you want to study?" can feel like a trap if you don't know yet. It isn't. Plenty of students change majors, and admissions people know that better than anyone.`,
@@ -663,7 +663,7 @@ const COLLEGE_LESSONS = [
     criteria:`0 stars: "I don't know" with nothing else, or no real answer. 1 star: names a major or interest but gives no reason, or only money or prestige as the reason. 2 stars: names an interest (or says undecided) and gives a real reason or example. 3 stars: shows genuine curiosity with specific interests and a concrete example, and answers the follow-up with something specific they learned or want to explore.`
   },
 
-  { id:'col-activities', tier:'Beginner', title:'Your activities and what you learned',
+  { id:'col-activities', tier:'Beginner', title:'What your activities taught you',
     summary:`Talk about what you do outside class without reading your resume.`,
     intro:[
       `"Tell me about what you do outside of class." The trap here is reciting your whole activities list: "I do NHS, Key Club, soccer, band…"`,
@@ -748,7 +748,7 @@ const COLLEGE_LESSONS = [
     criteria:`0 stars: no example or a refusal. 1 star: generalities ("I always push through") or a story with no clear action or no reflection. 2 stars: a specific story with a clear action and result, and some reflection. 3 stars: a concise, specific STAR story with the student's own actions at the center and a genuine, specific reflection on growth, plus a thoughtful answer to the follow-up.`
   },
 
-  { id:'col-knowing-yourself', tier:'Intermediate', title:'Knowing yourself',
+  { id:'col-knowing-yourself', tier:'Intermediate', title:'Describing yourself',
     summary:`Strengths, weaknesses and "How would your friends describe you?"`,
     intro:[
       `Some questions aren't about what you've done, but who you are: "How would your friends describe you?" "What's your biggest strength?" "What are you working on?"`,
@@ -789,7 +789,7 @@ const COLLEGE_LESSONS = [
     criteria:`0 stars: no real answer or refuses. 1 star: vague adjectives with no examples, or a cliché weakness like perfectionism. 2 stars: at least one real quality backed by an example, and a reasonable area of growth. 3 stars: specific, honest qualities proven by examples, plus a real weakness or growth area with concrete steps they're taking.`
   },
 
-  { id:'col-hard-spots', tier:'Intermediate', title:'Hard spots',
+  { id:'col-hard-spots', tier:'Intermediate', title:'Bad grades and tough years',
     summary:`A bad grade, a low test score, a gap or a tough year.`,
     intro:[
       `Most applicants have something they'd rather not talk about: a bad semester, a low score, a year where life got in the way.`,
@@ -832,7 +832,7 @@ const COLLEGE_LESSONS = [
 
   // ───────────────────────── ADVANCED ─────────────────────────
 
-  { id:'col-curveballs', tier:'Advanced', title:'Curveballs',
+  { id:'col-curveballs', tier:'Advanced', title:'Curveball questions',
     summary:`"What book have you read lately?", current events, and fun.`,
     intro:[
       `Every so often an interviewer throws a question you didn't prepare for: "What book have you read lately?" "What's something in the news you care about?" "What do you do on a free Saturday?"`,
@@ -918,7 +918,7 @@ const COLLEGE_LESSONS = [
     criteria:`0 stars: rude, off-topic, or one-word answers. 1 star: flat or overly casual answers ("It's fine. Busy.") that don't match a professional interview. 2 stars: warm, specific small talk and a reasonably organized answer to the formal question. 3 stars: natural, specific small talk plus a clear, well-organized, professional answer to the formal question that fits the setting.`
   },
 
-  { id:'col-questions-goodbye', tier:'Advanced', title:'Your questions and the goodbye',
+  { id:'col-questions-goodbye', tier:'Advanced', title:'Asking questions and closing',
     summary:`Ask good questions, close well, and send a thank-you.`,
     intro:[
       `College interviews almost always end with: "What questions do you have for me?" It's not a formality. It's your chance to show real interest, and it's often the part interviewers remember most.`,

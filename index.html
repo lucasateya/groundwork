@@ -589,6 +589,19 @@
   .loading-tip-label{letter-spacing:0;font-size:12.5px;}
   .toast{border-radius:var(--r-panel);}
 
+  /* Path labels: lesson name, then a status line */
+  .path-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;}
+  .path-title.side{min-height:52px;display:flex;flex-direction:column;justify-content:center;}
+  .path-title.below{text-align:center;}
+  .path-title.below span{background:none;padding:0;}
+  .path-title .pt-name{display:block;}
+  .path-title.below .pt-name,.path-title.below .pt-meta{background:var(--paper-raised);box-shadow:0 0 0 3px var(--paper-raised);border-radius:3px;}
+  .path-title.below .pt-meta{display:table;margin:3px auto 0;}
+  .path-title .pt-meta{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:3px;}
+  .path-title .pt-meta.next{color:var(--gold-deep);font-weight:700;}
+  .path-title .pt-meta.stars{color:var(--gold-deep);letter-spacing:2px;font-size:13px;}
+  .path-title.locked{color:var(--muted);font-weight:600;}
+  .path-node.locked{font-size:18px;opacity:1;background:var(--paper-raised);color:#A3ABBA;border-color:var(--border);}
   /* ---------- Admin ---------- */
   .admin-item{margin-bottom:0.6rem;}
 </style>
@@ -2750,7 +2763,7 @@ function renderLearnSide(){
       const locked = !isUnlocked(b, i);
       const current = !locked && !done && i === branchNext(b);
       html += '<button class="skill-row ' + b + (done ? ' passed' : '') + (current ? ' current' : '') + '" data-branch="' + b + '" data-idx="' + i + '"' + (locked ? ' disabled' : '') + '>' +
-        '<span class="skill-num">' + (done ? '✓' : (locked ? '🔒' : (i + 1))) + '</span>' +
+        '<span class="skill-num">' + (done ? '✓' : (i + 1)) + '</span>' +
         '<span class="skill-name">' + l.title + '</span>' +
         '<span class="skill-stars">' + (s !== undefined ? starsHTML(s) : '') + '</span></button>';
     });
@@ -2846,13 +2859,11 @@ function renderSkillPathVisual(){
 
     let cls = 'path-node ' + branch;
     let inner = String(idx + 1);
-    if(locked){ cls += ' locked'; inner = '🔒'; }
+    if(locked){ cls += ' locked'; }
     else if(done){ cls += ' passed'; inner = '✓'; }
     else if(current){ cls += ' current'; }
     if(branch === 'shared' && idx === shared.length - 1) cls += ' fork-node';
     nodesHTML += '<div class="' + cls + '" data-id="' + lesson.id + '" role="button" tabindex="0" aria-label="' + escapeHTML(lesson.title) + (locked ? ' (locked)' : '') + '" style="left:' + (x - node / 2) + 'px;top:' + y + 'px;width:' + node + 'px;height:' + node + 'px;">' + inner + '</div>';
-
-    if(current) extras += '<div class="path-bubble" style="left:' + (x - node / 2 - 6) + 'px;top:' + (y - 32) + 'px;">Start</div>';
 
     // Tier label where a tier begins (inside each branch).
     if(branch !== 'shared' && lastTier[branch] !== lesson.tier){
@@ -2864,13 +2875,21 @@ function renderSkillPathVisual(){
       extras += '<div class="path-tier-label" style="left:' + labelLeft + 'px;top:' + (y - 12) + 'px;width:100px;text-align:' + align + ';">' + lesson.tier + '</div>';
     }
 
+    // Each label: the lesson name, then a short status line.
+    const status = done ? '<span class="pt-meta stars" aria-label="' + stars + ' of 3 stars">' + starsHTML(stars) + '</span>'
+      : current ? '<span class="pt-meta next">Up next</span>'
+      : locked ? '<span class="pt-meta">Locked</span>'
+      : '<span class="pt-meta">Ready to start</span>';
+    const titleCls = 'path-title' + (locked ? ' locked' : '') + (current ? ' current' : '');
+    const titleInner = '<span class="pt-name">' + escapeHTML(lesson.title) + '</span>' + status;
     if(n.titleMode === 'below'){
-      extras += '<div class="path-title below" style="left:' + (x - titleW / 2) + 'px;top:' + (y + node + 6) + 'px;width:' + titleW + 'px;"><span>' + lesson.title + '</span></div>';
-      if(done) extras += '<div class="path-stars" style="left:' + (x - 40) + 'px;top:' + (y + node + 40) + 'px;width:80px;text-align:center;">' + starsHTML(stars) + '</div>';
+      extras += '<div class="' + titleCls + ' below" style="left:' + (x - titleW / 2) + 'px;top:' + (y + node + 8) + 'px;width:' + titleW + 'px;">' + titleInner + '</div>';
     } else {
-      const titleLeft = rightSide ? (x - node / 2 - 12 - titleW) : (x + node / 2 + 12);
-      extras += '<div class="path-title" style="left:' + titleLeft + 'px;top:' + (y + node / 2 - 8) + 'px;width:' + titleW + 'px;text-align:' + (rightSide ? 'right' : 'left') + ';">' + lesson.title + '</div>';
-      if(done) extras += '<div class="path-stars" style="left:' + (x - node / 2 + 4) + 'px;top:' + (y + node + 4) + 'px;">' + starsHTML(stars) + '</div>';
+      // Use all the room between the circle and the edge of the card.
+      const room = rightSide ? (x - node / 2 - 14 - 6) : (W - (x + node / 2 + 14) - 6);
+      const sideW = Math.max(90, Math.min(210, room));
+      const titleLeft = rightSide ? (x - node / 2 - 14 - sideW) : (x + node / 2 + 14);
+      extras += '<div class="' + titleCls + ' side" style="left:' + titleLeft + 'px;top:' + (y + 6) + 'px;width:' + sideW + 'px;text-align:' + (rightSide ? 'right' : 'left') + ';">' + titleInner + '</div>';
     }
 
     if(openPopoverId === lesson.id){
