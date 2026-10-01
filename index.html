@@ -589,6 +589,36 @@
   .loading-tip-label{letter-spacing:0;font-size:12.5px;}
   .toast{border-radius:var(--r-panel);}
 
+  /* Saving progress: top-bar account, age check, sign-in reminder */
+  .account{display:flex;align-items:center;position:relative;margin-left:0.15rem;}
+  .signin-link{display:inline-flex;align-items:center;gap:0.35rem;background:none;border:none;padding:0.45rem 0.35rem;font:inherit;font-size:14px;font-weight:600;color:var(--teal);cursor:pointer;white-space:nowrap;}
+  .signin-link:hover .signin-text{text-decoration:underline;text-underline-offset:3px;}
+  @media (max-width:700px){.signin-text{display:none;} .signin-link{padding:0.4rem;}}
+  @media (max-width:440px){
+    .topbar-inner{gap:0.4rem;}
+    .wordmark{font-size:19px;}
+    .nav-links{gap:0;}
+    .nav-link{padding:0.4rem 0.45rem;font-size:13.5px;}
+    .xp-chip{padding:0.25rem 0.5rem;margin-right:0.1rem;}
+    .signin-link{padding:0.35rem 0.25rem;}
+    .avatar-btn{width:30px;height:30px;font-size:13px;}
+  }
+  .avatar-btn{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;border:none;font:inherit;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .account-menu{position:absolute;right:0;top:calc(100% + 10px);width:min(260px, calc(100vw - 32px));background:var(--paper-raised);border:1px solid var(--border);border-radius:var(--r-panel);box-shadow:var(--shadow-lg);padding:0.85rem 0.95rem;z-index:40;}
+  .account-menu p{margin:0 0 0.55rem;font-size:13.5px;line-height:1.45;color:var(--ink);overflow-wrap:anywhere;}
+  .account-menu .fine{font-size:11.5px;color:var(--muted);margin-bottom:0.75rem;}
+  .save-nudge{display:flex;gap:0.75rem;align-items:flex-start;justify-content:space-between;background:var(--teal-pale);color:var(--ink);border-radius:var(--r-panel);padding:0.7rem 0.9rem;font-size:14px;line-height:1.5;}
+  .save-nudge p{margin:0;}
+  .save-nudge-x{background:none;border:none;font-size:20px;line-height:1;color:var(--muted);cursor:pointer;padding:0 0.2rem;}
+  .save-nudge-x:hover{color:var(--ink);}
+  .age-dialog{border:1px solid var(--border);border-radius:var(--r-panel);padding:1.4rem 1.5rem 1.2rem;width:min(420px, calc(100vw - 32px));background:var(--paper-raised);color:var(--ink);box-shadow:var(--shadow-lg);}
+  .age-dialog::backdrop{background:rgba(29,39,66,0.35);}
+  .age-dialog h2{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin:0 0 0.4rem;}
+  .age-dialog p{font-size:15.5px;line-height:1.55;margin:0 0 0.9rem;}
+  .age-dialog .fine{font-size:12px;color:var(--muted);margin:0;}
+  .age-actions{display:flex;gap:0.6rem;margin-bottom:0.9rem;}
+  .age-actions .btn{min-width:84px;}
+
   /* Voice mode: mic, live transcript, read-aloud toggle, delivery card */
   .mic-btn{position:relative;flex-shrink:0;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--paper-raised);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .15s ease,color .15s ease,border-color .15s ease;}
   .mic-btn:hover:not(:disabled){border-color:var(--ink);}
@@ -676,6 +706,7 @@
       <a class="xp-chip" id="xp-chip" href="#/" title="Your level and streak"></a>
       <a class="nav-link" href="#/practice" data-nav="practice">Practice</a>
       <a class="nav-link" href="#/learn" data-nav="learn">Learn</a>
+      <div class="account" id="account" hidden></div>
     </nav>
   </div>
 </header>
@@ -771,6 +802,7 @@
         </div>
         <div class="badge-grid" id="home-badges"></div>
         <p class="fine xp-how">Earn XP as you go: 10 for every lesson star, and 10–50 for each mock interview depending on your grade.</p>
+        <p class="fine xp-how">Your progress is saved in this browser. Nothing goes to a server unless you sign in, and then only your progress, grades and quiz answers, never your conversations or your voice. <a href="privacy.html">Privacy</a></p>
       </section>
 
       <div class="how">
@@ -985,6 +1017,24 @@
 </main>
 
 <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+<!-- Asked once before Google sign-in. Under 13: no sign-in, progress stays on this device. -->
+<dialog class="age-dialog" id="age-dialog" aria-labelledby="age-title">
+  <div id="age-ask">
+    <h2 id="age-title">Save your progress</h2>
+    <p>Are you 13 or older?</p>
+    <div class="age-actions">
+      <button class="btn btn-primary" id="age-yes" type="button">Yes</button>
+      <button class="btn btn-secondary" id="age-no" type="button">No</button>
+    </div>
+    <p class="fine">Signing in with Google saves your lesson stars, grades, quiz answers and daily question to your account, so they're safe if this browser clears its data and you can pick up on another device. We never save your conversations or your voice. <a href="privacy.html">Privacy</a></p>
+  </div>
+  <div id="age-under" hidden>
+    <h2>No problem</h2>
+    <p>Your progress still saves on this device.</p>
+    <div class="age-actions"><button class="btn btn-primary" id="age-ok" type="button">OK</button></div>
+  </div>
+</dialog>
 
 <script src="lessons.js"></script>
 <script>
@@ -1427,8 +1477,8 @@ function showOverlayLoader(container, opts){
 }
 
 // Progress, history, and the quiz profile are kept in the visitor's own
-// browser (localStorage). It's per-device, not per-account — swap in a real
-// database (e.g. Supabase) for cross-device sync.
+// browser (localStorage), which stays the source of truth. Signed-in users also
+// get a synced copy in Supabase (see "Saving progress" below).
 const storage = {
   async set(key, value){ localStorage.setItem(key, value); return { key, value }; },
   async get(key){
@@ -1639,7 +1689,7 @@ function todaysQuestion(){
   return DAILY.questions[((days % n) + n) % n];
 }
 function loadDaily(){ try{ return JSON.parse(localStorage.getItem(DAILY_KEY) || 'null'); } catch(e){ return null; } }
-function saveDaily(obj){ try{ localStorage.setItem(DAILY_KEY, JSON.stringify(obj)); } catch(e){} }
+function saveDaily(obj){ try{ localStorage.setItem(DAILY_KEY, JSON.stringify(obj)); } catch(e){} scheduleSync(); }
 function todaysDailyResult(){
   const saved = loadDaily();
   return saved && saved.result && saved.result.date === dayKey(new Date()) ? saved.result : null;
@@ -1860,7 +1910,8 @@ async function finishQuiz(){
   const answers = {};
   quizQuestions().forEach(q => { if(quizAnswers[q.id] !== undefined) answers[q.id] = quizAnswers[q.id]; });
   P[t].answers = answers;
-  try{ await storage.set(PRACTICE[t].keys.answers, JSON.stringify(answers)); } catch(e){}
+  try{ await storage.set(PRACTICE[t].keys.answers, JSON.stringify(answers)); localStorage.setItem(PRACTICE[t].keys.answers + ':savedAt', String(Date.now())); } catch(e){}
+  scheduleSync();
   P[t].options = null; // answers may have changed, so suggest fresh options
   go(PRACTICE[t].routes.picker);
 }
@@ -3062,7 +3113,7 @@ function meterHTML(score){
   return out;
 }
 
-async function saveAttempt(avg, grade){
+async function saveAttempt(avg, grade, scores){
   try{
     const record = {
       mode: config().label,
@@ -3072,9 +3123,11 @@ async function saveAttempt(avg, grade){
       difficulty: difficultyCfg().label,
       grade: grade,
       avg: avg,
+      scores: scores || null,
       date: new Date().toISOString()
     };
     await storage.set('attempts:' + Date.now(), JSON.stringify(record));
+    scheduleSync();
   } catch(err){
     console.error('Could not save attempt', err);
   }
@@ -3161,6 +3214,7 @@ function renderFeedback(fb){
         <p>${escapeHTML(fb.overall)}</p>
       </div>
       <p class="save-note">Saved to your recent grades.</p>
+      ${saveNudgeHTML()}
       <div class="actions-row">
         <button class="again-btn" id="again-btn">${PRACTICE[sessionTrack].againLabel}</button>
         <a class="reset-btn" href="${PRACTICE[sessionTrack].routes.picker}">${PRACTICE[sessionTrack].pickAnotherLabel}</a>
@@ -3170,7 +3224,7 @@ function renderFeedback(fb){
   updateTurns();
   const before = gameState();
   recordActivity();
-  saveAttempt(avg, grade).then(loadHistory).then(() => {
+  saveAttempt(avg, grade, scores).then(loadHistory).then(() => {
     celebrate(before, document.querySelector('#main-panel .grade-badge'), grade === 'A' || grade === 'B');
   });
 }
@@ -3365,6 +3419,7 @@ async function saveSkillProgress(lessonId, stars, title){
     const best = existing === undefined ? stars : Math.max(existing, stars);
     skillStars[currentTrack][lessonId] = best;
     await storage.set('skillpath:' + currentTrack + ':' + lessonId, JSON.stringify({ track: currentTrack, lessonId, title, stars: best }));
+    scheduleSync();
   } catch(err){
     console.error('Could not save skill progress', err);
   }
@@ -3788,6 +3843,7 @@ function renderLearnMain(result){
         </div>
         <div class="fb-block gold"><h4>Feedback</h4><p>${escapeHTML(result.feedback)}</p></div>
         ${lesson.takeaway ? '<div class="lesson-turn"><h4>Remember this</h4><p>' + lesson.takeaway + '</p></div>' : ''}
+        ${totalPassedCount() === 1 ? saveNudgeHTML() : ''}
         ${actions}
       </div>`;
     return;
@@ -4039,6 +4095,7 @@ function recordActivity(){
   const days = new Set(loadActivity());
   days.add(dayKey(new Date()));
   try{ localStorage.setItem(ACTIVITY_KEY, JSON.stringify([...days].sort().slice(-400))); } catch(e){}
+  scheduleSync();
 }
 function streakInfo(){
   const days = new Set(loadActivity());
@@ -4187,6 +4244,265 @@ function celebrate(before, anchor, big){
 // Startup
 // =====================================================================
 
+// =====================================================================
+// Saving progress: optional Google sign-in (Supabase)
+// =====================================================================
+// localStorage stays the source of truth on this device; a signed-in user
+// also gets a synced copy in one `progress` row. Synced: lesson stars, grades
+// and skill scores, quiz answers, the question-of-the-day result and practice
+// days. Never conversations or voice. Without the Vercel environment
+// variables (see api/config.js) all of this stays hidden.
+
+const AGE_KEY = 'groundwork:age';            // 'ok' (13+) | 'under13'
+const NUDGE_KEY = 'groundwork:saveNudge';    // times the save reminder was dismissed
+const RETURN_KEY = 'groundwork:returnTo';    // page to come back to after Google sign-in
+const SUPABASE_JS = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+const PERSON_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>';
+const account = { enabled:false, client:null, user:null, syncing:false, pending:false, timer:null };
+
+function safeParse(v){ try{ return v === null || v === undefined ? null : JSON.parse(v); } catch(e){ return null; } }
+function ageAnswer(){ try{ return localStorage.getItem(AGE_KEY); } catch(e){ return null; } }
+
+function loadSupabaseLib(){
+  if(window.supabase && window.supabase.createClient) return Promise.resolve(window.supabase);
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = SUPABASE_JS;
+    s.onload = () => window.supabase ? resolve(window.supabase) : reject(new Error('Supabase failed to load'));
+    s.onerror = () => reject(new Error('Supabase failed to load'));
+    document.head.appendChild(s);
+  });
+}
+
+async function initAccount(){
+  let cfg;
+  try{
+    const r = await fetch('/api/config');
+    if(!r.ok) return;
+    cfg = await r.json();
+  } catch(e){ return; }
+  if(!cfg || !cfg.enabled) return;
+  try{
+    const lib = await loadSupabaseLib();
+    account.client = lib.createClient(cfg.url, cfg.anonKey, {
+      // PKCE returns a ?code= in the query string, which leaves our #/ routes alone.
+      auth:{ flowType:'pkce', persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
+    });
+  } catch(err){
+    console.error('Sign-in unavailable:', err);
+    return;
+  }
+  account.enabled = true;
+  const { data } = await account.client.auth.getSession(); // also finishes a Google sign-in redirect
+  finishAuthRedirect();
+  setUser(data && data.session ? data.session.user : null);
+  account.client.auth.onAuthStateChange((event, session) => {
+    const wasSignedIn = !!account.user;
+    setUser(session ? session.user : null);
+    if(event === 'SIGNED_IN' && !wasSignedIn) syncNow();
+  });
+  if(account.user) syncNow();
+}
+
+// After Google sends the student back: tidy the address bar and return to
+// the page they were on.
+function finishAuthRedirect(){
+  const q = new URLSearchParams(location.search);
+  if(!q.has('code') && !q.has('error')) return;
+  let back = '#/';
+  try{ back = sessionStorage.getItem(RETURN_KEY) || location.hash || '#/'; sessionStorage.removeItem(RETURN_KEY); } catch(e){}
+  history.replaceState(null, '', location.pathname + back);
+  if(q.has('error')) toast('', "Sign-in didn't finish. Your progress is still saved on this device.");
+  route();
+}
+
+function setUser(u){
+  account.user = u || null;
+  renderAccount();
+  if(account.user) document.querySelectorAll('.save-nudge').forEach(n => n.remove());
+}
+
+function renderAccount(){
+  const box = el('account');
+  if(!account.enabled){ box.hidden = true; box.innerHTML = ''; return; }
+  box.hidden = false;
+  const u = account.user;
+  if(!u){
+    box.innerHTML = '<button class="signin-link" type="button" data-signin aria-label="Sign in to save your progress">' + PERSON_ICON + '<span class="signin-text">Sign in to save</span></button>';
+    return;
+  }
+  const meta = u.user_metadata || {};
+  const name = meta.full_name || meta.name || u.email || 'you';
+  const initial = (meta.full_name || meta.name || u.email || '?').trim().charAt(0).toUpperCase();
+  box.innerHTML =
+    '<button class="avatar-btn" id="account-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account: ' + escapeHTML(name) + '">' + escapeHTML(initial) + '</button>' +
+    '<div class="account-menu" id="account-menu" hidden>' +
+      '<p>Signed in as <b>' + escapeHTML(u.email || name) + '</b></p>' +
+      '<p class="fine">Your progress, grades and quiz answers are saved to your account. Never your conversations or your voice.</p>' +
+      '<button class="btn btn-secondary full" id="signout-btn" type="button">Sign out</button>' +
+    '</div>';
+}
+
+function toggleAccountMenu(open){
+  const menu = el('account-menu'), btn = el('account-btn');
+  if(!menu) return;
+  const show = open === undefined ? menu.hidden : open;
+  menu.hidden = !show;
+  btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+}
+
+function startSignIn(){
+  if(!account.enabled || account.user) return;
+  const age = ageAnswer();
+  if(age === 'ok') return googleSignIn();
+  showAgeDialog(age === 'under13' ? 'under' : 'ask');
+}
+function showAgeDialog(which){
+  el('age-ask').hidden = which !== 'ask';
+  el('age-under').hidden = which !== 'under';
+  const d = el('age-dialog');
+  if(!d.open) d.showModal();
+  (which === 'ask' ? el('age-yes') : el('age-ok')).focus();
+}
+async function googleSignIn(){
+  try{ sessionStorage.setItem(RETURN_KEY, location.hash || '#/'); } catch(e){}
+  const { error } = await account.client.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: location.origin + location.pathname } });
+  if(error){ console.error('Google sign-in failed:', error); toast('', "Couldn't start Google sign-in. Try again in a moment."); }
+}
+async function signOut(){
+  toggleAccountMenu(false);
+  try{ await account.client.auth.signOut(); } catch(e){ console.error('Sign-out failed:', e); }
+  setUser(null);
+  toast('', 'Signed out. Your progress is still saved on this device.');
+}
+
+el('age-yes').addEventListener('click', () => {
+  try{ localStorage.setItem(AGE_KEY, 'ok'); } catch(e){}
+  el('age-dialog').close();
+  googleSignIn();
+});
+el('age-no').addEventListener('click', () => {
+  try{ localStorage.setItem(AGE_KEY, 'under13'); } catch(e){}
+  document.querySelectorAll('.save-nudge').forEach(n => n.remove());
+  showAgeDialog('under');
+});
+el('age-ok').addEventListener('click', () => el('age-dialog').close());
+
+document.addEventListener('click', (e) => {
+  if(e.target.closest('[data-signin]')){ startSignIn(); return; }
+  if(e.target.closest('[data-nudge-dismiss]')){ dismissNudge(); return; }
+  if(e.target.closest('#account-btn')){ toggleAccountMenu(); return; }
+  if(e.target.closest('#signout-btn')){ signOut(); return; }
+  if(!e.target.closest('#account-menu')) toggleAccountMenu(false);
+});
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') toggleAccountMenu(false); });
+
+// ---- Reminder to sign in (after the first passed lesson and after graded interviews) ----
+function nudgeDismissals(){ try{ return Number(localStorage.getItem(NUDGE_KEY)) || 0; } catch(e){ return 0; } }
+function saveNudgeHTML(){
+  if(!account.enabled || account.user || ageAnswer() === 'under13' || nudgeDismissals() >= 2) return '';
+  return '<div class="save-nudge" role="note"><p>Save your progress so it isn\'t lost if this browser clears it. <button class="btn-link" type="button" data-signin>Sign in with Google</button></p>' +
+    '<button class="save-nudge-x" type="button" data-nudge-dismiss aria-label="Dismiss">×</button></div>';
+}
+function dismissNudge(){
+  try{ localStorage.setItem(NUDGE_KEY, String(nudgeDismissals() + 1)); } catch(e){}
+  document.querySelectorAll('.save-nudge').forEach(n => n.remove());
+}
+
+// ---- Syncing ----
+function collectLocal(){
+  const out = { v:1, lessons:{}, attempts:{}, quiz:{}, daily:null, activity:[] };
+  for(const k of Object.keys(localStorage)){
+    if(k.startsWith('skillpath:')){ const v = safeParse(localStorage.getItem(k)); if(v) out.lessons[k] = v; }
+    else if(k.startsWith('attempts:')){ const v = safeParse(localStorage.getItem(k)); if(v) out.attempts[k] = v; }
+  }
+  for(const t of Object.keys(PRACTICE)){
+    const key = PRACTICE[t].keys.answers;
+    const answers = safeParse(localStorage.getItem(key));
+    if(answers) out.quiz[t] = { answers, savedAt: Number(localStorage.getItem(key + ':savedAt')) || 0 };
+  }
+  out.daily = loadDaily();
+  out.activity = loadActivity();
+  return out;
+}
+
+// Keep the best of both: more stars per lesson, every grade (they're keyed by
+// time, so the same grade never appears twice), the newest quiz answers, the
+// most recent daily result, and every practice day (so the streak is the
+// higher of the two).
+function mergeProgress(local, remote){
+  const a = local || {}, b = remote || {};
+  const m = { v:1, lessons:{}, attempts:{}, quiz:{}, daily:null, activity:[] };
+  new Set([...Object.keys(a.lessons || {}), ...Object.keys(b.lessons || {})]).forEach(k => {
+    const x = (a.lessons || {})[k], y = (b.lessons || {})[k];
+    m.lessons[k] = !x ? y : !y ? x : ((Number(y.stars) || 0) > (Number(x.stars) || 0) ? y : x);
+  });
+  m.attempts = Object.assign({}, b.attempts || {}, a.attempts || {});
+  new Set([...Object.keys(a.quiz || {}), ...Object.keys(b.quiz || {})]).forEach(t => {
+    const x = (a.quiz || {})[t], y = (b.quiz || {})[t];
+    m.quiz[t] = !x ? y : !y ? x : ((y.savedAt || 0) > (x.savedAt || 0) ? y : x);
+  });
+  const da = a.daily, db = b.daily;
+  m.daily = !da ? (db || null) : !db ? da : ((db.lastDate || '') > (da.lastDate || '') ? db : da);
+  m.activity = [...new Set([...(a.activity || []), ...(b.activity || [])])].filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().slice(-400);
+  return m;
+}
+
+// Write merged data into this browser. Returns true if anything changed.
+function applyLocal(m){
+  let changed = false;
+  const put = (k, v) => {
+    const s = typeof v === 'string' ? v : JSON.stringify(v);
+    if(localStorage.getItem(k) !== s){ localStorage.setItem(k, s); changed = true; }
+  };
+  Object.entries(m.lessons).forEach(([k, v]) => put(k, v));
+  Object.entries(m.attempts).forEach(([k, v]) => put(k, v));
+  Object.entries(m.quiz).forEach(([t, q]) => {
+    if(!PRACTICE[t] || !q) return;
+    put(PRACTICE[t].keys.answers, q.answers);
+    put(PRACTICE[t].keys.answers + ':savedAt', String(q.savedAt || 0));
+  });
+  if(m.daily) put(DAILY_KEY, m.daily);
+  put(ACTIVITY_KEY, m.activity);
+  return changed;
+}
+
+async function refreshFromStorage(){
+  await Promise.all([loadSkillProgress(), loadHistory(), loadQuizProfile()]);
+  updateXpChip();
+  if(['home', 'learn', 'choice'].includes(currentView)) route();
+}
+
+async function syncNow(){
+  if(!account.user || !account.client) return;
+  if(account.syncing){ account.pending = true; return; }
+  account.syncing = true;
+  clearTimeout(account.timer);
+  account.timer = null;
+  try{
+    const uid = account.user.id;
+    const { data, error } = await account.client.from('progress').select('data').eq('user_id', uid).maybeSingle();
+    if(error) throw error;
+    const merged = mergeProgress(collectLocal(), data && data.data);
+    if(applyLocal(merged)) await refreshFromStorage();
+    const { error: upErr } = await account.client.from('progress').upsert({ user_id: uid, data: merged, updated_at: new Date().toISOString() });
+    if(upErr) throw upErr;
+  } catch(err){
+    console.error('Progress sync failed:', err);
+  } finally {
+    account.syncing = false;
+    if(account.pending){ account.pending = false; scheduleSync(); }
+  }
+}
+function scheduleSync(){
+  if(!account.user) return;
+  clearTimeout(account.timer);
+  account.timer = setTimeout(syncNow, 2000);
+}
+document.addEventListener('visibilitychange', () => {
+  if(document.visibilityState === 'hidden' && account.timer) syncNow();
+});
+
 // Quiz answers, cached suggestions and last scenario, for each track.
 async function loadQuizProfile(){
   for(const t of Object.keys(PRACTICE)){
@@ -4230,6 +4546,7 @@ async function loadQuizProfile(){
   else if(P[other].scenario) startSession(other, P[other].scenario);
   updateXpChip();
   route();
+  initAccount(); // optional sign-in; the site works the same without it
 })();
 </script>
 </body>
