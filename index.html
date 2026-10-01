@@ -803,7 +803,7 @@
           </div>
         </div>
         <div class="badge-grid" id="home-badges"></div>
-        <p class="fine xp-how">Earn XP as you go: 10 for every lesson star, and 10–50 for each mock interview depending on your grade.</p>
+        <p class="fine xp-how">XP depends on how well you do: 10 for every lesson star, 12–60 for a mock interview based on your score (25% more on the harder level or with Sunshine), and 5 for every star on the question of the day. Legend starts at Level 100.</p>
         <p class="fine xp-how">Your progress is saved in this browser. Nothing goes to a server unless you sign in, and then only your progress, grades and quiz answers, never your conversations or your voice. <a href="privacy.html">Privacy</a></p>
       </section>
 
@@ -1788,6 +1788,7 @@ async function checkDaily(){
     if(!fb.tip || !fb.stronger) throw new Error('Incomplete feedback');
     const before = gameState();
     saveDaily({ lastDate: date, result: { date, questionId: q.id, question: q.q, answer: text, stars, tip: String(fb.tip), stronger: String(fb.stronger) } });
+    logDailyStars(date, stars);
     recordActivity();
     dailyState.checking = false;
     dailyState.draft = '';
@@ -4062,20 +4063,48 @@ async function renderAdminView(){
 // =====================================================================
 
 const ACTIVITY_KEY = 'groundwork:activity';
-const LEVELS = [
-  { at:0,    name:'Getting started' },
-  { at:40,   name:'Warming up' },
-  { at:100,  name:'Finding your voice' },
-  { at:180,  name:'Steady' },
-  { at:280,  name:'Confident' },
-  { at:400,  name:'Polished' },
-  { at:550,  name:'Standout' },
-  { at:720,  name:'Interview pro' },
-  { at:920,  name:'Seasoned' },
-  { at:1150, name:'Expert' },
-  { at:1400, name:'Legend' }
+// Levels have no cap. Each one takes a little more XP than the last
+// (Level 2 = 10 XP, Level 11 ≈ 400, Level 100 ≈ 15,600), and the title
+// changes at the levels below. Legend starts at Level 100.
+const LEVEL_TITLES = [
+  [1, 'Getting started'], [5, 'Warming up'], [10, 'Finding your voice'], [20, 'Steady'],
+  [30, 'Confident'], [40, 'Polished'], [55, 'Standout'], [70, 'Interview pro'],
+  [80, 'Seasoned'], [90, 'Expert'], [100, 'Legend']
 ];
-const GRADE_XP = { A:50, B:40, C:30, D:20, F:10 };
+function xpForLevel(n){ return n <= 1 ? 0 : Math.round(10 * Math.pow(n - 1, 1.6)); }
+function levelForXP(xp){ let n = 1; while(xpForLevel(n + 1) <= xp) n++; return n; }
+function levelTitle(n){ let t = LEVEL_TITLES[0][1]; LEVEL_TITLES.forEach(([at, name]) => { if(n >= at) t = name; }); return t; }
+
+// XP depends on how well you did:
+//   lessons: 10 per star (0-3 stars)
+//   mock interviews: 12 per point of your average score (1-5), so 12-60,
+//     plus 25% on the harder difficulty and 25% more with Sunshine
+//   question of the day: 5 per star (0-3 stars)
+const LESSON_STAR_XP = 10;
+const DAILY_STAR_XP = 5;
+const GRADE_AVG = { A:4.7, B:4, C:3, D:2, F:1 }; // for grades saved without an average
+function interviewXP(a){
+  const avg = Number(a.avg) || GRADE_AVG[a.grade] || 0;
+  let xp = avg * 12;
+  if(a.difficulty === 'Formal panel' || a.difficulty === 'Hard') xp *= 1.25;
+  if(a.persona === 'sunshine') xp *= 1.25;
+  return Math.round(xp);
+}
+
+// Stars from every daily answer, by date, so past days keep counting.
+const DAILY_LOG_KEY = 'groundwork:dailyLog'; // { 'YYYY-MM-DD': stars }
+function loadDailyLog(){
+  let log = {};
+  try{ log = JSON.parse(localStorage.getItem(DAILY_LOG_KEY) || '{}') || {}; } catch(e){}
+  const d = loadDaily(); // today's result, saved before this log existed
+  if(d && d.result && log[d.result.date] === undefined) log[d.result.date] = d.result.stars;
+  return log;
+}
+function logDailyStars(date, stars){
+  const log = loadDailyLog();
+  log[date] = Math.max(stars, log[date] || 0);
+  try{ localStorage.setItem(DAILY_LOG_KEY, JSON.stringify(log)); } catch(e){}
+}
 
 const BADGES = [
   { id:'first-lesson',  icon:'👣', name:'First steps',     desc:'Pass your first lesson',            test: g => g.passedLessons >= 1 },
@@ -4125,18 +4154,19 @@ function gameState(){
   let lessonXP = 0, passedLessons = 0, threeStarLessons = 0;
   Object.entries(stars).forEach(([id, s]) => {
     if(!lessonIds.has(id) || !s) return;
-    lessonXP += s * 10;
+    lessonXP += s * LESSON_STAR_XP;
     if(s >= 2) passedLessons++;
     if(s >= 3) threeStarLessons++;
   });
-  const interviewXP = allAttempts.reduce((sum, a) => sum + (GRADE_XP[a.grade] || 0), 0);
-  const xp = lessonXP + interviewXP + bonusXP();
-  let li = 0;
-  LEVELS.forEach((lv, i) => { if(xp >= lv.at) li = i; });
+  const practiceXP = allAttempts.reduce((sum, a) => sum + interviewXP(a), 0);
+  const dailyXP = Object.values(loadDailyLog()).reduce((sum, s) => sum + (Number(s) || 0) * DAILY_STAR_XP, 0);
+  const baseXP = lessonXP + practiceXP + dailyXP;
+  const xp = baseXP + bonusXP();
+  const level = levelForXP(xp);
   const streak = streakInfo();
   const g = {
-    xp, levelIndex: li, level: li + 1, levelName: LEVELS[li].name,
-    levelStart: LEVELS[li].at, nextAt: LEVELS[li + 1] ? LEVELS[li + 1].at : null,
+    xp, baseXP, level, levelName: levelTitle(level),
+    levelStart: xpForLevel(level), nextAt: xpForLevel(level + 1),
     passedLessons, threeStarLessons,
     interviews: allAttempts.length,
     jobInterviews: allAttempts.filter(a => a.track !== 'college').length,
@@ -4155,14 +4185,16 @@ function updateXpChip(){
 }
 
 // Hidden button (bottom-right corner of the level card): adds enough bonus XP
-// to reach the top level; clicking it again takes the bonus away. The bonus is
+// to reach Level 112; clicking it again takes the bonus away. The bonus is
 // kept on this device only and isn't synced to an account.
 const BONUS_XP_KEY = 'groundwork:bonusXP';
+const SECRET_LEVEL = 112;
 function bonusXP(){ try{ return Number(localStorage.getItem(BONUS_XP_KEY)) || 0; } catch(e){ return 0; } }
 el('secret-xp').addEventListener('click', () => {
   const before = gameState();
   const on = bonusXP() === 0;
-  try{ if(on) localStorage.setItem(BONUS_XP_KEY, String(LEVELS[LEVELS.length - 1].at)); else localStorage.removeItem(BONUS_XP_KEY); } catch(e){}
+  const needed = Math.max(1, xpForLevel(SECRET_LEVEL) - before.baseXP);
+  try{ if(on) localStorage.setItem(BONUS_XP_KEY, String(needed)); else localStorage.removeItem(BONUS_XP_KEY); } catch(e){}
   renderHomeProgress();
   if(on) celebrate(before, el('home-level-ring'), true);
   else { updateXpChip(); toast('', 'Bonus XP removed.'); }
@@ -4178,9 +4210,8 @@ function renderHomeProgress(){
   el('home-level-label').textContent = 'Level ' + g.level + ', ' + g.xp + ' XP';
   el('home-level-name').textContent = g.levelName;
   el('home-xp-bar').style.width = pct + '%';
-  el('home-xp-text').textContent = g.nextAt
-    ? (g.nextAt - g.xp) + ' XP to Level ' + (g.level + 1) + ' (' + LEVELS[g.levelIndex + 1].name + ')'
-    : 'Top level reached. Nice work!';
+  const nextTitle = levelTitle(g.level + 1);
+  el('home-xp-text').textContent = (g.nextAt - g.xp) + ' XP to Level ' + (g.level + 1) + (nextTitle !== g.levelName ? ' (' + nextTitle + ')' : '');
   el('home-streak').textContent = g.streak;
   el('home-streak-unit').textContent = g.streak === 1 ? 'day streak' : 'day streak';
   el('home-streak-note').textContent = g.streak === 0
@@ -4427,7 +4458,7 @@ function dismissNudge(){
 
 // ---- Syncing ----
 function collectLocal(){
-  const out = { v:1, lessons:{}, attempts:{}, quiz:{}, daily:null, activity:[] };
+  const out = { v:1, lessons:{}, attempts:{}, quiz:{}, daily:null, dailyLog:{}, activity:[] };
   for(const k of Object.keys(localStorage)){
     if(k.startsWith('skillpath:')){ const v = safeParse(localStorage.getItem(k)); if(v) out.lessons[k] = v; }
     else if(k.startsWith('attempts:')){ const v = safeParse(localStorage.getItem(k)); if(v) out.attempts[k] = v; }
@@ -4438,6 +4469,7 @@ function collectLocal(){
     if(answers) out.quiz[t] = { answers, savedAt: Number(localStorage.getItem(key + ':savedAt')) || 0 };
   }
   out.daily = loadDaily();
+  out.dailyLog = loadDailyLog();
   out.activity = loadActivity();
   return out;
 }
@@ -4448,7 +4480,7 @@ function collectLocal(){
 // higher of the two).
 function mergeProgress(local, remote){
   const a = local || {}, b = remote || {};
-  const m = { v:1, lessons:{}, attempts:{}, quiz:{}, daily:null, activity:[] };
+  const m = { v:1, lessons:{}, attempts:{}, quiz:{}, daily:null, dailyLog:{}, activity:[] };
   new Set([...Object.keys(a.lessons || {}), ...Object.keys(b.lessons || {})]).forEach(k => {
     const x = (a.lessons || {})[k], y = (b.lessons || {})[k];
     m.lessons[k] = !x ? y : !y ? x : ((Number(y.stars) || 0) > (Number(x.stars) || 0) ? y : x);
@@ -4460,6 +4492,7 @@ function mergeProgress(local, remote){
   });
   const da = a.daily, db = b.daily;
   m.daily = !da ? (db || null) : !db ? da : ((db.lastDate || '') > (da.lastDate || '') ? db : da);
+  [a.dailyLog || {}, b.dailyLog || {}].forEach(log => Object.entries(log).forEach(([d, s]) => { m.dailyLog[d] = Math.max(Number(s) || 0, m.dailyLog[d] || 0); }));
   m.activity = [...new Set([...(a.activity || []), ...(b.activity || [])])].filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().slice(-400);
   return m;
 }
@@ -4479,6 +4512,7 @@ function applyLocal(m){
     put(PRACTICE[t].keys.answers + ':savedAt', String(q.savedAt || 0));
   });
   if(m.daily) put(DAILY_KEY, m.daily);
+  if(Object.keys(m.dailyLog).length) put(DAILY_LOG_KEY, m.dailyLog);
   put(ACTIVITY_KEY, m.activity);
   return changed;
 }
