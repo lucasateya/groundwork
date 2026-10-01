@@ -589,6 +589,26 @@
   .loading-tip-label{letter-spacing:0;font-size:12.5px;}
   .toast{border-radius:var(--r-panel);}
 
+  /* Question of the day */
+  .qotd{margin:0 0 1.5rem;padding:1.2rem clamp(1.1rem,3vw,1.5rem) 1.3rem;}
+  .qotd-top{display:flex;align-items:center;gap:0.5rem 0.75rem;flex-wrap:wrap;}
+  .qotd-label{font-size:14px;font-weight:700;color:var(--gold-deep);margin:0;letter-spacing:0;}
+  .qotd-streak{font-size:12.5px;font-weight:600;color:var(--gold-deep);border:1.5px solid var(--gold-deep);border-radius:999px;padding:0.05rem 0.6rem;white-space:nowrap;}
+  .qotd-streak.none{color:var(--muted);border-color:var(--border);}
+  .qotd-date{margin-left:auto;font-size:13px;color:var(--muted);white-space:nowrap;}
+  .qotd-q{font-family:var(--voice);font-weight:500;font-size:clamp(22px,2.6vw,27px);line-height:1.25;letter-spacing:-0.01em;margin:0.55rem 0 0.25rem;}
+  .qotd-note{font-size:13.5px;color:var(--muted);margin:0 0 0.9rem;line-height:1.5;}
+  .qotd textarea{width:100%;}
+  .qotd-actions{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:0.6rem;flex-wrap:wrap;}
+  .qotd-actions .word-counter{margin-left:0;text-align:left;}
+  .qotd .fine{margin-top:0.6rem;}
+  .qotd-checking{display:flex;align-items:center;gap:0.6rem;font-size:14.5px;color:var(--muted);margin:0.5rem 0 0.2rem;}
+  .qotd-checking .spinner{color:var(--gold-deep);width:18px;height:18px;}
+  .qotd-error{color:var(--red);font-size:13.5px;margin:0.6rem 0 0;}
+  .qotd-result{display:flex;flex-direction:column;gap:0.85rem;margin-top:0.3rem;}
+  .qotd-stars{font-size:24px;letter-spacing:4px;color:var(--gold-deep);margin:0;line-height:1;}
+  .qotd-next{font-size:13.5px;color:var(--muted);margin:0;}
+
   /* Path labels: lesson name, then a status line */
   .path-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;}
   .path-title.side{min-height:52px;display:flex;flex-direction:column;justify-content:center;}
@@ -637,6 +657,17 @@
           <p class="cue-a" aria-hidden="true"></p>
         </figure>
       </div>
+
+      <section class="card qotd" id="qotd" aria-labelledby="qotd-label" hidden>
+        <div class="qotd-top">
+          <h2 class="qotd-label" id="qotd-label">Question of the day</h2>
+          <span class="qotd-streak" id="qotd-streak"></span>
+          <span class="qotd-date" id="qotd-date"></span>
+        </div>
+        <p class="qotd-q" id="qotd-q"></p>
+        <p class="qotd-note" id="qotd-note"></p>
+        <div id="qotd-body"></div>
+      </section>
 
       <div class="choice-grid">
         <div class="choice-card practice" data-go="#/practice">
@@ -1529,12 +1560,156 @@ function renderHome(){
     : '';
   setResumeLink(el('home-practice-resume'));
   renderHomeProgress();
+  renderDaily();
 }
 
 el('xp-chip').addEventListener('click', (e) => {
   e.preventDefault();
   go('#/');
   setTimeout(() => el('home-progress').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }), 60);
+});
+
+// =====================================================================
+// Question of the day (home page)
+// =====================================================================
+// Everyone gets the same question on the same local date: days since the
+// file's start date, modulo the list length. One graded answer per day;
+// answering counts as practice for the site-wide streak.
+
+const DAILY_KEY = 'groundwork:daily'; // { lastDate, result: { date, questionId, question, answer, stars, tip, stronger } }
+const DAILY_MAX_CHARS = 1500;         // about 250 words
+let DAILY = null;
+let dailyLoading = null;
+const dailyState = { checking:false, error:'', draft:'' };
+
+function loadDailyQuestions(){
+  if(!dailyLoading) dailyLoading = fetch('data/daily-questions.json').then(r => r.json()).then(d => { DAILY = d; return d; });
+  return dailyLoading;
+}
+function localDayNumber(d){ return Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 864e5); }
+function todaysQuestion(){
+  const n = DAILY.questions.length;
+  const days = localDayNumber(new Date()) - localDayNumber(new Date(DAILY.startDate + 'T00:00:00'));
+  return DAILY.questions[((days % n) + n) % n];
+}
+function loadDaily(){ try{ return JSON.parse(localStorage.getItem(DAILY_KEY) || 'null'); } catch(e){ return null; } }
+function saveDaily(obj){ try{ localStorage.setItem(DAILY_KEY, JSON.stringify(obj)); } catch(e){} }
+function todaysDailyResult(){
+  const saved = loadDaily();
+  return saved && saved.result && saved.result.date === dayKey(new Date()) ? saved.result : null;
+}
+
+function growTextarea(input){
+  input.style.height = 'auto';
+  input.style.height = Math.min(input.scrollHeight + 3, 220) + 'px'; // +3 for the border
+  input.style.overflowY = input.scrollHeight + 3 > 220 ? 'auto' : 'hidden';
+}
+function dailyWordCount(text){ return text.trim().length ? text.trim().split(/\s+/).length : 0; }
+function updateDailyCounter(){
+  const input = el('qotd-input'), counter = el('qotd-counter');
+  if(!input || !counter) return;
+  const words = dailyWordCount(input.value);
+  counter.textContent = words + (words === 1 ? ' word' : ' words') + (words > 90 ? ', which is long for an interview answer' : '');
+  counter.classList.toggle('warn', words > 90);
+}
+
+function renderDaily(){
+  const card = el('qotd');
+  if(!card) return;
+  if(!DAILY){
+    loadDailyQuestions().then(renderDaily).catch(() => { card.hidden = true; });
+    return;
+  }
+  card.hidden = false;
+  const q = todaysQuestion();
+  const s = streakInfo();
+  const pill = el('qotd-streak');
+  pill.textContent = s.current > 0 ? (s.current === 1 ? '1-day streak' : s.current + ' days in a row') : (s.best > 0 ? 'Start a new streak today' : 'Start a streak today');
+  pill.classList.toggle('none', s.current === 0);
+  el('qotd-date').textContent = new Date().toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
+  el('qotd-q').textContent = q.q;
+  el('qotd-note').textContent = q.note ? 'What they’re really asking: ' + q.note : '';
+  el('qotd-note').hidden = !q.note;
+
+  const body = el('qotd-body');
+  const done = todaysDailyResult();
+  if(done){
+    body.innerHTML =
+      '<div class="qotd-result">' +
+        '<p class="qotd-stars" aria-label="' + done.stars + ' of 3 stars">' + starsHTML(done.stars) + '</p>' +
+        '<div class="fb-block gold"><h4>One thing to try</h4><p>' + escapeHTML(done.tip) + '</p></div>' +
+        '<div class="phrase-pair">' +
+          '<div class="phrase before"><b>What you said</b>' + escapeHTML(done.answer) + '</div>' +
+          '<div class="phrase after"><b>A stronger version</b>' + escapeHTML(done.stronger) + '</div>' +
+        '</div>' +
+        '<p class="qotd-next">New question tomorrow.</p>' +
+      '</div>';
+    return;
+  }
+  if(dailyState.checking){
+    body.innerHTML = '<p class="qotd-checking" role="status"><span class="spinner" aria-hidden="true"></span>Checking your answer…</p>';
+    return;
+  }
+  body.innerHTML =
+    '<label class="sr-only" for="qotd-input">Your answer</label>' +
+    '<textarea id="qotd-input" rows="2" maxlength="' + DAILY_MAX_CHARS + '" placeholder="Type your answer…"></textarea>' +
+    '<div class="qotd-actions"><span class="word-counter" id="qotd-counter"></span><button class="btn btn-primary" id="qotd-check">Check my answer</button></div>' +
+    (dailyState.error ? '<p class="qotd-error" role="alert">' + escapeHTML(dailyState.error) + '</p>' : '') +
+    '<p class="fine">One answer a day. It counts toward your practice streak.</p>';
+  const input = el('qotd-input');
+  input.value = dailyState.draft;
+  growTextarea(input);
+  updateDailyCounter();
+}
+
+async function checkDaily(){
+  const input = el('qotd-input');
+  if(!input || dailyState.checking) return;
+  const text = input.value.trim();
+  dailyState.draft = input.value;
+  dailyState.error = '';
+  if(!text) dailyState.error = 'Write your answer first. A few sentences is plenty.';
+  else if(dailyWordCount(text) < 3) dailyState.error = 'Add a little more. Even two or three sentences works.';
+  else if(text.length > DAILY_MAX_CHARS) dailyState.error = 'That’s a bit long. Keep it under about 250 words.';
+  if(dailyState.error){ renderDaily(); return; }
+
+  const q = todaysQuestion();
+  const date = dayKey(new Date());
+  dailyState.checking = true;
+  renderDaily();
+  const system = "You're a friendly, honest interview coach helping a teenager practice one interview question. Most have little or no work experience; school, sports, family responsibilities, clubs, hobbies and volunteering all count as experience." +
+    " Score their answer from 0 to 3 stars: 0 = doesn't answer the question, is off-topic, or is only a few words; 1 = answers it but is vague or generic; 2 = solid, with at least one real detail or example; 3 = clear, specific, well-organized, and a good length for a spoken answer (about 30 to 90 seconds)." +
+    " Return ONLY valid JSON, with no markdown, no code fences and no preamble, in exactly this shape: {\"stars\": number, \"tip\": string, \"stronger\": string}." +
+    " tip: the single most useful fix, in 1-2 short sentences of plain words, written to them as \"you\"." +
+    " stronger: their answer rewritten to be stronger, in first person, the way they'd say it out loud, under 110 words. Keep their real details and their voice; don't invent jobs, awards or experiences they didn't mention. If they gave too little to work with, write a short example answer and put made-up details in [brackets] so they know to swap in their own." +
+    " If the answer is inappropriate or not a real attempt, give 0 stars, use the tip to steer them back to the question, and write a short example answer for stronger.";
+  try{
+    const raw = await callClaude(system, [{ role:'user', content: 'Question: ' + q.q + '\n\nTheir answer: ' + text }]);
+    const fb = parseFeedbackJSON(raw);
+    const stars = Math.max(0, Math.min(3, Math.round(Number(fb.stars) || 0)));
+    if(!fb.tip || !fb.stronger) throw new Error('Incomplete feedback');
+    const before = gameState();
+    saveDaily({ lastDate: date, result: { date, questionId: q.id, question: q.q, answer: text, stars, tip: String(fb.tip), stronger: String(fb.stronger) } });
+    recordActivity();
+    dailyState.checking = false;
+    dailyState.draft = '';
+    renderDaily();
+    renderHomeProgress();
+    celebrate(before, el('qotd'), stars === 3);
+  } catch(err){
+    console.error('checkDaily failed:', err);
+    dailyState.checking = false;
+    dailyState.error = 'We couldn’t check your answer just now. Your answer is still here, so try again in a moment.';
+    renderDaily();
+  }
+}
+
+el('qotd-body').addEventListener('click', (e) => { if(e.target.id === 'qotd-check') checkDaily(); });
+el('qotd-body').addEventListener('input', (e) => {
+  if(e.target.id !== 'qotd-input') return;
+  dailyState.draft = e.target.value;
+  growTextarea(e.target);
+  updateDailyCounter();
 });
 
 document.querySelectorAll('.choice-card[data-go]').forEach(card => {
@@ -3456,7 +3631,7 @@ function renderHomeProgress(){
   el('home-streak').textContent = g.streak;
   el('home-streak-unit').textContent = g.streak === 1 ? 'day streak' : 'day streak';
   el('home-streak-note').textContent = g.streak === 0
-    ? 'Do a lesson or a mock interview to start a streak.'
+    ? 'Do a lesson, a mock interview or the question of the day to start a streak.'
     : (g.practicedToday ? 'You practiced today. ' : 'Practice today to keep it going. ') + 'Best: ' + g.bestStreak + (g.bestStreak === 1 ? ' day.' : ' days.');
   document.querySelector('.streak-card').classList.toggle('cold', g.streak === 0);
   el('home-badges').innerHTML = BADGES.map(b => {
