@@ -589,6 +589,47 @@
   .loading-tip-label{letter-spacing:0;font-size:12.5px;}
   .toast{border-radius:var(--r-panel);}
 
+  /* Voice mode: mic, live transcript, read-aloud toggle, delivery card */
+  .mic-btn{position:relative;flex-shrink:0;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--paper-raised);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .15s ease,color .15s ease,border-color .15s ease;}
+  .mic-btn:hover:not(:disabled){border-color:var(--ink);}
+  .mic-btn:disabled{opacity:0.4;cursor:not-allowed;}
+  .mic-btn.unavailable{opacity:0.35;}
+  .mic-icon{position:relative;}
+  .mic-ring{position:absolute;inset:-5px;width:calc(100% + 10px);height:calc(100% + 10px);transform:rotate(-90deg);pointer-events:none;}
+  .mic-ring circle{fill:none;stroke-width:3;}
+  .mic-ring-track{stroke:transparent;}
+  .mic-ring-fill{stroke:transparent;stroke-linecap:round;stroke-dasharray:138.2;stroke-dashoffset:138.2;transition:stroke-dashoffset .25s linear;}
+  .mic-btn.recording{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff;animation:micpulse 1.6s ease-out infinite;}
+  .mic-btn.recording .mic-ring-track{stroke:var(--red-pale);}
+  .mic-btn.recording .mic-ring-fill{stroke:var(--gold-deep);}
+  .mic-btn.recording.ending{background:var(--red);border-color:var(--red);}
+  .mic-btn.recording.ending .mic-ring-fill{stroke:var(--red);}
+  @keyframes micpulse{0%{box-shadow:0 0 0 0 rgba(176,54,43,0.35);}100%{box-shadow:0 0 0 12px rgba(176,54,43,0);}}
+  .voice-preview{flex:1;min-height:47px;max-height:160px;overflow-y:auto;border:1px dashed var(--gold-deep);border-radius:var(--r-control);padding:0.7rem 0.85rem;font-size:15px;line-height:1.5;color:var(--ink);background:var(--paper-raised);white-space:pre-wrap;}
+  .voice-preview.waiting{color:var(--muted);font-style:italic;}
+  .voice-status{display:inline-flex;align-items:center;gap:0.4rem;flex-wrap:wrap;font-size:12.5px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .voice-status .btn-link{font-size:12.5px;}
+  .voice-status .spinner{width:12px;height:12px;color:var(--gold-deep);}
+  .rec-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-deep);animation:blink 1.2s infinite ease-in-out;}
+  .rec-warn{color:var(--red);font-weight:600;margin-left:0.4rem;}
+  .voice-redo{font-size:12.5px;color:var(--ink);}
+  .voice-fine{font-size:11.5px;color:var(--muted);margin:0;padding:0.25rem clamp(1rem,3vw,1.25rem) 0;}
+  .speaker-btn{margin-left:auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--paper-raised);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;flex-shrink:0;}
+  .speaker-btn:hover{color:var(--ink);border-color:var(--ink);}
+  .speaker-btn.on{background:var(--teal-pale);border-color:var(--teal-pale);color:var(--teal);}
+  .speaker-btn .speaker-off{display:none;}
+  .speaker-btn:not(.on) .speaker-waves{display:none;}
+  .speaker-btn:not(.on) .speaker-off{display:inline;}
+  .speaker-btn:not([hidden]) + .turns-pill{margin-left:0.5rem;}
+  .spoken-icon{vertical-align:-1px;opacity:0.8;}
+  .delivery-card{border:1px solid var(--border);border-radius:var(--r-panel);background:var(--paper);padding:0.9rem 1.1rem 0.8rem;}
+  .delivery-card h4{font-size:14px;font-weight:700;margin:0 0 0.35rem;color:var(--ink);}
+  .delivery-card h4 span{font-weight:500;color:var(--muted);margin-left:0.3rem;}
+  .delivery-card p{font-size:14.5px;line-height:1.55;color:var(--body-text);margin:0.4rem 0 0;}
+  .delivery-card p b{color:var(--ink);}
+  .delivery-card .fine{font-size:11.5px;margin-top:0.6rem;}
+  @media (prefers-reduced-motion:reduce){.mic-btn.recording,.rec-dot{animation:none;} .mic-ring-fill{transition:none;}}
+
   /* Question of the day */
   .qotd{margin:0 0 1.5rem;padding:1.2rem clamp(1.1rem,3vw,1.5rem) 1.3rem;}
   .qotd-top{display:flex;align-items:center;gap:0.5rem 0.75rem;flex-wrap:wrap;}
@@ -883,6 +924,10 @@
               <div class="chat-head-name" id="chat-name"></div>
               <div class="chat-head-role" id="chat-role"></div>
             </div>
+            <button class="speaker-btn" id="speaker-btn" type="button" aria-pressed="false" title="Read questions aloud" hidden>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="speaker-waves" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="speaker-off" d="M16 9l5 6M21 9l-5 6"/></svg>
+              <span class="sr-only">Read questions aloud</span>
+            </button>
             <span class="turns-pill" id="turns-pill"></span>
           </header>
           <div id="main-panel"></div>
@@ -1521,6 +1566,7 @@ function route(){
   go('#/', true);
 }
 window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', () => { if(!/\/session$/.test(location.hash)) stopVoice(); });
 
 // The practice track (job or college) the student picked last time.
 function preferredTrack(){
@@ -2343,8 +2389,18 @@ function startSession(t, scenario){
 }
 
 function freshMainPanel(){
+  stopVoice();
   messages = [];
+  voice.spokenTurns = [];
+  voice.lastTurn = null;
+  voice.retry = null;
   ended = false;
+  // With read-aloud on, a new interview the student just started opens out
+  // loud too (browsers only allow speech after the person has clicked something).
+  setTimeout(() => {
+    const activated = navigator.userActivation && navigator.userActivation.hasBeenActive;
+    if(activated && voice.readAloud && messages.length === 0 && el('opening-text')) speakInterviewer(el('opening-text').textContent);
+  }, 0);
   el('main-panel').innerHTML = `
     <div class="chat-scroll" id="chat-scroll">
       <div class="msg employer"><span class="role-label" id="opening-label"></span><span class="msg-text" id="opening-text"></span></div>
@@ -2352,12 +2408,19 @@ function freshMainPanel(){
     <div class="error-note" id="error-note" hidden></div>
     <div class="composer">
       <textarea id="user-input" rows="1" placeholder="Type your answer…"></textarea>
+      <div class="voice-preview" id="voice-preview" aria-live="polite" hidden></div>
+      <button class="mic-btn" id="mic-btn" type="button" aria-label="Answer out loud" title="Answer out loud">
+        <svg class="mic-ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="mic-ring-track" cx="24" cy="24" r="22"/><circle class="mic-ring-fill" id="mic-ring-fill" cx="24" cy="24" r="22"/></svg>
+        <svg class="mic-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+      </button>
       <button class="send" id="send-btn">Send</button>
     </div>
     <div class="composer-meta">
-      <span class="composer-hint">Enter to send, Shift+Enter for a new line</span>
+      <span class="composer-hint" id="composer-hint">Enter to send, Shift+Enter for a new line</span>
+      <span class="voice-status" id="voice-status" hidden></span>
       <span class="word-counter" id="word-counter"></span>
     </div>
+    <p class="voice-fine" id="voice-fine"></p>
     <div class="footer-row">
       <span id="footer-hint"></span>
       <button class="end-btn" id="end-btn">End & get graded</button>
@@ -2412,6 +2475,8 @@ function renderSituation(){
   el('diff-note').textContent = cfg.difficulties[difficultyIdx].note;
   updateWordCounter();
   updateTurns();
+  updateSpeakerButton();
+  updateMicState();
 }
 
 function updateTurns(){
@@ -2498,14 +2563,19 @@ function updateWordCounter(){
   if(words > 90) counter.textContent += ' — that\'s long for an interview answer';
 }
 
-function addMessage(role, text){
+const MIC_ICON_SMALL = '<svg class="spoken-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+
+function addMessage(role, text, opts){
   const chatScroll = el('chat-scroll');
-  if(!chatScroll) return;
+  if(!chatScroll) return null;
   const div = document.createElement('div');
   div.className = 'msg ' + (role === 'assistant' ? 'employer' : 'user');
   const label = document.createElement('span');
   label.className = 'role-label';
   label.textContent = role === 'assistant' ? counterpartName() : 'You';
+  if(opts && opts.spoken){
+    label.insertAdjacentHTML('beforeend', ' ' + MIC_ICON_SMALL + '<span class="sr-only">(spoken)</span>');
+  }
   div.appendChild(label);
   const body = document.createElement('span');
   body.className = 'msg-text';
@@ -2513,6 +2583,7 @@ function addMessage(role, text){
   div.appendChild(body);
   chatScroll.appendChild(div);
   chatScroll.scrollTop = chatScroll.scrollHeight;
+  return div;
 }
 
 function showTyping(){
@@ -2545,42 +2616,436 @@ function setBusy(state){
   el('mood-btn-0').disabled = lockDifficulty;
   el('mood-btn-1').disabled = lockDifficulty;
   el('reset-btn').disabled = state;
+  updateMicState();
 }
 
-async function sendMessage(){
+// Typed answers: read the box and send.
+function sendMessage(){
   const input = el('user-input');
-  if(!input) return;
+  if(!input || voice.recording) return;
   const text = input.value.trim();
+  if(!text) return;
+  sendAnswer(text, null);
+}
+
+// Sends one answer (typed, or spoken with `spoken` stats) and waits for the
+// interviewer's reply. A spoken answer can be withdrawn with "Redo" for a few
+// seconds; `turn.cancelled` makes us drop the reply that was on its way.
+async function sendAnswer(text, spoken){
   if(!text || busy || ended || userTurnCount() >= MAX_USER_MESSAGES) return;
+  const input = el('user-input');
   clearError();
-  addMessage('user', text);
-  messages.push({ role: 'user', content: text });
+  const turn = { spoken, cancelled:false, userEl:null, replyEl:null, msg:null };
+  voice.lastTurn = turn;
+  turn.userEl = addMessage('user', text, { spoken: !!spoken });
+  const msg = { role: 'user', content: text };
+  if(spoken) msg.spoken = true;
+  turn.msg = msg;
+  messages.push(msg);
+  if(spoken) voice.spokenTurns.push(Object.assign({ msg }, spoken));
   if(isFlaggable(text)) logFlag(text);
-  input.value = '';
-  autoResize();
-  updateWordCounter();
+  if(!spoken && input){ input.value = ''; autoResize(); updateWordCounter(); }
   updateTurns();
   setBusy(true);
   showTyping();
   try{
     const reply = await callClaude(buildSystemPrompt(), messages);
+    if(turn.cancelled) return;
     hideTyping();
-    addMessage('assistant', reply);
+    turn.replyEl = addMessage('assistant', reply);
     messages.push({ role: 'assistant', content: reply });
+    if(voice.readAloud) speakInterviewer(reply);
   } catch(err){
+    if(turn.cancelled) return;
     hideTyping();
     // Take the unanswered message back out so the conversation stays valid.
-    messages.pop();
-    input.value = text;
-    const bubbles = el('chat-scroll').querySelectorAll('.msg.user');
-    if(bubbles.length) bubbles[bubbles.length - 1].remove();
+    messages.splice(messages.indexOf(msg), 1);
+    if(spoken) voice.spokenTurns = voice.spokenTurns.filter(t => t.msg !== msg);
+    if(turn.userEl) turn.userEl.remove();
     updateTurns();
-    console.error('sendMessage failed:', err);
-    showError("Your answer didn't go through. Check your connection and press Send again.");
+    console.error('sendAnswer failed:', err);
+    if(spoken){
+      // Spoken answers can't be edited, so offer to send the same words again.
+      voice.retry = { text, spoken };
+      showError("Your answer didn't go through. Check your connection, then try again.");
+      el('error-note').insertAdjacentHTML('beforeend', ' <button class="btn-link" id="voice-resend-btn" type="button">Send it again</button>');
+    } else {
+      if(input) input.value = text;
+      showError("Your answer didn't go through. Check your connection and press Send again.");
+    }
   } finally {
-    setBusy(false);
-    if(!ended) el('user-input') && el('user-input').focus();
+    if(!turn.cancelled){
+      setBusy(false);
+      if(!ended && !spoken && el('user-input')) el('user-input').focus();
+    }
   }
+}
+
+// =====================================================================
+// Voice mode (mock interviews only)
+// =====================================================================
+// Speech-to-text and read-aloud each sit behind one small object, so a paid
+// transcription or voice service can replace the browser's built-in ones
+// later without touching the interview code.
+
+const VOICE_MAX_MS = 120000;     // hard stop at 2:00
+const VOICE_WARN_MS = 105000;    // "Wrapping up in 15 seconds" at 1:45
+const VOICE_PAUSE_MS = 3000;     // a gap this long between words counts as a long pause
+const READ_ALOUD_KEY = 'groundwork:readAloud';
+
+const voice = {
+  recording:false, startedAt:0, timer:null, session:null,
+  speaking:false, readAloud:false, denied:false,
+  spokenTurns:[], lastTurn:null, retry:null, redoTimer:null
+};
+try{ voice.readAloud = localStorage.getItem(READ_ALOUD_KEY) === '1'; } catch(e){}
+
+// ---- Speech to text: the browser's Web Speech API ----
+// start(handlers) begins listening; stop() resolves with { text, pauses }.
+// Chrome ends recognition on its own after a silence or about a minute, so
+// we quietly restart it until stop() is called.
+const transcriber = {
+  supported(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); },
+  start(handlers){
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let finalText = '', interim = '', stopped = false, pauses = 0, lastHeard = 0, rec = null, endResolve = null;
+    const begin = () => {
+      rec = new SR();
+      rec.lang = navigator.language || 'en-US';
+      rec.continuous = true;
+      rec.interimResults = true;
+      rec.onresult = (e) => {
+        const now = Date.now();
+        if(lastHeard && now - lastHeard > VOICE_PAUSE_MS) pauses++;
+        lastHeard = now;
+        interim = '';
+        for(let i = e.resultIndex; i < e.results.length; i++){
+          const t = e.results[i][0].transcript;
+          if(e.results[i].isFinal) finalText += t.trim() + ' ';
+          else interim += t;
+        }
+        handlers.onText((finalText + interim).trim());
+      };
+      rec.onerror = (e) => {
+        if(e.error === 'not-allowed' || e.error === 'service-not-allowed'){ stopped = true; handlers.onError('denied'); }
+        else if(e.error === 'audio-capture'){ stopped = true; handlers.onError('no-mic'); }
+        else if(e.error === 'network'){ stopped = true; handlers.onError('network'); }
+        // 'no-speech' and 'aborted' just end this round; onend restarts it.
+      };
+      rec.onend = () => {
+        if(interim){ finalText += interim.trim() + ' '; interim = ''; }
+        if(stopped){ if(endResolve) endResolve(); return; }
+        setTimeout(() => { if(!stopped){ try{ begin(); } catch(err){} } }, 120);
+      };
+      rec.start();
+    };
+    begin();
+    return {
+      stop(){
+        stopped = true;
+        return new Promise(resolve => {
+          const done = () => resolve({ text: (finalText + interim).trim(), pauses });
+          endResolve = done;
+          try{ rec.stop(); } catch(e){ done(); }
+          setTimeout(done, 1500); // in case the browser never fires onend
+        });
+      },
+      abort(){ stopped = true; try{ rec.abort(); } catch(e){} }
+    };
+  }
+};
+
+// ---- Text to speech: the browser's speechSynthesis ----
+// speak(text, persona, onEnd) and cancel(). Each interviewer gets a voice
+// that suits their name where the device has one, and a pace to match.
+const VOICE_STYLE = {
+  warm:{ rate:1.0, sex:'' }, formal:{ rate:0.92, sex:'' }, rapidFire:{ rate:1.12, sex:'' }, skeptical:{ rate:0.98, sex:'' },
+  'alum-priya':{ rate:1.0, sex:'f' }, 'alum-marcus':{ rate:1.0, sex:'m' }, 'alum-jen':{ rate:1.05, sex:'f' },
+  'adm-dana':{ rate:0.94, sex:'f' }, 'adm-luis':{ rate:1.0, sex:'m' }, 'adm-elena':{ rate:0.95, sex:'f' },
+  sunshine:{ rate:0.96, pitch:0.9, sex:'' }
+};
+const VOICE_ORDER = Object.keys(VOICE_STYLE);
+const FEMALE_VOICE = /female|samantha|victoria|karen|moira|tessa|fiona|zira|aria|jenny|susan|hazel|libby|sonia|natasha|ava|allison|serena|michelle|emma|olivia/i;
+const MALE_VOICE = /\bmale|daniel|alex\b|fred|david|mark|george|guy|ryan|tom\b|aaron|arthur|oliver|rishi|christopher|eric|brian|andrew/i;
+const speaker = {
+  supported(){ return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined'; },
+  pickVoice(persona){
+    const all = speechSynthesis.getVoices();
+    const lang = (navigator.language || 'en-US').toLowerCase();
+    let pool = all.filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+    if(!pool.length) return null;
+    const local = pool.filter(v => v.lang.toLowerCase() === lang);
+    if(local.length >= 2) pool = local;
+    const style = VOICE_STYLE[persona.id] || {};
+    const female = pool.filter(v => FEMALE_VOICE.test(v.name)), male = pool.filter(v => MALE_VOICE.test(v.name) && !FEMALE_VOICE.test(v.name));
+    const list = style.sex === 'f' && female.length ? female : style.sex === 'm' && male.length ? male : pool;
+    return list[Math.max(0, VOICE_ORDER.indexOf(persona.id)) % list.length];
+  },
+  speak(text, persona, onEnd){
+    const u = new SpeechSynthesisUtterance(text);
+    const style = VOICE_STYLE[persona.id] || {};
+    const v = this.pickVoice(persona);
+    if(v){ u.voice = v; u.lang = v.lang; }
+    u.rate = style.rate || 1;
+    u.pitch = style.pitch || 1;
+    u.onend = u.onerror = () => onEnd();
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  },
+  cancel(){ if(this.supported()) speechSynthesis.cancel(); }
+};
+if(speaker.supported()) speechSynthesis.getVoices(); // starts loading the voice list
+
+// What the interviewer says, minus stage directions like *sighs*.
+function speakableText(text){ return text.replace(/\*[^*]{1,40}\*/g, ' ').replace(/\[[^\]]{1,60}\]/g, ' ').replace(/\s+/g, ' ').trim(); }
+
+function speakInterviewer(text){
+  if(!voice.readAloud || !speaker.supported() || currentView !== 'session') return;
+  const say = speakableText(text);
+  if(!say) return;
+  voice.speaking = true;
+  updateMicState();
+  speaker.speak(say, currentPersona, () => { voice.speaking = false; updateMicState(); });
+}
+function stopSpeaking(){
+  speaker.cancel();
+  if(voice.speaking){ voice.speaking = false; updateMicState(); }
+}
+
+function setReadAloud(on){
+  voice.readAloud = on;
+  try{ localStorage.setItem(READ_ALOUD_KEY, on ? '1' : '0'); } catch(e){}
+  if(!on) stopSpeaking();
+  updateSpeakerButton();
+}
+function updateSpeakerButton(){
+  const btn = el('speaker-btn');
+  if(!btn) return;
+  btn.hidden = !speaker.supported();
+  btn.setAttribute('aria-pressed', voice.readAloud ? 'true' : 'false');
+  btn.classList.toggle('on', voice.readAloud);
+  btn.title = voice.readAloud ? 'Reading questions aloud. Click to turn off.' : 'Read questions aloud';
+}
+
+function fmtClock(ms){ const s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+
+// Mic button, status line and fine print, kept in sync with what's going on.
+function updateMicState(){
+  const mic = el('mic-btn');
+  if(!mic) return;
+  const status = el('voice-status'), hint = el('composer-hint'), fine = el('voice-fine');
+  const supported = transcriber.supported();
+  const capped = userTurnCount() >= MAX_USER_MESSAGES;
+  mic.classList.toggle('recording', voice.recording);
+  if(!supported || voice.denied){
+    mic.disabled = true;
+    mic.classList.add('unavailable');
+    const why = !supported ? "Voice isn't available in this browser. Try Chrome or Edge." : "The microphone is blocked, so voice isn't available. You can keep typing, or allow the mic in your browser settings.";
+    mic.title = why;
+    mic.setAttribute('aria-label', why);
+    fine.textContent = why;
+  } else {
+    mic.classList.remove('unavailable');
+    mic.disabled = !voice.recording && (busy || ended || capped || voice.speaking);
+    const label = voice.recording ? 'Stop and send your answer' : 'Answer out loud';
+    mic.title = label;
+    mic.setAttribute('aria-label', label);
+    fine.textContent = "Groundwork doesn't record or save your voice. Your browser turns it into text.";
+  }
+  const send = el('send-btn'), end = el('end-btn'), counter = el('word-counter');
+  if(counter && config().wordCounter) counter.hidden = voice.recording;
+  if(send && voice.recording) send.disabled = true;
+  if(end && voice.recording) end.disabled = true;
+  // Status line: recording timer, or the interviewer talking with a Skip link.
+  if(voice.recording){
+    status.hidden = false; hint.hidden = true;
+  } else if(voice.speaking){
+    status.hidden = false; hint.hidden = true;
+    status.innerHTML = '<span>' + escapeHTML(counterpartName()) + ' is talking.</span><button class="btn-link" id="voice-skip-btn" type="button">Skip</button>';
+  } else {
+    status.hidden = true; hint.hidden = false;
+    status.textContent = '';
+  }
+}
+
+function updateRecordingUI(){
+  const elapsed = Date.now() - voice.startedAt;
+  const fill = el('mic-ring-fill');
+  if(fill){
+    const len = 2 * Math.PI * 22;
+    fill.style.strokeDasharray = len;
+    fill.style.strokeDashoffset = len * (1 - Math.min(1, elapsed / VOICE_MAX_MS));
+  }
+  const ending = elapsed >= VOICE_WARN_MS;
+  el('mic-btn').classList.toggle('ending', ending);
+  el('voice-status').innerHTML = '<span class="rec-dot" aria-hidden="true"></span>' + fmtClock(elapsed) +
+    (ending ? '<span class="rec-warn">Wrapping up in ' + Math.max(0, Math.ceil((VOICE_MAX_MS - elapsed) / 1000)) + ' seconds</span>' : '');
+  if(elapsed >= VOICE_MAX_MS) stopRecording();
+}
+
+function startRecording(){
+  if(voice.recording || busy || ended || voice.speaking || !transcriber.supported() || voice.denied) return;
+  if(userTurnCount() >= MAX_USER_MESSAGES) return;
+  clearError();
+  hideRedo();
+  // Using the mic turns read-aloud on. Speaking an empty line inside this tap
+  // also unlocks speech on phones that only allow it after a user action.
+  if(!voice.readAloud && speaker.supported()){
+    setReadAloud(true);
+    try{ speechSynthesis.speak(new SpeechSynthesisUtterance('')); } catch(e){}
+  }
+  const input = el('user-input'), preview = el('voice-preview');
+  voice.recording = true;
+  voice.startedAt = Date.now();
+  input.hidden = true;
+  preview.hidden = false;
+  preview.textContent = 'Listening…';
+  preview.classList.add('waiting');
+  try{
+    voice.session = transcriber.start({
+      onText: (t) => { preview.textContent = t || 'Listening…'; preview.classList.toggle('waiting', !t); preview.scrollTop = preview.scrollHeight; },
+      onError: (kind) => voiceFailed(kind)
+    });
+  } catch(err){
+    voiceFailed('start');
+    return;
+  }
+  updateMicState();
+  updateRecordingUI();
+  voice.timer = setInterval(updateRecordingUI, 250);
+}
+
+function resetRecordingUI(){
+  clearInterval(voice.timer);
+  voice.timer = null;
+  voice.recording = false;
+  const input = el('user-input'), preview = el('voice-preview'), fill = el('mic-ring-fill');
+  if(input) input.hidden = false;
+  if(preview){ preview.hidden = true; preview.textContent = ''; }
+  if(fill) fill.style.strokeDashoffset = '';
+  if(el('mic-btn')) el('mic-btn').classList.remove('ending');
+  updateMicState();
+}
+
+async function stopRecording(){
+  if(!voice.recording) return;
+  const session = voice.session;
+  const seconds = (Date.now() - voice.startedAt) / 1000;
+  clearInterval(voice.timer);
+  voice.timer = null;
+  el('voice-status').innerHTML = '<span class="spinner" aria-hidden="true"></span> Finishing up…';
+  const result = session ? await session.stop() : { text:'', pauses:0 };
+  voice.session = null;
+  resetRecordingUI();
+  const text = result.text.trim();
+  if(!text){
+    showError("We didn't catch anything. Check that your mic is on, then tap it to try again.");
+    return;
+  }
+  const words = text.split(/\s+/).length;
+  sendAnswer(text, { seconds: Math.min(seconds, VOICE_MAX_MS / 1000), words, pauses: result.pauses });
+  if(words < 4) showRedo();
+}
+
+// The mic stopped working mid-answer (blocked, missing or offline).
+function voiceFailed(kind){
+  if(voice.session){ voice.session.abort(); voice.session = null; }
+  resetRecordingUI();
+  if(kind === 'denied' || kind === 'no-mic') voice.denied = true;
+  updateMicState();
+  showError(kind === 'denied' ? "The microphone is blocked, so voice isn't available. You can keep typing."
+    : kind === 'no-mic' ? "We couldn't find a microphone. You can keep typing."
+    : "Voice stopped working just now. You can try again, or type your answer.");
+}
+
+// "Redo": only when the mic clearly failed (an empty or very short result).
+function showRedo(){
+  hideRedo();
+  const status = el('composer-hint');
+  if(!status) return;
+  const row = document.createElement('span');
+  row.className = 'voice-redo';
+  row.id = 'voice-redo';
+  row.innerHTML = 'That was short. Did the mic cut out? <button class="btn-link" id="voice-redo-btn" type="button">Redo</button>';
+  status.parentNode.insertBefore(row, status);
+  status.hidden = true;
+  voice.redoTimer = setTimeout(hideRedo, 5000);
+}
+function hideRedo(){
+  clearTimeout(voice.redoTimer);
+  const row = el('voice-redo');
+  if(row){ row.remove(); if(!voice.recording && !voice.speaking && el('composer-hint')) el('composer-hint').hidden = false; }
+}
+function redoLastAnswer(){
+  const turn = voice.lastTurn;
+  hideRedo();
+  if(!turn || !turn.spoken) return;
+  turn.cancelled = true;
+  stopSpeaking();
+  // Remove the short answer, and the reply to it if one already arrived.
+  const i = messages.indexOf(turn.msg);
+  if(i !== -1) messages.splice(i);
+  voice.spokenTurns = voice.spokenTurns.filter(t => messages.includes(t.msg));
+  if(turn.userEl) turn.userEl.remove();
+  if(turn.replyEl) turn.replyEl.remove();
+  hideTyping();
+  updateTurns();
+  setBusy(false);
+  startRecording();
+}
+
+// ---- Delivery (grade screen): measured on this device from spoken answers ----
+const FILLERS = [['um', /\bu+m+\b/g], ['uh', /\bu+h+\b/g], ['like', /\blike\b/g], ['you know', /\byou know\b/g], ['kind of', /\bkind of\b/g], ['sort of', /\bsort of\b/g], ['basically', /\bbasically\b/g]];
+function deliveryStats(turns){
+  if(!turns.length) return null;
+  const words = turns.reduce((s, t) => s + t.words, 0);
+  const seconds = turns.reduce((s, t) => s + t.seconds, 0);
+  const text = turns.map(t => t.msg.content.toLowerCase()).join(' ');
+  const fillers = FILLERS.map(([name, re]) => [name, (text.match(re) || []).length]).filter(f => f[1] > 0).sort((a, b) => b[1] - a[1]);
+  return {
+    answers: turns.length,
+    wpm: seconds >= 5 ? Math.round(words / (seconds / 60)) : null,
+    avgSeconds: Math.round(seconds / turns.length),
+    pauses: turns.reduce((s, t) => s + (t.pauses || 0), 0),
+    fillers
+  };
+}
+function deliveryHTML(d){
+  const lines = [];
+  if(d.wpm !== null){
+    lines.push(['Pace', d.wpm >= 120 && d.wpm <= 160
+      ? 'About ' + d.wpm + ' words per minute. That\'s a comfortable pace (120 to 160 is a good range).'
+      : d.wpm > 160
+        ? 'About ' + d.wpm + ' words per minute, which is on the fast side. Try taking a breath between ideas.'
+        : 'About ' + d.wpm + ' words per minute, which is on the slow side. That\'s fine while you think, but try to keep it moving once you start an answer.']);
+  }
+  const fillerTotal = d.fillers.reduce((s, f) => s + f[1], 0);
+  lines.push(['Filler words', fillerTotal === 0
+    ? 'We didn\'t catch any filler words like "um" or "like".'
+    : 'You said "' + d.fillers[0][0] + '" ' + d.fillers[0][1] + (d.fillers[0][1] === 1 ? ' time' : ' times') +
+      (d.fillers.length > 1 ? ' (and ' + (fillerTotal - d.fillers[0][1]) + ' other filler ' + (fillerTotal - d.fillers[0][1] === 1 ? 'word' : 'words') + ')' : '') +
+      '. Try pausing instead. Silence sounds more confident than a filler word.']);
+  lines.push(['Answer length', d.avgSeconds < 20
+    ? 'Your spoken answers averaged ' + d.avgSeconds + ' seconds. Try adding an example to give them more to go on.'
+    : d.avgSeconds > 100
+      ? 'Your spoken answers averaged ' + fmtClock(d.avgSeconds * 1000) + '. Try getting to your main point sooner.'
+      : 'Your spoken answers averaged ' + d.avgSeconds + ' seconds. 30 to 90 seconds is a good length for most questions.']);
+  lines.push(['Long pauses', d.pauses === 0
+    ? 'No long pauses. You kept things moving.'
+    : 'We noticed ' + d.pauses + (d.pauses === 1 ? ' long pause' : ' long pauses') + ' (over 3 seconds). A short pause is fine. If you get stuck, it\'s OK to say "Let me think for a second."']);
+  return '<div class="delivery-card">' +
+    '<h4>Delivery <span>from your ' + (d.answers === 1 ? 'spoken answer' : d.answers + ' spoken answers') + '</span></h4>' +
+    lines.map(([k, v]) => '<p><b>' + k + '.</b> ' + escapeHTML(v) + '</p>').join('') +
+    '<p class="fine">Voice detection isn\'t always accurate. Browsers often drop "um" and "uh", so treat these numbers as a rough guide. Delivery doesn\'t change your grade.</p>' +
+  '</div>';
+}
+
+// Leaving the interview (or starting over) stops any recording or speech.
+function stopVoice(){
+  if(voice.session){ voice.session.abort(); voice.session = null; }
+  if(voice.recording) resetRecordingUI();
+  stopSpeaking();
+  hideRedo();
 }
 
 function scoreToLetter(avg){
@@ -2650,6 +3115,7 @@ async function loadHistory(){
   }).join('');
 }
 
+let pendingDelivery = null; // delivery stats for the grade screen, when any answer was spoken
 function renderFeedback(fb){
   const cfg = config();
   const scores = fb.scores || {};
@@ -2674,6 +3140,7 @@ function renderFeedback(fb){
         </div>
       </div>
       <div class="rubric${cfg.rubric.length === 6 ? ' six' : ''}">${rubricHTML}</div>
+      ${pendingDelivery ? deliveryHTML(pendingDelivery) : ''}
       <div class="fb-block gold">
         <h4>What worked</h4>
         <p>${escapeHTML(fb.whatWorked)}</p>
@@ -2709,20 +3176,24 @@ function renderFeedback(fb){
 }
 
 async function endSession(){
-  if(busy || ended || messages.length === 0) return;
+  if(busy || ended || messages.length === 0 || voice.recording) return;
+  stopSpeaking();
+  hideRedo();
   ended = true;
   setBusy(true);
   clearError();
   el('end-btn').textContent = 'Grading…';
   const cfg = config();
   const transcriptText = counterpartName() + ': ' + openingLine() + '\n' +
-    messages.map(m => (m.role === 'user' ? 'You' : counterpartName()) + ': ' + m.content).join('\n');
+    messages.map(m => (m.role === 'user' ? (m.spoken ? 'You (spoken)' : 'You') : counterpartName()) + ': ' + m.content).join('\n');
+  const anySpoken = messages.some(m => m.spoken);
+  const spokenNote = anySpoken ? " Lines marked 'You (spoken)' were said out loud and turned into text by the browser, so don't judge their punctuation, capitalization or obvious transcription mistakes. When quoting one in strongerPhrase.original, quote it as written." : "";
   const rubricDesc = cfg.rubric.map(r => r.key + " = " + r.desc + ".").join(' ');
   const scoreKeys = cfg.rubric.map(r => '"' + r.key + '": number').join(', ');
   const collegeContext = sessionTrack === 'college'
     ? " It was a practice " + (collegeInterviewType() === 'alumni' ? 'alumni' : 'admissions') + " interview for " + currentScenario.title + " with a high school student. Judge 'whySchool' on how specific and genuine their reasons were, not on memorized facts; if the school had little public detail, judge the reasons they gave. Judge 'curiosity' partly on whether they asked the interviewer thoughtful questions when invited."
     : "";
-  const feedbackSystem = "You are a supportive but honest interview coach reviewing a practice transcript of " + currentScenario.issue + "." + collegeContext + " Analyze only the user's turns, labeled 'You'. Return ONLY valid JSON, with no markdown formatting, no code fences, and no preamble, in exactly this shape: {\"scores\": {" + scoreKeys + "}, \"whatWorked\": string, \"tryDifferently\": string, \"strongerPhrase\": {\"original\": string, \"improved\": string}, \"overall\": string}. Each score is an integer from 1 to 5. " + rubricDesc + " Keep each text field to 1-3 concise, plain-spoken sentences, written directly to the user as \"you\", pointing to specific things they said. strongerPhrase.original must be an actual line the user wrote in the transcript.";
+  const feedbackSystem = "You are a supportive but honest interview coach reviewing a practice transcript of " + currentScenario.issue + "." + collegeContext + " Analyze only the user's turns, labeled 'You'." + spokenNote + " Return ONLY valid JSON, with no markdown formatting, no code fences, and no preamble, in exactly this shape: {\"scores\": {" + scoreKeys + "}, \"whatWorked\": string, \"tryDifferently\": string, \"strongerPhrase\": {\"original\": string, \"improved\": string}, \"overall\": string}. Each score is an integer from 1 to 5. " + rubricDesc + " Keep each text field to 1-3 concise, plain-spoken sentences, written directly to the user as \"you\", pointing to specific things they said. strongerPhrase.original must be an actual line the user wrote in the transcript.";
   const answerCount = userTurnCount();
   const loader = showOverlayLoader(el('main-panel'), {
     title: 'Grading your interview',
@@ -2734,7 +3205,10 @@ async function endSession(){
     const raw = await callClaude(feedbackSystem, [{ role: 'user', content: "Here is the transcript:\n\n" + transcriptText }]);
     const fb = parseFeedbackJSON(raw);
     loader.stop();
+    pendingDelivery = deliveryStats(voice.spokenTurns);
     renderFeedback(fb);
+    pendingDelivery = null;
+    voice.spokenTurns = [];
     messages = [];
     setBusy(false);
   } catch(err){
@@ -2751,6 +3225,10 @@ const mainPanel = el('main-panel');
 mainPanel.addEventListener('click', (e) => {
   if(e.target.id === 'send-btn') sendMessage();
   if(e.target.id === 'end-btn') endSession();
+  if(e.target.closest('#mic-btn')){ if(voice.recording) stopRecording(); else startRecording(); }
+  if(e.target.id === 'voice-skip-btn') stopSpeaking();
+  if(e.target.id === 'voice-redo-btn') redoLastAnswer();
+  if(e.target.id === 'voice-resend-btn' && voice.retry){ const r = voice.retry; voice.retry = null; sendAnswer(r.text, r.spoken); }
   if(e.target.id === 'again-btn'){
     currentPersona = pickRandom(personasFor(), currentPersona.id);
     freshMainPanel();
@@ -2791,6 +3269,8 @@ el('mood-toggle').addEventListener('click', (e) => {
   currentPersona = pickRandom(personasFor());
   renderSituation();
 });
+
+el('speaker-btn').addEventListener('click', () => setReadAloud(!voice.readAloud));
 
 el('reset-btn').addEventListener('click', () => {
   if(busy) return;
