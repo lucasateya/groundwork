@@ -2679,6 +2679,7 @@ function sendMessage(){
   if(!input || voice.recording) return;
   const text = input.value.trim();
   if(!text) return;
+  if(text.toUpperCase() === 'DEV: GIVE A'){ input.value = ''; autoResize(); updateWordCounter(); devGiveA(); return; }
   sendAnswer(text, null);
 }
 
@@ -3172,7 +3173,36 @@ async function loadHistory(){
 }
 
 let pendingDelivery = null; // delivery stats for the grade screen, when any answer was spoken
-function renderFeedback(fb){
+// Dev shortcut for screenshots: typing "DEV: GIVE A" in the interview chat
+// shows a realistic A grade page for the current job or school. Nothing is
+// sent to the AI, and the grade isn't saved (no history, XP or streak).
+function devGiveA(){
+  if(busy || ended) return;
+  stopVoice();
+  ended = true;
+  const college = sessionTrack === 'college';
+  const school = currentScenario ? currentScenario.title : 'this school';
+  const fb = college ? {
+    scores: { firstImpression:5, conciseness:4, structure:5, selfReflection:5, whySchool:5, curiosity:4 },
+    whatWorked: "You opened warmly and gave real, specific examples, like how running the robotics club taught you to keep a team going when a build fell apart. Your reasons for " + school + " were personal, not just facts from the website.",
+    tryDifferently: "Your answer about what you'd study ran a little long. Name the subject, give one reason it excites you, then stop and let the interviewer follow up.",
+    strongerPhrase: { original: "I just really like the vibe of the campus.", improved: "When I visited, I sat in on a class where students were arguing about the reading like it actually mattered. That's the kind of place I want to learn in." },
+    overall: "This was a strong interview. You came across as curious, thoughtful and prepared, and you asked good questions at the end. Keep that same energy in the real one."
+  } : {
+    scores: { firstImpression:5, conciseness:4, structure:5, relevance:5 },
+    whatWorked: "You opened with a confident, clear introduction and backed up your answers with specific examples, like the time you trained a new volunteer during a busy food drive.",
+    tryDifferently: "Your answer about a weakness ran a little long. Name it, give one example of how you're working on it, and stop there.",
+    strongerPhrase: { original: "I'm a hard worker and I'm good with people.", improved: "At the food bank, I learned to stay calm and friendly even when the line was out the door, and that's how I'd treat customers here." },
+    overall: "This was a strong interview. You sounded prepared, stayed on topic and gave the interviewer real reasons to picture you in the role."
+  };
+  hideTyping();
+  renderFeedback(fb, { demo: true });
+  messages = [];
+  setBusy(false);
+}
+
+// `opts.demo`: show the grade page without saving it (no history, XP or streak).
+function renderFeedback(fb, opts){
   const cfg = config();
   const scores = fb.scores || {};
   const keys = cfg.rubric.map(r => r.key);
@@ -3225,6 +3255,7 @@ function renderFeedback(fb){
     </div>
   `;
   updateTurns();
+  if(opts && opts.demo) return;
   const before = gameState();
   recordActivity();
   saveAttempt(avg, grade, scores).then(loadHistory).then(() => {
