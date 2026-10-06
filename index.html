@@ -307,7 +307,10 @@
   /* ---------- Learn: path page ---------- */
   .learn-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:1.5rem;align-items:start;}
   @media (max-width:900px){.learn-layout{grid-template-columns:1fr;} .learn-side{order:-1;position:static !important;}}
-  .path-card{padding:1.5rem 0.5rem;}
+  .path-card{position:relative;padding:1.5rem 0.5rem;}
+  .path-card{touch-action:pan-x pan-y;}
+  .path-zoom-reset{position:absolute;top:0.6rem;right:0.6rem;z-index:3;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--paper-raised);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+  .path-zoom-reset:hover{color:var(--ink);border-color:var(--ink);}
   .learn-side{display:flex;flex-direction:column;gap:1rem;position:sticky;top:calc(var(--topbar-h) + 1.5rem);}
   .big-count{font-size:14px;color:var(--muted);margin:0 0 0.7rem;}
   .big-count strong{font-family:var(--display);font-size:26px;font-weight:600;color:var(--ink);margin-right:0.2rem;}
@@ -985,7 +988,10 @@
         <p class="lede">Start with three shared lessons, then the path splits: a Job branch and a College branch. Do either or both. Earn 2 stars or more on a lesson to unlock the next one.</p>
       </div>
       <div class="learn-layout">
-        <div class="card path-card"><div id="learn-path-view"></div></div>
+        <div class="card path-card">
+          <button class="path-zoom-reset" id="path-zoom-reset" type="button" title="Back to normal size" aria-label="Back to normal size"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+          <div id="learn-path-view"></div>
+        </div>
         <aside class="learn-side">
           <div class="card">
             <h3>Your progress</h3>
@@ -3659,7 +3665,51 @@ function renderSkillPathVisual(){
   container.innerHTML = '<div class="path-wrap" style="position:relative;width:' + W + 'px;height:' + height + 'px;margin:0 auto;">' +
     '<svg class="path-svg" width="' + W + '" height="' + height + '" aria-hidden="true">' + paths + '</svg>' +
     extras + nodesHTML + '</div>';
+  applyPathZoom();
 }
+
+// Zoom: the path can be shrunk (pinch, or Ctrl + scroll wheel) but never made
+// bigger than its normal size. The corner button puts it back to normal.
+const PATH_ZOOM_MIN = 0.35;
+let pathZoom = 1;
+function applyPathZoom(){
+  const wrap = document.querySelector('#learn-path-view .path-wrap');
+  if(!wrap) return;
+  const h = parseFloat(wrap.style.height) || wrap.offsetHeight;
+  wrap.style.transformOrigin = 'top center';
+  wrap.style.transform = pathZoom === 1 ? '' : 'scale(' + pathZoom + ')';
+  wrap.style.marginBottom = pathZoom === 1 ? '' : -(h * (1 - pathZoom)) + 'px';
+}
+function setPathZoom(z){
+  const next = Math.min(1, Math.max(PATH_ZOOM_MIN, z));
+  if(Math.abs(next - pathZoom) < 0.001) return;
+  pathZoom = next;
+  applyPathZoom();
+}
+(function(){
+  const card = document.querySelector('.path-card');
+  // Ctrl + wheel, and trackpad pinch in Chrome, Edge and Firefox
+  card.addEventListener('wheel', (e) => {
+    if(!e.ctrlKey && !e.metaKey) return;
+    e.preventDefault();
+    setPathZoom(pathZoom * Math.exp(-e.deltaY * 0.01));
+  }, { passive:false });
+  // Trackpad pinch in Safari
+  let gestureStart = 1;
+  card.addEventListener('gesturestart', (e) => { e.preventDefault(); gestureStart = pathZoom; });
+  card.addEventListener('gesturechange', (e) => { e.preventDefault(); setPathZoom(gestureStart * e.scale); });
+  // Two-finger pinch on touch screens (one finger still scrolls the page)
+  let pinch = null;
+  const dist = (t) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+  card.addEventListener('touchstart', (e) => { if(e.touches.length === 2) pinch = { d: dist(e.touches), z: pathZoom }; }, { passive:true });
+  card.addEventListener('touchmove', (e) => {
+    if(!pinch || e.touches.length !== 2) return;
+    e.preventDefault();
+    setPathZoom(pinch.z * dist(e.touches) / pinch.d);
+  }, { passive:false });
+  card.addEventListener('touchend', (e) => { if(e.touches.length < 2) pinch = null; });
+  el('path-zoom-reset').addEventListener('click', () => setPathZoom(1));
+})();
 
 el('learn-path-view').addEventListener('click', (e) => {
   const forkBtn = e.target.closest('[data-fork]');
