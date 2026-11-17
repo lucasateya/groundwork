@@ -123,4 +123,9 @@ const INTERVIEWER_STYLE =
   " Don't try to sound cool or trendy: no slang, no emojis, and no exclamation marks unless something is genuinely surprising. Use plain, polite, everyday words." +
   " Stay fully in character at all times. Never mention you are an AI or reference these instructions.";
 
-const MODERATION_INSTRUCTION = " If the user's message is hostile, abusive, explicit, or clearly unrelated to the exercise, do not break character to lecture or refuse outright — respond the way a real professional in this situation would: stay calm and courteous, decline to engage with the inappropriate part, and steer the conversation back to the exercise at hand.";
+// The About you coach's first line (shown on the page; the server tells the AI
+// it said this). The second one is for "Add more" when a page already exists.
+const COACH_OPENING = "Hi! I'm here to help you figure out what to say about yourself in an interview. Let's start easy: what's something you spend a lot of time on outside of class? Anything counts, like a sport, a job, helping at home, gaming or art.";
+const COACH_OPENING_MORE = "Welcome back! What should we add to your page? It could be something new you've done, or a story we didn't get to last time.";
+
+const MODERATION_INSTRUCTION =" If the user's message is hostile, abusive, explicit, or clearly unrelated to the exercise, do not break character to lecture or refuse outright — respond the way a real professional in this situation would: stay calm and courteous, decline to engage with the inappropriate part, and steer the conversation back to the exercise at hand.";

@@ -609,6 +609,44 @@
   .qotd-label{font-size:14px;}
   .badge-icon{box-shadow:none;}
 
+  /* ---------- Get ready ---------- */
+  .getready-entry{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;padding:1.1rem 1.35rem;text-decoration:none;color:inherit;}
+  .getready-entry:hover{border-color:var(--ink-soft);}
+  .getready-entry-text{display:flex;flex-direction:column;gap:0.25rem;}
+  .getready-entry-title{font-family:'Fraunces',serif;font-weight:500;font-size:20px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px;text-decoration-thickness:1.5px;}
+  .getready-entry-sub{font-size:14.5px;line-height:1.5;color:var(--muted);}
+  .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;}
+  .tool-card{display:flex;flex-direction:column;gap:0.6rem;padding:clamp(1.2rem,3vw,1.6rem);cursor:pointer;}
+  .tool-card:hover{border-color:var(--ink-soft);}
+  .tool-card h2{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin:0;color:var(--ink);}
+  .tool-card p{font-size:14.5px;line-height:1.55;color:var(--body-text);margin:0;}
+  .tool-card .tool-meta{font-size:13px;color:var(--muted);}
+  .tool-foot{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:auto;padding-top:0.6rem;}
+  .back-row{margin:0 0 0.25rem;}
+  .coach-panel{background:var(--paper-raised);border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;height:min(72vh, 680px);min-height:440px;overflow:hidden;position:relative;}
+  .coach-avatar{background:var(--gold-pale);color:var(--gold-deep);}
+  .coach-panel .footer-row{flex-wrap:wrap;}
+  .coach-panel .end-btn{white-space:normal;}
+  .coach-fine{text-align:center;}
+  .about-section{margin-bottom:1.75rem;}
+  .about-section h2{font-family:'Fraunces',serif;font-weight:500;font-size:21px;margin:0 0 0.7rem;color:var(--ink);}
+  .about-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem;}
+  .about-list li{background:var(--paper-raised);border:1px solid var(--border);border-radius:var(--r-control, 10px);padding:0.75rem 0.95rem;font-size:15.5px;line-height:1.55;color:var(--ink);}
+  .about-list.phrases li{font-family:'Fraunces',serif;font-size:16.5px;}
+  .about-list .ask-topic{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:0.15rem;}
+  .about-edit-row{display:flex;gap:0.5rem;align-items:flex-start;}
+  .about-edit-row textarea{font-size:15px;}
+  .about-edit-row .btn-link{font-size:13px;font-weight:500;color:var(--muted);padding-top:0.75rem;white-space:nowrap;}
+  .about-add{font-size:13.5px;margin-top:0.2rem;}
+  .about-actions{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.5rem;}
+  @media print{
+    .topbar,.site-footer,.toast-stack,.no-print,.view:not(#view-about-page){display:none !important;}
+    body{background:#fff;}
+    .about-list li{border:none;border-left:2px solid #bbb;border-radius:0;background:none;padding:0.2rem 0 0.2rem 0.8rem;break-inside:avoid;}
+    .about-section{break-inside:avoid-page;}
+    .page-head{margin-top:0;}
+  }
+
   /* ---------- Privacy, Terms, Contact, footer ---------- */
   .legal h2{font-family:'Fraunces',serif;font-weight:500;font-size:21px;line-height:1.3;margin:2rem 0 0.5rem;color:var(--ink);}
   .legal p,.legal li{font-size:16px;line-height:1.65;color:var(--body-text);}
@@ -710,6 +748,13 @@
           </div>
         </div>
       </div>
+
+      <a class="card getready-entry" href="#/get-ready">
+        <span class="getready-entry-text">
+          <span class="getready-entry-title">Interview coming up? Get ready</span>
+          <span class="getready-entry-sub">Find what to say about yourself, check your camera and mic, and calm your nerves.</span>
+        </span>
+      </a>
 
       <section class="home-progress" id="home-progress" aria-label="Your progress">
         <h2 class="section-title">Your progress</h2>
@@ -946,6 +991,82 @@
         <a class="back-link" href="#/learn">← Skill path</a>
         <div class="lesson-panel" id="learn-main"></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== GET READY: HUB ===================== -->
+  <section class="view" id="view-get-ready" hidden>
+    <div class="container">
+      <div class="page-head">
+        <h1>Get ready for your interview</h1>
+        <p class="lede">Pick a tool. Each one takes a few minutes.</p>
+      </div>
+      <div class="tool-grid" id="tool-grid">
+        <div class="card tool-card" data-go="#/get-ready/about-you">
+          <h2>About you</h2>
+          <p>Talk with a coach about your life, and get a page of things to remember about yourself and phrases to have ready.</p>
+          <p class="tool-meta" id="tool-about-meta" hidden></p>
+          <div class="tool-foot">
+            <a class="btn btn-primary" href="#/get-ready/about-you" id="tool-about-btn">Talk to the coach</a>
+            <a class="btn btn-secondary" href="#/get-ready/about-you/page" id="tool-about-view" hidden>View your page</a>
+          </div>
+        </div>
+        <div class="card tool-card" data-go="#/get-ready/video-check">
+          <h2>Video check</h2>
+          <p>Check your lighting, framing and sound before a video interview. It runs only on your device.</p>
+          <div class="tool-foot">
+            <a class="btn btn-primary" href="#/get-ready/video-check">Check my setup</a>
+          </div>
+        </div>
+        <div class="card tool-card" data-go="#/get-ready/calm">
+          <h2>Calm down</h2>
+          <p>A 90-second breathing break with a few reminders, for the minutes right before you walk in.</p>
+          <div class="tool-foot">
+            <a class="btn btn-primary" href="#/get-ready/calm">Take a breath</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GET READY: ABOUT YOU COACH ===================== -->
+  <section class="view" id="view-coach" hidden>
+    <div class="container narrow">
+      <p class="back-row"><a class="back-link" href="#/get-ready">Get ready</a></p>
+      <section class="coach-panel" aria-label="About you coach" id="coach-panel">
+        <header class="chat-head">
+          <div class="avatar coach-avatar" aria-hidden="true">C</div>
+          <div>
+            <div class="chat-head-name">Your coach</div>
+            <div class="chat-head-role">Helps you find what to say about yourself</div>
+          </div>
+        </header>
+        <div class="chat-scroll" id="coach-scroll" aria-live="polite"></div>
+        <div class="error-note" id="coach-error" hidden></div>
+        <div class="composer">
+          <textarea id="coach-input" rows="1" placeholder="Type your answer…" aria-label="Your answer"></textarea>
+          <button class="send" id="coach-send" type="button">Send</button>
+        </div>
+        <p class="pi-note chat-pi-note" id="coach-pi-note"></p>
+        <div class="footer-row">
+          <span id="coach-status">Answer a couple of questions, then build your page.</span>
+          <button class="end-btn" id="coach-build" type="button" disabled>I'm done, build my page</button>
+        </div>
+      </section>
+      <p class="fine coach-fine">This conversation isn't saved. Only the page it builds is kept, on this device (and your account if you sign in).</p>
+    </div>
+  </section>
+
+  <!-- ===================== GET READY: ABOUT YOU PAGE ===================== -->
+  <section class="view" id="view-about-page" hidden>
+    <div class="container narrow">
+      <p class="back-row no-print"><a class="back-link" href="#/get-ready">Get ready</a></p>
+      <div class="page-head">
+        <h1>About you</h1>
+        <p class="legal-date" id="about-updated"></p>
+      </div>
+      <div id="about-body"></div>
+      <div class="about-actions no-print" id="about-actions"></div>
     </div>
   </section>
 
@@ -1609,6 +1730,24 @@ function route(){
     return;
   }
 
+  if(section === 'get-ready'){
+    if(!sub){ renderGetReady(); showView('get-ready'); return; }
+    if(sub === 'about-you'){
+      if(leaf === 'page'){
+        if(!loadAboutPage()){ go('#/get-ready/about-you', true); return; }
+        renderAboutPage();
+        showView('about-page');
+        return;
+      }
+      if(coach && coach.busy && pageLoader){ showView('loading'); return; } // still building the page
+      openCoach(leaf === 'more');
+      showView('coach');
+      return;
+    }
+    go('#/get-ready', true);
+    return;
+  }
+
   if(section === 'privacy' || section === 'terms'){ showView(section); return; }
   if(section === 'contact'){ openContact(); showView('contact'); return; }
 
@@ -1823,7 +1962,7 @@ el('qotd-body').addEventListener('input', (e) => {
   updateDailyCounter();
 });
 
-document.querySelectorAll('.choice-card[data-go]').forEach(card => {
+document.querySelectorAll('.choice-card[data-go], .tool-card[data-go]').forEach(card => {
   card.addEventListener('click', (e) => {
     if(e.target.closest('a')) return; // let inner links (like "resume") work normally
     go(card.dataset.go);
@@ -4113,6 +4252,280 @@ el('view-lesson').addEventListener('keydown', (e) => {
 });
 
 // =====================================================================
+// Get ready: hub, About you coach, and the page it builds
+// =====================================================================
+// The coach conversation lives only in memory (never saved). The page it
+// builds is saved in this browser and synced for signed-in users.
+
+const ABOUT_KEY = 'groundwork:aboutYou';
+const COACH_MAX_ANSWERS = 14;
+
+function cleanAboutPage(v){
+  if(!v || typeof v !== 'object') return null;
+  const list = (a, n) => (Array.isArray(a) ? a : []).map(x => String(x == null ? '' : x).trim()).filter(Boolean).slice(0, n);
+  const page = {
+    remember: list(v.remember, 10),
+    phrases: list(v.phrases, 10),
+    ifAsked: (Array.isArray(v.ifAsked) ? v.ifAsked : []).slice(0, 4)
+      .map(x => ({ topic: String((x && x.topic) || '').trim(), say: String((x && x.say) || '').trim() }))
+      .filter(x => x.topic && x.say),
+    updatedAt: Number(v.updatedAt) || 0
+  };
+  return page.remember.length || page.phrases.length ? page : null;
+}
+function loadAboutPage(){ return cleanAboutPage(safeParse(localStorage.getItem(ABOUT_KEY))); }
+function saveAboutPage(page, keepDate){
+  const p = cleanAboutPage(Object.assign({}, page, keepDate ? {} : { updatedAt: Date.now() }));
+  if(!p) return null;
+  try{ localStorage.setItem(ABOUT_KEY, JSON.stringify(p)); } catch(e){}
+  scheduleSync();
+  return p;
+}
+function formatDay(ms){
+  return new Date(ms).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+}
+
+// ---- Hub ----
+function renderGetReady(){
+  const page = loadAboutPage();
+  const meta = el('tool-about-meta');
+  meta.hidden = !page;
+  meta.textContent = page && page.updatedAt ? 'Last updated ' + formatDay(page.updatedAt) : '';
+  el('tool-about-view').hidden = !page;
+  el('tool-about-btn').textContent = page ? 'Add more' : 'Talk to the coach';
+  el('tool-about-btn').setAttribute('href', page ? '#/get-ready/about-you/more' : '#/get-ready/about-you');
+}
+
+// ---- Coach ----
+let coach = null; // { adding, messages, busy, redirects, ended }
+
+function coachAnswers(){ return coach ? coach.messages.filter(m => m.role === 'user').length : 0; }
+
+function openCoach(adding){
+  const page = loadAboutPage();
+  adding = !!(adding && page);
+  if(!coach || coach.adding !== adding || coach.ended){
+    coach = { adding, messages:[{ role:'assistant', content: adding ? COACH_OPENING_MORE : COACH_OPENING }], busy:false, redirects:0, ended:false };
+  }
+  el('coach-pi-note').textContent = PERSONAL_INFO_NOTE;
+  el('coach-error').hidden = true;
+  const scroll = el('coach-scroll');
+  scroll.innerHTML = '';
+  coach.messages.forEach(m => addCoachBubble(m.role, m.content));
+  updateCoachControls();
+  if(!coach.busy) setTimeout(() => el('coach-input').focus({ preventScroll:true }), 0);
+}
+
+function addCoachBubble(role, text){
+  const scroll = el('coach-scroll');
+  const div = document.createElement('div');
+  div.className = 'msg ' + (role === 'user' ? 'user' : 'employer');
+  div.innerHTML = (role === 'user' ? '' : '<span class="role-label">Your coach</span>') + '<span class="msg-text">' + escapeHTML(text) + '</span>';
+  scroll.appendChild(div);
+  scroll.scrollTop = scroll.scrollHeight;
+}
+
+function updateCoachControls(){
+  const n = coachAnswers();
+  const busy = !coach || coach.busy;
+  const full = n >= COACH_MAX_ANSWERS;
+  const ended = coach && coach.ended;
+  el('coach-input').disabled = busy || full || ended;
+  el('coach-send').disabled = busy || full || ended;
+  el('coach-build').disabled = busy || n < 2;
+  el('coach-status').textContent = ended ? ''
+    : full ? "That's plenty to work with. Build your page whenever you're ready."
+    : n < 2 ? 'Answer a couple of questions, then build your page.'
+    : 'Keep going as long as you like.';
+}
+
+function coachError(msg){
+  const e = el('coach-error');
+  e.textContent = msg || '';
+  e.hidden = !msg;
+}
+
+async function sendCoachMessage(){
+  if(!coach || coach.busy || coach.ended) return;
+  const input = el('coach-input');
+  const text = input.value.trim();
+  if(!text || coachAnswers() >= COACH_MAX_ANSWERS) return;
+  coachError('');
+  addCoachBubble('user', text);
+  coach.messages.push({ role:'user', content:text });
+  input.value = '';
+  growTextarea(input);
+  coach.busy = true;
+  updateCoachControls();
+  const scroll = el('coach-scroll');
+  scroll.insertAdjacentHTML('beforeend', '<div class="typing" id="coach-typing"><span></span><span></span><span></span></div>');
+  scroll.scrollTop = scroll.scrollHeight;
+  const hideTyping = () => { const t = el('coach-typing'); if(t) t.remove(); };
+  try{
+    const res = await callAI('coach', { messages: coach.messages.slice(1), page: coach.adding ? loadAboutPage() : null });
+    hideTyping();
+    if(res.flag === 'crisis'){
+      coach.messages.pop();
+      scroll.insertAdjacentHTML('beforeend', crisisCardHTML('Keep talking'));
+      scroll.scrollTop = scroll.scrollHeight;
+      return; // stays busy until they pick a button
+    }
+    if(!res.say) throw new Error('Empty reply');
+    addCoachBubble('assistant', res.say);
+    coach.messages.push({ role:'assistant', content:res.say });
+    if(res.flag === 'redirect' && ++coach.redirects >= MAX_REDIRECTS){
+      endCoach("Let's stop here for now. You can start a new conversation anytime.");
+      return;
+    }
+    coach.busy = false;
+    updateCoachControls();
+    input.focus();
+  } catch(err){
+    hideTyping();
+    coach.messages.pop();
+    const bubbles = scroll.querySelectorAll('.msg.user');
+    if(bubbles.length) bubbles[bubbles.length - 1].remove();
+    input.value = text;
+    growTextarea(input);
+    console.error('Coach reply failed:', err);
+    coachError(aiErrorMessage(err, "Your answer didn't go through. Press Send to try again."));
+    coach.busy = false;
+    updateCoachControls();
+  }
+}
+
+function endCoach(message){
+  coach.ended = true;
+  coach.busy = false;
+  const scroll = el('coach-scroll');
+  scroll.insertAdjacentHTML('beforeend', '<div class="session-note"><p>' + escapeHTML(message) + '</p><button class="btn btn-secondary" type="button" id="coach-restart">Start over</button></div>');
+  scroll.scrollTop = scroll.scrollHeight;
+  updateCoachControls();
+}
+
+async function buildAboutPage(){
+  if(!coach || coach.busy || coachAnswers() < 2) return;
+  const adding = coach.adding;
+  const existing = adding ? loadAboutPage() : null;
+  coach.busy = true;
+  coachError('');
+  showPageLoader({
+    title: 'Putting your page together',
+    steps: ['Reading your answers', 'Finding your strongest stories', 'Writing your page']
+  });
+  try{
+    const res = await callAI('about-page', { messages: coach.messages.slice(1), page: existing });
+    const built = cleanAboutPage(parseFeedbackJSON(res.text));
+    if(!built) throw new Error('Page came back empty');
+    hidePageLoader();
+    saveAboutPage(built);
+    coach = null; // the conversation is never kept
+    aboutEditing = false;
+    go('#/get-ready/about-you/page');
+  } catch(err){
+    hidePageLoader();
+    console.error('Building the About you page failed:', err);
+    coach.busy = false;
+    showView('coach');
+    updateCoachControls();
+    coachError(aiErrorMessage(err, "Couldn't build your page just now. Check your connection and try again."));
+  }
+}
+
+el('coach-send').addEventListener('click', sendCoachMessage);
+el('coach-build').addEventListener('click', buildAboutPage);
+el('coach-input').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendCoachMessage(); }
+});
+el('coach-input').addEventListener('input', (e) => growTextarea(e.target));
+el('coach-scroll').addEventListener('click', (e) => {
+  const crisisBtn = e.target.closest('[data-crisis]');
+  if(crisisBtn){
+    const card = crisisBtn.closest('.crisis-card'); if(card) card.remove();
+    if(crisisBtn.dataset.crisis === 'end'){ coach = null; go('#/get-ready'); return; }
+    coach.busy = false;
+    updateCoachControls();
+    el('coach-input').focus();
+    return;
+  }
+  if(e.target.id === 'coach-restart'){ const adding = coach.adding; coach = null; openCoach(adding); }
+});
+
+// ---- The page ----
+let aboutEditing = false;
+
+function renderAboutPage(){
+  const page = loadAboutPage();
+  const body = el('about-body');
+  el('about-updated').textContent = page.updatedAt ? 'Last updated ' + formatDay(page.updatedAt) : '';
+  if(aboutEditing){
+    const rows = (key, items, placeholder) => items.map((t, i) =>
+      '<li class="about-edit-row"><textarea rows="2" data-edit="' + key + '" aria-label="' + escapeHTML(placeholder) + ' ' + (i + 1) + '">' + escapeHTML(t) + '</textarea>' +
+      '<button class="btn-link" type="button" data-remove="' + key + '" data-index="' + i + '">Remove</button></li>').join('');
+    body.innerHTML =
+      '<section class="about-section"><h2>Things to remember about yourself</h2><ul class="about-list editing" id="edit-remember">' + rows('remember', page.remember, 'Thing to remember') + '</ul>' +
+        '<button class="btn-link about-add" type="button" data-add="remember">Add a line</button></section>' +
+      '<section class="about-section"><h2>Phrases to have ready</h2><ul class="about-list editing" id="edit-phrases">' + rows('phrases', page.phrases, 'Phrase') + '</ul>' +
+        '<button class="btn-link about-add" type="button" data-add="phrases">Add a line</button></section>' +
+      (page.ifAsked.length ? '<section class="about-section"><h2>If they ask about…</h2><ul class="about-list editing">' +
+        page.ifAsked.map((x, i) => '<li class="about-edit-row"><textarea rows="2" data-edit="ifAsked" data-topic="' + escapeHTML(x.topic) + '" aria-label="If they ask about ' + escapeHTML(x.topic) + '">' + escapeHTML(x.say) + '</textarea>' +
+          '<button class="btn-link" type="button" data-remove="ifAsked" data-index="' + i + '">Remove</button></li>').join('') + '</ul></section>' : '');
+    el('about-actions').innerHTML =
+      '<button class="btn btn-primary" type="button" id="about-save">Save changes</button>' +
+      '<button class="btn btn-secondary" type="button" id="about-cancel">Cancel</button>';
+    body.querySelectorAll('textarea').forEach(growTextarea);
+    return;
+  }
+  const items = arr => arr.map(t => '<li>' + escapeHTML(t) + '</li>').join('');
+  body.innerHTML =
+    '<section class="about-section"><h2>Things to remember about yourself</h2><ul class="about-list">' + items(page.remember) + '</ul></section>' +
+    '<section class="about-section"><h2>Phrases to have ready</h2><ul class="about-list phrases">' + items(page.phrases) + '</ul></section>' +
+    (page.ifAsked.length ? '<section class="about-section"><h2>If they ask about…</h2><ul class="about-list">' +
+      page.ifAsked.map(x => '<li><span class="ask-topic">' + escapeHTML(x.topic) + '</span>' + escapeHTML(x.say) + '</li>').join('') + '</ul></section>' : '');
+  el('about-actions').innerHTML =
+    '<button class="btn btn-secondary" type="button" id="about-edit">Edit</button>' +
+    '<a class="btn btn-secondary" href="#/get-ready/about-you/more">Add more</a>' +
+    '<button class="btn btn-secondary" type="button" id="about-print">Print</button>';
+}
+
+// Read what's in the edit boxes (so adding or removing a line keeps typing).
+function readAboutEdits(){
+  const page = loadAboutPage();
+  const body = el('about-body');
+  const vals = key => [...body.querySelectorAll('textarea[data-edit="' + key + '"]')].map(t => t.value);
+  return {
+    remember: vals('remember'),
+    phrases: vals('phrases'),
+    ifAsked: [...body.querySelectorAll('textarea[data-edit="ifAsked"]')].map(t => ({ topic: t.dataset.topic, say: t.value })),
+    updatedAt: page.updatedAt
+  };
+}
+el('view-about-page').addEventListener('click', (e) => {
+  const t = e.target;
+  if(t.id === 'about-edit'){ aboutEditing = true; renderAboutPage(); const f = el('about-body').querySelector('textarea'); if(f) f.focus(); return; }
+  if(t.id === 'about-cancel'){ aboutEditing = false; renderAboutPage(); return; }
+  if(t.id === 'about-print'){ window.print(); return; }
+  if(t.id === 'about-save'){
+    const saved = saveAboutPage(readAboutEdits());
+    if(!saved){ toast('', 'Keep at least one line on your page.'); return; }
+    aboutEditing = false;
+    renderAboutPage();
+    toast('', 'Saved.');
+    return;
+  }
+  const add = t.dataset.add, remove = t.dataset.remove;
+  if(add){
+    const ul = el('edit-' + add);
+    ul.insertAdjacentHTML('beforeend', '<li class="about-edit-row"><textarea rows="2" data-edit="' + add + '" aria-label="New line"></textarea>' +
+      '<button class="btn-link" type="button" data-remove="' + add + '">Remove</button></li>');
+    ul.lastElementChild.querySelector('textarea').focus();
+  } else if(remove){
+    t.closest('li').remove();
+  }
+});
+el('about-body').addEventListener('input', (e) => { if(e.target.tagName === 'TEXTAREA') growTextarea(e.target); });
+
+// =====================================================================
 // Admin view (?admin=1) — shows flagged messages saved in THIS browser.
 // =====================================================================
 
@@ -4639,6 +5052,7 @@ function collectLocal(){
   out.daily = loadDaily();
   out.dailyLog = loadDailyLog();
   out.activity = loadActivity();
+  out.aboutYou = loadAboutPage();
   return out;
 }
 
@@ -4662,6 +5076,9 @@ function mergeProgress(local, remote){
   m.daily = !da ? (db || null) : !db ? da : ((db.lastDate || '') > (da.lastDate || '') ? db : da);
   [a.dailyLog || {}, b.dailyLog || {}].forEach(log => Object.entries(log).forEach(([d, s]) => { m.dailyLog[d] = Math.max(Number(s) || 0, m.dailyLog[d] || 0); }));
   m.activity = [...new Set([...(a.activity || []), ...(b.activity || [])])].filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().slice(-400);
+  // The About you page: the most recently updated copy wins.
+  const pa = cleanAboutPage(a.aboutYou), pb = cleanAboutPage(b.aboutYou);
+  m.aboutYou = !pa ? pb : !pb ? pa : (pb.updatedAt > pa.updatedAt ? pb : pa);
   return m;
 }
 
@@ -4682,13 +5099,14 @@ function applyLocal(m){
   if(m.daily) put(DAILY_KEY, m.daily);
   if(Object.keys(m.dailyLog).length) put(DAILY_LOG_KEY, m.dailyLog);
   put(ACTIVITY_KEY, m.activity);
+  if(m.aboutYou) put(ABOUT_KEY, m.aboutYou);
   return changed;
 }
 
 async function refreshFromStorage(){
   await Promise.all([loadSkillProgress(), loadHistory(), loadQuizProfile()]);
   updateXpChip();
-  if(['home', 'learn', 'choice'].includes(currentView)) route();
+  if(['home', 'learn', 'choice', 'get-ready'].includes(currentView) || (currentView === 'about-page' && !aboutEditing)) route();
 }
 
 async function syncNow(){
