@@ -673,6 +673,25 @@
   .vc-before ul{margin:0;padding-left:1.2rem;}
   .vc-before li{font-size:15px;line-height:1.6;color:var(--body-text);margin-bottom:0.35rem;}
 
+  /* ---------- Calm down ---------- */
+  .calm-stage{min-height:min(62vh, 520px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem 0;}
+  .calm-breathe{display:flex;flex-direction:column;align-items:center;}
+  .calm-mark{margin-bottom:2rem;transform:scale(1);transition-property:transform;transition-timing-function:ease-in-out;}
+  .calm-mark.big{transform:scale(1.4);}
+  .calm-ring{animation:none;border-color:rgba(28,35,33,0.1);border-top-color:var(--gold);border-right-color:var(--gold);border-bottom-color:var(--gold);border-left-color:var(--gold);opacity:0.55;}
+  .calm-letter{animation:none;}
+  .calm-label{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(26px,6vw,34px);color:var(--ink);margin:0;}
+  .calm-count{font-size:15px;color:var(--muted);margin:0.4rem 0 0;min-height:1.5em;font-variant-numeric:tabular-nums;}
+  .calm-words{display:flex;flex-direction:column;gap:1.4rem;max-width:520px;}
+  .calm-line{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(21px,5vw,26px);line-height:1.4;color:var(--ink);margin:0;opacity:0;transition:opacity 1.2s ease;}
+  .calm-line.show{opacity:1;}
+  .calm-line-note{display:block;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:var(--muted);margin-bottom:0.35rem;}
+  .calm-end-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(28px,6vw,38px);line-height:1.25;margin:0 0 1.5rem;}
+  .calm-end-actions{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;}
+  .calm-controls{display:flex;justify-content:center;align-items:center;gap:1.25rem;}
+  .calm-controls .btn-link{color:var(--muted);font-weight:500;min-height:44px;}
+  @media (prefers-reduced-motion:reduce){.calm-mark,.calm-mark.big{transform:none;transition:none;} .calm-line{transition:none;}}
+
   /* ---------- Privacy, Terms, Contact, footer ---------- */
   .legal h2{font-family:'Fraunces',serif;font-weight:500;font-size:21px;line-height:1.3;margin:2rem 0 0.5rem;color:var(--ink);}
   .legal p,.legal li{font-size:16px;line-height:1.65;color:var(--body-text);}
@@ -1145,6 +1164,32 @@
           <li>Keep water and your About you page nearby.</li>
         </ul>
       </section>
+    </div>
+  </section>
+
+  <!-- ===================== GET READY: CALM DOWN ===================== -->
+  <section class="view" id="view-calm" hidden>
+    <div class="container narrow calm">
+      <p class="back-row"><a class="back-link" href="#/get-ready">Get ready</a></p>
+      <div class="calm-stage" id="calm-stage">
+        <div class="calm-breathe" id="calm-breathe">
+          <div class="loader-mark calm-mark" id="calm-mark" aria-hidden="true"><span class="loader-ring calm-ring"></span><span class="loader-letter calm-letter">G</span></div>
+          <p class="calm-label" id="calm-label" aria-live="polite"></p>
+          <p class="calm-count" id="calm-count" aria-hidden="true"></p>
+        </div>
+        <div class="calm-words" id="calm-words" aria-live="polite" hidden></div>
+        <div class="calm-end" id="calm-end" hidden>
+          <h1 class="calm-end-title">You're ready. Go show them who you are.</h1>
+          <div class="calm-end-actions">
+            <a class="btn btn-primary" href="#/get-ready">Done</a>
+            <button class="btn btn-secondary" type="button" id="calm-restart">Start again</button>
+          </div>
+        </div>
+      </div>
+      <div class="calm-controls" id="calm-controls">
+        <button class="btn btn-secondary" type="button" id="calm-pause">Pause</button>
+        <button class="btn-link" type="button" id="calm-skip">Skip</button>
+      </div>
     </div>
   </section>
 
@@ -1836,6 +1881,7 @@ function route(){
       return;
     }
     if(sub === 'video-check'){ openVideoCheck(); showView('video-check'); return; }
+    if(sub === 'calm'){ showView('calm'); startCalm(); return; }
     go('#/get-ready', true);
     return;
   }
@@ -4858,6 +4904,133 @@ el('vc-stop').addEventListener('click', () => { stopVideoCheck(); vcShow('intro'
 // Turn everything off when they leave the page or close the tab.
 window.addEventListener('hashchange', () => { if(vc.running && !location.hash.startsWith('#/get-ready/video-check')) stopVideoCheck(); });
 window.addEventListener('pagehide', stopVideoCheck);
+
+// =====================================================================
+// Get ready: Calm down (about 90 seconds; no network needed)
+// Breathe (4 rounds of in 4s, hold 4s, out 6s), three reminders, an
+// optional warm-up phrase from the About you page, then the send-off.
+// =====================================================================
+
+const CALM_REMINDERS = [
+  "They want this to go well too. They're hoping you're the one.",
+  'Feeling nervous is normal. It just means this matters to you.',
+  "You don't need perfect answers. Real ones work better.",
+  "It's okay to pause and think before you answer.",
+  'If you lose your place, say so and start the sentence again. Nobody minds.',
+  "You've already done the hard part by getting ready.",
+  'Listen to the whole question, then answer that question.'
+];
+const CALM_BREATH = [{ label:'Breathe in', secs:4, big:true }, { label:'Hold', secs:4, big:true }, { label:'Breathe out', secs:6, big:false }];
+const CALM_ROUNDS = 4;
+
+const calm = { steps:[], i:0, elapsed:0, paused:false, timer:null, last:0 };
+
+function buildCalmSteps(){
+  const steps = [];
+  for(let r = 0; r < CALM_ROUNDS; r++) CALM_BREATH.forEach(b => steps.push({ kind:'breath', label:b.label, secs:b.secs, big:b.big }));
+  const page = loadAboutPage();
+  const pool = [...CALM_REMINDERS].sort(() => Math.random() - 0.5);
+  const lines = pool.slice(0, 3).map(t => ({ text:t }));
+  if(page && page.remember.length){
+    lines[2] = { note:'From your About you page', text: page.remember[Math.floor(Math.random() * page.remember.length)] };
+  }
+  steps.push({ kind:'words', lines, secs:22 });
+  if(page && page.phrases.length){
+    steps.push({ kind:'warmup', text: page.phrases[Math.floor(Math.random() * page.phrases.length)], secs:12 });
+  }
+  steps.push({ kind:'end', secs:0 });
+  return steps;
+}
+
+function startCalm(){
+  stopCalm();
+  calm.steps = buildCalmSteps();
+  calm.i = 0; calm.elapsed = 0; calm.paused = false;
+  el('calm-pause').textContent = 'Pause';
+  el('calm-controls').hidden = false;
+  calmEnterStep();
+  calm.last = performance.now();
+  calm.timer = setInterval(calmTick, 100);
+}
+function stopCalm(){ clearInterval(calm.timer); calm.timer = null; }
+
+function calmEnterStep(){
+  const s = calm.steps[calm.i];
+  calm.elapsed = 0;
+  el('calm-breathe').hidden = s.kind !== 'breath';
+  el('calm-words').hidden = s.kind !== 'words' && s.kind !== 'warmup';
+  el('calm-end').hidden = s.kind !== 'end';
+  if(s.kind === 'breath'){
+    const mark = el('calm-mark');
+    mark.style.transitionDuration = s.secs + 's';
+    mark.classList.toggle('big', s.big);
+    el('calm-label').textContent = s.label;
+    el('calm-count').textContent = String(s.secs);
+  } else if(s.kind === 'words'){
+    el('calm-words').innerHTML = s.lines.map(l => '<p class="calm-line">' + (l.note ? '<span class="calm-line-note">' + escapeHTML(l.note) + '</span>' : '') + escapeHTML(l.text) + '</p>').join('');
+    calmShowLines();
+  } else if(s.kind === 'warmup'){
+    el('calm-words').innerHTML = '<p class="calm-line show"><span class="calm-line-note">Warm up your voice. Say this out loud once:</span>' + escapeHTML(s.text) + '</p>';
+  } else {
+    stopCalm();
+    el('calm-mark').classList.remove('big');
+    el('calm-controls').hidden = true;
+    el('calm-end').querySelector('a').focus({ preventScroll:true });
+  }
+}
+// Reminders fade in one at a time, 7 seconds apart.
+function calmShowLines(){
+  const lines = el('calm-words').querySelectorAll('.calm-line');
+  lines.forEach((ln, i) => ln.classList.toggle('show', calm.elapsed >= i * 7));
+}
+
+function calmTick(){
+  const now = performance.now();
+  const dt = (now - calm.last) / 1000;
+  calm.last = now;
+  if(calm.paused) return;
+  calm.elapsed += dt;
+  const s = calm.steps[calm.i];
+  if(s.kind === 'breath') el('calm-count').textContent = String(Math.max(1, Math.ceil(s.secs - calm.elapsed)));
+  if(s.kind === 'words') calmShowLines();
+  if(calm.elapsed >= s.secs){ calm.i += 1; calmEnterStep(); }
+}
+
+function calmSkip(){
+  const s = calm.steps[calm.i];
+  if(!s || s.kind === 'end') return;
+  // Skip moves to the next part: breathing → reminders → warm-up → end.
+  let j = calm.i + 1;
+  while(j < calm.steps.length && calm.steps[j].kind === s.kind) j++;
+  calm.i = j;
+  if(calm.paused) calmTogglePause();
+  calmEnterStep();
+}
+function calmTogglePause(){
+  calm.paused = !calm.paused;
+  el('calm-pause').textContent = calm.paused ? 'Resume' : 'Pause';
+  const mark = el('calm-mark');
+  if(calm.paused){
+    // Freeze the circle where it is.
+    const t = getComputedStyle(mark).transform;
+    mark.style.transitionDuration = '0s';
+    mark.style.transform = t === 'none' ? '' : t;
+    if(calm.steps[calm.i].kind === 'breath') el('calm-label').textContent = 'Paused';
+  } else {
+    const s = calm.steps[calm.i];
+    mark.style.transform = '';
+    if(s.kind === 'breath'){
+      mark.style.transitionDuration = Math.max(0.1, s.secs - calm.elapsed) + 's';
+      el('calm-label').textContent = s.label;
+    }
+    calm.last = performance.now();
+  }
+}
+
+el('calm-skip').addEventListener('click', calmSkip);
+el('calm-pause').addEventListener('click', calmTogglePause);
+el('calm-restart').addEventListener('click', startCalm);
+window.addEventListener('hashchange', () => { if(!location.hash.startsWith('#/get-ready/calm')) stopCalm(); });
 
 // =====================================================================
 // Admin view (?admin=1) — shows flagged messages saved in THIS browser.
