@@ -609,6 +609,30 @@
   .qotd-label{font-size:14px;}
   .badge-icon{box-shadow:none;}
 
+  /* ---------- Privacy, Terms, Contact, footer ---------- */
+  .legal h2{font-family:'Fraunces',serif;font-weight:500;font-size:21px;line-height:1.3;margin:2rem 0 0.5rem;color:var(--ink);}
+  .legal p,.legal li{font-size:16px;line-height:1.65;color:var(--body-text);}
+  .legal p{margin:0 0 0.8rem;}
+  .legal ul{margin:0 0 0.8rem;padding-left:1.2rem;}
+  .legal li{margin-bottom:0.35rem;}
+  .legal a{color:var(--teal);text-underline-offset:3px;}
+  .legal .page-head{margin-bottom:1rem;}
+  .legal-date{font-size:13.5px;color:var(--muted);margin:0.6rem 0 0;}
+  .contact-card{padding:clamp(1.1rem,3vw,1.6rem);}
+  .field{display:block;margin-bottom:1.1rem;}
+  .field-label{display:block;font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:0.4rem;}
+  .field-hint{font-weight:400;color:var(--muted);}
+  select.quiz-input{appearance:auto;}
+  .contact-message{resize:vertical;min-height:140px;line-height:1.5;}
+  .hp-field{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;}
+  #contact-form .quiz-error{margin:0 0 1rem;}
+  .contact-done-title{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:0 0 0.5rem;outline:none;}
+  .account-delete{display:block;margin:0.75rem auto 0;font-size:13px;font-weight:500;color:var(--muted);}
+  .site-footer{border-top:1px solid var(--border);margin-top:3rem;padding:1.4rem 1rem 2rem;}
+  .site-footer nav{display:flex;justify-content:center;flex-wrap:wrap;gap:0.4rem 1.6rem;}
+  .site-footer a{font-size:13.5px;color:var(--muted);text-decoration:none;}
+  .site-footer a:hover,.site-footer a:focus-visible{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+
   /* ---------- Admin ---------- */
   .admin-item{margin-bottom:0.6rem;}
 </style>
@@ -710,7 +734,7 @@
         </div>
         <div class="badge-grid" id="home-badges"></div>
         <p class="fine xp-how">XP depends on how well you do: 10 for every lesson star, 12–60 for a mock interview based on your score (25% more on the harder level or with Sunshine), and 5 for every star on the question of the day. Legend starts at Level 100.</p>
-        <p class="fine xp-how">Your progress is saved in this browser. Nothing goes to a server unless you sign in, and then only your progress, grades and quiz answers, never your conversations or your voice. <a href="privacy.html">Privacy</a></p>
+        <p class="fine xp-how">Your progress is saved in this browser. Nothing goes to a server unless you sign in, and then only your progress, grades and quiz answers, never your conversations or your voice. <a href="#/privacy">Privacy</a></p>
       </section>
 
       <div class="how">
@@ -925,7 +949,138 @@
     </div>
   </section>
 
+  <!-- ===================== PRIVACY ===================== -->
+  <!-- Draft. Have this reviewed by someone qualified before launch. -->
+  <section class="view" id="view-privacy" hidden>
+    <div class="container narrow legal">
+      <div class="page-head">
+        <h1>Privacy</h1>
+        <p class="lede">What Groundwork saves, where it goes, and what it never keeps.</p>
+        <p class="legal-date">Last updated November 17, 2026</p>
+      </div>
+
+      <h2>The short version</h2>
+      <ul>
+        <li>Your progress is saved in your own browser. Nothing goes to our server unless you sign in.</li>
+        <li>What you type or say in a practice is sent to our AI provider so it can reply. We don't keep your conversations.</li>
+        <li>We never record or save your voice or video.</li>
+        <li>No ads, and we never sell your information.</li>
+      </ul>
+
+      <h2>What's saved in your browser</h2>
+      <p>To remember where you left off, Groundwork saves these on your device: lesson stars, interview grades and skill scores, your quiz answers, your Get ready page, your question of the day results, your streak, and settings like difficulty and language. They stay on this device. Clearing your browser's data for this site deletes them.</p>
+
+      <h2>What's sent to the AI</h2>
+      <p>Interviews, lessons, the question of the day and the About you coach are run by an AI from Anthropic (the company that makes Claude). When you send an answer, the text of that practice is sent to Anthropic so the AI can write a reply or feedback. Groundwork doesn't store these conversations. You can read how Anthropic handles data in <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic's privacy policy</a>.</p>
+
+      <h2>Your voice</h2>
+      <p>If you answer out loud, your browser turns your speech into text. In some browsers, like Chrome and Edge, that happens on the browser maker's servers. Groundwork never records or saves your voice.</p>
+
+      <h2>The video check</h2>
+      <p>The video check runs only on your device. Nothing is recorded, saved or uploaded, and the camera and microphone turn off as soon as you leave the page.</p>
+
+      <h2>If you sign in</h2>
+      <p>Signing in with Google is optional and only for people 13 or older. Google shares your name and email with us so we know which progress is yours. We then keep a copy of your lesson stars, grades and skill scores, quiz answers, Get ready page, question of the day results and streak, so they're safe and you can use them on other devices. That copy is stored with our database provider, Supabase. We never store your conversations, voice or video.</p>
+      <p>To delete the saved copy, open the account menu (your initial in the top bar) and choose "Delete my saved progress". Your progress stays on your device. To delete your account completely, send us a privacy request through the <a href="#/contact">contact form</a>.</p>
+
+      <h2>No ads, no selling</h2>
+      <p>We don't show ads, we don't sell or share your information, and we don't use analytics or tracking cookies.</p>
+
+      <h2>For parents and teachers</h2>
+      <p>Groundwork is made for teens. Anyone can practice without an account, and then everything stays on their device. Questions or requests about a student's information? Reach us through the <a href="#/contact">contact form</a> and pick "Parent or teacher".</p>
+
+      <h2>Changes</h2>
+      <p>If this page changes, we'll update the date at the top.</p>
+    </div>
+  </section>
+
+  <!-- ===================== TERMS ===================== -->
+  <!-- Draft. Have this reviewed by someone qualified before launch. -->
+  <section class="view" id="view-terms" hidden>
+    <div class="container narrow legal">
+      <div class="page-head">
+        <h1>Terms</h1>
+        <p class="lede">The ground rules for using Groundwork.</p>
+        <p class="legal-date">Last updated November 17, 2026</p>
+      </div>
+
+      <h2>It's a practice tool</h2>
+      <p>Groundwork helps you practice job and college interviews. It isn't a real interview, a school, an employer or an admissions office.</p>
+
+      <h2>The AI can be wrong</h2>
+      <p>Interviewers, feedback, grades and suggestions are written by an AI, and they can be wrong or miss things. A good grade here doesn't guarantee a job offer, an admission or any other result. For anything about a specific school or employer, check their own website.</p>
+
+      <h2>Use it respectfully</h2>
+      <p>Please don't use Groundwork to harass anyone, post harmful or explicit content, try to trick or misuse the AI, or try to break or overload the site. We may limit or block use that does.</p>
+
+      <h2>Personal and classroom use</h2>
+      <p>You can use Groundwork for your own practice, and teachers and counselors can use it with students. Please don't copy, resell or republish the lessons or other content.</p>
+
+      <h2>Your words are yours</h2>
+      <p>What you write belongs to you. We don't keep your conversations (see <a href="#/privacy">Privacy</a>).</p>
+
+      <h2>Not a crisis service</h2>
+      <p>Groundwork can't help in an emergency. If you're going through something hard, you can call or text <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline) anytime, or talk to an adult you trust.</p>
+
+      <h2>Changes</h2>
+      <p>Groundwork is free and offered as is. We may change, pause or stop it at any time. If these terms change, we'll update the date at the top.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="view" id="view-contact" hidden>
+    <div class="container narrow">
+      <div class="page-head">
+        <h1>Contact us</h1>
+        <p class="lede">Questions, problems, ideas or a privacy request. We read every message.</p>
+      </div>
+      <div class="card contact-card" id="contact-card">
+        <form id="contact-form" novalidate>
+          <label class="field">
+            <span class="field-label">Name <span class="field-hint">(optional)</span></span>
+            <input class="quiz-input" type="text" name="name" maxlength="80" autocomplete="name">
+          </label>
+          <label class="field">
+            <span class="field-label">Email <span class="field-hint">(optional, only if you want a reply)</span></span>
+            <input class="quiz-input" type="email" name="email" maxlength="120" autocomplete="email">
+          </label>
+          <label class="field">
+            <span class="field-label">Topic</span>
+            <select class="quiz-input" name="topic">
+              <option>Question</option>
+              <option>Problem</option>
+              <option>Idea</option>
+              <option>Parent or teacher</option>
+              <option>Privacy request</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Message</span>
+            <textarea class="quiz-input contact-message" name="message" rows="5" maxlength="3000" required></textarea>
+          </label>
+          <!-- Spam trap: people never see or fill this; bots often do. -->
+          <input class="hp-field" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="quiz-error" id="contact-error" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit" id="contact-send">Send message</button>
+          <p class="fine">Please don't include passwords or anything you'd rather we didn't see.</p>
+        </form>
+        <div id="contact-done" hidden>
+          <h2 class="contact-done-title" tabindex="-1">Thanks! We read every message.</h2>
+          <p class="lede">If you left your email, we'll get back to you there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
+
+<footer class="site-footer">
+  <nav aria-label="Site information">
+    <a href="#/privacy">Privacy</a>
+    <a href="#/terms">Terms</a>
+    <a href="#/contact">Contact</a>
+  </nav>
+</footer>
 
 <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
 
@@ -938,7 +1093,7 @@
       <button class="btn btn-primary" id="age-yes" type="button">Yes</button>
       <button class="btn btn-secondary" id="age-no" type="button">No</button>
     </div>
-    <p class="fine">Signing in with Google saves your lesson stars, grades, quiz answers and daily question to your account, so they're safe if this browser clears its data and you can pick up on another device. We never save your conversations or your voice. <a href="privacy.html">Privacy</a></p>
+    <p class="fine">Signing in with Google saves your lesson stars, grades, quiz answers and daily question to your account, so they're safe if this browser clears its data and you can pick up on another device. We never save your conversations or your voice. <a href="#/privacy">Privacy</a></p>
   </div>
   <div id="age-under" hidden>
     <h2>No problem</h2>
@@ -1391,7 +1546,8 @@ function go(hash, replace){
 
 function showView(name){
   document.querySelectorAll('.view').forEach(v => { v.hidden = v.id !== 'view-' + name; });
-  const navKey = name === 'home' ? '' : ((name === 'learn' || name === 'lesson') ? 'learn' : 'practice');
+  const NAV_FOR = { learn:'learn', lesson:'learn', choice:'practice', quiz:'practice', jobs:'practice', session:'practice', loading:'practice' };
+  const navKey = NAV_FOR[name] || '';
   document.querySelectorAll('[data-nav]').forEach(a => a.classList.toggle('active', a.dataset.nav === navKey));
   if(currentView !== name) window.scrollTo(0, 0);
   currentView = name;
@@ -1452,6 +1608,9 @@ function route(){
     renderLearnPage();
     return;
   }
+
+  if(section === 'privacy' || section === 'terms'){ showView(section); return; }
+  if(section === 'contact'){ openContact(); showView('contact'); return; }
 
   go('#/', true);
 }
@@ -4249,14 +4408,21 @@ function loadSupabaseLib(){
   });
 }
 
+// Public settings from /api/config, fetched once and shared (sign-in, contact form).
+let siteConfigPromise = null;
+function siteConfig(){
+  if(!siteConfigPromise){
+    siteConfigPromise = fetch('/api/config')
+      .then(r => r.ok ? r.json() : {})
+      .catch(() => ({}))
+      .then(c => c || {});
+  }
+  return siteConfigPromise;
+}
+
 async function initAccount(){
-  let cfg;
-  try{
-    const r = await fetch('/api/config');
-    if(!r.ok) return;
-    cfg = await r.json();
-  } catch(e){ return; }
-  if(!cfg || !cfg.enabled) return;
+  const cfg = await siteConfig();
+  if(!cfg.enabled) return;
   try{
     const lib = await loadSupabaseLib();
     account.client = lib.createClient(cfg.url, cfg.anonKey, {
@@ -4315,6 +4481,7 @@ function renderAccount(){
       '<p>Signed in as <b>' + escapeHTML(u.email || name) + '</b></p>' +
       '<p class="fine">Your progress, grades and quiz answers are saved to your account. Never your conversations or your voice.</p>' +
       '<button class="btn btn-secondary full" id="signout-btn" type="button">Sign out</button>' +
+      '<button class="btn-link account-delete" id="delete-cloud-btn" type="button">Delete my saved progress</button>' +
     '</div>';
 }
 
@@ -4350,6 +4517,26 @@ async function signOut(){
   setUser(null);
   toast('', 'Signed out. Your progress is still saved on this device.');
 }
+// Removes the synced copy from our database, then signs out so it isn't
+// re-uploaded. Progress on this device stays.
+async function deleteCloudProgress(){
+  toggleAccountMenu(false);
+  if(!account.user || !account.client) return;
+  if(!confirm('Delete the copy of your progress saved to your account? Your progress on this device stays, and you\'ll be signed out.')) return;
+  clearTimeout(account.timer);
+  account.timer = null;
+  try{
+    const { error } = await account.client.from('progress').delete().eq('user_id', account.user.id);
+    if(error) throw error;
+  } catch(err){
+    console.error('Delete failed:', err);
+    toast('', "Couldn't delete it right now. Try again in a moment.");
+    return;
+  }
+  try{ await account.client.auth.signOut(); } catch(e){}
+  setUser(null);
+  toast('', 'Deleted. Your saved copy is gone, and your progress is still on this device.');
+}
 
 el('age-yes').addEventListener('click', () => {
   try{ localStorage.setItem(AGE_KEY, 'ok'); } catch(e){}
@@ -4362,15 +4549,68 @@ el('age-no').addEventListener('click', () => {
   showAgeDialog('under');
 });
 el('age-ok').addEventListener('click', () => el('age-dialog').close());
+// The Privacy link in the dialog opens the page underneath, so close the dialog.
+el('age-dialog').addEventListener('click', (e) => { if(e.target.closest('a[href^="#/"]')) el('age-dialog').close(); });
 
 document.addEventListener('click', (e) => {
   if(e.target.closest('[data-signin]')){ startSignIn(); return; }
   if(e.target.closest('[data-nudge-dismiss]')){ dismissNudge(); return; }
   if(e.target.closest('#account-btn')){ toggleAccountMenu(); return; }
   if(e.target.closest('#signout-btn')){ signOut(); return; }
+  if(e.target.closest('#delete-cloud-btn')){ deleteCloudProgress(); return; }
   if(!e.target.closest('#account-menu')) toggleAccountMenu(false);
 });
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') toggleAccountMenu(false); });
+
+// ---- Contact form (sent through Formspree; the form ID comes from /api/config) ----
+const CONTACT_NOT_READY = "The contact form isn't set up yet. Please check back soon.";
+function contactError(msg){
+  const e = el('contact-error');
+  e.textContent = msg || '';
+  e.hidden = !msg;
+}
+function openContact(){
+  // Coming back to the page after sending starts a fresh form.
+  if(!el('contact-done').hidden){
+    el('contact-form').reset();
+    el('contact-done').hidden = true;
+    el('contact-form').hidden = false;
+  }
+  contactError('');
+}
+el('contact-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = el('contact-form');
+  const btn = el('contact-send');
+  const message = form.message.value.trim();
+  const email = form.email.value.trim();
+  if(!message){ contactError('Please write a message first.'); form.message.focus(); return; }
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ contactError("That email doesn't look quite right. You can also leave it blank."); form.email.focus(); return; }
+  contactError('');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try{
+    const cfg = await siteConfig();
+    if(!cfg.contactForm){ contactError(CONTACT_NOT_READY); return; }
+    const body = new FormData(form);
+    body.set('message', message);
+    body.set('email', email);
+    body.set('_subject', 'Groundwork: ' + form.topic.value);
+    const r = await fetch('https://formspree.io/f/' + encodeURIComponent(cfg.contactForm), {
+      method:'POST', headers:{ Accept:'application/json' }, body
+    });
+    if(!r.ok) throw new Error('Formspree ' + r.status);
+    form.hidden = true;
+    el('contact-done').hidden = false;
+    el('contact-done').querySelector('h2').focus();
+  } catch(err){
+    console.error('Contact form failed:', err);
+    contactError("Your message didn't send. Check your connection and try again.");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send message';
+  }
+});
 
 // ---- Reminder to sign in (after the first passed lesson and after graded interviews) ----
 function nudgeDismissals(){ try{ return Number(localStorage.getItem(NUDGE_KEY)) || 0; } catch(e){ return 0; } }
