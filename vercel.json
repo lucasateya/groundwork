@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/claude.js": {
+      "includeFiles": "{shared/**,data/**,lessons.js}"
+    }
+  }
+}

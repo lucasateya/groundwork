@@ -1,15 +1,16 @@
-// Forwards chat requests from the Groundwork page to Anthropic, keeping the
-// API key server-side. The checks below block casual misuse of this endpoint
-// (other sites calling it, huge requests). They are not airtight — a
-// determined person can fake an Origin header — so also set a monthly spend
-// limit in the Anthropic Console.
+// Runs every AI request for the Groundwork page. The page sends only a request
+// type, settings and conversation text; the instructions (prompts) and safety
+// rules are built here on the server, so they can't be changed from the browser.
+//
+// The checks below block casual misuse (other sites calling this, huge
+// requests, one visitor sending too many). They aren't airtight, so also set a
+// monthly spend limit in the Anthropic Console.
+
+import { buildRequest, parseChat, BadRequest } from './_lib/prompts.js';
+import { overLimit, visitorIp } from './_lib/ratelimit.js';
 
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
-const MAX_TOKENS = 1000;
-const MAX_SYSTEM_CHARS = 6000;
-const MAX_MESSAGES = 30;
-const MAX_MESSAGE_CHARS = 20000; // grading sends the whole transcript as one message
-const MAX_TOTAL_CHARS = 40000;
+const MAX_BODY_CHARS = 60000;
 
 function isSameSite(req) {
   const origin = req.headers.origin || req.headers.referer;
@@ -22,28 +23,6 @@ function isSameSite(req) {
   }
 }
 
-function validate(body) {
-  if (!body || typeof body !== 'object') return 'Invalid request body';
-  const { system, messages } = body;
-  if (typeof system !== 'string' || system.length === 0 || system.length > MAX_SYSTEM_CHARS) {
-    return 'Invalid system prompt';
-  }
-  if (!Array.isArray(messages) || messages.length === 0 || messages.length > MAX_MESSAGES) {
-    return 'Invalid messages';
-  }
-  let total = system.length;
-  for (const m of messages) {
-    if (!m || (m.role !== 'user' && m.role !== 'assistant')) return 'Invalid message role';
-    if (typeof m.content !== 'string' || m.content.length === 0 || m.content.length > MAX_MESSAGE_CHARS) {
-      return 'Invalid message content';
-    }
-    total += m.content.length;
-  }
-  if (total > MAX_TOTAL_CHARS) return 'Request too large';
-  if (messages[0].role !== 'user') return 'First message must be from the user';
-  return null;
-}
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -54,12 +33,23 @@ export default async function handler(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) {
     return res.status(500).json({ error: 'Server is missing ANTHROPIC_API_KEY' });
   }
-  const problem = validate(req.body);
-  if (problem) {
-    return res.status(400).json({ error: problem });
+  if (!req.body || typeof req.body !== 'object' || JSON.stringify(req.body).length > MAX_BODY_CHARS) {
+    return res.status(400).json({ error: 'Invalid request body' });
   }
+  if (await overLimit(visitorIp(req))) {
+    return res.status(429).json({ error: 'rate_limited' });
+  }
+
+  let request;
   try {
-    const { system, messages } = req.body;
+    request = buildRequest(req.body);
+  } catch (err) {
+    if (err instanceof BadRequest) return res.status(400).json({ error: err.message });
+    console.error('Could not build prompt:', err);
+    return res.status(500).json({ error: 'Server error building the request' });
+  }
+
+  try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -69,14 +59,20 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: MAX_TOKENS,
-        system,
-        messages: messages.map(m => ({ role: m.role, content: m.content }))
+        max_tokens: request.maxTokens,
+        system: request.system,
+        messages: request.messages
       })
     });
     const data = await response.json();
-    res.status(response.status).json(data);
+    if (!response.ok) {
+      const status = response.status === 429 ? 429 : response.status;
+      return res.status(status).json({ error: response.status === 429 ? 'rate_limited' : data });
+    }
+    const text = (data.content || []).map(b => b.text || '').join('').trim();
+    if (!text) return res.status(502).json({ error: 'Empty response' });
+    return res.status(200).json(request.chat ? parseChat(text) : { text });
   } catch (err) {
-    res.status(500).json({ error: 'Server error contacting Claude' });
+    return res.status(500).json({ error: 'Server error contacting Claude' });
   }
 }
