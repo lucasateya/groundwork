@@ -647,6 +647,32 @@
     .page-head{margin-top:0;}
   }
 
+  /* ---------- Video check ---------- */
+  .device-note{font-size:14px;color:var(--teal);background:var(--teal-pale);border-radius:var(--r-control, 10px);padding:0.65rem 0.9rem;margin:0 0 1.25rem;}
+  .vc-h2{font-family:'Fraunces',serif;font-weight:500;font-size:21px;margin:0 0 0.5rem;color:var(--ink);}
+  .vc-intro p,.vc-problem p{font-size:15px;line-height:1.6;color:var(--body-text);margin:0 0 1rem;}
+  .vc-live{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.25rem;align-items:start;}
+  @media (max-width:820px){.vc-live{grid-template-columns:1fr;}}
+  .vc-stage{position:relative;border-radius:var(--r-panel, 14px);overflow:hidden;background:#1b2321;aspect-ratio:4/3;}
+  .vc-stage video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1);display:block;}
+  .vc-guide{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .vc-guide ellipse,.vc-guide path{fill:none;stroke:rgba(255,255,255,0.7);stroke-width:2;stroke-dasharray:6 6;}
+  .vc-guide-label{position:absolute;left:0;right:0;bottom:0;margin:0;padding:0.45rem 0.75rem;font-size:12.5px;color:#fff;background:rgba(0,0,0,0.38);text-align:center;}
+  .vc-checks{display:flex;flex-direction:column;gap:0.75rem;}
+  .vc-check{background:var(--paper-raised);border:1px solid var(--border);border-radius:var(--r-panel, 14px);padding:0.85rem 1rem;}
+  .vc-check-head{display:flex;justify-content:space-between;align-items:center;gap:0.75rem;}
+  .vc-check h2{font-size:15px;font-weight:600;margin:0;color:var(--ink);}
+  .vc-status{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;}
+  .vc-check.good .vc-status{color:var(--teal);}
+  .vc-check.warn .vc-status{color:var(--gold-deep);}
+  .vc-tip{font-size:14px;line-height:1.5;color:var(--body-text);margin:0.4rem 0 0;}
+  .vc-tip:empty{display:none;}
+  .vc-meter{height:6px;border-radius:999px;background:var(--border);overflow:hidden;margin-top:0.55rem;}
+  .vc-meter span{display:block;height:100%;width:0;background:var(--teal);}
+  .vc-before{margin-top:2.25rem;}
+  .vc-before ul{margin:0;padding-left:1.2rem;}
+  .vc-before li{font-size:15px;line-height:1.6;color:var(--body-text);margin-bottom:0.35rem;}
+
   /* ---------- Privacy, Terms, Contact, footer ---------- */
   .legal h2{font-family:'Fraunces',serif;font-weight:500;font-size:21px;line-height:1.3;margin:2rem 0 0.5rem;color:var(--ink);}
   .legal p,.legal li{font-size:16px;line-height:1.65;color:var(--body-text);}
@@ -1054,6 +1080,71 @@
         </div>
       </section>
       <p class="fine coach-fine">This conversation isn't saved. Only the page it builds is kept, on this device (and your account if you sign in).</p>
+    </div>
+  </section>
+
+  <!-- ===================== GET READY: VIDEO CHECK ===================== -->
+  <section class="view" id="view-video-check" hidden>
+    <div class="container">
+      <p class="back-row"><a class="back-link" href="#/get-ready">Get ready</a></p>
+      <div class="page-head">
+        <h1>Video check</h1>
+        <p class="lede">See how your light, framing and sound come across before a video interview.</p>
+      </div>
+      <p class="device-note">This runs only on your device. Nothing is recorded or sent anywhere.</p>
+
+      <div class="card vc-intro" id="vc-intro">
+        <h2 class="vc-h2">First, your browser will ask to use your camera and mic</h2>
+        <p>Press the button, then choose Allow. You'll see yourself (mirrored, like a mirror) and three quick checks. The camera and mic turn off as soon as you leave this page.</p>
+        <button class="btn btn-primary" type="button" id="vc-start">Turn on camera and mic</button>
+      </div>
+
+      <div class="card vc-problem" id="vc-problem" role="alert" hidden>
+        <h2 class="vc-h2" id="vc-problem-title"></h2>
+        <p id="vc-problem-text"></p>
+        <button class="btn btn-primary" type="button" id="vc-retry">Try again</button>
+      </div>
+
+      <div class="vc-live" id="vc-live" hidden>
+        <div class="vc-stage">
+          <video id="vc-video" playsinline muted autoplay></video>
+          <svg class="vc-guide" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <ellipse cx="200" cy="118" rx="52" ry="66"/>
+            <path d="M92 300 C 98 232, 140 206, 200 204 C 260 206, 302 232, 308 300"/>
+          </svg>
+          <p class="vc-guide-label">Fit your head and shoulders in the outline</p>
+        </div>
+        <div class="vc-checks">
+          <div class="vc-check" id="vc-light">
+            <div class="vc-check-head"><h2>Lighting</h2><span class="vc-status">Checking…</span></div>
+            <p class="vc-tip"></p>
+          </div>
+          <div class="vc-check" id="vc-frame">
+            <div class="vc-check-head"><h2>Framing</h2><span class="vc-status">Checking…</span></div>
+            <p class="vc-tip"></p>
+          </div>
+          <div class="vc-check" id="vc-sound">
+            <div class="vc-check-head"><h2>Sound</h2><span class="vc-status">Checking…</span></div>
+            <div class="vc-meter" aria-hidden="true"><span id="vc-meter-bar"></span></div>
+            <p class="vc-tip"></p>
+          </div>
+          <button class="btn btn-secondary" type="button" id="vc-stop">Turn off camera and mic</button>
+        </div>
+      </div>
+
+      <section class="vc-before">
+        <h2 class="section-title">Before a video interview</h2>
+        <ul>
+          <li>Open the interview link 10 minutes early to test it, in case you need to install something.</li>
+          <li>Plug in your laptop or phone, and close other apps and notifications.</li>
+          <li>Put the camera at eye level. A stack of books under a laptop works.</li>
+          <li>Face a window or lamp so the light is in front of you, not behind you.</li>
+          <li>When you talk, look at the camera, not at their face on the screen.</li>
+          <li>If you hear an echo, use headphones or earbuds.</li>
+          <li>Let people at home know, so it stays quiet.</li>
+          <li>Keep water and your About you page nearby.</li>
+        </ul>
+      </section>
     </div>
   </section>
 
@@ -1744,6 +1835,7 @@ function route(){
       showView('coach');
       return;
     }
+    if(sub === 'video-check'){ openVideoCheck(); showView('video-check'); return; }
     go('#/get-ready', true);
     return;
   }
@@ -4524,6 +4616,248 @@ el('view-about-page').addEventListener('click', (e) => {
   }
 });
 el('about-body').addEventListener('input', (e) => { if(e.target.tagName === 'TEXTAREA') growTextarea(e.target); });
+
+// =====================================================================
+// Get ready: Video check (runs entirely in this browser; nothing is
+// recorded, saved or sent). Checks light, framing and sound only, never
+// appearance, clothing or the room.
+// =====================================================================
+
+// Face detection: the browser's built-in FaceDetector if it has one, else
+// MediaPipe. The code comes from a CDN; the model is loaded from this site's
+// /models folder if it's there, otherwise from Google's public copy. Only
+// code and the model file are downloaded; no video ever leaves the device.
+const MEDIAPIPE_VERSION = '0.10.14';
+const FACE_MODEL_LOCAL = '/models/blaze_face_short_range.tflite';
+const FACE_MODEL_REMOTE = 'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite';
+
+const vc = { stream:null, audioCtx:null, analyser:null, timer:null, meterRaf:0, detector:null, detectorKind:'', levels:[], canvas:null, running:false };
+
+function vcSetCheck(id, state, tip){
+  const box = el(id);
+  box.classList.toggle('good', state === 'good');
+  box.classList.toggle('warn', state === 'warn');
+  box.querySelector('.vc-status').textContent = state === 'good' ? '✓ Looks good' : state === 'warn' ? 'Could be better' : state === 'na' ? 'Not available' : 'Checking…';
+  box.querySelector('.vc-tip').textContent = tip || '';
+}
+
+function vcShow(which){
+  el('vc-intro').hidden = which !== 'intro';
+  el('vc-problem').hidden = which !== 'problem';
+  el('vc-live').hidden = which !== 'live';
+}
+function vcProblem(title, text){
+  el('vc-problem-title').textContent = title;
+  el('vc-problem-text').textContent = text;
+  vcShow('problem');
+}
+
+function openVideoCheck(){
+  if(!vc.running) vcShow('intro');
+}
+
+async function vcGetStream(){
+  const video = { facingMode:'user', width:{ ideal:640 }, height:{ ideal:480 } };
+  // Turn off the browser's noise cleanup so the sound check hears the real room.
+  const audio = { echoCancellation:false, noiseSuppression:false, autoGainControl:false };
+  try{ return await navigator.mediaDevices.getUserMedia({ video, audio }); }
+  catch(err){
+    if(err.name !== 'NotFoundError' && err.name !== 'OverconstrainedError') throw err;
+    // Missing one of the two: use whichever exists.
+    try{ return await navigator.mediaDevices.getUserMedia({ video }); }
+    catch(e){ return await navigator.mediaDevices.getUserMedia({ audio }); }
+  }
+}
+
+async function startVideoCheck(){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    vcProblem("This browser can't use the camera here", 'Try the latest Chrome, Edge, Safari or Firefox.');
+    return;
+  }
+  el('vc-start').disabled = true;
+  let stream;
+  try{ stream = await vcGetStream(); }
+  catch(err){
+    el('vc-start').disabled = false;
+    if(err.name === 'NotAllowedError' || err.name === 'SecurityError'){
+      vcProblem('Camera and mic are blocked', "To turn them on, click the camera or lock icon in your browser's address bar, allow the camera and microphone, then press Try again.");
+    } else if(err.name === 'NotFoundError' || err.name === 'OverconstrainedError'){
+      vcProblem("We couldn't find a camera or mic", "If you have one, check that it's plugged in and turned on, then press Try again.");
+    } else if(err.name === 'NotReadableError' || err.name === 'AbortError'){
+      vcProblem('Your camera is busy', 'Another app (like Zoom, Teams or FaceTime) may be using it. Close that app, then press Try again.');
+    } else {
+      vcProblem("The camera didn't start", 'Press Try again. If it keeps happening, restart your browser.');
+    }
+    return;
+  }
+  el('vc-start').disabled = false;
+  if(!location.hash.startsWith('#/get-ready/video-check')){ stream.getTracks().forEach(t => t.stop()); return; } // they left while the prompt was open
+  vc.stream = stream;
+  vc.running = true;
+  vc.levels = [];
+  vcShow('live');
+  const hasVideo = stream.getVideoTracks().length > 0;
+  const hasAudio = stream.getAudioTracks().length > 0;
+  const video = el('vc-video');
+  video.srcObject = stream;
+  try{ await video.play(); } catch(e){}
+
+  vcSetCheck('vc-light', hasVideo ? 'checking' : 'na', hasVideo ? '' : 'No camera found.');
+  vcSetCheck('vc-frame', hasVideo ? 'checking' : 'na', hasVideo ? '' : 'No camera found.');
+  vcSetCheck('vc-sound', hasAudio ? 'checking' : 'na', hasAudio ? 'Say a sentence or two, like you would in an interview.' : 'No microphone found. Check it is plugged in and allowed.');
+
+  if(hasAudio){
+    try{
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      vc.audioCtx = new Ctx();
+      const src = vc.audioCtx.createMediaStreamSource(stream);
+      vc.analyser = vc.audioCtx.createAnalyser();
+      vc.analyser.fftSize = 2048;
+      src.connect(vc.analyser);
+      if(vc.audioCtx.state === 'suspended') vc.audioCtx.resume().catch(() => {});
+      vc.meterRaf = setInterval(vcMeterTick, 50);
+    } catch(e){ vcSetCheck('vc-sound', 'na', "The sound check doesn't work in this browser."); }
+  }
+  if(hasVideo){
+    vc.canvas = document.createElement('canvas');
+    vc.canvas.width = 64; vc.canvas.height = 48;
+    vcLoadDetector(); // in the background; framing waits for it
+    vc.timer = setInterval(vcAnalyzeFrame, 500);
+  }
+}
+
+function stopVideoCheck(){
+  clearInterval(vc.timer); vc.timer = null;
+  clearInterval(vc.meterRaf); vc.meterRaf = 0;
+  if(vc.stream) vc.stream.getTracks().forEach(t => t.stop());
+  vc.stream = null;
+  if(vc.audioCtx){ try{ vc.audioCtx.close(); } catch(e){} }
+  vc.audioCtx = null; vc.analyser = null;
+  const video = el('vc-video');
+  if(video) video.srcObject = null;
+  vc.running = false;
+}
+
+// ---- Sound: level meter, background noise and loudness ----
+function vcLevelDb(){
+  const buf = new Float32Array(vc.analyser.fftSize);
+  vc.analyser.getFloatTimeDomainData(buf);
+  let sum = 0;
+  for(let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+  const rms = Math.sqrt(sum / buf.length);
+  return rms > 0 ? 20 * Math.log10(rms) : -100;
+}
+function vcMeterTick(){
+  if(!vc.analyser) return;
+  const db = vcLevelDb();
+  vc.levels.push(db);
+  if(vc.levels.length > 80) vc.levels.shift(); // about 4 seconds
+  const pct = Math.max(0, Math.min(100, (db + 60) / 60 * 100));
+  el('vc-meter-bar').style.width = pct + '%';
+}
+function vcJudgeSound(){
+  if(!vc.analyser || vc.levels.length < 30) return;
+  const sorted = [...vc.levels].sort((a, b) => a - b);
+  const floor = sorted[Math.floor(sorted.length * 0.2)];
+  const peak = sorted[Math.floor(sorted.length * 0.95)];
+  if(peak > -4) vcSetCheck('vc-sound', 'warn', "You're coming through very loud. Move back from the mic a little or turn its volume down.");
+  else if(floor > -42) vcSetCheck('vc-sound', 'warn', "There's a lot of background noise. Find a quieter spot, close the door, or turn off fans and music.");
+  else if(peak < -40) vcSetCheck('vc-sound', 'checking', 'Say a sentence or two, like you would in an interview.');
+  else if(peak < -30) vcSetCheck('vc-sound', 'warn', 'You sound quiet. Move closer to your mic, or speak up a little.');
+  else vcSetCheck('vc-sound', 'good', 'Your voice comes through clearly over the background.');
+}
+
+// ---- Light and framing ----
+async function vcLoadDetector(){
+  try{
+    if('FaceDetector' in window){
+      const fd = new window.FaceDetector({ fastMode:true, maxDetectedFaces:1 });
+      await fd.detect(vc.canvas); // throws if it isn't really supported
+      vc.detector = fd; vc.detectorKind = 'native';
+      return;
+    }
+  } catch(e){ /* fall through to MediaPipe */ }
+  try{
+    const base = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@' + MEDIAPIPE_VERSION;
+    const vision = await import(base + '/vision_bundle.mjs');
+    const files = await vision.FilesetResolver.forVisionTasks(base + '/wasm');
+    let model = FACE_MODEL_REMOTE;
+    try{ const r = await fetch(FACE_MODEL_LOCAL, { method:'HEAD' }); if(r.ok) model = FACE_MODEL_LOCAL; } catch(e){}
+    vc.detector = await vision.FaceDetector.createFromOptions(files, {
+      baseOptions:{ modelAssetPath: model, delegate:'CPU' }, runningMode:'VIDEO', minDetectionConfidence:0.5
+    });
+    vc.detectorKind = 'mediapipe';
+  } catch(err){
+    console.warn('Face detection unavailable:', err);
+    vc.detectorKind = 'none';
+  }
+}
+
+async function vcFindFace(video){
+  const w = video.videoWidth, h = video.videoHeight;
+  if(!w || !h || !vc.detector) return undefined;
+  try{
+    if(vc.detectorKind === 'native'){
+      const faces = await vc.detector.detect(video);
+      if(!faces.length) return null;
+      const b = faces[0].boundingBox;
+      return { x:b.x / w, y:b.y / h, w:b.width / w, h:b.height / h };
+    }
+    const res = vc.detector.detectForVideo(video, performance.now());
+    if(!res.detections || !res.detections.length) return null;
+    const b = res.detections[0].boundingBox;
+    return { x:b.originX / w, y:b.originY / h, w:b.width / w, h:b.height / h };
+  } catch(e){ return undefined; }
+}
+
+async function vcAnalyzeFrame(){
+  vcJudgeSound();
+  const video = el('vc-video');
+  if(!vc.stream || video.readyState < 2) return;
+  const face = await vcFindFace(video);
+  if(!vc.stream) return; // stopped meanwhile
+
+  // Brightness of the whole picture and of the face (or the middle, without a face).
+  const ctx = vc.canvas.getContext('2d', { willReadFrequently:true });
+  ctx.drawImage(video, 0, 0, 64, 48);
+  const px = ctx.getImageData(0, 0, 64, 48).data;
+  const region = face || { x:0.3, y:0.15, w:0.4, h:0.5 };
+  let all = 0, n = 0, inner = 0, ni = 0, outer = 0, no = 0;
+  for(let y = 0; y < 48; y++) for(let x = 0; x < 64; x++){
+    const i = (y * 64 + x) * 4;
+    const lum = 0.2126 * px[i] + 0.7152 * px[i + 1] + 0.0722 * px[i + 2];
+    all += lum; n++;
+    const fx = x / 64, fy = y / 48;
+    if(fx >= region.x && fx <= region.x + region.w && fy >= region.y && fy <= region.y + region.h){ inner += lum; ni++; }
+    else { outer += lum; no++; }
+  }
+  const mean = all / n, faceLum = ni ? inner / ni : mean, bgLum = no ? outer / no : mean;
+  if(faceLum < 60 && bgLum - faceLum > 35) vcSetCheck('vc-light', 'warn', "The light is behind you, so your face is in shadow. Turn so a window or lamp is in front of you instead.");
+  else if(mean < 55 || faceLum < 55) vcSetCheck('vc-light', 'warn', "It's a bit dark. Face a window, or put a lamp behind your screen pointing at you.");
+  else if(faceLum > 225) vcSetCheck('vc-light', 'warn', "The light on your face is very bright. Move back from the lamp or soften it.");
+  else vcSetCheck('vc-light', 'good', 'Your face is evenly lit and easy to see.');
+
+  // Framing
+  if(face === undefined){
+    if(vc.detectorKind === 'none') vcSetCheck('vc-frame', 'na', 'Use the outline: your head inside the oval, shoulders along the bottom, camera at eye level.');
+    return; // still loading
+  }
+  if(face === null){ vcSetCheck('vc-frame', 'warn', "We can't find your face. Move into the outline and face the camera."); return; }
+  const cx = face.x + face.w / 2, cy = face.y + face.h / 2;
+  if(face.h < 0.2) vcSetCheck('vc-frame', 'warn', "You're quite far away. Move a little closer so your head and shoulders fill the outline.");
+  else if(face.h > 0.55) vcSetCheck('vc-frame', 'warn', "You're very close. Move back a little so your shoulders show.");
+  else if(Math.abs(cx - 0.5) > 0.15) vcSetCheck('vc-frame', 'warn', 'Move a little toward the middle of the picture.');
+  else if(cy > 0.55) vcSetCheck('vc-frame', 'warn', "The camera looks low or tilted up. Raise it to eye level, for example by putting your laptop on a stack of books.");
+  else if(cy < 0.22) vcSetCheck('vc-frame', 'warn', 'Your head is near the top edge. Tilt the camera down a little or lower it.');
+  else vcSetCheck('vc-frame', 'good', 'You are centered, at a good distance, with the camera near eye level.');
+}
+
+el('vc-start').addEventListener('click', startVideoCheck);
+el('vc-retry').addEventListener('click', startVideoCheck);
+el('vc-stop').addEventListener('click', () => { stopVideoCheck(); vcShow('intro'); });
+// Turn everything off when they leave the page or close the tab.
+window.addEventListener('hashchange', () => { if(vc.running && !location.hash.startsWith('#/get-ready/video-check')) stopVideoCheck(); });
+window.addEventListener('pagehide', stopVideoCheck);
 
 // =====================================================================
 // Admin view (?admin=1) — shows flagged messages saved in THIS browser.
