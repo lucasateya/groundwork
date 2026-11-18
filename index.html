@@ -615,13 +615,25 @@
   .getready-entry-text{display:flex;flex-direction:column;gap:0.25rem;}
   .getready-entry-title{font-family:'Fraunces',serif;font-weight:500;font-size:20px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px;text-decoration-thickness:1.5px;}
   .getready-entry-sub{font-size:14.5px;line-height:1.5;color:var(--muted);}
-  .tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;}
-  .tool-card{display:flex;flex-direction:column;gap:0.6rem;padding:clamp(1.2rem,3vw,1.6rem);cursor:pointer;}
+  #view-get-ready .page-head{margin-bottom:1.5rem;}
+  .tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(clamp(220px, calc((100vh - var(--topbar-h, 64px) - 15rem) / 2), 340px), auto);gap:1.25rem;}
+  @media (max-width:700px){.tool-grid{grid-template-columns:1fr;grid-auto-rows:auto;}}
+  .tool-card{display:flex;flex-direction:column;gap:0.55rem;padding:clamp(1.3rem,3vw,2rem);border-radius:20px;cursor:pointer;transition:border-color .15s ease;}
   .tool-card:hover{border-color:var(--ink-soft);}
-  .tool-card h2{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin:0;color:var(--ink);}
-  .tool-card p{font-size:14.5px;line-height:1.55;color:var(--body-text);margin:0;}
+  .tool-about{background:#F6F1E2;}
+  .tool-video{background:#EAF0EE;}
+  .tool-calm{background:#F3EEE9;}
+  .tool-games{background:#EFEBF2;cursor:default;}
+  .tool-games:hover{border-color:var(--border);}
+  .tool-games.ready{cursor:pointer;}
+  .tool-games.ready:hover{border-color:var(--ink-soft);}
+  .tool-time{font-size:13px;font-weight:500;color:var(--muted);margin:0;}
+  .tool-card h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3vw,30px);line-height:1.15;margin:0;color:var(--ink);}
+  .tool-card p{font-size:15px;line-height:1.55;color:var(--body-text);margin:0;max-width:34ch;}
   .tool-card .tool-meta{font-size:13px;color:var(--muted);}
-  .tool-foot{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:auto;padding-top:0.6rem;}
+  .tool-card .tool-meta:empty{display:none;}
+  .tool-foot{display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;margin-top:auto;padding-top:1rem;}
+  @media (max-width:700px){.tool-card{min-height:190px;}}
   .back-row{margin:0 0 0.25rem;}
   .coach-panel{background:var(--paper-raised);border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;height:min(72vh, 680px);min-height:440px;overflow:hidden;position:relative;}
   .coach-avatar{background:var(--gold-pale);color:var(--gold-deep);}
@@ -1047,27 +1059,39 @@
         <p class="lede">Pick a tool. Each one takes a few minutes.</p>
       </div>
       <div class="tool-grid" id="tool-grid">
-        <div class="card tool-card" data-go="#/get-ready/about-you">
+        <div class="card tool-card tool-about" data-go="#/get-ready/about-you">
+          <p class="tool-time">About 5 minutes</p>
           <h2>About you</h2>
-          <p>Talk with a coach about your life, and get a page of things to remember about yourself and phrases to have ready.</p>
+          <p>Chat with a coach and get a page of things to say about yourself.</p>
           <p class="tool-meta" id="tool-about-meta" hidden></p>
           <div class="tool-foot">
             <a class="btn btn-primary" href="#/get-ready/about-you" id="tool-about-btn">Talk to the coach</a>
             <a class="btn btn-secondary" href="#/get-ready/about-you/page" id="tool-about-view" hidden>View your page</a>
           </div>
         </div>
-        <div class="card tool-card" data-go="#/get-ready/video-check">
+        <div class="card tool-card tool-video" data-go="#/get-ready/video-check">
+          <p class="tool-time">About 2 minutes</p>
           <h2>Video check</h2>
-          <p>Check your lighting, framing and sound before a video interview. It runs only on your device.</p>
+          <p>Check your light, framing and sound. Nothing leaves your device.</p>
           <div class="tool-foot">
             <a class="btn btn-primary" href="#/get-ready/video-check">Check my setup</a>
           </div>
         </div>
-        <div class="card tool-card" data-go="#/get-ready/calm">
+        <div class="card tool-card tool-calm" data-go="#/get-ready/calm">
+          <p class="tool-time">90 seconds</p>
           <h2>Calm down</h2>
-          <p>A 90-second breathing break with a few reminders, for the minutes right before you walk in.</p>
+          <p>Slow your breathing right before you walk in.</p>
           <div class="tool-foot">
             <a class="btn btn-primary" href="#/get-ready/calm">Take a breath</a>
+          </div>
+        </div>
+        <div class="card tool-card tool-games" id="tool-games">
+          <p class="tool-time">2 minutes a game</p>
+          <h2>Mini games</h2>
+          <p>Warm up with a quick game to sharpen your answers.</p>
+          <p class="tool-meta" id="tool-games-meta"></p>
+          <div class="tool-foot" id="tool-games-foot">
+            <span class="soon-badge">Coming soon</span>
           </div>
         </div>
       </div>
