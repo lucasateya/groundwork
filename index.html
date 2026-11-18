@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Loaded first so the page appears in the chosen language from the start. -->
+<script src="i18n/engine.js"></script>
 <style>
   :root{
     --ink:#1C2321;
@@ -495,6 +497,32 @@
     .signin-link{padding:0.35rem 0.25rem;}
     .avatar-btn{width:30px;height:30px;font-size:13px;}
   }
+  /* Language menu */
+  .lang-box{position:relative;display:flex;align-items:center;}
+  .lang-btn{background:none;border:1px solid var(--border);border-radius:999px;padding:0.28rem 0.6rem;font:inherit;font-size:12.5px;font-weight:600;color:var(--ink);cursor:pointer;min-height:30px;}
+  .lang-btn:hover{border-color:var(--ink-soft);}
+  @media (max-width:440px){.lang-btn{padding:0.22rem 0.45rem;font-size:12px;}}
+  @media (max-width:370px){
+    .topbar-inner{padding-left:10px;padding-right:10px;gap:0.3rem;}
+    .lang-btn{padding:0.2rem 0.3rem;min-height:28px;font-size:11.5px;}
+    .topbar .wordmark{font-size:16px;}
+    .nav-link{padding:0.4rem 0.22rem;font-size:12.5px;}
+    .xp-chip{padding:0.2rem 0.4rem;margin-right:0;font-size:12px;}
+  }
+  .lang-menu{position:absolute;right:0;top:calc(100% + 10px);width:min(270px, calc(100vw - 32px));background:var(--paper-raised);border:1px solid var(--border);border-radius:var(--r-panel);box-shadow:var(--shadow-lg);padding:0.8rem 0.9rem;z-index:40;}
+  .lang-menu-title{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 0.4rem;}
+  .lang-options{display:flex;flex-direction:column;gap:2px;margin-bottom:0.7rem;}
+  .lang-option{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;width:100%;min-height:40px;background:none;border:none;border-radius:8px;padding:0.4rem 0.55rem;font:inherit;font-size:14.5px;color:var(--ink);cursor:pointer;text-align:left;}
+  .lang-option:hover{background:var(--paper);}
+  .lang-option[aria-pressed="true"]{background:var(--teal-pale);font-weight:600;}
+  .lang-beta{font-size:11px;font-weight:600;color:var(--gold-deep);background:var(--gold-pale);border-radius:999px;padding:0.1rem 0.5rem;}
+  .lang-link{display:flex;gap:0.5rem;align-items:flex-start;font-size:13.5px;line-height:1.4;color:var(--ink);cursor:pointer;}
+  .lang-link input{margin-top:0.15rem;width:16px;height:16px;accent-color:var(--teal);}
+  .lang-menu .fine{margin-top:0.6rem;}
+  .lang-select{padding:0.6rem 0.8rem;font-size:15px;}
+  /* Longer German and French words: let them wrap instead of overflowing on phones. */
+  .lang-long h1,.lang-long h2,.lang-long h3{overflow-wrap:break-word;hyphens:auto;}
+  @media (max-width:600px){.lang-long .btn{white-space:normal;text-align:center;}}
   .avatar-btn{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;border:none;font:inherit;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
   .account-menu{position:absolute;right:0;top:calc(100% + 10px);width:min(260px, calc(100vw - 32px));background:var(--paper-raised);border:1px solid var(--border);border-radius:var(--r-panel);box-shadow:var(--shadow-lg);padding:0.85rem 0.95rem;z-index:40;}
   .account-menu p{margin:0 0 0.55rem;font-size:13.5px;line-height:1.45;color:var(--ink);overflow-wrap:anywhere;}
@@ -741,6 +769,15 @@
       <a class="xp-chip" id="xp-chip" href="#/" title="Your level and streak"></a>
       <a class="nav-link" href="#/practice" data-nav="practice">Practice</a>
       <a class="nav-link" href="#/learn" data-nav="learn">Learn</a>
+      <div class="lang-box" id="lang-box">
+        <button class="lang-btn" id="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" aria-label="Language"><span id="lang-btn-text" translate="no">EN</span></button>
+        <div class="lang-menu" id="lang-menu" hidden>
+          <p class="lang-menu-title">Language</p>
+          <div class="lang-options" id="lang-options"></div>
+          <label class="lang-link"><input type="checkbox" id="lang-link"> <span>Also use this language for interviews</span></label>
+          <p class="fine">Beta means the translation is new and may have mistakes.</p>
+        </div>
+      </div>
       <div class="account" id="account" hidden></div>
     </nav>
   </div>
@@ -958,6 +995,12 @@
               <button class="toggle-btn" id="diff-btn-1" data-idx="1"></button>
             </div>
             <p class="diff-note" id="diff-note"></p>
+          </div>
+
+          <div class="card">
+            <h3><label for="interview-lang">Interview language</label></h3>
+            <select class="quiz-input lang-select" id="interview-lang"></select>
+            <p class="diff-note">The interviewer, voice input and read-aloud use this language.</p>
           </div>
 
           <div class="card">
@@ -1384,6 +1427,7 @@
 </dialog>
 
 <script src="shared/interview-data.js"></script>
+<script src="shared/openings-i18n.js"></script>
 <script src="lessons.js"></script>
 <script>
 // =====================================================================
@@ -1745,6 +1789,156 @@ const storage = {
   }
 };
 
+// =====================================================================
+// Languages
+// The site language (menu in the top bar) changes the page text; see
+// i18n/engine.js. The interview language changes the interviewer, voice
+// input and read-aloud, lessons, the question of the day and the coach. By
+// default it follows the site language ("Also use this language for
+// interviews"); the Language card next to an interview can set it apart.
+// =====================================================================
+
+const INTERVIEW_LANG_KEY = 'groundwork:interviewLang';
+const LANG_LINK_KEY = 'groundwork:langLink';       // '1' (default) or '0'
+const LANG_UPDATED_KEY = 'groundwork:langUpdated'; // for sync: newest wins
+
+function langLinked(){ try{ return localStorage.getItem(LANG_LINK_KEY) !== '0'; } catch(e){ return true; } }
+function interviewLang(){
+  if(langLinked()) return siteLang();
+  let v = null;
+  try{ v = localStorage.getItem(INTERVIEW_LANG_KEY); } catch(e){}
+  return LANGS[v] ? v : 'en';
+}
+function localeFor(code){ return LANGS[code || siteLang()].locale; }
+function touchLangSettings(){
+  try{ localStorage.setItem(LANG_UPDATED_KEY, String(Date.now())); } catch(e){}
+  if(typeof scheduleSync === 'function') scheduleSync();
+}
+
+// ---- Top-bar menu ----
+const langBeta = {}; // code -> true when its file says reviewed: false
+function renderLangMenu(){
+  el('lang-btn-text').textContent = siteLang().toUpperCase();
+  el('lang-options').innerHTML = Object.keys(LANGS).map(code =>
+    '<button class="lang-option" type="button" data-lang="' + code + '" aria-pressed="' + (code === siteLang()) + '" lang="' + LANGS[code].html + '">' +
+      '<span translate="no">' + escapeHTML(LANGS[code].name) + '</span>' +
+      (langBeta[code] ? '<span class="lang-beta">Beta</span>' : '') +
+    '</button>').join('');
+  el('lang-link').checked = langLinked();
+}
+async function loadLangBetaFlags(){
+  await Promise.all(Object.keys(LANGS).filter(c => c !== 'en' && !(c in langBeta)).map(async code => {
+    try{ const file = await i18nLoadFile(code); langBeta[code] = !(file && file.meta && file.meta.reviewed); }
+    catch(e){ langBeta[code] = false; }
+  }));
+  // i18nLoadFile caches the last file it loaded; keep the current language's copy cached.
+  if(siteLang() !== 'en' && I18N.files[siteLang()]){
+    try{ localStorage.setItem('groundwork:i18nCache', JSON.stringify({ code: siteLang(), file: I18N.files[siteLang()] })); } catch(e){}
+  }
+  if(!el('lang-menu').hidden) renderLangMenu();
+}
+function toggleLangMenu(open){
+  const menu = el('lang-menu');
+  const show = open === undefined ? menu.hidden : open;
+  menu.hidden = !show;
+  el('lang-btn').setAttribute('aria-expanded', show ? 'true' : 'false');
+  if(show){
+    renderLangMenu();
+    loadLangBetaFlags();
+    const cur = menu.querySelector('[aria-pressed="true"]');
+    if(cur) cur.focus();
+  }
+}
+el('lang-btn').addEventListener('click', (e) => { e.stopPropagation(); toggleLangMenu(); });
+el('lang-menu').addEventListener('click', async (e) => {
+  e.stopPropagation();
+  const opt = e.target.closest('[data-lang]');
+  if(!opt) return;
+  const before = interviewLang();
+  await setSiteLang(opt.dataset.lang);
+  touchLangSettings();
+  renderLangMenu();
+  toggleLangMenu(false);
+  el('lang-btn').focus();
+  if(interviewLang() !== before) applyInterviewLang();
+});
+el('lang-link').addEventListener('change', (e) => {
+  const before = interviewLang();
+  try{
+    localStorage.setItem(LANG_LINK_KEY, e.target.checked ? '1' : '0');
+    if(!e.target.checked) localStorage.setItem(INTERVIEW_LANG_KEY, before); // keep what they had
+  } catch(err){}
+  touchLangSettings();
+  if(interviewLang() !== before) applyInterviewLang();
+});
+document.addEventListener('click', (e) => { if(!e.target.closest('#lang-box')) toggleLangMenu(false); });
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && !el('lang-menu').hidden){ toggleLangMenu(false); el('lang-btn').focus(); }
+});
+
+// ---- Interview language (Language card next to an interview) ----
+function renderInterviewLangSelect(){
+  const sel = el('interview-lang');
+  const cur = interviewLang();
+  sel.innerHTML = Object.keys(LANGS).map(code => '<option value="' + code + '"' + (code === cur ? ' selected' : '') + '>' + escapeHTML(LANGS[code].name) + '</option>').join('');
+}
+el('interview-lang').addEventListener('change', (e) => {
+  const code = e.target.value;
+  try{
+    if(code === siteLang()) localStorage.setItem(LANG_LINK_KEY, '1');
+    else { localStorage.setItem(LANG_LINK_KEY, '0'); localStorage.setItem(INTERVIEW_LANG_KEY, code); }
+  } catch(err){}
+  touchLangSettings();
+  applyInterviewLang();
+});
+
+// Translated lessons and daily questions for the interview language
+// (data/lessons/<code>.json, data/daily/<code>.json). English is kept so we
+// can switch back; anything without a translation stays in English.
+const LESSON_FIELDS = ['tier', 'title', 'summary', 'intro', 'sections', 'example', 'setting', 'task', 'weakHint', 'strongHint', 'takeaway', 'opening'];
+const LESSON_EN = new Map();
+[...INTERVIEW_LESSONS, ...COLLEGE_LESSONS].forEach(l => {
+  const copy = {};
+  LESSON_FIELDS.forEach(f => { if(f in l) copy[f] = JSON.parse(JSON.stringify(l[f])); });
+  LESSON_EN.set(l.id, copy);
+});
+const contentFiles = {}; // 'lessons:es' -> items
+async function loadContent(kind, code){
+  if(code === 'en') return {};
+  const key = kind + ':' + code;
+  if(!contentFiles[key]){
+    contentFiles[key] = fetch('data/' + kind + '/' + code + '.json').then(r => r.ok ? r.json() : { items:{} })
+      .then(d => d.items || {}).catch(() => ({}));
+  }
+  return contentFiles[key];
+}
+let contentLang = 'en';
+let dailyI18n = {};
+async function applyInterviewLang(){
+  const code = interviewLang();
+  const [lessons, daily] = await Promise.all([loadContent('lessons', code), loadContent('daily', code)]);
+  if(code !== interviewLang()) return; // changed again meanwhile
+  [...INTERVIEW_LESSONS, ...COLLEGE_LESSONS].forEach(l => {
+    Object.assign(l, JSON.parse(JSON.stringify(LESSON_EN.get(l.id))));
+    if(lessons[l.id]) Object.assign(l, lessons[l.id]);
+  });
+  dailyI18n = daily;
+  const changed = contentLang !== code;
+  contentLang = code;
+  renderInterviewLangSelect();
+  if(!changed) return;
+  if(currentView === 'home') renderDaily();
+  if(currentView === 'learn') renderLearnPage();
+  if(currentView === 'lesson' && learnPhase !== 'chat'){ lessonOpenedId = null; route(); }
+  if(currentView === 'session' && messages.length === 0 && typeof refreshOpening === 'function') refreshOpening();
+}
+
+// When the site language changes: redraw pages that show dates.
+document.addEventListener('langchange', () => {
+  renderLangMenu();
+  if(['home', 'get-ready', 'about-page'].includes(currentView) && !(currentView === 'about-page' && aboutEditing)) route();
+});
+
 // Every AI request goes through the server, which writes the instructions
 // itself (api/claude.js). The page sends only a request type, settings and
 // conversation text. Returns { text } for most types, or { say, flag } for
@@ -1753,7 +1947,7 @@ async function callAI(type, payload){
   const response = await fetch("/api/claude", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(Object.assign({ type }, payload))
+    body: JSON.stringify(Object.assign({ type, lang: interviewLang(), uiLang: siteLang() }, payload))
   });
   if(!response.ok){
     let detail = '';
@@ -2023,10 +2217,12 @@ function renderDaily(){
   const pill = el('qotd-streak');
   pill.textContent = s.current > 0 ? (s.current === 1 ? '1-day streak' : s.current + ' days in a row') : (s.best > 0 ? 'Start a new streak today' : 'Start a streak today');
   pill.classList.toggle('none', s.current === 0);
-  el('qotd-date').textContent = new Date().toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
-  el('qotd-q').textContent = q.q;
-  el('qotd-note').textContent = q.note ? 'What they’re really asking: ' + q.note : '';
-  el('qotd-note').hidden = !q.note;
+  el('qotd-date').textContent = new Date().toLocaleDateString(localeFor(), { weekday:'short', month:'short', day:'numeric' });
+  const qt = dailyI18n[q.id] || {};
+  const note = qt.note || q.note;
+  el('qotd-q').textContent = qt.q || q.q;
+  el('qotd-note').innerHTML = note ? '<span>What they’re really asking:</span> <span translate="no">' + escapeHTML(note) + '</span>' : '';
+  el('qotd-note').hidden = !note;
 
   const body = el('qotd-body');
   const done = todaysDailyResult();
@@ -2678,6 +2874,8 @@ function candidateFirstName(){
 
 // The interviewer's first line of the conversation.
 function openingLine(){
+  const translated = openingFor(interviewLang(), currentPersona, sessionTrack, candidateFirstName());
+  if(translated) return translated;
   if(sessionTrack === 'college') return currentPersona.opening(candidateFirstName(), currentScenario.title);
   if(currentPersona.opening){
     const job = (currentScenario.title || 'open').toLowerCase();
@@ -2711,6 +2909,9 @@ function startSession(t, scenario){
   renderSituation();
   setBusy(false);
 }
+
+// Redraw the interviewer's first line (when the interview language changes before it starts).
+function refreshOpening(){ if(el('opening-text') && currentPersona) el('opening-text').textContent = openingLine(); }
 
 function freshMainPanel(){
   stopVoice();
@@ -2773,7 +2974,8 @@ function renderSituation(){
   el('scenario-context-label').textContent = PRACTICE[sessionTrack].contextLabel;
   el('change-job-link').textContent = PRACTICE[sessionTrack].changeLabel;
   el('change-job-link').href = PRACTICE[sessionTrack].routes.picker;
-  el('persona-tag').textContent = counterpartName() + ' ' + currentPersona.label;
+  // Name and description in separate pieces so the description can be translated.
+  el('persona-tag').innerHTML = '<span translate="no">' + escapeHTML(counterpartName()) + '</span> <span>' + escapeHTML(currentPersona.label) + '</span>';
   el('persona-tag').classList.toggle('grumpy', !!currentPersona.grumpy);
   el('chat-avatar').classList.toggle('grumpy', !!currentPersona.grumpy);
   el('mood-btn-0').classList.toggle('active', !grumpyMode);
@@ -2781,9 +2983,12 @@ function renderSituation(){
   el('mood-note').textContent = grumpyMode ? 'Sunshine is rude and impatient. Good practice for staying calm when the room is cold.' : 'A regular interviewer who matches the difficulty you picked.';
   el('chat-avatar').textContent = counterpartName().charAt(0);
   el('chat-name').textContent = counterpartName();
-  el('chat-role').textContent = college
-    ? (typeof currentPersona.headline === 'function' ? currentPersona.headline(currentScenario.title, collegeInterviewType()) : currentPersona.headline)
-    : 'Interviewer' + (currentScenario.org ? ', ' + currentScenario.org : '');
+  if(college){
+    el('chat-role').textContent = typeof currentPersona.headline === 'function' ? currentPersona.headline(currentScenario.title, collegeInterviewType()) : currentPersona.headline;
+  } else {
+    el('chat-role').innerHTML = '<span>Interviewer</span>' + (currentScenario.org ? ', <span translate="no">' + escapeHTML(currentScenario.org) + '</span>' : '');
+  }
+  renderInterviewLangSelect();
   el('chat-avatar').classList.toggle('college', college);
   const openingLabel = el('opening-label');
   if(openingLabel){
@@ -2901,6 +3106,7 @@ function setBusy(state){
   el('diff-btn-1').disabled = lockDifficulty;
   el('mood-btn-0').disabled = lockDifficulty;
   el('mood-btn-1').disabled = lockDifficulty;
+  el('interview-lang').disabled = lockDifficulty;
   el('reset-btn').disabled = state;
   updateMicState();
 }
@@ -3066,7 +3272,9 @@ const transcriber = {
     let finalText = '', interim = '', stopped = false, pauses = 0, lastHeard = 0, rec = null, endResolve = null;
     const begin = () => {
       rec = new SR();
-      rec.lang = navigator.language || 'en-US';
+      // English keeps the visitor's own accent setting (en-GB, en-IN...).
+      const il = interviewLang();
+      rec.lang = il === 'en' && /^en/i.test(navigator.language || '') ? navigator.language : LANGS[il].speech;
       rec.continuous = true;
       rec.interimResults = true;
       rec.onresult = (e) => {
@@ -3126,8 +3334,9 @@ const speaker = {
   supported(){ return 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined'; },
   pickVoice(persona){
     const all = speechSynthesis.getVoices();
-    const lang = (navigator.language || 'en-US').toLowerCase();
-    let pool = all.filter(v => v.lang && v.lang.toLowerCase().startsWith('en'));
+    const il = interviewLang();
+    const lang = (il === 'en' ? (navigator.language || 'en-US') : LANGS[il].speech).toLowerCase();
+    let pool = all.filter(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(il));
     if(!pool.length) return null;
     const local = pool.filter(v => v.lang.toLowerCase() === lang);
     if(local.length >= 2) pool = local;
@@ -3141,6 +3350,7 @@ const speaker = {
     const style = VOICE_STYLE[persona.id] || {};
     const v = this.pickVoice(persona);
     if(v){ u.voice = v; u.lang = v.lang; }
+    else u.lang = LANGS[interviewLang()].speech;
     u.rate = style.rate || 1;
     u.pitch = style.pitch || 1;
     u.onend = u.onerror = () => onEnd();
@@ -3467,7 +3677,7 @@ async function loadHistory(){
   }
   listEl.innerHTML = historyRecords.map(r => {
     const d = new Date(r.date);
-    const dateStr = d.toLocaleDateString(undefined, { month:'short', day:'numeric' });
+    const dateStr = d.toLocaleDateString(localeFor(), { month:'short', day:'numeric' });
     return '<div class="history-item"><div><div class="h-topic">' + escapeHTML(r.topic) + '</div><div class="h-meta">' + escapeHTML(attemptTrackLabel(r)) + ', ' + dateStr + '</div></div><div class="history-grade">' + escapeHTML(r.grade) + '</div></div>';
   }).join('');
 }
@@ -4444,7 +4654,7 @@ function saveAboutPage(page, keepDate){
   return p;
 }
 function formatDay(ms){
-  return new Date(ms).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+  return new Date(ms).toLocaleDateString(localeFor(), { month:'long', day:'numeric', year:'numeric' });
 }
 
 // ---- Hub ----
@@ -4452,7 +4662,7 @@ function renderGetReady(){
   const page = loadAboutPage();
   const meta = el('tool-about-meta');
   meta.hidden = !page;
-  meta.textContent = page && page.updatedAt ? 'Last updated ' + formatDay(page.updatedAt) : '';
+  meta.textContent = page && page.updatedAt ? t('Last updated {1}', formatDay(page.updatedAt)) : '';
   el('tool-about-view').hidden = !page;
   el('tool-about-btn').textContent = page ? 'Add more' : 'Talk to the coach';
   el('tool-about-btn').setAttribute('href', page ? '#/get-ready/about-you/more' : '#/get-ready/about-you');
@@ -4466,8 +4676,10 @@ function coachAnswers(){ return coach ? coach.messages.filter(m => m.role === 'u
 function openCoach(adding){
   const page = loadAboutPage();
   adding = !!(adding && page);
-  if(!coach || coach.adding !== adding || coach.ended){
-    coach = { adding, messages:[{ role:'assistant', content: adding ? COACH_OPENING_MORE : COACH_OPENING }], busy:false, redirects:0, ended:false };
+  const lang = interviewLang();
+  if(!coach || coach.adding !== adding || coach.ended || (coach.lang !== lang && coachAnswers() === 0)){
+    const opening = coachOpeningFor(lang, adding) || (adding ? COACH_OPENING_MORE : COACH_OPENING);
+    coach = { adding, lang, messages:[{ role:'assistant', content: opening }], busy:false, redirects:0, ended:false };
   }
   el('coach-pi-note').textContent = PERSONAL_INFO_NOTE;
   el('coach-error').hidden = true;
@@ -4619,7 +4831,7 @@ let aboutEditing = false;
 function renderAboutPage(){
   const page = loadAboutPage();
   const body = el('about-body');
-  el('about-updated').textContent = page.updatedAt ? 'Last updated ' + formatDay(page.updatedAt) : '';
+  el('about-updated').textContent = page.updatedAt ? t('Last updated {1}', formatDay(page.updatedAt)) : '';
   if(aboutEditing){
     const rows = (key, items, placeholder) => items.map((t, i) =>
       '<li class="about-edit-row"><textarea rows="2" data-edit="' + key + '" aria-label="' + escapeHTML(placeholder) + ' ' + (i + 1) + '">' + escapeHTML(t) + '</textarea>' +
@@ -5584,6 +5796,10 @@ function collectLocal(){
   out.dailyLog = loadDailyLog();
   out.activity = loadActivity();
   out.aboutYou = loadAboutPage();
+  out.langs = {
+    site: siteLang(), interview: localStorage.getItem(INTERVIEW_LANG_KEY) || 'en', linked: langLinked(),
+    updatedAt: Number(localStorage.getItem(LANG_UPDATED_KEY)) || 0
+  };
   return out;
 }
 
@@ -5610,6 +5826,9 @@ function mergeProgress(local, remote){
   // The About you page: the most recently updated copy wins.
   const pa = cleanAboutPage(a.aboutYou), pb = cleanAboutPage(b.aboutYou);
   m.aboutYou = !pa ? pb : !pb ? pa : (pb.updatedAt > pa.updatedAt ? pb : pa);
+  // Language settings: whichever device changed them last wins.
+  const la = a.langs, lb = b.langs;
+  m.langs = !la ? (lb || null) : !lb ? la : ((lb.updatedAt || 0) > (la.updatedAt || 0) ? lb : la);
   return m;
 }
 
@@ -5631,6 +5850,15 @@ function applyLocal(m){
   if(Object.keys(m.dailyLog).length) put(DAILY_LOG_KEY, m.dailyLog);
   put(ACTIVITY_KEY, m.activity);
   if(m.aboutYou) put(ABOUT_KEY, m.aboutYou);
+  const L = m.langs;
+  if(L && L.updatedAt && L.updatedAt > (Number(localStorage.getItem(LANG_UPDATED_KEY)) || 0)){
+    const before = interviewLang();
+    localStorage.setItem(LANG_UPDATED_KEY, String(L.updatedAt));
+    localStorage.setItem(LANG_LINK_KEY, L.linked === false ? '0' : '1');
+    if(LANGS[L.interview]) localStorage.setItem(INTERVIEW_LANG_KEY, L.interview);
+    if(LANGS[L.site] && L.site !== siteLang()) setSiteLang(L.site).then(() => { if(interviewLang() !== before) applyInterviewLang(); });
+    else if(interviewLang() !== before) applyInterviewLang();
+  }
   return changed;
 }
 
@@ -5712,6 +5940,8 @@ async function loadQuizProfile(){
   if(P[pref].scenario) startSession(pref, P[pref].scenario);
   else if(P[other].scenario) startSession(other, P[other].scenario);
   updateXpChip();
+  renderLangMenu();
+  await applyInterviewLang(); // translated lessons and daily questions, if needed
   route();
   initAccount(); // optional sign-in; the site works the same without it
 })();

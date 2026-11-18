@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "lang": "en",
+    "name": "English",
+    "reviewed": true,
+    "note": "English is the source language: its text lives in index.html and the data files, so this file has no strings. The other files map each English string to its translation."
+  },
+  "strings": {},
+  "patterns": {}
+}
