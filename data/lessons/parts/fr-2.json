@@ -1,0 +1,118 @@
+{
+  "int-what-would-you-do": {
+    "tier": "Intermédiaire", "title": "« Que feriez-vous si… ? »", "summary": "Réfléchis à voix haute face à des situations que tu n’as pas encore vécues.",
+    "intro": ["Certaines questions ne parlent pas du tout de ton passé. Elles te plongent dans une situation inventée : « Un client vous crie dessus. Que faites-vous ? »", "Tu ne peux pas avoir une histoire prête pour chaque cas, et c’est tout l’intérêt. Ils veulent voir comment tu réfléchis sur le moment."],
+    "sections": [
+      { "heading": "Ce qu’ils évaluent", "paragraphs": ["Ton jugement. Restes-tu calme ? Penses-tu à la fois au client et à l’entreprise ? Sais-tu quand quelque chose dépasse ton rôle ? Il y a rarement une seule « bonne » réponse, mais certaines sont clairement plus réfléchies que d’autres."] },
+      { "heading": "Une méthode simple", "points": ["Reste calme et montre que tu as entendu la personne : « Je lui dirais que je suis désolé pour le problème et que je veux l’aider. »", "Vérifie les faits avant d’agir : regarde le ticket, pose une question, consulte le système.", "Règle ce que tu as le droit de régler.", "Demande de l’aide quand il le faut. Savoir quand appeler un responsable, c’est une qualité, pas un défaut."] },
+      { "heading": "Réfléchir à voix haute, c’est bien", "paragraphs": ["Tu peux avancer étape par étape : « Ma première réaction serait de… puis, selon ce que je découvre, je… ». Ça montre ta façon de penser, et c’est exactement ce qu’ils veulent voir. Assure-toi juste d’arriver à un plan clair."] }
+    ],
+    "example": { "question": "Un client arrive à votre caisse, contrarié, il dit qu’on lui a trop facturé et il commence à hausser le ton. Que faites-vous ?", "weak": "Je lui rendrais son argent pour qu’il se calme.", "strong": "D’abord je resterais calme, je lui dirais que je suis désolé pour le problème et que je veux le régler. Ensuite je lui demanderais son ticket pour le comparer au prix en rayon. Si on lui a trop facturé, je corrige tout de suite. Si c’est quelque chose que je n’ai pas le droit de faire, comme un gros remboursement, j’appelle immédiatement un responsable au lieu de le laisser attendre.", "why": "La réponse faible passe directement au remboursement sans rien vérifier. La forte est calme, vérifie les faits et connaît ses limites." },
+    "setting": "Tu passes un entretien pour un poste de caissier chez Hilltop Hardware, une quincaillerie familiale.",
+    "task": "Rosa, la responsable des caisses, va te mettre dans une situation délicate. Explique étape par étape ce que tu ferais.",
+    "weakHint": "Ralentis. Avant de régler quoi que ce soit, que dirais-tu au client, et que vérifierais-tu en premier ?",
+    "strongHint": "Déroule-le : « D’abord je ___. Ensuite je vérifierais ___. Si ___, je ___. Si ça dépasse ce que j’ai le droit de faire, je ___. »",
+    "takeaway": "Reste calme, vérifie les faits, règle ce que tu peux et demande de l’aide quand il le faut.",
+    "opening": "Je vais vous donner une situation. Un client arrive à votre caisse, très contrarié. Il dit qu’on lui a trop facturé, et il commence à hausser le ton. Vous êtes seul à l’accueil. Que faites-vous ?"
+  },
+  "int-weakness": {
+    "tier": "Avancé", "title": "« Quel est votre plus grand défaut ? »", "summary": "Sois honnête sur un défaut sans te desservir.",
+    "intro": ["« Quel est votre plus grand défaut ? » On dirait un piège : trop honnête et tu es éliminé, tu esquives et tu as l’air faux.", "C’est en fait l’une des meilleures occasions de l’entretien pour montrer ta maturité, si tu sais t’en servir."],
+    "sections": [
+      { "heading": "Pourquoi ce n’est pas vraiment un piège", "paragraphs": ["Tout le monde a des défauts, et le recruteur le sait. Ce qu’il vérifie, c’est ta lucidité : te connais-tu assez pour nommer quelque chose de vrai, et fais-tu quelque chose pour t’améliorer ? Quelqu’un qui travaille sur un défaut est plus facile à embaucher que quelqu’un qui fait comme s’il n’en avait pas."] },
+      { "heading": "Choisis un vrai défaut, mais pas éliminatoire", "paragraphs": ["Choisis quelque chose de vrai qui n’est pas au cœur du poste. Si tu postules comme assistant administratif, « je suis désorganisé » pose problème. « Je suis stressé quand je dois prendre la parole devant un grand groupe », en général non."] },
+      { "heading": "La structure : nomme-le, montre-le, corrige-le", "points": ["Nomme-le en une phrase.", "Montre-le avec un exemple rapide et vrai de moment où il est apparu.", "Corrige-le : ce que tu fais concrètement pour progresser. Passe la plus grande partie de ta réponse là-dessus, et termine par ça."] },
+      { "heading": "Évite les clichés", "paragraphs": ["« Je suis perfectionniste. » « Je travaille trop. » « Je m’investis trop. » Les recruteurs les ont entendus des milliers de fois, et ça sonne comme une esquive. Un vrai défaut avec un vrai plan gagne toujours."] }
+    ],
+    "example": { "question": "Quel serait selon vous votre plus grand défaut ?", "weak": "Je suis perfectionniste. Je tiens juste trop à bien faire les choses.", "strong": "Avant, j’avais du mal à parler quand je ne comprenais pas quelque chose. Je hochais la tête et j’essayais de comprendre plus tard, et une fois, j’ai fait tout un TP de chimie de travers à cause de ça. Maintenant, je m’oblige à poser au moins une question dès que j’ai un doute, même si c’est gênant. C’est devenu beaucoup plus facile, et honnêtement mes profs ont l’air d’apprécier.", "why": "La réponse forte est honnête et précise, et elle consacre la plupart du temps à ce qui est fait pour s’améliorer. Elle transforme un défaut en preuve de progrès." },
+    "setting": "Tu passes un entretien pour un poste d’assistant administratif chez Greenway Dental : répondre au téléphone et prendre les rendez-vous des patients.",
+    "task": "Nina, la responsable du cabinet, va te demander ton plus grand défaut. Nomme-le, montre-le et passe l’essentiel de ta réponse sur la façon dont tu le corriges.",
+    "weakHint": "Choisis quelque chose de vrai qui ne te disqualifie pas pour un poste de bureau, et parle surtout de ce que tu fais pour y remédier.",
+    "strongHint": "Structure : « Quelque chose sur lequel je travaille, c’est ___. Par exemple, ___. Pour progresser, j’ai commencé à ___, et ça m’aide. » Évite « perfectionniste ».",
+    "takeaway": "Nomme un vrai défaut, montre-le rapidement et passe l’essentiel de ta réponse sur tes progrès.",
+    "opening": "Tout le monde a quelque chose à travailler. Quel serait selon vous votre plus grand défaut ?"
+  },
+  "int-awkward-questions": {
+    "tier": "Avancé", "title": "Trous, démissions et mauvais moments", "summary": "Réponds aux questions sur une démission, un trou ou un mauvais moment.",
+    "intro": ["Tôt ou tard, un recruteur te posera une question sur quelque chose que tu préférerais éviter : un job quitté rapidement, un trou dans ton emploi du temps, une mauvaise note, une fois où tu as eu des ennuis.", "Ton ventre se serre. Mais ces questions sont bien plus faciles qu’elles n’en ont l’air, et bien y répondre peut même te faire gagner leur confiance."],
+    "sections": [
+      { "heading": "Pourquoi ils demandent", "paragraphs": ["Le passé ne les intéresse pas vraiment. Ce qui compte, c’est de savoir si ça se reproduira chez eux. Ta réponse doit donc faire deux choses : expliquer honnêtement ce qui s’est passé et montrer pourquoi ce ne sera pas un problème ici."] },
+      { "heading": "Honnête, bref, tourné vers l’avenir", "points": ["Honnête : dis la vérité. Les mensonges sur d’anciens jobs se découvrent facilement, et ils mettent fin à l’entretien.", "Bref : une ou deux phrases sur ce qui s’est passé. Pas de longue histoire, pas de drame.", "Tourné vers l’avenir : consacre le reste à ce que tu as appris ou à pourquoi la situation est différente."] },
+      { "heading": "Ne dénigre jamais personne", "paragraphs": ["Même si ton ancien responsable était vraiment terrible, ne le dis pas. Le recruteur t’imaginera dire la même chose de lui un jour. Parle de la situation, pas des personnes : « les horaires ne convenaient pas » plutôt que « mon chef était horrible »."] }
+    ],
+    "example": { "question": "Je vois que vous n’êtes resté qu’environ trois mois à votre dernier poste. Que s’est-il passé ?", "weak": "Honnêtement, la responsable était horrible. Elle était toujours sur mon dos pour tout et le planning était n’importe quoi, donc j’ai démissionné.", "strong": "C’était dans un fast-food, et les services finissaient souvent après minuit en semaine, ce qui faisait baisser mes notes. J’en ai parlé à mon responsable, mais ils ne pouvaient pas changer ça, alors j’ai donné mon préavis de deux semaines et je suis parti en bons termes. C’est d’ailleurs une des raisons pour lesquelles ce poste m’attire : vos horaires du week-end collent bien mieux avec le lycée.", "why": "La réponse forte est honnête et courte, n’accuse personne, montre un départ responsable et revient directement à pourquoi ce poste convient." },
+    "setting": "Tu passes un entretien pour un poste de magasinier chez Maple & Main, un grand magasin. Pour cet exercice, imagine que tu as quitté ton dernier job au bout de trois mois. Invente une raison réaliste si besoin.",
+    "task": "Ellis, le responsable du recrutement, a remarqué ce job très court sur ta candidature. Sois honnête, bref, et tourné vers l’avenir.",
+    "weakHint": "Limite le « ce qui s’est passé » à une ou deux phrases calmes sans accuser personne, puis explique pourquoi ce ne sera pas un problème ici.",
+    "strongHint": "Essaie : « C’était ___, et ___ ne fonctionnait pas parce que ___. J’ai ___ (comment tu es parti de façon responsable). C’est en partie pour ça que ce poste me convient : ___. »",
+    "takeaway": "Honnête, bref, tourné vers l’avenir, et ne dénigre jamais personne.",
+    "opening": "J’ai remarqué sur votre candidature que vous n’êtes resté qu’environ trois mois à votre dernier poste. Que s’est-il passé ?"
+  },
+  "int-pay-and-hours": {
+    "tier": "Avancé", "title": "Salaire et disponibilités", "summary": "Parle d’horaires et d’argent clairement et avec assurance.",
+    "intro": ["À la fin de beaucoup d’entretiens arrive la partie pratique : « Quelles sont vos disponibilités ? » et « Quel salaire espérez-vous ? »", "Beaucoup de gens sont mal à l’aise ici et disent « comme ça vous arrange ». Ça paraît poli, mais ça peut te laisser avec un planning impossible à tenir ou un salaire plus bas que ce que tu aurais pu avoir."],
+    "sections": [
+      { "heading": "En parler, ce n’est pas impoli", "paragraphs": ["Vous essayez tous les deux de voir si ça peut marcher. L’employeur a besoin de savoir quand tu peux travailler, et toi, tu as besoin de savoir combien tu vas gagner. Être clair et précis ici, c’est professionnel, pas insistant."] },
+      { "heading": "Disponibilités : précises et honnêtes", "points": ["Donne de vrais jours et horaires : « En semaine à partir de 15 h 30, et toute la journée le samedi. »", "Dis calmement ce qui n’est pas possible : « Le dimanche, je ne peux pas à cause d’obligations familiales. »", "Ne promets pas trop pour avoir l’air motivé. Ce que tu dis, c’est ce sur quoi ils te planifieront."] },
+      { "heading": "Salaire : connais ton chiffre avant d’entrer", "points": ["Renseigne-toi sur des postes similaires près de chez toi avant l’entretien, pour connaître la fourchette normale.", "Pour beaucoup de postes débutants, le salaire de départ est déjà fixé. Tu peux quand même demander : « Quel est le salaire de départ pour ce poste ? »", "S’ils te demandent ce que tu souhaites, donne une fourchette basée sur tes recherches et reste ouvert : « Quelque chose autour de ___ serait super, mais j’aimerais savoir ce que vous proposez habituellement au départ. »"] }
+    ],
+    "example": { "question": "Quelles sont vos disponibilités, et quel salaire espérez-vous ?", "weak": "Euh, je suis libre quand vous voulez, et ce que vous payez me va.", "strong": "Je suis disponible en semaine l’après-midi à partir de 15 h 30, et toute la journée le samedi. Le dimanche, ce n’est pas possible à cause d’obligations familiales. Pour le salaire, j’ai vu que des postes similaires en boulangerie dans le coin commencent autour de 15 dollars de l’heure, donc quelque chose dans cette fourchette serait super, mais j’aimerais savoir ce que vous proposez habituellement au départ.", "why": "La réponse forte est précise, honnête sur ses limites, montre un peu de recherche et reste sympa et flexible." },
+    "setting": "Tu passes un entretien pour un poste à temps partiel au comptoir de Sunny Side Bakery, une petite boulangerie de quartier. Utilise tes vraies disponibilités ou invente un planning réaliste.",
+    "task": "Grace, la propriétaire, passe à l’organisation. Sois précis sur tes horaires et clair sur le salaire, sans être insistant ni vague.",
+    "weakHint": "Donne de vrais jours et horaires où tu peux travailler, et dis quelque chose de concret sur le salaire plutôt que « peu importe ».",
+    "strongHint": "Essaie : « Je suis disponible ___ et ___. ___, ce n’est pas possible parce que ___. Pour le salaire, j’ai vu que des postes similaires commencent autour de ___, mais j’aimerais savoir ce que vous proposez habituellement. »",
+    "takeaway": "Sois précis sur tes horaires, connais ta fourchette de salaire avant d’entrer et reste sympa et ouvert.",
+    "opening": "Bon, parlons organisation. Quelles sont vos disponibilités, et quel salaire espérez-vous ?"
+  },
+  "int-closing-strong": {
+    "tier": "Avancé", "title": "Poser des questions et bien conclure", "summary": "Pose de bonnes questions et laisse une forte dernière impression.",
+    "intro": ["« Bon, c’est tout pour mes questions. Avez-vous des questions pour moi ? » C’est là que beaucoup de gens se détendent, disent « Non, c’est bon ! » et s’en vont.", "C’est une occasion manquée. La fin d’un entretien, c’est ce dont on se souvient le plus, et tes questions montrent à quel point tu t’y intéresses vraiment."],
+    "sections": [
+      { "heading": "Aie toujours des questions", "paragraphs": ["« Pas de questions » peut donner l’impression que tu n’es pas si intéressé, ou que tu veux juste partir. Prépares-en deux ou trois. Même si certaines trouvent leur réponse pendant l’entretien, tu en auras une de rechange."] },
+      { "heading": "Des questions qui marchent bien", "points": ["« À quoi ressemble un service type ? »", "« Qu’ont en commun les personnes qui réussissent vraiment bien à ce poste ? »", "« Comment se passe la formation des nouveaux ? »", "« Quelle est la prochaine étape ? »"] },
+      { "heading": "Les questions à garder pour plus tard", "points": ["Tout ce que leur site explique déjà. Ça montre que tu n’as pas regardé.", "Commencer par les congés ou les pauses. C’est légitime plus tard, mais pas en première question.", "« Est-ce que j’ai le poste ? » Demande plutôt quelle est la suite."] },
+      { "heading": "Les au revoir", "paragraphs": ["À la fin, remercie et redis ton intérêt en une phrase : « Merci beaucoup pour votre temps. Ce poste me motive vraiment et j’espère avoir la chance de travailler ici. » C’est tout, et c’est ce dont ils se souviendront."] }
+    ],
+    "example": { "question": "Bon, c’est tout pour mes questions. Avez-vous des questions pour moi ?", "weak": "Non, je crois que vous avez tout expliqué !", "strong": "Oui, en fait. À quoi ressemble un service type l’après-midi ? Et qu’est-ce que font vos meilleurs aides-bibliothécaires pour se démarquer ?", "why": "Deux questions courtes et sincères montrent qu’on s’imagine déjà faire le travail et qu’on veut bien le faire. C’est l’impression que tu veux laisser." },
+    "setting": "Tu termines un entretien pour un poste d’aide-bibliothécaire à la Oak Street Public Library : ranger les livres et aider les visiteurs.",
+    "task": "Linh, la responsable de la bibliothèque, a fini ses questions. Pose de bonnes questions à ton tour, puis conclus l’entretien avec un bel au revoir.",
+    "weakHint": "Pose au moins une vraie question sur ce qu’est concrètement le travail et, à la fin, remercie et dis que tu es intéressé.",
+    "strongHint": "Essaie : « Oui ! À quoi ressemble un service type ? » Puis à la fin : « Merci beaucoup pour votre temps. Ce poste me motive vraiment et j’espère pouvoir travailler ici. »",
+    "takeaway": "Apporte toujours deux ou trois vraies questions, et termine par un merci et une phrase d’intérêt sincère.",
+    "opening": "Bon, c’est tout pour les questions que j’avais. Avez-vous des questions pour moi ?"
+  },
+  "col-why-this-school": {
+    "tier": "Débutant", "title": "« Pourquoi cette école ? »", "summary": "Renseigne-toi sur une école en 15 minutes et relie-la à toi.",
+    "intro": ["Presque tous les entretiens d’admission finissent par y arriver : « Alors, pourquoi cette école ? » Ça paraît simple, mais c’est là que beaucoup d’élèves ont un blanc ou disent quelque chose qui pourrait s’appliquer à n’importe quelle école du pays.", "La solution, ce n’est pas d’apprendre des chiffres par cœur. C’est de passer quinze minutes à trouver une ou deux choses que tu aimes vraiment, et de savoir pourquoi elles comptent pour toi."],
+    "sections": [
+      { "heading": "Ce qu’ils demandent vraiment", "paragraphs": ["Les écoles veulent des étudiants qui arrivent motivés, qui s’impliquent et qui restent. Une raison précise leur montre que tu t’es déjà imaginé là-bas. « C’est une super école » leur montre que tu n’as pas encore regardé."] },
+      { "heading": "Un plan de recherche en 15 minutes", "points": ["Parcours la page de ta matière. Cherche un cours, un programme ou un projet qui a l’air passionnant, pas seulement prestigieux.", "Regarde le journal étudiant ou les réseaux sociaux de l’école. De quoi parlent vraiment les étudiants ?", "Trouve une tradition, un club ou un lieu du campus dont tu aimerais faire partie.", "Écris une phrase : « J’ai hâte de ___ parce que ___. » C’est ta réponse."] },
+      { "heading": "Leur point fort plus le tien", "paragraphs": ["Une très bonne réponse a deux moitiés : quelque chose de précis sur l’école, et pourquoi ça te parle. « Ils ont un séminaire de recherche en première année », c’est une demi-réponse. « …et j’ai passé un an à analyser l’eau du ruisseau de ma ville pour un concours scientifique, donc commencer la recherche tout de suite, c’est exactement ce que je veux », c’est une réponse complète."] },
+      { "heading": "Ce que tu peux éviter", "points": ["Les classements et le prestige (« c’est dans le top 20 »).", "Les raisons qui concernent d’autres personnes (« mes parents y sont allés »).", "Ce qui est vrai partout (« un bon niveau », « un joli campus »)."] }
+    ],
+    "example": { "question": "Alors, parmi toutes les écoles qui existent, pourquoi Harlow ?", "weak": "C’est une très bonne école et elle a une super réputation. Et le campus est vraiment beau.", "strong": "J’ai lu qu’à Harlow, il y a un séminaire de première année où l’on fait de la vraie recherche avec un professeur. J’ai passé l’année dernière à analyser l’eau du ruisseau de ma ville pour un concours scientifique, donc pouvoir commencer la recherche tout de suite, c’est exactement ce que je cherche.", "why": "La première réponse pourrait parler de n’importe quelle école. La seconde cite une vraie chose et la relie à quelque chose que l’élève a vraiment fait." },
+    "setting": "Tu retrouves Nadia, une ancienne élève de Harlow College, dans un café pour ton entretien avec une ancienne. Harlow est une petite université d’arts libéraux.",
+    "task": "Nadia veut savoir pourquoi tu postules. Donne une raison précise et relie-la à toi. Si tu ne t’es pas renseigné sur Harlow, imagine un programme crédible que tu chercherais et explique pourquoi il te correspond.",
+    "weakHint": "Cite une chose précise sur l’école, comme un cours, un programme ou une tradition, et dis en quoi elle est liée à quelque chose que tu as fait ou qui compte pour toi.",
+    "strongHint": "Essaie : « J’ai hâte de découvrir ___ à Harlow parce que ___ (quelque chose que tu as vraiment fait ou qui compte pour toi). »",
+    "takeaway": "Une chose précise sur l’école, plus pourquoi elle compte pour toi. Ça, c’est une vraie réponse.",
+    "opening": "Merci d’être venu ! J’aime toujours commencer par là : parmi toutes les écoles qui existent, pourquoi Harlow ?"
+  },
+  "col-major": {
+    "tier": "Débutant", "title": "Ta matière principale, même si tu hésites", "summary": "Parle honnêtement de tes intérêts, même si tu n’as pas encore choisi.",
+    "intro": ["« Qu’aimeriez-vous étudier ? » peut ressembler à un piège si tu ne sais pas encore. Ce n’en est pas un. Beaucoup d’étudiants changent de matière, et les responsables des admissions le savent mieux que personne.", "Ce qu’ils écoutent vraiment, c’est ta curiosité : ce qui attire ton attention, et pourquoi."],
+    "sections": [
+      { "heading": "Ne pas avoir choisi, c’est une vraie réponse", "paragraphs": ["Dire « je n’ai pas encore choisi » est tout à fait acceptable, tant que c’est le début de ta réponse et pas la fin. Le but est de montrer ce qui t’intrigue, pas de t’enfermer dans une étiquette."] },
+      { "heading": "Si tu as une matière en tête", "points": ["Dis-la, puis raconte ce qui t’y a intéressé, idéalement avec une petite histoire.", "Mentionne une chose que tu aimerais apprendre ou essayer dans ce domaine.", "Tu peux ajouter que tu restes ouvert à explorer."] },
+      { "heading": "Si tu hésites encore", "points": ["Cite deux ou trois centres d’intérêt et un vrai exemple pour au moins l’un d’eux.", "Dis ce que tu aimerais explorer avant de choisir.", "Ne t’arrête pas à « je ne sais pas ». Ça ferme la conversation."] },
+      { "heading": "Évite le « parce que ça paie bien »", "paragraphs": ["L’argent et la sécurité de l’emploi sont de vraies préoccupations, mais si c’est ta seule raison, on dirait que la matière elle-même ne t’intéresse pas. Commence par ce que tu trouves intéressant."] }
+    ],
+    "example": { "question": "Qu’est-ce que vous pensez avoir envie d’étudier ?", "weak": "Je ne sais pas encore.", "strong": "Honnêtement, je ne suis pas encore sûr, et ça me va. Je reviens toujours à deux choses : la biologie, parce que j’ai adoré le chapitre sur la dissection en bio avancée, et l’écriture, parce que je m’occupe du journal du lycée. J’aimerais prendre les deux au sérieux pendant un an avant de choisir.", "why": "Les deux élèves hésitent. Le second en fait le portrait d’une personne curieuse avec de vrais centres d’intérêt." },
+    "setting": "Tu es en visio avec Theo, conseiller d’admission à la Brightwater University, une université de taille moyenne.",
+    "task": "Theo te demande ce que tu pourrais étudier. Réponds honnêtement, que tu aies une matière en tête ou non, et montre ce qui t’intrigue.",
+    "weakHint": "Au lieu de t’arrêter à « je ne sais pas » ou de juste citer une matière, ajoute ce qui t’y a intéressé, avec un vrai exemple.",
+    "strongHint": "Essaie : « Je penche pour ___ (ou : je ne suis pas encore sûr, mais je reviens toujours à ___ et ___) parce que ___. Par exemple, ___. »",
+    "takeaway": "Il ne s’agit pas d’avoir une étiquette. Montre ce qui t’intrigue et pourquoi.",
+    "opening": "Ravi de vous rencontrer. Parlons études une minute. Qu’est-ce que vous pensez avoir envie d’étudier ici ?"
+  }
+}

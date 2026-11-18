@@ -1,0 +1,118 @@
+{
+  "int-what-would-you-do": {
+    "tier": "Fortgeschritten", "title": "„Was würdest du tun, wenn…?“", "summary": "Denk laut durch Situationen, die du noch nicht erlebt hast.",
+    "intro": ["Manche Fragen haben gar nichts mit deiner Vergangenheit zu tun. Sie werfen dich in eine ausgedachte Situation: „Ein Kunde schreit dich an. Was machst du?“", "Du kannst nicht für jedes Szenario eine Geschichte parat haben, und genau darum geht es. Sie wollen sehen, wie du spontan denkst."],
+    "sections": [
+      { "heading": "Was sie testen", "paragraphs": ["Urteilsvermögen. Bleibst du ruhig? Denkst du gleichzeitig an den Kunden und an das Geschäft? Weißt du, wann etwas über deine Befugnisse hinausgeht? Es gibt selten die eine „richtige“ Antwort, aber manche Antworten sind klar durchdachter als andere."] },
+      { "heading": "Ein einfacher Ansatz", "points": ["Bleib ruhig und nimm die Person ernst: „Ich würde sagen, dass mir der Ärger leidtut und dass ich helfen möchte.“", "Kläre die Fakten, bevor du handelst: Kassenbon ansehen, eine Frage stellen, im System nachschauen.", "Löse, was du lösen darfst.", "Hol dir Hilfe, wenn es nötig ist. Zu wissen, wann man die Filialleitung ruft, ist eine Stärke, keine Schwäche."] },
+      { "heading": "Laut denken ist okay", "paragraphs": ["Du kannst Schritt für Schritt vorgehen: „Als Erstes würde ich… und dann, je nachdem, was ich herausfinde, würde ich…“. Das zeigt dein Denken, und genau das wollen sie sehen. Achte nur darauf, dass du bei einem klaren Plan landest."] }
+    ],
+    "example": { "question": "Ein Kunde kommt verärgert an deine Kasse, sagt, ihm wurde zu viel berechnet, und wird laut. Was machst du?", "weak": "Ich würde ihm einfach das Geld zurückgeben, damit er sich beruhigt.", "strong": "Zuerst würde ich ruhig bleiben, sagen, dass mir der Ärger leidtut, und dass ich es klären möchte. Dann würde ich nach dem Kassenbon fragen und ihn mit dem Preis am Regal vergleichen. Wenn wir zu viel berechnet haben, korrigiere ich es sofort. Wenn ich etwas nicht darf, zum Beispiel eine große Rückerstattung, rufe ich direkt die Filialleitung, statt ihn warten zu lassen.", "why": "Die schwache Antwort gibt sofort Geld zurück, ohne irgendetwas zu prüfen. Die starke bleibt ruhig, klärt die Fakten und kennt ihre Grenzen." },
+    "setting": "Du hast ein Gespräch für einen Kassenjob bei Hilltop Hardware, einem familiengeführten Baumarkt.",
+    "task": "Rosa, die Leiterin des Kassenbereichs, stellt dir eine knifflige Situation. Geh Schritt für Schritt durch, was du tun würdest.",
+    "weakHint": "Mach langsamer. Bevor du etwas löst: Was würdest du zum Kunden sagen, und was würdest du zuerst prüfen?",
+    "strongHint": "Geh es durch: „Zuerst würde ich ___. Dann würde ich ___ prüfen. Wenn ___, würde ich ___. Wenn es mehr ist, als ich darf, würde ich ___.“",
+    "takeaway": "Bleib ruhig, kläre die Fakten, löse, was du kannst, und hol dir Hilfe, wenn es nötig ist.",
+    "opening": "Ich gebe dir mal eine Situation. Ein Kunde kommt richtig verärgert an deine Kasse. Er sagt, ihm wurde zu viel berechnet, und er wird laut. Du bist allein vorne. Was machst du?"
+  },
+  "int-weakness": {
+    "tier": "Profi", "title": "„Was ist deine größte Schwäche?“", "summary": "Sei ehrlich über eine Schwäche, ohne dir zu schaden.",
+    "intro": ["„Was ist deine größte Schwäche?“ Das fühlt sich wie eine Falle an: zu ehrlich und du bist raus, ausweichen und du klingst unecht.", "Eigentlich ist es eine der besten Chancen im Gespräch, Reife zu zeigen, wenn du weißt, wie."],
+    "sections": [
+      { "heading": "Warum es keine echte Falle ist", "paragraphs": ["Jeder hat Schwächen, und dein Gegenüber weiß das. Geprüft wird Selbstwahrnehmung: Kennst du dich gut genug, um etwas Echtes zu nennen, und tust du etwas dagegen? Wer an einer Schwäche arbeitet, ist eher einzustellen als jemand, der so tut, als hätte er keine."] },
+      { "heading": "Wähl eine echte, aber kein K.-o.-Kriterium", "paragraphs": ["Nimm etwas Wahres, das für diesen Job nicht zentral ist. Wenn du dich als Bürohilfe bewirbst, ist „Ich bin unorganisiert“ ein Problem. „Ich werde nervös, wenn ich vor großen Gruppen spreche“ meistens nicht."] },
+      { "heading": "Die Form: benennen, zeigen, verbessern", "points": ["Benenn sie in einem Satz.", "Zeig sie mit einem kurzen, echten Beispiel, wann sie aufgetaucht ist.", "Verbessern: was du aktiv tust, um besser zu werden. Verbring den Großteil deiner Antwort damit und hör damit auf."] },
+      { "heading": "Lass die Klischees weg", "paragraphs": ["„Ich bin Perfektionist.“ „Ich arbeite zu viel.“ „Mir liegt zu viel an allem.“ Interviewer haben das tausendmal gehört, und es klingt nach Ausweichen. Eine echte Schwäche mit einem echten Plan gewinnt immer."] }
+    ],
+    "example": { "question": "Was würdest du sagen, ist deine größte Schwäche?", "weak": "Ich bin Perfektionist. Mir ist es einfach zu wichtig, alles richtig zu machen.", "strong": "Früher fiel es mir schwer, etwas zu sagen, wenn ich etwas nicht verstanden hatte. Ich habe einfach genickt und versucht, es später herauszufinden, und einmal habe ich deshalb einen ganzen Chemieversuch falsch gemacht. Jetzt zwinge ich mich, mindestens eine Frage zu stellen, wenn ich unsicher bin, auch wenn es sich komisch anfühlt. Es ist viel leichter geworden, und ehrlich gesagt scheinen meine Lehrkräfte das zu schätzen.", "why": "Die starke Antwort ist ehrlich und konkret und verbringt die meiste Zeit damit, was die Person dagegen tut. Sie macht aus einer Schwäche einen Beweis für Entwicklung." },
+    "setting": "Du hast ein Gespräch für einen Job als Bürohilfe bei Greenway Dental, wo du ans Telefon gehst und Termine vergibst.",
+    "task": "Nina, die Praxismanagerin, fragt nach deiner größten Schwäche. Benenn sie, zeig sie und verbring den Großteil deiner Antwort damit, wie du sie verbesserst.",
+    "weakHint": "Wähl etwas Echtes, das dich für einen Bürojob nicht disqualifiziert, und sprich vor allem darüber, was du dagegen tust.",
+    "strongHint": "Form: „Woran ich gerade arbeite, ist ___. Zum Beispiel ___. Um besser zu werden, habe ich angefangen, ___, und das hilft.“ Lass „Perfektionist“ weg.",
+    "takeaway": "Nenn eine echte Schwäche, zeig sie kurz und sprich vor allem darüber, wie du dich verbesserst.",
+    "opening": "Jeder hat etwas, woran er arbeitet. Was würdest du sagen, ist deine größte Schwäche?"
+  },
+  "int-awkward-questions": {
+    "tier": "Profi", "title": "Lücken, Kündigungen und schlechte Momente", "summary": "Geh mit Fragen zu Kündigungen, Lücken oder schlechten Momenten um.",
+    "intro": ["Früher oder später fragt dich jemand nach etwas, das du lieber überspringen würdest: einem Job, den du schnell wieder verlassen hast, einer Lücke in deinem Zeitplan, einer schlechten Note, einem Mal, als du Ärger bekommen hast.", "Dir rutscht das Herz in die Hose. Aber diese Fragen sind viel leichter, als sie sich anfühlen, und eine gute Antwort kann dir sogar Vertrauen einbringen."],
+    "sections": [
+      { "heading": "Warum sie fragen", "paragraphs": ["Die Vergangenheit ist ihnen eigentlich egal. Wichtig ist, ob es bei ihnen wieder passiert. Deine Antwort muss also zwei Dinge tun: ehrlich erklären, was passiert ist, und zeigen, warum es hier kein Problem sein wird."] },
+      { "heading": "Ehrlich, kurz, nach vorn", "points": ["Ehrlich: Sag die Wahrheit. Lügen über frühere Jobs fliegen leicht auf und beenden das Gespräch.", "Kurz: ein oder zwei Sätze dazu, was passiert ist. Keine lange Vorgeschichte, kein Drama.", "Nach vorn: Nutz den Rest dafür, was du gelernt hast oder warum diese Situation anders ist."] },
+      { "heading": "Red nie schlecht über andere", "paragraphs": ["Selbst wenn dein alter Chef wirklich furchtbar war: Sag es nicht. Dein Gegenüber stellt sich vor, wie du eines Tages dasselbe über es sagst. Sprich über die Situation, nicht über Personen: „Die Arbeitszeiten haben nicht gepasst“ statt „Mein Chef war schrecklich“."] }
+    ],
+    "example": { "question": "Ich sehe, du warst nur etwa drei Monate in deinem letzten Job. Was ist da passiert?", "weak": "Ehrlich gesagt war die Managerin dort furchtbar. Sie war ständig wegen allem hinter mir her, und der Schichtplan war ein Chaos, also habe ich einfach gekündigt.", "strong": "Es war ein Fast-Food-Job, und die Schichten gingen unter der Woche oft bis nach Mitternacht, was meinen Noten geschadet hat. Ich habe mit meiner Schichtleitung darüber gesprochen, aber sie konnten es nicht ändern, also habe ich mit zwei Wochen Vorlauf gekündigt und bin im Guten gegangen. Das ist sogar ein Grund, warum mich dieser Job reizt: Eure Wochenendschichten passen viel besser zur Schule.", "why": "Die starke Antwort ist ehrlich und kurz, gibt niemandem die Schuld, zeigt einen verantwortungsvollen Abschied und kommt direkt darauf zurück, warum dieser Job gut passt." },
+    "setting": "Du hast ein Gespräch für einen Job im Warenlager bei Maple & Main, einem Kaufhaus. Stell dir für diese Übung vor, du hast deinen letzten Job nach nur drei Monaten verlassen. Denk dir bei Bedarf einen realistischen Grund aus.",
+    "task": "Ellis, der Personalverantwortliche, hat den kurzen Job in deiner Bewerbung bemerkt. Sei ehrlich, halt dich kurz und schau nach vorn.",
+    "weakHint": "Halt das „Was ist passiert“ bei ein, zwei ruhigen Sätzen, ohne jemandem die Schuld zu geben, und sprich dann darüber, warum es hier kein Problem wird.",
+    "strongHint": "Probier: „Es war ___, und ___ hat nicht funktioniert, weil ___. Ich habe ___ (wie du verantwortungsvoll gegangen bist). Das ist auch ein Grund, warum dieser Job passt: ___.“",
+    "takeaway": "Ehrlich, kurz, nach vorn, und red nie schlecht über andere.",
+    "opening": "Mir ist in deiner Bewerbung aufgefallen, dass du nur etwa drei Monate in deinem letzten Job warst. Was ist da passiert?"
+  },
+  "int-pay-and-hours": {
+    "tier": "Profi", "title": "Gehalt und Verfügbarkeit", "summary": "Sprich klar und selbstbewusst über Arbeitszeiten und Geld.",
+    "intro": ["Gegen Ende vieler Gespräche kommt der praktische Teil: „Wann kannst du arbeiten?“ und „Was stellst du dir beim Gehalt vor?“", "Viele werden hier verlegen und sagen „Wie es euch passt“. Das wirkt höflich, kann dir aber einen Schichtplan einbringen, den du nicht schaffst, oder weniger Lohn, als drin gewesen wäre."],
+    "sections": [
+      { "heading": "Darüber zu reden ist nicht unhöflich", "paragraphs": ["Ihr versucht beide herauszufinden, ob es passt. Der Arbeitgeber muss wissen, wann du arbeiten kannst, und du musst wissen, was du verdienst. Klar und konkret zu sein ist hier professionell, nicht aufdringlich."] },
+      { "heading": "Verfügbarkeit: konkret und ehrlich", "points": ["Nenn echte Tage und Uhrzeiten: „Unter der Woche ab 15:30 Uhr und samstags den ganzen Tag.“", "Sag ruhig, was nicht geht: „Sonntags kann ich wegen familiärer Verpflichtungen nicht.“", "Versprich nicht zu viel, nur um motiviert zu wirken. Was du sagst, danach planen sie dich ein."] },
+      { "heading": "Gehalt: Kenn deine Zahl, bevor du reingehst", "points": ["Schau dir vor dem Gespräch ähnliche Jobs in deiner Nähe an, damit du den üblichen Rahmen kennst.", "Bei vielen Einsteigerjobs steht der Anfangslohn schon fest. Trotzdem ist es okay zu fragen: „Wie hoch ist der Einstiegslohn für diese Stelle?“", "Wenn sie fragen, was du dir vorstellst, nenn einen Rahmen aus deiner Recherche und bleib offen: „Etwa ___ wäre super, aber ich würde gern hören, womit ihr normalerweise anfangt.“"] }
+    ],
+    "example": { "question": "Wann kannst du arbeiten, und was stellst du dir beim Gehalt vor?", "weak": "Ähm, ich hab eigentlich immer Zeit, und was ihr zahlt, ist okay.", "strong": "Ich kann unter der Woche nachmittags ab 15:30 Uhr und samstags den ganzen Tag. Sonntags geht es wegen familiärer Verpflichtungen nicht. Beim Lohn habe ich gesehen, dass ähnliche Bäckereijobs hier bei etwa 15 Dollar pro Stunde anfangen, also wäre etwas in dem Bereich super, aber ich würde gern hören, womit ihr normalerweise anfangt.", "why": "Die starke Antwort ist konkret, ehrlich über Grenzen, zeigt etwas Recherche und klingt trotzdem freundlich und flexibel." },
+    "setting": "Du hast ein Gespräch für einen Aushilfsjob an der Theke der Sunny Side Bakery, einer kleinen Bäckerei im Viertel. Nutz deine echte Verfügbarkeit oder denk dir einen realistischen Plan aus.",
+    "task": "Grace, die Besitzerin, kommt zum Organisatorischen. Sei konkret bei deinen Zeiten und klar beim Gehalt, ohne aufdringlich oder vage zu sein.",
+    "weakHint": "Nenn konkrete Tage und Uhrzeiten, an denen du arbeiten kannst, und sag etwas Konkretes zum Gehalt statt „egal“.",
+    "strongHint": "Probier: „Ich kann ___ und ___. ___ geht nicht, weil ___. Beim Gehalt habe ich gesehen, dass ähnliche Jobs bei etwa ___ anfangen, aber ich würde gern hören, was ihr normalerweise zahlt.“",
+    "takeaway": "Sei konkret bei deinen Zeiten, kenn deinen Gehaltsrahmen vorher und bleib freundlich und offen.",
+    "opening": "Okay, reden wir übers Organisatorische. Wann kannst du arbeiten, und was stellst du dir beim Gehalt vor?"
+  },
+  "int-closing-strong": {
+    "tier": "Profi", "title": "Fragen stellen und gut abschließen", "summary": "Stell gute Fragen und hinterlass einen starken letzten Eindruck.",
+    "intro": ["„Gut, das waren alle meine Fragen. Hast du noch Fragen an mich?“ Hier entspannen sich viele, sagen „Nein, alles gut!“ und gehen.", "Das ist eine verpasste Chance. An das Ende eines Gesprächs erinnert man sich am meisten, und deine Fragen zeigen, wie wichtig dir die Sache wirklich ist."],
+    "sections": [
+      { "heading": "Hab immer Fragen", "paragraphs": ["„Keine Fragen“ kann klingen, als wärst du nicht so interessiert oder willst einfach nur gehen. Halt zwei oder drei bereit. Selbst wenn manche im Gespräch schon beantwortet werden, hast du noch eine in Reserve."] },
+      { "heading": "Fragen, die gut funktionieren", "points": ["„Wie sieht eine typische Schicht aus?“", "„Was haben die Leute gemeinsam, die in diesem Job richtig gut sind?“", "„Wie läuft die Einarbeitung für Neue?“", "„Wie geht es im Bewerbungsprozess weiter?“"] },
+      { "heading": "Fragen, die du erst mal weglässt", "points": ["Alles, was schon auf ihrer Website steht. Das zeigt, dass du nicht nachgeschaut hast.", "Gleich mit Urlaub oder Pausen anfangen. Später ist das eine faire Frage, aber nicht als erste.", "„Habe ich den Job?“ Frag stattdessen nach den nächsten Schritten."] },
+      { "heading": "Der Abschied", "paragraphs": ["Wenn das Gespräch endet, bedank dich und sag in einem Satz noch mal, dass du interessiert bist: „Vielen Dank für deine Zeit. Ich freue mich sehr auf diesen Job und hoffe, dass ich hier arbeiten darf.“ Das war’s, und genau das bleibt hängen."] }
+    ],
+    "example": { "question": "Gut, das waren alle meine Fragen. Hast du noch Fragen an mich?", "weak": "Nein, ich glaube, du hast alles abgedeckt!", "strong": "Ja, tatsächlich. Wie sieht eine typische Nachmittagsschicht aus? Und was machen eure besten Bibliothekshelfer, dass sie herausstechen?", "why": "Zwei kurze, echte Fragen zeigen, dass die Person sich den Job schon vorstellt und gut darin sein will. Genau diesen Eindruck willst du hinterlassen." },
+    "setting": "Du beendest gerade ein Gespräch für einen Job als Bibliothekshelfer in der Oak Street Public Library, wo du Bücher einsortierst und Besuchern hilfst.",
+    "task": "Linh, die Filialleiterin, hat keine Fragen mehr. Stell selbst gute Fragen und beende das Gespräch mit einem starken Abschied.",
+    "weakHint": "Stell mindestens eine echte Frage dazu, wie der Job wirklich ist, und bedank dich am Ende und sag, dass du interessiert bist.",
+    "strongHint": "Probier: „Ja! Wie sieht eine typische Schicht aus?“ Und am Ende: „Vielen Dank für deine Zeit. Ich freue mich sehr auf diesen Job und hoffe, hier arbeiten zu dürfen.“",
+    "takeaway": "Bring immer zwei oder drei echte Fragen mit und ende mit einem Dank und einem Satz echten Interesses.",
+    "opening": "Gut, das waren alle Fragen, die ich an dich hatte. Hast du noch Fragen an mich?"
+  },
+  "col-why-this-school": {
+    "tier": "Einsteiger", "title": "„Warum diese Hochschule?“", "summary": "Recherchier eine Hochschule in 15 Minuten und verbinde sie mit dir.",
+    "intro": ["Fast jedes College-Interview kommt irgendwann dahin: „Also, warum diese Hochschule?“ Klingt einfach, aber genau hier haben viele ein Blackout oder sagen etwas, das auf jede Hochschule im Land passt.", "Die Lösung ist nicht, Fakten auswendig zu lernen. Sondern fünfzehn Minuten zu investieren, um ein oder zwei Dinge zu finden, die du wirklich magst, und zu wissen, warum sie dir wichtig sind."],
+    "sections": [
+      { "heading": "Was sie eigentlich wissen wollen", "paragraphs": ["Hochschulen wollen Studierende, die mit Begeisterung kommen, sich einbringen und bleiben. Ein konkreter Grund zeigt, dass du dich schon dort gesehen hast. „Es ist eine tolle Hochschule“ zeigt, dass du noch nicht hingeschaut hast."] },
+      { "heading": "Ein 15-Minuten-Rechercheplan", "points": ["Überflieg die Seite zu deinem Fach. Such einen Kurs, ein Programm oder Projekt, das nach Spaß klingt, nicht nur beeindruckend.", "Schau dir die Studierendenzeitung oder die Social-Media-Kanäle an. Worüber reden die Studierenden wirklich?", "Finde eine Tradition, einen Club oder einen Ort auf dem Campus, zu dem du gern gehören würdest.", "Schreib einen Satz: „Ich freue mich auf ___, weil ___.“ Das ist deine Antwort."] },
+      { "heading": "Ihr Ding plus dein Ding", "paragraphs": ["Eine richtig gute Antwort hat zwei Hälften: etwas Konkretes an der Hochschule und warum es mit dir zu tun hat. „Sie haben ein Forschungsseminar im ersten Jahr“ ist eine halbe Antwort. „…und ich habe ein Jahr lang für einen Wissenschaftswettbewerb das Wasser in unserem Bach getestet, also ist sofort mit Forschung anzufangen genau das, was ich will“ ist eine ganze."] },
+      { "heading": "Was du weglassen kannst", "points": ["Rankings und Prestige („Sie ist unter den Top 20“).", "Gründe, die mit anderen zu tun haben („Meine Eltern waren hier“).", "Dinge, die überall stimmen („gute Lehre“, „schöner Campus“)."] }
+    ],
+    "example": { "question": "Also, von allen Hochschulen da draußen: Warum Harlow?", "weak": "Es ist eine richtig gute Hochschule mit einem tollen Ruf. Und der Campus ist echt schön.", "strong": "Ich habe gelesen, dass es an Harlow ein Seminar im ersten Jahr gibt, in dem man mit einer Professorin echte Forschung macht. Ich habe das letzte Jahr für ein Projekt beim Wissenschaftswettbewerb das Wasser im Bach unserer Stadt getestet, also ist die Chance, gleich mit Forschung anzufangen, genau das, was ich suche.", "why": "Die erste Antwort könnte jede Hochschule meinen. Die zweite nennt eine echte Sache und verbindet sie mit etwas, das die Person wirklich getan hat." },
+    "setting": "Du triffst Nadia, eine Absolventin des Harlow College, für dein Alumni-Gespräch in einem Café. Harlow ist ein kleines Liberal-Arts-College.",
+    "task": "Nadia will wissen, warum du dich bewirbst. Nenn einen konkreten Grund und verbinde ihn mit dir. Wenn du Harlow nicht recherchiert hast, stell dir ein real klingendes Programm vor, nach dem du suchen würdest, und erklär, warum es zu dir passt.",
+    "weakHint": "Nenn eine konkrete Sache an der Hochschule, etwa einen Kurs, ein Programm oder eine Tradition, und sag, wie sie mit etwas zusammenhängt, das du gemacht hast oder das dir wichtig ist.",
+    "strongHint": "Probier: „Ich freue mich auf ___ an Harlow, weil ___ (etwas, das du wirklich gemacht hast oder das dir wichtig ist).“",
+    "takeaway": "Eine konkrete Sache an der Hochschule, plus warum sie dir wichtig ist. Das ist eine echte Antwort.",
+    "opening": "Danke, dass du gekommen bist! Ich fange immer gern hiermit an: Von allen Hochschulen da draußen, warum Harlow?"
+  },
+  "col-major": {
+    "tier": "Einsteiger", "title": "Dein Studienfach, auch wenn du unentschlossen bist", "summary": "Sprich ehrlich über deine Interessen, auch wenn du noch unentschieden bist.",
+    "intro": ["„Was möchtest du studieren?“ kann sich wie eine Falle anfühlen, wenn du es noch nicht weißt. Ist es nicht. Viele wechseln ihr Fach, und Zulassungsleute wissen das besser als alle anderen.", "Worauf sie wirklich achten, ist Neugier: Was zieht deine Aufmerksamkeit an, und warum?"],
+    "sections": [
+      { "heading": "Unentschlossen ist eine echte Antwort", "paragraphs": ["„Ich weiß es noch nicht“ ist völlig okay, solange es der Anfang deiner Antwort ist und nicht das Ende. Es geht darum zu zeigen, was dich neugierig macht, nicht dich auf ein Etikett festzulegen."] },
+      { "heading": "Wenn du ein Fach im Kopf hast", "points": ["Sag es und dann, wie dein Interesse entstanden ist, am besten mit einer kleinen Geschichte.", "Nenn eine Sache, die du in dem Bereich lernen oder ausprobieren willst.", "Du kannst ruhig sagen, dass du offen bist, Neues zu entdecken."] },
+      { "heading": "Wenn du unentschlossen bist", "points": ["Nenn zwei oder drei Interessen und mindestens zu einem ein echtes Beispiel.", "Sag, was du erkunden möchtest, bevor du dich entscheidest.", "Hör nicht bei „Ich weiß nicht“ auf. Das beendet das Gespräch."] },
+      { "heading": "Lass das „weil man gut verdient“ weg", "paragraphs": ["Geld und ein sicherer Job sind echte Sorgen, aber wenn das dein einziger Grund ist, klingt es, als würde dich das Fach selbst nicht interessieren. Fang mit dem an, was du spannend findest."] }
+    ],
+    "example": { "question": "Was könntest du dir vorstellen zu studieren?", "weak": "Weiß ich noch nicht.", "strong": "Ehrlich gesagt bin ich mir noch nicht sicher, und das ist für mich okay. Ich komme immer wieder auf zwei Dinge zurück: Biologie, weil ich die Sezier-Einheit in AP Bio geliebt habe, und Schreiben, weil ich unsere Schülerzeitung redigiere. Ich würde gern beides ein Jahr lang ernsthaft machen, bevor ich mich entscheide.", "why": "Beide sind unentschlossen. Die zweite Person macht daraus das Bild eines neugierigen Menschen mit echten Interessen." },
+    "setting": "Du bist in einem Videoanruf mit Theo, Zulassungsberater an der Brightwater University, einer mittelgroßen Universität.",
+    "task": "Theo fragt, was du studieren könntest. Antworte ehrlich, ob du ein Fach im Kopf hast oder nicht, und zeig, was dich neugierig macht.",
+    "weakHint": "Statt bei „Ich weiß nicht“ aufzuhören oder nur ein Fach zu nennen, erzähl, wie dein Interesse entstanden ist, mit einem echten Beispiel.",
+    "strongHint": "Probier: „Ich tendiere zu ___ (oder: Ich bin noch nicht sicher, aber ich komme immer wieder auf ___ und ___ zurück), weil ___. Zum Beispiel ___.“",
+    "takeaway": "Es geht nicht um ein Etikett. Zeig, was dich neugierig macht und warum.",
+    "opening": "Schön, dich kennenzulernen. Reden wir kurz übers Studium. Was könntest du dir vorstellen, hier zu studieren?"
+  }
+}

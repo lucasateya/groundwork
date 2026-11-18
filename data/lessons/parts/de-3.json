@@ -1,0 +1,115 @@
+{
+  "col-activities": {
+    "tier": "Einsteiger", "title": "Was dir deine Aktivitäten beigebracht haben", "summary": "Erzähl, was du außerhalb des Unterrichts machst, ohne deinen Lebenslauf vorzulesen.",
+    "intro": ["„Erzähl mir, was du außerhalb des Unterrichts machst.“ Die Falle hier ist, deine ganze Liste aufzuzählen: „Ich bin in der SV, im Sozialclub, im Fußballverein, in der Band…“", "Eine Liste kann dein Gegenüber selbst lesen. Was es nicht lesen kann, ist, was dir diese Dinge bedeuten. Darum geht es in dieser Lektion."],
+    "sections": [
+      { "heading": "In die Tiefe, nicht in die Breite", "paragraphs": ["Wähl die eine oder zwei Aktivitäten, die dir am meisten bedeuten, und erzähl ausführlich davon. Eine echte Geschichte schlägt zehn Vereinsnamen."] },
+      { "heading": "Alles zählt", "points": ["Ein Nebenjob, auf Geschwister aufpassen, in deiner Gemeinde helfen, ein Gaming-Club, dir selbst Gitarre beibringen.", "Hochschulen wissen, dass viele statt Clubs Verpflichtungen haben. Die zählen genauso."] },
+      { "heading": "Das „Na und?“", "paragraphs": ["Nachdem du gesagt hast, was du gemacht hast, sag, was du gelernt hast oder wie es dich verändert hat. „Ich habe gelernt, dass ich schwierige Dinge schaffe, wenn ich Geduld habe“ ist der Teil, an den sie sich erinnern."] }
+    ],
+    "example": { "question": "Erzähl mir von etwas, das du außerhalb des Unterrichts machst.", "weak": "Ich bin in der SV, im Sozialclub, im Fußballverein und in der Band, und am Wochenende helfe ich ehrenamtlich im Krankenhaus.", "strong": "Am wichtigsten ist mir das Robotik-Team. Letztes Jahr ist unser Roboter immer wieder durch die Prüfung gefallen, also habe ich mir mit YouTube-Videos selbst beigebracht, die Elektronikplatine neu zu verkabeln. Dabei habe ich gelernt, dass ich schwierige Dinge schaffe, wenn ich Geduld habe, was ich ehrlich gesagt vorher nicht geglaubt hätte.", "why": "Die erste Antwort ist eine Liste. Die zweite wählt eine Sache, erzählt kurz eine Geschichte und endet damit, was die Person über sich gelernt hat." },
+    "setting": "Du triffst Gabe, einen Absolventen des Pinecrest College, für dein Alumni-Gespräch in einer öffentlichen Bücherei.",
+    "task": "Gabe fragt, was du außerhalb des Unterrichts machst. Wähl ein oder zwei Dinge, geh in die Tiefe und sag, was du gelernt hast.",
+    "weakHint": "Statt Aktivitäten aufzuzählen, wähl die, die dir am meisten bedeutet, und erzähl eine kurze Geschichte dazu.",
+    "strongHint": "Probier: „Am wichtigsten ist mir ___. Einmal ___. Dabei habe ich gelernt, ___.“",
+    "takeaway": "Eine Aktivität, eine Geschichte, eine Sache, die du gelernt hast. Das bleibt besser hängen als eine Liste.",
+    "opening": "Also, die Schule ist ja nur ein Teil des Bildes. Erzähl mir von etwas, das du außerhalb des Unterrichts machst."
+  },
+  "col-real-story": {
+    "tier": "Fortgeschritten", "title": "Erzähl eine echte Geschichte", "summary": "STAR in der College-Version: eine Herausforderung und was du gelernt hast.",
+    "intro": ["„Erzähl mir von einer Herausforderung, die du erlebt hast.“ Hochschulen fragen das, weil das Studium voller Herausforderungen ist, und sie wissen wollen, wie du damit umgehst.", "Du nutzt dieselbe STAR-Form wie in den Job-Lektionen, mit einer wichtigen Ergänzung fürs College: was du gelernt hast."],
+    "sections": [
+      { "heading": "STAR plus Reflexion", "points": ["Situation: Beschreib die Szene in einem Satz.", "Aufgabe: was du tun musstest.", "Handlung: was du getan hast. Das sollte der längste Teil sein.", "Ergebnis: wie es ausgegangen ist.", "Reflexion: was du gelernt hast oder wie du heute anders damit umgehst. Fürs College ist dieser Teil am wichtigsten."] },
+      { "heading": "Deine Herausforderung wählen", "paragraphs": ["Wähl etwas Echtes, aber Überschaubares: ein Fach, das dich umgehauen hat, ein Team, das sich nicht verstanden hat, ein Job, der schwierig wurde. Es muss nicht dramatisch sein. Und du musst nie etwas Schmerzhaftes oder Privates erzählen, worüber du nicht reden willst."] },
+      { "heading": "Sag „ich“, dann sag, was sich verändert hat", "paragraphs": ["Behalt den Fokus darauf, was du getan hast. Ende dann mit der Reflexion, damit das Letzte, was sie hören, ist, wie du gewachsen bist."] }
+    ],
+    "example": { "question": "Erzähl mir von einer Herausforderung, die du erlebt hast, und wie du damit umgegangen bist.", "weak": "Ich hatte schon viele Herausforderungen, aber ich arbeite immer hart und ziehe durch.", "strong": "In der zehnten Klasse habe ich in meinem ersten Chemietest nur 54 Prozent geschafft. Ich war noch nie durchgefallen. Ich bin dann zweimal pro Woche zur Mittags-Nachhilfe meiner Lehrerin gegangen und habe für jede Einheit Karteikarten gemacht. Am Ende des Jahres stand ich auf einer 2. Heute frage ich sofort nach, wenn ich etwas nicht verstehe, statt zu warten, bis es eine Krise ist.", "why": "Die erste Antwort ist eine Behauptung. Die zweite ist ein echter Moment mit klarer Handlung und einer Reflexion, die Entwicklung zeigt." },
+    "setting": "Du triffst Imani, stellvertretende Zulassungsleiterin am Kestrel College, im Zulassungsbüro.",
+    "task": "Imani fragt nach einer Herausforderung. Erzähl eine echte Geschichte nach STAR und ende damit, was du gelernt hast.",
+    "weakHint": "Wähl einen echten Moment, nicht „Ich mache immer…“. Sag, was passiert ist, was du getan hast und was du gelernt hast.",
+    "strongHint": "Probier: „Als ___, musste ich ___. Also habe ich ___. Am Ende ___. Gelernt habe ich, dass ___.“",
+    "takeaway": "Situation, Aufgabe, Handlung, Ergebnis und dann, was du gelernt hast. An die Reflexion erinnern sich Hochschulen.",
+    "opening": "Danke, dass du heute gekommen bist. Ich würde gern von einer Herausforderung hören, die du erlebt hast. Was ist passiert, und wie bist du damit umgegangen?"
+  },
+  "col-knowing-yourself": {
+    "tier": "Fortgeschritten", "title": "Dich selbst beschreiben", "summary": "Stärken, Schwächen und „Wie würden deine Freunde dich beschreiben?“",
+    "intro": ["Manche Fragen drehen sich nicht darum, was du gemacht hast, sondern wer du bist: „Wie würden deine Freunde dich beschreiben?“ „Was ist deine größte Stärke?“ „Woran arbeitest du gerade?“", "Sie fühlen sich unangenehm an, weil du dich selbst beschreibst. Der Trick: Lass Beispiele für dich angeben."],
+    "sections": [
+      { "heading": "Warum sie fragen", "paragraphs": ["Hochschulen bauen eine Gemeinschaft auf, nicht nur einen Jahrgang. Diese Fragen zeigen, ob du dich kennst und ob andere gern mit dir auf einem Flur wohnen würden."] },
+      { "heading": "Nimm echte Worte und beweis sie", "points": ["Wähl ein oder zwei Wörter, die wirklich stimmen, nicht die, die am besten klingen.", "Untermauer jedes mit einem kurzen, konkreten Beispiel.", "Ein bisschen Humor oder Ehrlichkeit („meine Schwester würde sagen, ich bin zu organisiert“) macht es glaubwürdig."] },
+      { "heading": "Schwächen: ehrlich und wachsend", "paragraphs": ["Wenn sie nach einer Schwäche fragen, nenn etwas Echtes, gib ein kurzes Beispiel und verbring den Großteil deiner Antwort damit, was du dagegen tust. Lass „Ich bin Perfektionist“ weg. Das sagen alle, und es klingt nach Ausweichen."] }
+    ],
+    "example": { "question": "Wie würden deine Freunde dich beschreiben?", "weak": "Sie würden wohl sagen, dass ich nett und lustig bin.", "strong": "Meine Freunde würden sagen, ich bin die, die alles plant. Ich organisiere unsere Lerngruppen und kläre, wer zu Auswärtsspielen fährt. Meine kleine Schwester würde noch sagen, dass ich ein bisschen zu organisiert bin, und da hat sie recht. Ich lerne gerade, locker zu bleiben, wenn sich Pläne ändern.", "why": "Die erste Antwort besteht aus zwei vagen Wörtern. Die zweite hat ein klares Bild, ein echtes Beispiel und eine Portion Ehrlichkeit, die sie glaubwürdig macht." },
+    "setting": "Du bist in einem Videoanruf mit Omar, einem Absolventen der Alder University, der ehrenamtlich Alumni-Gespräche führt.",
+    "task": "Omar fragt, wie deine Freunde dich beschreiben würden, und dann nach etwas, woran du arbeitest. Nutz echte Beispiele und sei ehrlich.",
+    "weakHint": "Wähl ein Wort, das wirklich auf dich zutrifft, und gib ein kurzes Beispiel, das es beweist.",
+    "strongHint": "Probier: „Meine Freunde würden sagen, ich bin ___. Zum Beispiel ___.“ Für eine Schwäche: „Woran ich arbeite, ist ___, deshalb habe ich angefangen, ___.“",
+    "takeaway": "Wähl wahre Worte, beweis sie mit Beispielen und sei ehrlich, woran du noch arbeitest.",
+    "opening": "Diese Frage stelle ich immer: Wie würden deine Freunde dich beschreiben?"
+  },
+  "col-hard-spots": {
+    "tier": "Fortgeschritten", "title": "Schlechte Noten und schwere Jahre", "summary": "Eine schlechte Note, ein schwaches Testergebnis, eine Lücke oder ein schweres Jahr.",
+    "intro": ["Die meisten Bewerber haben etwas, worüber sie lieber nicht reden: ein schlechtes Halbjahr, ein niedriges Testergebnis, ein Jahr, in dem das Leben dazwischenkam.", "Wenn es zur Sprache kommt, kann eine ruhige, ehrliche Antwort dir sogar helfen. Sie zeigt Reife, und genau danach suchen Hochschulen."],
+    "sections": [
+      { "heading": "Warum sie fragen", "paragraphs": ["Interviewer wollen dich nicht erwischen. Sie wollen Kontext: Was ist passiert, und hat sich die Lage gebessert? Ein Tief, auf das eine Erholung folgt, erzählt eine starke Geschichte."] },
+      { "heading": "Ehrlich, kurz, nach vorn", "points": ["Ehrlich: Sag in ein, zwei Sätzen, was passiert ist.", "Kurz: keine lange Vorgeschichte und keine Schuldzuweisungen an Lehrkräfte oder andere.", "Nach vorn: Verbring den Großteil deiner Antwort damit, was sich verändert hat und wo du jetzt stehst."] },
+      { "heading": "Du entscheidest, was du erzählst", "paragraphs": ["Wenn der Grund persönlich ist, etwa eine Familiensituation oder Gesundheit, kannst du es allgemein halten: „Es war ein schweres Jahr zu Hause.“ Du schuldest niemandem private Details. Deine Schulberatung kann den Zusammenhang auch in ihrem Gutachten erklären."] }
+    ],
+    "example": { "question": "Ich sehe, dass deine Noten in der zehnten Klasse gefallen sind. Kannst du mir erzählen, was in dem Jahr los war?", "weak": "Ehrlich gesagt mochte mich mein Lehrer in dem Jahr einfach nicht, also war es nicht wirklich meine Schuld.", "strong": "Die zehnte Klasse war ein schweres Jahr. Meine Familie ist mitten im Herbst umgezogen, und ich habe am Wochenende gearbeitet, um zu helfen, deshalb sind meine Noten abgerutscht. In der elften Klasse habe ich mir einen Lernplan gemacht und mit meiner Beratungslehrerin über meine Belastung gesprochen, und ich bin wieder bei Einsen und Zweien.", "why": "Die erste Antwort schiebt die Schuld auf jemand anderen. Die zweite ist ehrlich und kurz und geht schnell dazu über, was sich verändert hat." },
+    "setting": "Du triffst Rachel Kim, Zulassungsberaterin an der Ashford University. Stell dir für diese Übung vor, deine Noten sind ein Jahr lang abgerutscht. Denk dir bei Bedarf einen realistischen Grund aus.",
+    "task": "Rachel fragt nach dem Tief. Sei ehrlich und kurz, gib niemandem die Schuld und konzentrier dich darauf, was sich verändert hat.",
+    "weakHint": "Halt das, was passiert ist, bei ein, zwei ruhigen Sätzen ohne Schuldzuweisung und erzähl dann, was du getan hast, um es zu drehen.",
+    "strongHint": "Probier: „In dem Jahr war ___ los, und meine Noten sind abgerutscht. Seitdem habe ich ___, und jetzt ___.“",
+    "takeaway": "Ehrlich, kurz, nach vorn. Was du danach getan hast, zählt mehr als das, was schiefging.",
+    "opening": "Mir ist aufgefallen, dass deine Noten ein Jahr lang gefallen sind. Kannst du mir ein bisschen erzählen, was damals los war?"
+  },
+  "col-curveballs": {
+    "tier": "Profi", "title": "Überraschungsfragen", "summary": "„Welches Buch hast du zuletzt gelesen?“, Nachrichten und Freizeit.",
+    "intro": ["Ab und zu stellt dir jemand eine Frage, auf die du dich nicht vorbereitet hast: „Welches Buch hast du zuletzt gelesen?“ „Welches Thema in den Nachrichten ist dir wichtig?“ „Was machst du an einem freien Samstag?“", "Das sind keine Tests, wie schlau du bist. Sie sind ein Fenster zu dem, was dich wirklich neugierig macht."],
+    "sections": [
+      { "heading": "Warum sie fragen", "paragraphs": ["Interviewer hören viele eingeübte Antworten. Überraschungsfragen zeigen dich, wie du wirklich bist: was dir auffällt, worüber du nachdenkst und wie du spontan denkst."] },
+      { "heading": "Alles Echte zählt", "points": ["Ein Buch für die Schule, eine Graphic Novel, ein langer Artikel, ein Podcast, eine Doku oder eine YouTube-Serie.", "Bei Nachrichten: Wähl etwas, das dir wirklich wichtig ist, auch wenn es lokal ist. Du brauchst keine steile These, nur was dir aufgefallen ist und warum es dir wichtig ist.", "Bei Freizeit: Sei ehrlich. „Sonntags backe ich mit meiner Oma“ ist eine tolle Antwort."] },
+      { "heading": "Eine Pause ist okay", "paragraphs": ["„Hm, lass mich kurz überlegen“ ist völlig in Ordnung. Antworte dann mit einer Sache und einem Grund und lass das Gespräch von da aus weiterlaufen."] }
+    ],
+    "example": { "question": "Welches Buch hast du zuletzt gelesen, das dir im Kopf geblieben ist? Es muss nicht für die Schule sein.", "weak": "Ähm, ich lese eigentlich nicht. Das letzte war wohl für den Englischunterricht.", "strong": "Eigentlich ist es ein Podcast, kein Buch: eine Reihe darüber, wie Städte entscheiden, wo sie Parks bauen. Darüber hatte ich noch nie nachgedacht, und jetzt fällt mir auf dem Schulweg jede leere Fläche auf. Seitdem hätte ich Lust auf einen Kurs in Stadtplanung.", "why": "Die Person mit der starken Antwort hat auch kein Buch gelesen, aber sie erzählt von etwas, das sie wirklich neugierig macht, und warum es hängen geblieben ist." },
+    "setting": "Du triffst Hollis, einen Absolventen des Westbrook College und pensionierten Geschichtslehrer, für dein Alumni-Gespräch in einem Café.",
+    "task": "Hollis mag überraschende Fragen. Antworte ehrlich mit einer echten Sache, die dich neugierig macht, und sag, warum sie dir im Kopf geblieben ist.",
+    "weakHint": "Es muss kein Buch sein. Wähl eine echte Sache, die du gelesen, gesehen oder gehört hast, und sag, was hängen geblieben ist.",
+    "strongHint": "Probier: „Etwas, das mir in letzter Zeit im Kopf geblieben ist, ist ___. Ich hätte nicht erwartet, dass ___, und jetzt ___.“",
+    "takeaway": "Überraschungsfragen sind ein Fenster zu deiner Neugier. Wähl eine echte Sache und sag, warum sie dir wichtig ist.",
+    "opening": "Ich fange gern mal anders an. Welches Buch hast du zuletzt gelesen, das dir im Kopf geblieben ist? Es muss nicht für die Schule sein."
+  },
+  "col-reading-the-room": {
+    "tier": "Profi", "title": "Alumni oder Zulassungsbüro", "summary": "Lies die Situation, vom Café bis zum Videoanruf.",
+    "intro": ["College-Interviews gibt es in zwei Hauptformen, und sie fühlen sich unterschiedlich an. Ein Alumni-Gespräch ist meist ein lockeres Gespräch mit jemandem, der dort studiert hat. Ein Zulassungsgespräch führt jemand, der im Zulassungsbüro arbeitet und die Hochschule in- und auswendig kennt.", "Zu wissen, mit wem du sprichst und wo, hilft dir, den richtigen Ton zu treffen."],
+    "sections": [
+      { "heading": "Zwei Arten von Interviewern", "points": ["Alumni: Ehrenamtliche, die dort ihren Abschluss gemacht haben. Sie haben deine Bewerbung meist nicht gesehen, sind oft locker und erzählen gern von ihrer eigenen Zeit dort.", "Zulassungsbüro: Mitarbeitende, die Bewerbungen lesen. Sie kennen die Hochschule genau, gehen strukturierter vor und fragen oft nach Details.", "Sei bei beiden du selbst. Pass dich nur ihrer Energie und ihrem Grad an Förmlichkeit an."] },
+      { "heading": "Gespräche im Café", "points": ["Sei fünf bis zehn Minuten früher da. Biete an, dein Getränk selbst zu bezahlen.", "Leg dein Handy weg, mit dem Display nach unten oder in die Tasche.", "Bring zwei oder drei Fragen mit und einen Stift, wenn du dir etwas notieren willst."] },
+      { "heading": "Video-Gespräche", "points": ["Kamera auf Augenhöhe, Licht von vorn (nicht von hinten) und ein ruhiger Ort.", "Schau beim Reden in die Kamera, nicht auf dein eigenes Gesicht.", "Teste vorher den Ton und halt eine Telefonnummer bereit, falls die Verbindung abbricht."] }
+    ],
+    "example": { "question": "Bevor wir anfangen: Wie läuft dein Abschlussjahr bisher?", "weak": "Gut. Stressig.", "strong": "Stressig, aber auf eine gute Art! Ich habe AP Bio und durfte gerade mein eigenes Experiment entwerfen, und dieses Jahr bin ich Kapitän des Schwimmteams. Ehrlich gesagt sind die Bewerbungen der schwierigste Teil, aber ich komme voran.", "why": "Auch Smalltalk zählt. Die starke Antwort ist herzlich, konkret und ehrlich und gibt dem Gegenüber etwas, worauf es eingehen kann." },
+    "setting": "Du bist in einem Videoanruf mit Beatriz, Zulassungsberaterin am Linden College. Es ist ein förmlicheres Zulassungsgespräch.",
+    "task": "Beatriz beginnt mit Smalltalk und wird dann ernster. Pass dich ihrem professionellen Ton an, antworte herzlich und konkret und zeig, dass du dich vor der Kamera wohlfühlst.",
+    "weakHint": "Antworte in ganzen Sätzen mit einem konkreten Detail und bleib professionell, aber freundlich.",
+    "strongHint": "Probier: „Es war ___! Ich ___ und ___. Am schwierigsten war ___, aber ___.“",
+    "takeaway": "Wisse, mit wem du sprichst, pass dich dem Ton an und bring zu beiden die gleichen herzlichen, konkreten Antworten mit.",
+    "opening": "Hallo, kannst du mich gut hören? Super, danke, dass du dabei bist. Bevor wir anfangen: Wie läuft dein Abschlussjahr bisher?"
+  },
+  "col-questions-goodbye": {
+    "tier": "Profi", "title": "Fragen stellen und gut abschließen", "summary": "Stell gute Fragen, verabschiede dich gut und schick ein Dankeschön.",
+    "intro": ["College-Interviews enden fast immer mit: „Welche Fragen hast du an mich?“ Das ist keine Formalität. Es ist deine Chance, echtes Interesse zu zeigen, und oft der Teil, an den sich Interviewer am meisten erinnern.", "Dann kommt der Abschied und ein kleiner Schritt, den die meisten weglassen: die Dankes-E-Mail."],
+    "sections": [
+      { "heading": "Hab immer Fragen", "paragraphs": ["„Nein, alles gut“ kann klingen, als wärst du nicht so interessiert. Bring zwei oder drei Fragen mit, und wenn eine im Gespräch schon beantwortet wurde, frag stattdessen zu etwas nach, das sie gesagt haben."] },
+      { "heading": "Gute Fragen an Alumni", "points": ["„Was hat dich in deinem ersten Jahr am meisten überrascht?“", "„An welchen Kurs oder welche Professorin denkst du heute noch?“", "„Wenn du es noch mal machen könntest, was würdest du anders machen?“"] },
+      { "heading": "Gute Fragen an das Zulassungsbüro", "points": ["„Was haben Studierende gemeinsam, die hier richtig aufblühen?“", "„Wie steigen Erstsemester normalerweise in Forschung oder Clubs ein?“", "Lass Fragen weg, die auf der Website stehen, und frag nie „Werde ich angenommen?“."] },
+      { "heading": "Abschied und Dankeschön", "paragraphs": ["Schließ mit einem Dank und einem Satz echten Interesses: „Vielen Dank für deine Zeit. Das Gespräch hat mich noch mehr darauf gefreut, mich zu bewerben.“", "Schick innerhalb eines Tages eine kurze Dankes-E-Mail mit drei oder vier Sätzen. Erwähn etwas Konkretes, worüber ihr gesprochen habt, damit sie nicht kopiert klingt."] }
+    ],
+    "example": { "question": "Gut, ich habe dir viele Fragen gestellt. Welche Fragen hast du an mich?", "weak": "Nein, ich glaube, alles gut. Du hast alles abgedeckt.", "strong": "Ja! Was hat dich in deinem ersten Jahr am meisten überrascht? Und wenn du zurückgehen könntest, würdest du etwas anders machen?", "why": "Zwei ehrliche Fragen zeigen Neugier und geben dem Gegenüber die Chance, die eigene Geschichte zu erzählen, und das lieben Alumni." },
+    "setting": "Du beendest gerade dein Alumni-Gespräch mit Soraya, einer Absolventin des Harlow College, in einem Café.",
+    "task": "Soraya fragt, welche Fragen du hast. Stell ein oder zwei ehrliche Fragen und beende das Gespräch mit Dank und echtem Interesse.",
+    "weakHint": "Stell mindestens eine echte Frage zu ihren Erfahrungen, und bedank dich am Ende und sag, dass du interessiert bist.",
+    "strongHint": "Probier: „Was hat dich in deinem ersten Jahr am meisten überrascht?“ Und am Ende: „Vielen Dank für deine Zeit. Jetzt freue ich mich noch mehr darauf, mich zu bewerben.“",
+    "takeaway": "Bring echte Fragen mit, ende mit Dank und echtem Interesse und schick innerhalb eines Tages eine kurze Dankes-E-Mail.",
+    "opening": "Gut, ich habe dir viele Fragen gestellt. Welche Fragen hast du an mich?"
+  }
+}
