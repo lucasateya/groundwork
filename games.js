@@ -19,11 +19,60 @@ const GAME_TRACKS = ['all', 'job', 'college'];
 
 // The hub shows these in order. To add a game later: add an entry here,
 // a module in GAME_MODULES and a data file in data/games/.
+// Points: 100 for a right round, plus a combo bonus of 25 for each right
+// answer in a row after the first. Almost-right rounds get a little partial credit.
+const GAME_POINTS = 100;
+const GAME_COMBO_BONUS = 25;
+
+// Small illustrations for the hub and start screens (colors from the site palette).
+const GAME_ART = {
+  rank:
+    '<svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">' +
+      '<rect x="26" y="6" width="88" height="20" rx="7" fill="#fff" stroke="#8f7015" stroke-opacity=".35"/><rect x="34" y="13" width="56" height="6" rx="3" fill="#8f7015" opacity=".55"/>' +
+      '<circle cx="13" cy="16" r="10" fill="#1C2321"/><text x="13" y="20.5" text-anchor="middle" font-size="12" font-weight="700" fill="#F7F8F5" font-family="Inter,sans-serif">1</text>' +
+      '<rect x="26" y="32" width="76" height="20" rx="7" fill="#fff" stroke="#8f7015" stroke-opacity=".35"/><rect x="34" y="39" width="42" height="6" rx="3" fill="#8f7015" opacity=".35"/>' +
+      '<circle cx="13" cy="42" r="10" fill="#8f7015"/><text x="13" y="46.5" text-anchor="middle" font-size="12" font-weight="700" fill="#F7F8F5" font-family="Inter,sans-serif">2</text>' +
+      '<rect x="26" y="58" width="62" height="20" rx="7" fill="#fff" stroke="#8f7015" stroke-opacity=".35"/><rect x="34" y="65" width="30" height="6" rx="3" fill="#8f7015" opacity=".2"/>' +
+      '<circle cx="13" cy="68" r="10" fill="#C9A227"/><text x="13" y="72.5" text-anchor="middle" font-size="12" font-weight="700" fill="#1C2321" font-family="Inter,sans-serif">3</text>' +
+    '</svg>',
+  'really-asking':
+    '<svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">' +
+      '<path d="M10 10h66a8 8 0 0 1 8 8v28a8 8 0 0 1-8 8H38l-14 12v-12H10a8 8 0 0 1-8-8V18a8 8 0 0 1 8-8z" fill="#fff" stroke="#2B4C4A" stroke-opacity=".4"/>' +
+      '<rect x="14" y="22" width="52" height="6" rx="3" fill="#2B4C4A" opacity=".3"/><rect x="14" y="34" width="38" height="6" rx="3" fill="#2B4C4A" opacity=".3"/>' +
+      '<circle cx="86" cy="50" r="17" fill="#E2EBE9" stroke="#2B4C4A" stroke-width="5"/><path d="M98 63l14 14" stroke="#2B4C4A" stroke-width="7" stroke-linecap="round"/>' +
+      '<text x="86" y="57" text-anchor="middle" font-size="20" font-weight="700" fill="#2B4C4A" font-family="Fraunces,serif">?</text>' +
+    '</svg>',
+  build:
+    '<svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">' +
+      '<rect x="8" y="58" width="58" height="20" rx="6" fill="#9A5B3C"/><rect x="16" y="65" width="30" height="6" rx="3" fill="#fff" opacity=".6"/>' +
+      '<rect x="30" y="33" width="58" height="20" rx="6" fill="#fff" stroke="#9A5B3C" stroke-opacity=".5"/><rect x="38" y="40" width="34" height="6" rx="3" fill="#9A5B3C" opacity=".45"/>' +
+      '<rect x="54" y="6" width="58" height="20" rx="6" fill="#fff" stroke="#9A5B3C" stroke-opacity=".5" stroke-dasharray="4 3" transform="rotate(-6 83 16)"/><rect x="62" y="13" width="28" height="6" rx="3" fill="#9A5B3C" opacity=".3" transform="rotate(-6 83 16)"/>' +
+      '<path d="M98 32v14M91 39h14" stroke="#C9A227" stroke-width="4" stroke-linecap="round"/>' +
+    '</svg>',
+  trim:
+    '<svg viewBox="0 0 120 84" aria-hidden="true" focusable="false">' +
+      '<rect x="6" y="10" width="76" height="6" rx="3" fill="#4A3B5C" opacity=".55"/>' +
+      '<rect x="6" y="24" width="64" height="6" rx="3" fill="#4A3B5C" opacity=".2"/><path d="M4 27h70" stroke="#B23A48" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<rect x="6" y="38" width="80" height="6" rx="3" fill="#4A3B5C" opacity=".55"/>' +
+      '<rect x="6" y="52" width="52" height="6" rx="3" fill="#4A3B5C" opacity=".2"/><path d="M4 55h58" stroke="#B23A48" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<rect x="6" y="66" width="40" height="6" rx="3" fill="#4A3B5C" opacity=".55"/>' +
+      '<g stroke="#4A3B5C" stroke-width="3.5" fill="none" stroke-linecap="round"><circle cx="96" cy="62" r="7"/><circle cx="110" cy="56" r="7"/><path d="M101 57l14-30M105 61l-12-34"/></g>' +
+    '</svg>'
+};
+
 const GAME_LIST = [
-  { id:'rank',          name:'Rank the answers',             line:'Three answers to one question. Put them in order, best to worst.', skill:'Answer quality',  tint:'#F6F1E2' },
-  { id:'really-asking', name:'What are they really asking?', line:'Find what the interviewer actually wants to know.',                skill:'The real question', tint:'#EAF0EE' },
-  { id:'build',         name:'Build the answer',             line:'Put the pieces of a strong answer in the right order.',            skill:'Structure',        tint:'#F3EEE9' },
-  { id:'trim',          name:'Trim it',                      line:'Cut a rambling answer down to what matters.',                      skill:'Conciseness',      tint:'#EFEBF2' }
+  { id:'rank', name:'Rank the answers', line:'Three answers to one question. Put them in order, best to worst.', skill:'Answer quality',
+    accent:'#8f7015', tint:'#F6F1E2',
+    how:['Read the interview question.', 'Tap the best answer, then the next best, then the weakest.', 'Check it, and see why the best one wins.'] },
+  { id:'really-asking', name:'What are they really asking?', line:'Find what the interviewer actually wants to know.', skill:'The real question',
+    accent:'#2B4C4A', tint:'#EAF0EE',
+    how:['Read the interview question.', 'Pick what the interviewer really wants to find out.', 'Get a tip for answering it well.'] },
+  { id:'build', name:'Build the answer', line:'Put the pieces of a strong answer in the right order.', skill:'Structure',
+    accent:'#9A5B3C', tint:'#F3EEE9',
+    how:['Read the interview question.', 'Tap the pieces in the order you’d say them.', 'Watch out: in harder rounds, one piece doesn’t belong.'] },
+  { id:'trim', name:'Trim it', line:'Cut a rambling answer down to what matters.', skill:'Conciseness',
+    accent:'#4A3B5C', tint:'#EFEBF2',
+    how:['Read a long, rambling answer.', 'Tap the parts to cut until you’re under the word target.', 'Keep the main point and the best example.'] }
 ];
 function gameInfo(id){ return GAME_LIST.find(g => g.id === id) || null; }
 
@@ -43,6 +92,7 @@ function cleanGames(s){
       best: n(x.best, 3),
       sets: n(x.sets),
       stars: n(x.stars),
+      topScore: n(x.topScore, 100000),
       seen: Array.isArray(x.seen) ? [...new Set(x.seen.filter(i => typeof i === 'string' && i.length < 60))].slice(-300) : []
     };
   });
@@ -56,7 +106,7 @@ function saveGames(s){
   if(typeof scheduleSync === 'function') scheduleSync();
 }
 function gameRecord(s, id){
-  if(!s.games[id]) s.games[id] = { best:0, sets:0, stars:0, seen:[] };
+  if(!s.games[id]) s.games[id] = { best:0, sets:0, stars:0, topScore:0, seen:[] };
   return s.games[id];
 }
 // Sync merge: highest best stars, higher sets played and stars earned,
@@ -70,6 +120,7 @@ function mergeGames(a, b){
     if(!x || !y){ m.games[g.id] = x || y; return; }
     m.games[g.id] = {
       best: Math.max(x.best, y.best), sets: Math.max(x.sets, y.sets), stars: Math.max(x.stars, y.stars),
+      topScore: Math.max(x.topScore, y.topScore),
       seen: [...new Set([...x.seen, ...y.seen])].slice(-300)
     };
   });
@@ -336,7 +387,7 @@ GAME_MODULES.rank = {
         // {2} is the English word ("second"); translations use the number, {3}.
         gameLive(t('Answer {1} placed {2}.', LETTERS[pos], ORDINALS[st.order.length - 1], st.order.length));
       }
-      ctx.update('[data-ans="' + ai + '"]');
+      ctx.update('[data-ans="' + ai + '"]', null, at >= 0 ? null : '.rank-item[data-key="' + ai + '"]');
     }));
     if(!ctx.checked) enableDrag(root, '.rank-item', (from, to, after) => {
       const f = Number(from), tIdx = Number(to);
@@ -354,6 +405,8 @@ GAME_MODULES.rank = {
     const want = ['strong', 'okay', 'weak'];
     return st.order.every((ai, i) => round.answers[ai].quality === want[i]);
   },
+  // Picked the best answer first: some credit.
+  partial(st, round){ return round.answers[st.order[0]] && round.answers[st.order[0]].quality === 'strong' ? 40 : 0; },
   reveal({ round, st }){
     const want = ['strong', 'okay', 'weak'];
     const labels = { strong:'Best', okay:'Okay', weak:'Weakest' };
@@ -398,7 +451,7 @@ GAME_MODULES['really-asking'] = {
       btn.addEventListener('click', () => {
         ctx.st.pick = i;
         gameLive(t('Option {1} chosen.', i + 1));
-        ctx.update('[data-opt="' + i + '"]');
+        ctx.update('[data-opt="' + i + '"]', null, '[data-opt="' + i + '"]');
       });
       btn.addEventListener('keydown', e => {
         const k = e.key;
@@ -459,7 +512,7 @@ GAME_MODULES.build = {
       st.placed.push(id);
       gameLive(t('Added as piece {1}.', st.placed.length));
       const next = st.pool[0];
-      ctx.update(next ? '[data-add="' + next + '"]' : '[data-back="' + id + '"]');
+      ctx.update(next ? '[data-add="' + next + '"]' : '[data-back="' + id + '"]', null, '.build-item[data-key="' + id + '"]');
     }));
     root.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => {
       const id = b.dataset.back;
@@ -476,7 +529,7 @@ GAME_MODULES.build = {
       [st.placed[i], st.placed[j]] = [st.placed[j], st.placed[i]];
       gameLive(t('Moved to position {1}.', j + 1));
       const sel = (d < 0 ? '[data-up="' : '[data-down="') + id + '"]';
-      ctx.update(sel, '[data-back="' + id + '"]');
+      ctx.update(sel, '[data-back="' + id + '"]', '.build-item[data-key="' + id + '"]');
     };
     root.querySelectorAll('[data-up]').forEach(b => b.addEventListener('click', () => move(b.dataset.up, -1)));
     root.querySelectorAll('[data-down]').forEach(b => b.addEventListener('click', () => move(b.dataset.down, 1)));
@@ -500,6 +553,12 @@ GAME_MODULES.build = {
   },
   ready(st, round){ return st.placed.length === this.needed(round); },
   check(st, round){ return (round.orders || []).some(o => o.length === st.placed.length && o.every((id, i) => st.placed[i] === id)); },
+  // 10 points for each piece in a right spot (best matching order), 10 for leaving the decoy out.
+  partial(st, round){
+    const spots = Math.max(0, ...(round.orders || []).map(o => o.filter((id, i) => st.placed[i] === id).length));
+    const decoyOut = round.hard && !round.pieces.some(p => p.role === 'decoy' && st.placed.includes(p.id)) ? 10 : 0;
+    return Math.min(60, spots * 10 + decoyOut);
+  },
   reveal({ round, st }){
     const model = round.orders[0];
     const decoys = round.pieces.filter(p => p.role === 'decoy');
@@ -572,7 +631,7 @@ GAME_MODULES.trim = {
       const c = this.counts(round, st, lang);
       const unitLeft = isZh(lang) ? '{1} characters left.' : '{1} words left.';
       gameLive((st.cut[i] ? t('Crossed out.') : t('Put back.')) + ' ' + t(unitLeft, c.now));
-      ctx.update('[data-seg="' + i + '"]');
+      ctx.update('[data-seg="' + i + '"]', null, '[data-seg="' + i + '"]');
     }));
   },
   ready(st, round, lang){ const c = this.counts(round, st, lang); return c.now <= c.target && c.now > 0; },
@@ -582,6 +641,12 @@ GAME_MODULES.trim = {
     return isZh(lang) ? t('Cut {1} more characters to check.', c.now - c.target) : t('Cut {1} more words to check.', c.now - c.target);
   },
   check(st, round){ return round.segments.every((s, i) => s.tag === 'cut' || !st.cut[i]); },
+  // Kept the main point but lost the example (or the other way round): some credit.
+  partial(st, round){
+    const keep = round.segments.map((s, i) => ({ s, i })).filter(x => x.s.tag !== 'cut');
+    const kept = keep.filter(x => !st.cut[x.i]).length;
+    return keep.length ? Math.round(40 * kept / keep.length) : 0;
+  },
   reveal({ round, st, lang }){
     const model = round.segments.filter(s => s.tag !== 'cut').map(s => s.t).join(this.joiner(lang));
     const lost = round.segments.map((s, i) => ({ s, i })).filter(x => st.cut[x.i] && x.s.tag !== 'cut');
@@ -594,6 +659,41 @@ GAME_MODULES.trim = {
 };
 
 // ---------------------------------------------------------------------
+// Little effects. All of them are skipped when the device asks for less motion.
+// ---------------------------------------------------------------------
+function gameMotion(){ return !(typeof reduceMotion === 'function' && reduceMotion()); }
+function countUp(node, from, to, ms){
+  if(!node) return;
+  if(!gameMotion() || from === to){ node.textContent = to; return; }
+  const t0 = performance.now();
+  const step = now => {
+    const k = Math.min(1, (now - t0) / ms);
+    node.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+    if(k < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+  // Background tabs pause animation frames; make sure the final number lands.
+  setTimeout(() => { if(node.isConnected) node.textContent = to; }, ms + 150);
+}
+function replayClass(node, cls){
+  if(!node || !gameMotion()) return;
+  node.classList.remove('pop', 'shake', 'flash-ok', 'enter', 'ready-pulse');
+  void node.offsetWidth; // restart the animation
+  node.classList.add(cls);
+}
+function floatPoints(anchor, text){
+  if(!anchor || !gameMotion()) return;
+  const r = anchor.getBoundingClientRect();
+  const pop = document.createElement('div');
+  pop.className = 'game-float';
+  pop.textContent = text;
+  pop.style.left = (r.left + r.width / 2) + 'px';
+  pop.style.top = (r.top + window.scrollY) + 'px';
+  document.body.appendChild(pop);
+  setTimeout(() => pop.remove(), 1300);
+}
+
+// ---------------------------------------------------------------------
 // Hub (#/games)
 // ---------------------------------------------------------------------
 function renderGamesHub(){
@@ -604,14 +704,18 @@ function renderGamesHub(){
     const rec = s.games[g.id];
     const played = rec && rec.sets > 0;
     const meta = played
-      ? '<span class="game-card-stars" aria-label="' + escapeHTML(t('Best: {1} of 3 stars', rec.best)) + '">' + starsHTML(rec.best) + '</span> <span>' + (rec.sets === 1 ? t('1 set played') : t('{1} sets played', rec.sets)) + '</span>'
-      : 'Not played yet';
-    return '<div class="card tool-card game-card" data-game="' + g.id + '" style="background:' + g.tint + '">' +
-      '<p class="tool-time">' + escapeHTML(g.skill) + '</p>' +
-      '<h2>' + escapeHTML(g.name) + '</h2>' +
-      '<p>' + escapeHTML(g.line) + '</p>' +
-      '<p class="tool-meta game-card-meta">' + meta + '</p>' +
-      '<div class="tool-foot"><a class="btn btn-primary" href="#/games/' + g.id + '">' + (played ? 'Play again' : 'Play') + '</a></div>' +
+      ? '<span class="game-card-stars" aria-label="' + escapeHTML(t('Best: {1} of 3 stars', rec.best)) + '">' + starsHTML(rec.best) + '</span>' +
+        (rec.topScore ? ' <span>' + t('Top score: {1}', rec.topScore) + '</span>' : '')
+      : '<span>Not played yet</span>';
+    return '<div class="card game-card" data-game="' + g.id + '" style="--g-accent:' + g.accent + ';--g-tint:' + g.tint + '">' +
+      '<div class="game-card-art">' + GAME_ART[g.id] + '</div>' +
+      '<div class="game-card-body">' +
+        '<p class="game-card-skill">' + escapeHTML(g.skill) + '</p>' +
+        '<h2>' + escapeHTML(g.name) + '</h2>' +
+        '<p>' + escapeHTML(g.line) + '</p>' +
+        '<p class="game-card-meta">' + meta + '</p>' +
+        '<div class="tool-foot"><a class="btn btn-primary game-play-btn" href="#/games/' + g.id + '">' + (played ? 'Play again' : 'Play') + '</a></div>' +
+      '</div>' +
     '</div>';
   }).join('');
   el('games-grid').querySelectorAll('.game-card').forEach(card => card.addEventListener('click', e => {
@@ -621,24 +725,55 @@ function renderGamesHub(){
 }
 
 // ---------------------------------------------------------------------
-// The shell: header, round, Check / reveal / Next, end screen
+// The shell: start screen, header, round, Check / reveal / Next, end screen
 // ---------------------------------------------------------------------
-let gameRun = null; // { id, rounds, i, results, st, checked, lang, reviewed, fallback, done, track }
+let gameRun = null; // { id, rounds, i, results, points, st, checked, lang, reviewed, fallback, done, track, score, combo, bestCombo }
+
+function setGameTheme(info){
+  const view = el('view-game');
+  view.style.setProperty('--g-accent', info.accent);
+  view.style.setProperty('--g-tint', info.tint);
+}
 
 async function openGame(id){
   const info = gameInfo(id);
   if(!info || !GAME_MODULES[id]){ go('#/games', true); return; }
+  setGameTheme(info);
   // Coming back to a set in progress (same game): keep playing it.
   if(gameRun && gameRun.id === id && !gameRun.done){ renderGame(); return; }
-  await startGameSet(id);
+  gameRun = null;
+  renderGameIntro(id);
+}
+
+function renderGameIntro(id){
+  const info = gameInfo(id);
+  const rec = loadGames().games[id];
+  el('game-title').textContent = info.name;
+  el('game-hud').hidden = true;
+  el('game-lang-note').hidden = true;
+  const stats = rec && rec.sets > 0
+    ? '<p class="game-intro-stats"><span class="game-card-stars" aria-label="' + escapeHTML(t('Best: {1} of 3 stars', rec.best)) + '">' + starsHTML(rec.best) + '</span>' +
+      (rec.topScore ? ' <span>' + t('Top score: {1}', rec.topScore) + '</span>' : '') + '</p>'
+    : '';
+  el('game-stage').innerHTML =
+    '<div class="game-intro">' +
+      '<div class="game-intro-art">' + GAME_ART[id] + '</div>' +
+      '<p class="game-intro-line">' + escapeHTML(info.line) + '</p>' +
+      '<ol class="game-how">' + info.how.map(h => '<li>' + escapeHTML(h) + '</li>').join('') + '</ol>' +
+      '<p class="game-intro-rules">5 rounds. 100 points for each right answer, and bonus points for answers right in a row.</p>' +
+      stats +
+      '<button type="button" class="btn btn-primary game-start-btn" id="game-start">Start</button>' +
+    '</div>';
+  el('game-start').addEventListener('click', () => startGameSet(id));
+  el('game-start').focus({ preventScroll:true });
 }
 
 async function startGameSet(id){
   const info = gameInfo(id);
+  setGameTheme(info);
   el('game-title').textContent = info.name;
-  el('game-stage').innerHTML = '<p class="game-loading" role="status"><span class="spinner" aria-hidden="true"></span> Loading…</p>';
-  el('game-round-label').textContent = '';
-  el('game-bar').style.width = '0%';
+  el('game-stage').innerHTML = '<p class="game-loading" role="status"><span class="spinner" aria-hidden="true"></span> <span>Loading…</span></p>';
+  el('game-hud').hidden = true;
   el('game-lang-note').hidden = true;
   let content;
   try{ content = await loadGameContent(id, interviewLang()); }
@@ -653,28 +788,48 @@ async function startGameSet(id){
   const track = gameTrack();
   const rounds = pickGameRounds(id, content.rounds, track);
   if(!rounds.length){ el('game-stage').innerHTML = '<p class="error-banner" role="alert">No rounds found for this game yet.</p>'; return; }
-  gameRun = { id, rounds, i:0, results:[], st:null, checked:false, lang:content.lang, reviewed:content.reviewed, fallback:content.fallback, done:false, track, record:null };
+  gameRun = { id, rounds, i:0, results:[], points:[], st:null, checked:false, lang:content.lang, reviewed:content.reviewed, fallback:content.fallback,
+    done:false, track, record:null, score:0, combo:0, bestCombo:0 };
   gameRun.st = GAME_MODULES[id].init(rounds[0]);
   renderGame(true);
+}
+
+function renderHud(){
+  const run = gameRun;
+  el('game-hud').hidden = false;
+  el('game-round-label').textContent = run.done ? 'Set complete' : t('Round {1} of {2}', run.i + 1, run.rounds.length);
+  el('game-pips').innerHTML = run.rounds.map((r, i) => {
+    const res = run.results[i];
+    const cls = res === true ? 'ok' : res === false ? 'miss' : (i === run.i && !run.done ? 'now' : '');
+    return '<li class="' + cls + '">' + (res === true ? '✓' : res === false ? '✗' : '') + '</li>';
+  }).join('');
+  el('game-score').textContent = run.score;
+  const combo = el('game-combo');
+  combo.hidden = run.combo < 2 || run.done;
+  combo.textContent = t('{1} in a row', run.combo);
 }
 
 function renderGame(focusTop){
   const run = gameRun;
   if(!run) return;
   const info = gameInfo(run.id);
+  setGameTheme(info);
   el('game-title').textContent = info.name;
   const note = el('game-lang-note');
   if(run.fallback){ note.hidden = false; note.textContent = t('This game is in English for now.'); }
   else if(!run.reviewed){ note.hidden = false; note.innerHTML = '<span class="lang-beta">Beta</span> <span>This translation hasn’t been checked by a fluent speaker yet.</span>'; }
   else note.hidden = true;
+  renderHud();
   if(run.done){ renderGameEnd(); return; }
-  el('game-round-label').textContent = 'Round ' + (run.i + 1) + ' of ' + run.rounds.length;
-  el('game-bar').style.width = ((run.i + (run.checked ? 1 : 0)) / run.rounds.length * 100) + '%';
   renderGameRound();
-  if(focusTop){ const h = el('game-q'); if(h) h.focus({ preventScroll:true }); }
+  if(focusTop){
+    const h = el('game-q');
+    if(h) h.focus({ preventScroll:true });
+    replayClass(el('game-stage'), 'enter');
+  }
 }
 
-function renderGameRound(focusSel, fallbackSel){
+function renderGameRound(focusSel, fallbackSel, popSel){
   const run = gameRun;
   const mod = GAME_MODULES[run.id];
   const round = run.rounds[run.i];
@@ -686,8 +841,14 @@ function renderGameRound(focusSel, fallbackSel){
   if(run.checked){
     const ok = run.results[run.i];
     const info = gameInfo(run.id);
+    const pts = run.points[run.i] || 0;
     reveal = '<div class="game-reveal ' + (ok ? 'ok' : 'miss') + '" id="game-reveal">' +
-      '<p class="game-verdict"><span aria-hidden="true">' + (ok ? '✓' : '✗') + '</span> ' + escapeHTML(run.line) + '</p>' +
+      '<div class="game-verdict-row">' +
+        '<p class="game-verdict"><span aria-hidden="true">' + (ok ? '✓' : '✗') + '</span> ' + escapeHTML(run.line) + '</p>' +
+        '<p class="game-round-points' + (pts ? '' : ' zero') + '" id="game-round-points">+' + pts + '</p>' +
+      '</div>' +
+      (ok && run.combo >= 2 ? '<p class="game-combo-line">' + t('{1} in a row! +{2} bonus', run.combo, (run.combo - 1) * GAME_COMBO_BONUS) + '</p>' : '') +
+      (!ok && pts ? '<p class="game-combo-line partial">' + t('Partly right: +{1}', pts) + '</p>' : '') +
       mod.reveal(ctx) +
       (round.why ? '<p class="game-why"><span class="reveal-role">Why</span> <span translate="no">' + escapeHTML(round.why) + '</span></p>' : '') +
       '<p class="game-skill"><span>Skill:</span> <span>' + escapeHTML(info.skill) + '</span></p>' +
@@ -699,16 +860,16 @@ function renderGameRound(focusSel, fallbackSel){
     reveal +
     '<div class="game-actions">' +
       (run.checked
-        ? '<button type="button" class="btn btn-primary" id="game-next">' + (last ? 'See results' : 'Next') + '</button>'
-        : '<button type="button" class="btn btn-primary" id="game-check"' + (ready ? '' : ' disabled') + '>Check</button>' +
+        ? '<button type="button" class="btn btn-primary game-go-btn" id="game-next">' + (last ? 'See results' : 'Next') + '</button>'
+        : '<button type="button" class="btn btn-primary game-go-btn" id="game-check"' + (ready ? '' : ' disabled') + '>Check</button>' +
           (readyNote ? '<span class="game-ready-note">' + escapeHTML(readyNote) + '</span>' : '')) +
     '</div>';
-  ctx.update = (sel, alt) => {
-    renderGameRound(sel, alt);
-  };
+  ctx.update = (sel, alt, pop) => renderGameRound(sel, alt, pop);
   mod.bind(el('game-round'), ctx);
   if(run.checked) el('game-next').addEventListener('click', nextGameRound);
   else el('game-check').addEventListener('click', checkGameRound);
+  if(popSel) replayClass(document.querySelector('#game-round ' + popSel), 'pop');
+  if(!run.checked && ready && focusSel) replayClass(el('game-check'), 'ready-pulse');
   if(focusSel){
     const f = document.querySelector('#game-round ' + focusSel + ':not(:disabled)') || (fallbackSel && document.querySelector('#game-round ' + fallbackSel + ':not(:disabled)'));
     if(f) f.focus({ preventScroll:true });
@@ -723,16 +884,28 @@ function checkGameRound(){
   const round = run.rounds[run.i];
   if(!mod.ready(run.st, round, run.lang)) return;
   const ok = mod.check(run.st, round, run.lang);
+  const before = run.score;
+  run.combo = ok ? run.combo + 1 : 0;
+  run.bestCombo = Math.max(run.bestCombo, run.combo);
+  const pts = ok ? GAME_POINTS + (run.combo - 1) * GAME_COMBO_BONUS : (mod.partial ? mod.partial(run.st, round, run.lang) : 0);
   run.results[run.i] = ok;
+  run.points[run.i] = pts;
+  run.score += pts;
   run.checked = true;
   run.line = pickLine(ok ? GAME_RIGHT_LINES : GAME_WRONG_LINES);
   markRoundSeen(run.id, round.id);
   renderGame();
-  gameLive((ok ? t('Correct.') : t('Not quite.')) + ' ' + t(run.line));
+  el('game-score').textContent = before;
+  countUp(el('game-score'), before, run.score, 700);
+  replayClass(el('game-stage'), ok ? 'flash-ok' : 'shake');
+  if(pts) floatPoints(el('game-round-points'), '+' + pts);
+  if(ok && run.combo >= 2) replayClass(el('game-combo'), 'pop');
+  replayClass(document.querySelector('#game-pips li:nth-child(' + (run.i + 1) + ')'), 'pop');
+  gameLive((ok ? t('Correct.') : t('Not quite.')) + ' ' + t(run.line) + ' ' + t('+{1} points. Score: {2}.', pts, run.score));
   const next = el('game-next');
   if(next) next.focus({ preventScroll:true });
   const rev = el('game-reveal');
-  if(rev && rev.scrollIntoView) rev.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block:'nearest' });
+  if(rev && rev.scrollIntoView) rev.scrollIntoView({ behavior: gameMotion() ? 'smooth' : 'auto', block:'nearest' });
 }
 
 function nextGameRound(){
@@ -756,20 +929,23 @@ function finishGameSet(){
   const s = loadGames();
   const rec = gameRecord(s, run.id);
   const newBest = rec.sets > 0 && stars > rec.best;
+  const newHigh = rec.sets > 0 && run.score > (rec.topScore || 0);
   rec.best = Math.max(rec.best, stars);
+  rec.topScore = Math.max(rec.topScore || 0, run.score);
   rec.sets += 1;
   rec.stars += stars;
   saveGames(s);
   recordActivity(); // a finished set counts as practice for the streak
   run.done = true;
-  run.record = { right, stars, newBest };
+  run.record = { right, stars, newBest, newHigh };
   renderGame();
-  const starsEl = el('game-end-stars');
-  celebrate(before, starsEl, false);
+  window.scrollTo(0, 0);
+  celebrate(before, el('game-end-stars'), false);
   const h = el('game-end-title');
   if(h) h.focus({ preventScroll:true });
 }
 
+const GAME_END_TITLES = { 3: 'Perfect set!', 2: 'Nice work!', 1: 'Good start', 0: 'Keep going' };
 const GAME_END_LINES = {
   3: 'Every round right. That’s a sharp eye.',
   2: 'Solid set. A couple more and you’ll have it down.',
@@ -783,21 +959,24 @@ function renderGameEnd(){
   const missed = run.rounds.find((round, i) => !run.results[i]);
   const mod = GAME_MODULES[run.id];
   const remember = missed ? mod.missLine(missed) : (run.rounds[0] && run.rounds[0].why);
-  el('game-round-label').textContent = 'Set complete';
-  el('game-bar').style.width = '100%';
+  const starSpans = [0, 1, 2].map(i => '<span class="end-star' + (i < r.stars ? ' on' : '') + '" style="animation-delay:' + (0.25 + i * 0.3) + 's">' + (i < r.stars ? '★' : '☆') + '</span>').join('');
   el('game-stage').innerHTML =
     '<div class="game-end">' +
+      '<p class="game-end-kicker">' + escapeHTML(GAME_END_TITLES[r.stars]) + '</p>' +
+      '<p class="game-end-stars" id="game-end-stars" role="img" aria-label="' + escapeHTML(t('{1} of 3 stars', r.stars)) + '">' + starSpans + '</p>' +
+      '<p class="game-end-score"><b id="game-end-score">0</b> <span>points</span></p>' +
+      (r.newHigh ? '<p class="game-best">New high score!</p>' : r.newBest ? '<p class="game-best">New best!</p>' : '') +
       '<h2 class="game-end-title" id="game-end-title" tabindex="-1">' + t('You got {1} of {2}', r.right, run.rounds.length) + '</h2>' +
-      '<p class="qotd-stars game-end-stars" id="game-end-stars" aria-label="' + escapeHTML(t('{1} of 3 stars', r.stars)) + '">' + starsHTML(r.stars) + '</p>' +
-      (r.newBest ? '<p class="game-best">New best!</p>' : '') +
+      (run.bestCombo >= 2 ? '<p class="game-end-combo">' + t('Best streak: {1} in a row', run.bestCombo) + '</p>' : '') +
       '<p class="game-end-line">' + escapeHTML(GAME_END_LINES[r.stars]) + '</p>' +
       (remember ? '<div class="fb-block gold"><h4>Worth remembering</h4><p translate="no">' + escapeHTML(remember) + '</p></div>' : '') +
       '<p class="fine">' + (r.stars > 0 ? t('+{1} XP. Counts toward your streak.', r.stars * GAME_STAR_XP) : 'Counts toward your streak.') + '</p>' +
       '<div class="game-actions">' +
-        '<button type="button" class="btn btn-primary" id="game-again">Play again</button>' +
+        '<button type="button" class="btn btn-primary game-go-btn" id="game-again">Play again</button>' +
         '<a class="btn btn-secondary" href="#/games">Back to games</a>' +
       '</div>' +
     '</div>';
+  countUp(el('game-end-score'), 0, run.score, 1100);
   el('game-again').addEventListener('click', () => startGameSet(run.id));
 }
 
@@ -805,3 +984,4 @@ function quitGame(){
   gameRun = null; // nothing is lost but the current set
   go('#/games');
 }
+
