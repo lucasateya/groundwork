@@ -1,0 +1,115 @@
+{
+  "col-activities": {
+    "tier": "Principiante", "title": "Lo que te enseñaron tus actividades", "summary": "Habla de lo que haces fuera de clase sin recitar tu currículum.",
+    "intro": ["“Cuéntame qué haces fuera de clase”. La trampa aquí es recitar toda tu lista de actividades: “Estoy en el consejo de estudiantes, en el club de voluntariado, en fútbol, en la banda…”.", "Tu entrevistador puede leer una lista. Lo que no puede leer es lo que esas cosas significan para ti. De eso trata esta lección."],
+    "sections": [
+      { "heading": "Profundiza, no abarques", "paragraphs": ["Elige las una o dos actividades que más te importan y habla de ellas en detalle. Una historia real vale más que diez nombres de clubes."] },
+      { "heading": "Todo cuenta", "points": ["Un trabajo a medio tiempo, cuidar a tus hermanos, ayudar en tu comunidad religiosa, un club de videojuegos, aprender guitarra por tu cuenta.", "Las universidades saben que muchos estudiantes tienen responsabilidades en lugar de clubes. Eso cuenta igual."] },
+      { "heading": "El “¿y qué?”", "paragraphs": ["Después de decir lo que hiciste, añade lo que aprendiste o cómo te cambió. “Aprendí que puedo resolver cosas difíciles si tengo paciencia” es la parte que recordarán."] }
+    ],
+    "example": { "question": "Cuéntame algo que hagas fuera de clase.", "weak": "Estoy en el consejo de estudiantes, en el club de voluntariado, en fútbol y en la banda, y los fines de semana hago voluntariado en el hospital.", "strong": "Lo que más me importa es el equipo de robótica. El año pasado nuestro robot no pasaba la inspección, así que aprendí por mi cuenta a recablear la placa eléctrica con videos de YouTube. Me enseñó que puedo resolver cosas difíciles si tengo paciencia, algo que sinceramente antes no creía.", "why": "La primera respuesta es una lista. La segunda elige una cosa, cuenta una historia rápida y termina con lo que el estudiante aprendió de sí mismo." },
+    "setting": "Te reúnes con Gabe, exalumno de Pinecrest College, en una biblioteca pública para tu entrevista con exalumnos.",
+    "task": "Gabe te pregunta qué haces fuera de clase. Elige una o dos cosas, profundiza y di lo que aprendiste.",
+    "weakHint": "En lugar de enumerar actividades, elige la que más te importa y cuenta una historia rápida sobre ella.",
+    "strongHint": "Prueba: “Lo que más me importa es ___. Una vez, ___. Me enseñó ___”.",
+    "takeaway": "Una actividad, una historia, una cosa que aprendiste. Eso se recuerda más que una lista.",
+    "opening": "Bueno, el instituto es solo una parte. Cuéntame algo que hagas fuera de clase."
+  },
+  "col-real-story": {
+    "tier": "Intermedio", "title": "Cuenta una historia real", "summary": "Usa STAR, versión universidad: un reto y lo que aprendiste.",
+    "intro": ["“Cuéntame un reto al que te hayas enfrentado”. Las universidades lo preguntan porque la universidad está llena de retos, y quieren saber cómo los manejas.", "Usarás la misma forma STAR de las lecciones de trabajo, con un añadido importante para la universidad: lo que aprendiste."],
+    "sections": [
+      { "heading": "STAR, más reflexión", "points": ["Situación: describe la escena en una frase.", "Tarea: lo que tenías que hacer.", "Acción: lo que hiciste. Debería ser la parte más larga.", "Resultado: cómo terminó.", "Reflexión: lo que aprendiste o cómo manejas las cosas ahora. Para la universidad, esta parte es la que más importa."] },
+      { "heading": "Elegir tu reto", "paragraphs": ["Elige algo real pero manejable: una asignatura que te tumbó, un equipo que no se llevaba bien, un trabajo que se complicó. No tiene que ser dramático. Y nunca tienes que contar algo doloroso o privado de lo que no te sientas cómodo hablando."] },
+      { "heading": "Di “yo” y luego qué cambió", "paragraphs": ["Mantén el foco en lo que hiciste tú. Luego termina con la reflexión, para que lo último que oigan sea cómo has crecido."] }
+    ],
+    "example": { "question": "Cuéntame un reto al que te hayas enfrentado y cómo lo manejaste.", "weak": "He tenido muchos retos, pero siempre trabajo duro y salgo adelante.", "strong": "En décimo curso saqué un 54 en mi primer examen de química. Nunca había suspendido nada. Empecé a ir dos veces por semana a las sesiones de ayuda que daba mi profesora a la hora de comer e hice tarjetas de estudio para cada unidad. Terminé el año con un notable. Ahora pido ayuda en cuanto me lío, en vez de esperar a que sea una crisis.", "why": "La primera respuesta es una afirmación. La segunda es un momento real con una acción clara y una reflexión que muestra crecimiento." },
+    "setting": "Te reúnes con Imani, subdirectora de admisiones de Kestrel College, en la oficina de admisiones.",
+    "task": "Imani te pregunta por un reto. Cuenta una historia real usando STAR y termina con lo que aprendiste.",
+    "weakHint": "Elige un momento real, no “siempre…”. Di qué pasó, qué hiciste y qué aprendiste.",
+    "strongHint": "Prueba: “Cuando ___, tenía que ___. Así que ___. Al final, ___. Lo que aprendí es ___”.",
+    "takeaway": "Situación, tarea, acción, resultado, y luego lo que aprendiste. La reflexión es lo que recuerdan las universidades.",
+    "opening": "Gracias por venir hoy. Me gustaría que me hablaras de un reto al que te hayas enfrentado. ¿Qué pasó y cómo lo manejaste?"
+  },
+  "col-knowing-yourself": {
+    "tier": "Intermedio", "title": "Describirte a ti mismo", "summary": "Fortalezas, debilidades y “¿Cómo te describirían tus amigos?”",
+    "intro": ["Algunas preguntas no tratan de lo que has hecho, sino de quién eres: “¿Cómo te describirían tus amigos?”, “¿Cuál es tu mayor fortaleza?”, “¿En qué estás trabajando?”.", "Resultan incómodas porque te estás describiendo. El truco es dejar que los ejemplos presuman por ti."],
+    "sections": [
+      { "heading": "Por qué preguntan", "paragraphs": ["Las universidades están formando una comunidad, no solo una promoción. Estas preguntas muestran si te conoces y si serías alguien con quien a los demás les gustaría vivir puerta con puerta."] },
+      { "heading": "Usa palabras reales y demuéstralas", "points": ["Elige una o dos palabras que sean verdad, no las que crees que suenan mejor.", "Respalda cada una con un ejemplo rápido y concreto.", "Un poco de humor o sinceridad (“mi hermana diría que soy demasiado organizado”) lo hace creíble."] },
+      { "heading": "Debilidades: sinceridad y crecimiento", "paragraphs": ["Si te preguntan por una debilidad, nombra algo real, da un ejemplo rápido y dedica la mayor parte de tu respuesta a lo que estás haciendo al respecto. Evita “soy perfeccionista”. Todo el mundo lo dice y suena a evasiva."] }
+    ],
+    "example": { "question": "¿Cómo te describirían tus amigos?", "weak": "Supongo que dirían que soy simpático y gracioso.", "strong": "Mis amigos dirían que soy el que lo planea todo. Soy quien organiza los grupos de estudio y busca cómo llegar a los partidos fuera de casa. Mi hermana pequeña añadiría que soy un poco demasiado organizado, y tiene razón. Estoy aprendiendo a adaptarme cuando los planes cambian.", "why": "La primera son dos palabras vagas. La segunda tiene una identidad clara, un ejemplo real y un toque de sinceridad que la hace creíble." },
+    "setting": "Estás en una videollamada con Omar, exalumno de Alder University que hace entrevistas como voluntario.",
+    "task": "Omar te pregunta cómo te describirían tus amigos, y luego por algo en lo que estés trabajando. Usa ejemplos reales y sé sincero.",
+    "weakHint": "Elige una palabra que sea muy cierta sobre ti y da un ejemplo rápido que la demuestre.",
+    "strongHint": "Prueba: “Mis amigos dirían que soy ___. Por ejemplo, ___”. Para una debilidad: “Algo en lo que estoy trabajando es ___, así que he empezado a ___”.",
+    "takeaway": "Elige palabras ciertas, demuéstralas con ejemplos y sé sincero sobre lo que aún estás trabajando.",
+    "opening": "Esta la pregunto siempre: ¿cómo te describirían tus amigos?"
+  },
+  "col-hard-spots": {
+    "tier": "Intermedio", "title": "Malas notas y años difíciles", "summary": "Una mala nota, una puntuación baja, un hueco o un año difícil.",
+    "intro": ["Casi todos los aspirantes tienen algo de lo que preferirían no hablar: un mal semestre, una puntuación baja, un año en el que la vida se interpuso.", "Si sale el tema, una respuesta tranquila y sincera puede incluso ayudarte. Muestra madurez, y eso es justo lo que buscan las universidades."],
+    "sections": [
+      { "heading": "Por qué preguntan", "paragraphs": ["Los entrevistadores no intentan pillarte. Quieren contexto: qué pasó y si las cosas han mejorado. Una caída seguida de una recuperación cuenta una historia potente."] },
+      { "heading": "Sincero, breve, hacia delante", "points": ["Sincero: di lo que pasó en una o dos frases.", "Breve: sin historias largas y sin culpar a profesores ni a otras personas.", "Hacia delante: dedica la mayor parte de tu respuesta a lo que cambió y a cómo están las cosas ahora."] },
+      { "heading": "Tú decides qué contar", "paragraphs": ["Si el motivo es personal, como una situación familiar o de salud, puedes decirlo en general: “Fue un año difícil en casa”. Nunca le debes detalles privados a un entrevistador. Tu orientador escolar también puede explicar el contexto en su carta."] }
+    ],
+    "example": { "question": "Veo que tus notas bajaron en décimo curso. ¿Me cuentas qué pasó ese año?", "weak": "La verdad es que ese año el profesor me tenía manía, así que no fue culpa mía.", "strong": "Décimo fue un año difícil. Mi familia se mudó a mitad del otoño y yo trabajaba los fines de semana para ayudar, así que mis notas bajaron. En undécimo me hice un horario de estudio y hablé con mi orientador sobre mi carga de trabajo, y volví a sacar sobresalientes y notables.", "why": "La primera respuesta culpa a otra persona. La segunda es sincera y breve, y pasa rápido a lo que cambió." },
+    "setting": "Te reúnes con Rachel Kim, asesora de admisiones de Ashford University. Para esta práctica, imagina que tus notas bajaron durante un año. Inventa un motivo realista si lo necesitas.",
+    "task": "Rachel te pregunta por la bajada. Sé sincero y breve, no culpes a nadie y céntrate en lo que cambió.",
+    "weakHint": "Limita lo que pasó a una o dos frases tranquilas sin culpar a nadie, y luego habla de lo que hiciste para darle la vuelta.",
+    "strongHint": "Prueba: “Ese año estaba pasando ___, y mis notas bajaron. Desde entonces he ___, y ahora ___”.",
+    "takeaway": "Sincero, breve, hacia delante. Lo que hiciste después importa más que lo que salió mal.",
+    "opening": "Vi que tus notas bajaron durante un año. ¿Me cuentas un poco qué estaba pasando entonces?"
+  },
+  "col-curveballs": {
+    "tier": "Avanzado", "title": "Preguntas inesperadas", "summary": "“¿Qué libro has leído últimamente?”, la actualidad y el tiempo libre.",
+    "intro": ["De vez en cuando, un entrevistador te lanza una pregunta que no preparaste: “¿Qué libro has leído últimamente?”, “¿Qué noticia te importa?”, “¿Qué haces un sábado libre?”.", "No son pruebas de inteligencia. Son una ventana a lo que de verdad te da curiosidad."],
+    "sections": [
+      { "heading": "Por qué preguntan", "paragraphs": ["Los entrevistadores oyen muchas respuestas ensayadas. Las preguntas inesperadas muestran cómo eres de verdad: en qué te fijas, qué te preguntas y cómo piensas sobre la marcha."] },
+      { "heading": "Cualquier cosa real cuenta", "points": ["Un libro de clase, una novela gráfica, un artículo largo, un pódcast, un documental o una serie de YouTube.", "Para la actualidad, elige algo que de verdad te importe, aunque sea local. No necesitas una opinión polémica, solo lo que notaste y por qué te importa.", "Para el tiempo libre, sé sincero. “Hago repostería con mi abuela los domingos” es una gran respuesta."] },
+      { "heading": "Está bien hacer una pausa", "paragraphs": ["“Mmm, déjame pensar” está totalmente bien. Luego responde con una cosa y una razón, y deja que la conversación siga desde ahí."] }
+    ],
+    "example": { "question": "¿Qué libro has leído últimamente que se te haya quedado? No tiene que ser de clase.", "weak": "Eh, la verdad es que no leo. Supongo que el último fue para la clase de lengua.", "strong": "En realidad es un pódcast, no un libro: una serie sobre cómo deciden las ciudades dónde construir parques. Nunca lo había pensado, y ahora me fijo en cada solar vacío de camino al instituto. Me ha dado ganas de hacer una clase de urbanismo.", "why": "El estudiante de la respuesta fuerte tampoco ha leído un libro últimamente, pero comparte algo que de verdad le da curiosidad y por qué se le quedó." },
+    "setting": "Te reúnes con Hollis, exalumno de Westbrook College y profesor de historia jubilado, en una cafetería para tu entrevista con exalumnos.",
+    "task": "A Hollis le gustan las preguntas sorpresa. Responde con sinceridad con una cosa real que te dé curiosidad y di por qué se te quedó.",
+    "weakHint": "No tiene que ser un libro. Elige una cosa real que hayas leído, visto o escuchado, y di qué se te quedó.",
+    "strongHint": "Prueba: “Algo que se me ha quedado últimamente es ___. No esperaba ___, y ahora ___”.",
+    "takeaway": "Las preguntas inesperadas son una ventana a tu curiosidad. Elige una cosa real y di por qué te importa.",
+    "opening": "Me gusta empezar por otro lado. ¿Qué libro has leído últimamente que se te haya quedado? No tiene que ser de clase."
+  },
+  "col-reading-the-room": {
+    "tier": "Avanzado", "title": "Exalumnos frente a responsables de admisiones", "summary": "Lee el ambiente, de las cafeterías a las videollamadas.",
+    "intro": ["Las entrevistas universitarias son de dos tipos principales, y se sienten distintas. Una entrevista con exalumnos suele ser una charla relajada con alguien que estudió allí. Una entrevista de admisión es con alguien que trabaja en la oficina de admisiones y conoce la universidad a fondo.", "Saber con quién hablas, y dónde, te ayuda a adaptarte al momento."],
+    "sections": [
+      { "heading": "Dos tipos de entrevistadores", "points": ["Exalumnos: voluntarios que se graduaron allí. Normalmente no han visto tu solicitud, suelen ser informales y les encanta contar historias de su época.", "Responsables de admisiones: personal que lee las solicitudes. Conocen la universidad en profundidad, suelen ser más estructurados y a menudo piden detalles.", "Con ambos, sé tú mismo. Solo adapta tu energía y tu nivel de formalidad a los suyos."] },
+      { "heading": "Entrevistas en una cafetería", "points": ["Llega entre cinco y diez minutos antes. Ofrécete a pagar tu bebida.", "Guarda el móvil, boca abajo o en la mochila.", "Lleva dos o tres preguntas, y un bolígrafo si quieres apuntar algo."] },
+      { "heading": "Entrevistas por video", "points": ["Cámara a la altura de los ojos, luz delante de ti (no detrás) y un lugar tranquilo.", "Mira a la cámara cuando hables, no a tu propia cara.", "Prueba el sonido antes y ten un número de teléfono de reserva por si se corta la llamada."] }
+    ],
+    "example": { "question": "Antes de empezar, ¿qué tal va tu último año?", "weak": "Bien. Con mucho lío.", "strong": "¡Con mucho lío, pero del bueno! Estoy haciendo Biología avanzada y acabo de diseñar mi propio experimento, y este año soy capitán del equipo de natación. Sinceramente, las solicitudes a la universidad son lo más difícil, pero voy avanzando.", "why": "La charla también cuenta. La respuesta fuerte es cálida, concreta y sincera, y le da al entrevistador algo sobre lo que preguntar." },
+    "setting": "Estás en una videollamada con Beatriz, responsable de admisiones de Linden College. Es una entrevista de admisión más formal.",
+    "task": "Beatriz empieza con una charla y luego se pone más seria. Adáptate a su tono profesional, da respuestas cálidas y concretas, y muestra que te desenvuelves bien en video.",
+    "weakHint": "Responde con frases completas y un detalle concreto, y mantén un tono profesional pero cercano.",
+    "strongHint": "Prueba: “¡Ha sido ___! Estoy ___ y ___. Lo más difícil ha sido ___, pero ___”.",
+    "takeaway": "Ten claro con quién hablas, adáptate a su tono y lleva las mismas respuestas cálidas y concretas a ambas.",
+    "opening": "Hola, ¿me oyes bien? Perfecto, gracias por conectarte. Antes de empezar, ¿qué tal va tu último año?"
+  },
+  "col-questions-goodbye": {
+    "tier": "Avanzado", "title": "Hacer preguntas y cerrar", "summary": "Haz buenas preguntas, cierra bien y envía un agradecimiento.",
+    "intro": ["Las entrevistas universitarias casi siempre terminan con: “¿Qué preguntas tienes para mí?”. No es una formalidad. Es tu oportunidad de mostrar interés real, y a menudo es la parte que más recuerdan los entrevistadores.", "Luego viene la despedida, y un pequeño paso que la mayoría de los estudiantes se salta: el correo de agradecimiento."],
+    "sections": [
+      { "heading": "Ten siempre preguntas", "paragraphs": ["“No, estoy bien” puede sonar a que no te interesa mucho. Lleva dos o tres preguntas, y si una se responde durante la entrevista, haz una pregunta de seguimiento sobre algo que dijeron."] },
+      { "heading": "Buenas preguntas para exalumnos", "points": ["“¿Qué fue lo que más te sorprendió de tu primer año?”", "“¿Qué clase o profesor todavía recuerdas?”", "“Si pudieras volver a empezar, ¿qué harías distinto?”"] },
+      { "heading": "Buenas preguntas para responsables de admisiones", "points": ["“¿Qué tienen en común los estudiantes a los que les va realmente bien aquí?”", "“¿Cómo suelen implicarse los estudiantes de primer año en la investigación o en los clubes?”", "Evita preguntas que responda la web, y nunca preguntes “¿Me van a admitir?”."] },
+      { "heading": "La despedida y el agradecimiento", "paragraphs": ["Cierra dando las gracias con una frase de interés sincero: “Muchas gracias por tu tiempo. Hablar contigo me ha dado todavía más ganas de postularme”.", "En un día, envía un correo breve de agradecimiento de tres o cuatro frases. Menciona algo concreto de lo que hablasteis para que no parezca copiado y pegado."] }
+    ],
+    "example": { "question": "Bueno, te he hecho muchas preguntas. ¿Qué preguntas tienes para mí?", "weak": "No, creo que estoy bien. Lo has explicado todo.", "strong": "¡Sí! ¿Qué fue lo que más te sorprendió de tu primer año? Y si pudieras volver atrás, ¿harías algo distinto?", "why": "Dos preguntas sinceras muestran curiosidad y le dan al entrevistador la oportunidad de contar su propia historia, algo que a los exalumnos les encanta." },
+    "setting": "Estás terminando tu entrevista con Soraya, exalumna de Harlow College, en una cafetería.",
+    "task": "Soraya te pregunta qué preguntas tienes. Haz una o dos preguntas sinceras y luego cierra la entrevista con un agradecimiento e interés real.",
+    "weakHint": "Haz al menos una pregunta real sobre su experiencia y, al terminar, da las gracias y di que te interesa.",
+    "strongHint": "Prueba: “¿Qué fue lo que más te sorprendió de tu primer año?”. Y al final: “Muchas gracias por tu tiempo. Esto me ha dado todavía más ganas de postularme”.",
+    "takeaway": "Lleva preguntas reales, termina con un agradecimiento e interés sincero, y envía un breve correo de agradecimiento en un día.",
+    "opening": "Bueno, te he hecho muchas preguntas. ¿Qué preguntas tienes para mí?"
+  }
+}
