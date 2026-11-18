@@ -333,7 +333,8 @@ GAME_MODULES.rank = {
         gameLive(t('Answer {1} unranked.', LETTERS[pos]));
       } else {
         st.order.push(ai);
-        gameLive(t('Answer {1} placed {2}.', LETTERS[pos], t(ORDINALS[st.order.length - 1])));
+        // {2} is the English word ("second"); translations use the number, {3}.
+        gameLive(t('Answer {1} placed {2}.', LETTERS[pos], ORDINALS[st.order.length - 1], st.order.length));
       }
       ctx.update('[data-ans="' + ai + '"]');
     }));
@@ -555,6 +556,7 @@ GAME_MODULES.trim = {
     return '<p class="game-instr">Tap the parts to cut. Keep the main point and the best example.</p>' +
       '<p class="trim-counter' + (under ? ' under' : '') + '" id="trim-counter">' +
         '<span>' + t('{1} → {2} ' + unit, c.start, c.now) + '</span> <span class="trim-target">' + t('Target: {1} or fewer', c.target) + '</span>' +
+        '<span class="sr-only"> ' + t(isZh(lang) ? '{1} characters left.' : '{1} words left.', c.now) + '</span>' +
         (under ? ' <span class="trim-ok">✓ Under the target</span>' : '') + '</p>' +
       '<div class="trim-text' + (isZh(lang) ? ' zh' : '') + '">' + segs + '</div>';
   },
@@ -662,7 +664,7 @@ function renderGame(focusTop){
   const info = gameInfo(run.id);
   el('game-title').textContent = info.name;
   const note = el('game-lang-note');
-  if(run.fallback){ note.hidden = false; note.textContent = 'This game is in English for now.'; }
+  if(run.fallback){ note.hidden = false; note.textContent = t('This game is in English for now.'); }
   else if(!run.reviewed){ note.hidden = false; note.innerHTML = '<span class="lang-beta">Beta</span> <span>This translation hasn’t been checked by a fluent speaker yet.</span>'; }
   else note.hidden = true;
   if(run.done){ renderGameEnd(); return; }
@@ -688,7 +690,7 @@ function renderGameRound(focusSel, fallbackSel){
       '<p class="game-verdict"><span aria-hidden="true">' + (ok ? '✓' : '✗') + '</span> ' + escapeHTML(run.line) + '</p>' +
       mod.reveal(ctx) +
       (round.why ? '<p class="game-why"><span class="reveal-role">Why</span> <span translate="no">' + escapeHTML(round.why) + '</span></p>' : '') +
-      '<p class="game-skill">Skill: ' + escapeHTML(info.skill) + '</p>' +
+      '<p class="game-skill"><span>Skill:</span> <span>' + escapeHTML(info.skill) + '</span></p>' +
     '</div>';
   }
   el('game-stage').innerHTML =
@@ -785,7 +787,7 @@ function renderGameEnd(){
   el('game-bar').style.width = '100%';
   el('game-stage').innerHTML =
     '<div class="game-end">' +
-      '<h2 class="game-end-title" id="game-end-title" tabindex="-1">' + (r.right === 1 ? t('You got 1 of {1}', run.rounds.length) : t('You got {1} of {2}', r.right, run.rounds.length)) + '</h2>' +
+      '<h2 class="game-end-title" id="game-end-title" tabindex="-1">' + t('You got {1} of {2}', r.right, run.rounds.length) + '</h2>' +
       '<p class="qotd-stars game-end-stars" id="game-end-stars" aria-label="' + escapeHTML(t('{1} of 3 stars', r.stars)) + '">' + starsHTML(r.stars) + '</p>' +
       (r.newBest ? '<p class="game-best">New best!</p>' : '') +
       '<p class="game-end-line">' + escapeHTML(GAME_END_LINES[r.stars]) + '</p>' +

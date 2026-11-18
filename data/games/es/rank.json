@@ -1,0 +1,155 @@
+{
+  "meta": { "game": "rank", "lang": "es", "reviewed": false, "note": "Borrador. Mismo orden de respuestas que el inglés (fuerte, regular, floja)." },
+  "items": {
+    "rank-01": { "q": "Háblame de ti.", "answers": [
+      { "text": "Estoy en penúltimo año y me gusta entender cómo funcionan las cosas. Arreglo bicis para los niños de mi calle y el verano pasado ayudé en el puesto de comida de la piscina, así que sé mantenerme amable cuando hay mucha gente.", "reason": "Corta, real y con dos cosas concretas que ha hecho." },
+      { "text": "Estoy en penúltimo año. Me gustan los deportes y salir con mis amigos, y soy bastante responsable. Creo que lo haría bien.", "reason": "Amable, pero 'bastante responsable' no tiene nada que lo respalde." },
+      { "text": "Eh, no sé, soy una persona normal, ¿no? Voy a clase y eso. Mi mamá me dijo que me presentara.", "reason": "No deja nada que recordar y suena a que no fue idea suya." } ],
+      "why": "Una buena presentación es una imagen rápida y real de ti con uno o dos detalles. Los detalles son lo que la gente recuerda." },
+    "rank-02": { "q": "¿Qué se te da muy bien?", "answers": [
+      { "text": "Se me da bien explicar cosas. Le doy clases de matemáticas a mi hermano menor y este año pasó de un 5 a un 8, porque busqué maneras de enseñarle los pasos con cosas que le gustan, como las estadísticas de baloncesto.", "reason": "Nombra una fortaleza y la demuestra con un resultado." },
+      { "text": "Se me da bien explicar cosas. La gente dice que tengo paciencia cuando ayudo con la tarea.", "reason": "Buena idea, pero sin un ejemplo que lo muestre." },
+      { "text": "La verdad, se me dan bien muchas cosas. Soy trabajador, buen compañero, aprendo rápido, soy organizado, creativo…", "reason": "Una lista de palabras bonitas sin nada detrás." } ],
+      "why": "Elegir una fortaleza y demostrarla funciona mejor que nombrar cinco. El ejemplo es lo que convence." },
+    "rank-03": { "q": "Cuéntame de una vez en que algo no salió como lo habías planeado.", "answers": [
+      { "text": "Organicé una venta de pasteles para mi club, pero llovió y nadie salió. Pregunté en la oficina si podíamos ponernos en la entrada, hice un cartel rápido y aun así juntamos 140 dólares. Ahora siempre tengo un lugar de repuesto.", "reason": "Problema claro, lo que hizo, el resultado y lo que aprendió." },
+      { "text": "Nuestra venta de pasteles se arruinó por la lluvia. Fue molesto, pero la pasamos adentro y al final salió bien.", "reason": "Hay historia, pero se salta lo que hizo y qué resultó." },
+      { "text": "La verdad es que las cosas suelen salir como las planeo. Soy muy organizado, así que no me pasa mucho.", "reason": "Esquiva la pregunta. Todo el mundo tiene una historia así." } ],
+      "why": "Quieren ver cómo reaccionas cuando algo sale mal. 'Nunca me pasa' no les dice nada." },
+    "rank-04": { "q": "¿Cómo manejas tener muchas cosas que hacer a la vez?", "answers": [
+      { "text": "Lo apunto todo y hago primero lo que vence antes. En la semana de exámenes también tenía fútbol y cuidaba niños, así que cada noche planeaba el día siguiente. Eso me evitó entrar en pánico.", "reason": "Un método real, mostrado en una semana de verdad." },
+      { "text": "Hago una lista y la voy cumpliendo. Intento no estresarme demasiado.", "reason": "Sensato, pero sin un ejemplo de que funcione." },
+      { "text": "Más o menos improviso. Trabajo mejor bajo presión, así que casi siempre lo hago todo la noche anterior.", "reason": "Suena a que no va a cumplir los plazos." } ],
+      "why": "'Hago una lista' es un comienzo. Mostrar que la lista funcionó en una semana real es lo que lo hace creíble." },
+    "rank-05": { "q": "Cuéntame de una vez en que trabajaste en grupo.", "answers": [
+      { "text": "En química, mi grupo iba atrasado porque nadie sabía quién hacía qué. Propuse dividir el trabajo en cuatro partes y reunirnos el miércoles en el almuerzo. Terminamos un día antes y sacamos la nota máxima.", "reason": "Muestra lo que hizo para ayudar al grupo y el resultado." },
+      { "text": "Hicimos un proyecto en grupo en química. Cada uno hizo su parte y sacamos buena nota.", "reason": "Agradable, pero no se sabe qué hizo esta persona." },
+      { "text": "No me encantan los trabajos en grupo. Normalmente acabo haciéndolo todo yo porque los demás son vagos.", "reason": "Culpa a otros y suena difícil trabajar con esa persona." } ],
+      "why": "En una historia de grupo, quieren saber qué hiciste tú. El 'nosotros' te esconde." },
+    "rank-06": { "q": "¿En qué estás trabajando para mejorar?", "answers": [
+      { "text": "En hablar más en clase. Antes me callaba aunque supiera la respuesta. Este semestre me puse la meta de decir algo en cada debate de historia, y ahora ya me sale natural.", "reason": "Honesta, real y con pasos concretos." },
+      { "text": "Seguramente en organizar mi tiempo. A veces lo dejo todo para el final, pero intento mejorar.", "reason": "Honesta, pero 'intento' sin detalles suena a improvisado." },
+      { "text": "Soy perfeccionista. Me importa demasiado hacer las cosas bien.", "reason": "Un presumir disfrazado. Lo han oído muchísimas veces." } ],
+      "why": "Una debilidad real y lo que haces al respecto muestran honestidad y crecimiento. Una falsa suena ensayada." },
+    "rank-07": { "q": "¿Cómo te describirían tus amigos?", "answers": [
+      { "text": "Seguramente como la persona que siempre aparece. Si alguien necesita que lo lleven al entrenamiento o ayuda con una mudanza, suelen escribirme a mí. Mi amiga Maya dice que soy el plan B del grupo.", "reason": "Una cualidad con un detalle concreto y real." },
+      { "text": "Dirían que soy gracioso, leal y que sé escuchar.", "reason": "Palabras bonitas, pero nada que las respalde." },
+      { "text": "No sé, tendrías que preguntarles. ¿Raro, quizás? Ja.", "reason": "Desperdicia la oportunidad de decir algo bueno de sí." } ],
+      "why": "Esta pregunta es una oportunidad para mostrar una fortaleza con palabras de otra persona. Una cualidad y un ejemplo rápido bastan." },
+    "rank-08": { "q": "Cuéntame de un error que cometiste y qué hiciste después.", "answers": [
+      { "text": "Olvidé que había prometido cuidar al perro de mi vecina y lo crucé con un partido. En cuanto me di cuenta, la llamé, me disculpé y encontré a un amigo que me cubriera. Ahora lo apunto todo en el calendario del teléfono enseguida.", "reason": "Lo asume, lo arregla y cambia algo para el futuro." },
+      { "text": "Una vez me comprometí a dos cosas a la vez y tuve que cancelarle a mi vecina. Me sentí mal, pero ella lo entendió.", "reason": "Honesta, pero se salta cómo lo arregló y qué cambió." },
+      { "text": "No fue culpa mía. Mi entrenador cambió el horario a última hora, así que no pude hacer lo que había dicho.", "reason": "Culpa a otra persona en lugar de asumirlo." } ],
+      "why": "Todo el mundo se equivoca. Quieren verte asumirlo, arreglarlo y aprender." },
+    "rank-09": { "q": "¿Por qué deberíamos elegirte?", "answers": [
+      { "text": "Necesitan a alguien confiable que trate bien a la gente. Llevo un año atendiendo la recepción del salón de belleza de mi mamá los sábados, así que estoy acostumbrado a recibir a la gente, contestar el teléfono y mantener la calma cuando hay mucho trabajo.", "reason": "Conecta lo que ofrece con lo que el lugar necesita." },
+      { "text": "Soy trabajador y de verdad quiero esto. Daré lo mejor de mí cada día.", "reason": "Sincero, pero cualquiera podría decirlo." },
+      { "text": "Pues necesito el dinero, y esto queda cerca de mi casa.", "reason": "Solo habla de lo que recibe, no de lo que daría." } ],
+      "why": "La mejor respuesta une aquello en lo que eres bueno con lo que necesitan, con pruebas. Querer el puesto no es lo mismo que encajar." },
+    "rank-10": { "q": "¿Qué haces cuando te pones nervioso?", "answers": [
+      { "text": "Respiro más despacio y me recuerdo que me he preparado. Antes de mi primer recital de piano me temblaban las manos, así que practiqué los primeros compases hasta poder tocarlos medio dormido. Cuando empiezo, los nervios se van.", "reason": "Herramientas reales y un ejemplo real de usarlas." },
+      { "text": "Respiro hondo e intento ser positivo.", "reason": "Está bien, pero es muy general." },
+      { "text": "No suelo ponerme nervioso. Nada me afecta mucho.", "reason": "Difícil de creer y evita lo que preguntan." } ],
+      "why": "Es normal ponerse nervioso. Lo que importa es mostrar que tienes una forma de calmarte." },
+    "rank-11": { "q": "Cuéntame de una vez en que ayudaste a alguien.", "answers": [
+      { "text": "Una chica nueva de mi curso no conocía a nadie y comía sola. La invité a nuestra mesa y le enseñé dónde se reunían los clubes. Se unió conmigo a robótica y ahora es una de mis mejores amigas.", "reason": "Muestra que se fija en los demás y actúa, con un resultado real." },
+      { "text": "Ayudo a la gente todo el tiempo, como sujetar puertas o ayudar a mis amigos con la tarea.", "reason": "Amable, pero sin una historia que recordar." },
+      { "text": "Una vez ayudé a un amigo a copiar en un examen, ¿eso cuenta? Es broma. No sé.", "reason": "Una broma que sale mal y ninguna respuesta real." } ],
+      "why": "Una historia concreta vale más que una afirmación general. Muestra que te das cuenta cuando alguien necesita ayuda." },
+    "rank-12": { "q": "¿Dónde te ves dentro de unos años?", "answers": [
+      { "text": "Todavía no sé el trabajo exacto, pero sé que me gusta trabajar con las manos y resolver problemas. En unos años me gustaría estar en un programa técnico o estudiando ingeniería, y esto me ayudaría a ver qué me va mejor.", "reason": "Honesta sobre no saberlo, pero con dirección y reflexión." },
+      { "text": "Seguramente en la universidad, estudiando algo que me guste. No lo he decidido.", "reason": "Honesta, pero no muestra mucha reflexión." },
+      { "text": "Rico, ojalá. O famoso. En cualquier sitio menos aquí.", "reason": "Una broma que suena a que se irá a la primera oportunidad." } ],
+      "why": "No necesitas un plan perfecto. Basta con mostrar que lo has pensado y cómo encaja esto." },
+    "rank-13": { "q": "Cuéntame de una vez en que seguiste adelante aunque querías rendirte.", "answers": [
+      { "text": "Quise dejar el cross-country después de quedar último en mis tres primeras carreras. Mi entrenador me ayudó a ponerme la meta de superar mi propio tiempo. Al final de la temporada había bajado dos minutos, y este año sigo corriendo.", "reason": "Una dificultad clara, un cambio de enfoque y un resultado medible." },
+      { "text": "El cross-country fue muy duro al principio y quería dejarlo, pero seguí y mejoré.", "reason": "Buena historia, pero sin detalles de cómo lo logró." },
+      { "text": "Suelo dejar las cosas si no me gustan. La vida es muy corta para hacer cosas que odias.", "reason": "Les dice que también podría dejar esto." } ],
+      "why": "Quieren saber si aguantas las cosas difíciles. Cómo seguiste importa más que el hecho de seguir." },
+    "rank-14": { "q": "¿Qué te hace un buen compañero de equipo?", "answers": [
+      { "text": "Me fijo en quién lo está pasando mal. En mi equipo de vóley, vi que una jugadora nueva fallaba los saques, así que me quedaba después del entrenamiento dos veces por semana para sacar con ella. Sus saques mejoraron un montón.", "reason": "Una razón concreta, demostrada con lo que hizo." },
+      { "text": "Apoyo a los demás y siempre intento animar a todos.", "reason": "Bonito, pero suena como casi todo el mundo." },
+      { "text": "Soy el mejor jugador de mi equipo, así que me necesitan.", "reason": "Habla de ser bueno, no de ser buen compañero." } ],
+      "why": "'Soy buena persona' no es concreto. Muestra una cosa que haces y que mejora al equipo." },
+    "rank-15": { "q": "¿Tienes alguna pregunta para mí?", "answers": [
+      { "text": "Sí. ¿Qué hace diferente en su primer mes alguien a quien le va muy bien aquí?", "reason": "Curiosa, concreta y muestra ganas de hacerlo bien." },
+      { "text": "¿Cómo son los horarios?", "reason": "Es válido preguntarlo, pero habla de ti, no del puesto." },
+      { "text": "No, creo que ya lo explicaste todo.", "reason": "Puede sonar a falta de interés." } ],
+      "why": "Ten siempre una pregunta preparada. Las mejores muestran que te imaginas haciéndolo bien allí." },
+    "rank-16": { "q": "Cuéntame de una vez en que no estuviste de acuerdo con alguien.", "answers": [
+      { "text": "Mi compañero de laboratorio quería saltarse un paso para terminar antes. Le expliqué que me preocupaba que los resultados salieran mal y propuse probar las dos formas con una muestra pequeña. La mía funcionó mejor, y le pareció bien porque lo comprobamos.", "reason": "Discrepa con calma y encuentra una forma justa de resolverlo." },
+      { "text": "Mi compañero de laboratorio y yo no estábamos de acuerdo en cómo hacer un experimento. Lo hablamos y lo resolvimos.", "reason": "Tranquila, pero se salta cómo lo resolvieron." },
+      { "text": "Mi compañero de laboratorio estaba siendo tonto, así que lo hice a mi manera. Igual yo tenía razón.", "reason": "Despectiva y sin nada de trabajo en equipo." } ],
+      "why": "Quieren ver que puedes discrepar sin que se convierta en una pelea. Cómo lo manejaste es toda la respuesta." },
+    "rank-17": { "q": "¿Qué has aprendido por tu cuenta?", "answers": [
+      { "text": "Aprendí solo a editar video. Vi tutoriales gratis y practiqué con clips de los partidos de fútbol de mi primo. Ahora hago el video resumen de los equipos deportivos de mi escuela cada temporada.", "reason": "Muestra cómo aprendió y qué puede hacer ahora." },
+      { "text": "Aprendí algo de edición de video en YouTube. Es bastante divertido.", "reason": "Buen tema, pero se queda antes de mostrar qué salió de ahí." },
+      { "text": "Nada, la verdad. Casi todo lo aprendo en la escuela.", "reason": "Pierde la ocasión de mostrar curiosidad." } ],
+      "why": "Esto muestra si buscas aprender por tu cuenta. Di cómo lo aprendiste y qué puedes hacer ahora." },
+    "rank-18": { "q": "¿Qué responsabilidad tienes en casa o en tu comunidad?", "answers": [
+      { "text": "Recojo a mis dos hermanas menores en la escuela todos los días, les preparo la merienda y las pongo con la tarea hasta que mi mamá llega a las seis. Me ha enseñado a ser puntual, porque cuentan conmigo.", "reason": "Una responsabilidad real, lo que implica y lo que le enseñó." },
+      { "text": "Ayudo a cuidar a mis hermanas menores después de clase.", "reason": "Real y buena, pero le falta un poco de detalle." },
+      { "text": "Tengo que ordenar mi cuarto, pero la verdad es que no lo hago mucho.", "reason": "Elige algo pequeño y luego admite que no lo hace." } ],
+      "why": "Las responsabilidades en casa cuentan. Decir qué haces y qué te ha enseñado muestra que se puede contar contigo." },
+    "rank-19": { "q": "¿Por qué quieres trabajar aquí?", "answers": [
+      { "text": "Vengo mucho con mi familia, y el personal siempre recuerda nuestro pedido y es amable incluso cuando está lleno. Me gustaría ser parte de un equipo así y quiero aprender a manejar una hora punta.", "reason": "Muestra que conoce el lugar y quiere aprender algo." },
+      { "text": "Parece un buen sitio para trabajar y me gusta la comida.", "reason": "Positiva, pero podría decirse de cualquier sitio." },
+      { "text": "Mandé solicitudes a un montón de sitios y ustedes me llamaron primero.", "reason": "Honesta, pero les dice que en realidad no les interesa este lugar." } ],
+      "why": "Mostrar que sabes algo del lugar, y qué aprenderías, es mejor que 'parece agradable'." },
+    "rank-20": { "q": "¿Qué harías si un cliente fuera grosero contigo?", "answers": [
+      { "text": "Mantendría la calma, escucharía e intentaría arreglar el problema. Si no pudiera, llamaría a un encargado. En la feria del libro de mi escuela, un padre se enfadó por un precio, y ser educado y buscar a la profesora responsable lo solucionó.", "reason": "Pasos tranquilos, sabe cuándo pedir ayuda y tiene un ejemplo." },
+      { "text": "Simplemente mantendría la calma y sería educado.", "reason": "Buena actitud, pero sin un plan más allá." },
+      { "text": "Sinceramente, seguramente le contestaría. No dejo que nadie me falte el respeto.", "reason": "Le dice al empleador que podría empeorarlo." } ],
+      "why": "Quieren saber que vas a mantener el respeto y resolverlo, o pedir ayuda. Un ejemplo real lo hace creíble." },
+    "rank-21": { "q": "¿Qué disponibilidad tienes?", "answers": [
+      { "text": "Puedo trabajar entre semana por la tarde a partir de las 4 y todo el sábado. En otoño tengo fútbol los domingos por la mañana, pero estoy libre los domingos por la tarde. En verano tengo casi cualquier horario.", "reason": "Clara y concreta, incluidos los límites." },
+      { "text": "Más o menos cuando sea, soy flexible.", "reason": "Amable, pero vaga. Tendrán que volver a preguntar." },
+      { "text": "Todavía no sé mi horario. ¿Te lo digo más adelante?", "reason": "Suena a falta de preparación para una pregunta básica." } ],
+      "why": "Una disponibilidad clara y honesta te hace fácil de programar. Decir tus límites desde el principio es algo bueno." },
+    "rank-22": { "q": "Cuéntame de una vez en que fuiste confiable cuando importaba.", "answers": [
+      { "text": "Paseo al perro de mi vecina todos los días de semana mientras ella trabaja. Una vez hubo una gran tormenta de nieve y cancelaron las clases, pero aun así fui a mediodía porque sabía que el perro no tenía a nadie más. Lleva dos años contratándome.", "reason": "Un momento concreto en que estar ahí importó." },
+      { "text": "Llevo dos años paseando al perro de mi vecina y nunca he faltado un día.", "reason": "Buena prueba de confianza, pero sin un momento concreto." },
+      { "text": "Siempre soy confiable. Simplemente soy así.", "reason": "Una afirmación sin nada que la respalde." } ],
+      "why": "Decir que eres confiable no es una prueba. Un momento en que era difícil ir, y fuiste, sí lo es." },
+    "rank-23": { "q": "¿Alguna vez has manejado dinero o una caja registradora?", "answers": [
+      { "text": "Una caja de verdad todavía no, pero llevé la caja del dinero en el lavado de autos de mi equipo durante tres sábados. Contaba el dinero al principio y al final, y siempre cuadró. Tengo cuidado con el cambio y me encantaría aprender su sistema.", "reason": "Honesta, encuentra experiencia parecida y muestra cuidado." },
+      { "text": "No, pero se me dan bien las matemáticas, así que creo que lo aprendería.", "reason": "Honesta y positiva, pero sin un ejemplo parecido." },
+      { "text": "No. ¿Eso es una parte importante del trabajo?", "reason": "Se rinde en vez de buscar algo parecido." } ],
+      "why": "No tener experiencia está bien. Menciona lo más parecido que hayas hecho y muestra que aprenderías." },
+    "rank-24": { "q": "¿Qué harías si terminaras tus tareas antes de tiempo?", "answers": [
+      { "text": "Le preguntaría a mi encargado o a un compañero qué más hay que hacer. Si todos estuvieran ocupados, buscaría algo evidente, como reponer o limpiar mostradores. En la panadería de mi tía así aprendí a armar las cajas de pasteles.", "reason": "Toma la iniciativa y da un ejemplo de haberlo hecho." },
+      { "text": "Preguntaría si hay algo más en lo que pueda ayudar.", "reason": "Buen instinto, pero muy breve." },
+      { "text": "Seguramente tomarme un pequeño descanso. Me lo habría ganado.", "reason": "Da a entender que haría lo mínimo." } ],
+      "why": "Están viendo si haces más de lo mínimo. Pedir más trabajo, o encontrarlo tú, es lo que esperan oír." },
+    "rank-25": { "q": "¿Por qué te interesa esta universidad?", "answers": [
+      { "text": "Quiero estudiar ciencias ambientales, y su programa deja que los de primer año hagan investigación de campo en la reserva natural. También hablé con un estudiante en la sesión informativa que me dijo que las clases son pequeñas, y eso me importa porque aprendo mejor haciendo preguntas.", "reason": "Concreta para esta universidad y ligada a cómo aprende." },
+      { "text": "Tiene buena reputación y un campus precioso.", "reason": "Es cierto de muchas universidades. Nada concreto." },
+      { "text": "Mis padres estudiaron aquí, así que más o menos tengo que presentarme.", "reason": "Suena a que no es su decisión." } ],
+      "why": "'¿Por qué nosotros?' necesita detalles que solo encajen con esta universidad, y por qué te importan." },
+    "rank-26": { "q": "¿Qué quieres estudiar?", "answers": [
+      { "text": "No lo he decidido, pero siempre vuelvo a la psicología y la educación. Soy voluntario en un programa extraescolar y me intriga por qué algunos niños se entusiasman con un profesor y se cierran con otro. Me gustaría explorar las dos en mi primer año.", "reason": "Honesta sobre no haber decidido, pero con curiosidad real." },
+      { "text": "Todavía no lo sé. Quizá psicología, quizá otra cosa.", "reason": "Honesta, pero no les da nada con qué trabajar." },
+      { "text": "Lo que dé más dinero, supongo.", "reason": "Suena a que no ha pensado en qué le interesa." } ],
+      "why": "No haber decidido es normal. Muestra qué te despierta curiosidad y por qué." },
+    "rank-27": { "q": "¿Cómo contribuirías a nuestra comunidad universitaria?", "answers": [
+      { "text": "Empecé un club en mi escuela donde, a la hora del almuerzo, la gente se enseña habilidades, como tejer o ajedrez. Llegó a unas 30 personas. Me encantaría empezar algo así aquí, o unirme a un club que lo haga.", "reason": "Señala algo que ha creado y lo conecta con el campus." },
+      { "text": "Me uniría a algunos clubes y participaría.", "reason": "Está bien, pero no dice qué aportaría." },
+      { "text": "Me voy a centrar sobre todo en mis clases. No soy muy de clubes.", "reason": "No entiende el sentido de la pregunta." } ],
+      "why": "Quieren imaginarse qué aportarías. Algo que ya has hecho es el mejor adelanto." },
+    "rank-28": { "q": "Cuéntame de una clase que te supuso un reto.", "answers": [
+      { "text": "Precálculo. Saqué un 61 sobre 100 en el primer examen y me asusté. Empecé a ir a las sesiones de ayuda del profesor los martes y a rehacer los problemas que fallaba. Terminé el año con un notable, y ya no le tengo miedo a las matemáticas.", "reason": "Dificultad honesta, lo que hizo y el resultado." },
+      { "text": "Precálculo me costó, pero me esforcé y me fue bien.", "reason": "Honesta, pero se salta cómo se esforzó." },
+      { "text": "Ninguna de mis clases es difícil de verdad. Soy inteligente de forma natural.", "reason": "Suena arrogante y evita la pregunta." } ],
+      "why": "Las universidades quieren ver cómo manejas el trabajo difícil. La historia de cómo mejoraste es la respuesta." },
+    "rank-29": { "q": "¿Qué haces fuera de la escuela?", "answers": [
+      { "text": "Trabajo los fines de semana en el restaurante de mi familia y he empezado a ayudar a mi papá con las cuentas, lo que me ha hecho interesarme por los negocios. En mi tiempo libre dibujo cómics y subo uno a la semana para mis amigos.", "reason": "Muestra responsabilidad y un interés, con detalles reales." },
+      { "text": "Trabajo en el restaurante de mi familia y me gusta dibujar.", "reason": "Cosas buenas, pero necesita más para destacar." },
+      { "text": "Sobre todo jugar videojuegos y dormir. La escuela es mucho.", "reason": "Honesta, pero se vende poco." } ],
+      "why": "Las actividades fuera de clase muestran quién eres. Las tareas familiares y las aficiones cuentan. Añade un detalle que las haga tuyas." },
+    "rank-30": { "q": "¿Hay algo más que te gustaría que supiéramos de ti?", "answers": [
+      { "text": "Sí. Mis notas bajaron en décimo grado cuando mi abuela vino a vivir con nosotros y ayudé a cuidarla. Fue un año duro, pero me enseñó a organizar mi tiempo, y mis notas han subido cada semestre desde entonces.", "reason": "Aprovecha para dar contexto y muestra crecimiento." },
+      { "text": "Solo que de verdad quiero venir aquí y que me esforzaría.", "reason": "Sincera, pero repite lo que ya saben." },
+      { "text": "No, creo que eso es todo.", "reason": "Desperdicia una oportunidad de contar algo importante." } ],
+      "why": "Es una oportunidad de contar algo que tu solicitud no muestra. Úsala si tienes algo real que añadir." }
+  }
+}
