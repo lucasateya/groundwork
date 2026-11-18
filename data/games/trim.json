@@ -1,0 +1,332 @@
+{
+  "meta": { "game": "trim", "lang": "en", "note": "Segments are tagged core (the main point), example (the best specific example) or cut (filler, repetition, off-topic, long setup). target is the most words allowed; the model answer (core + example) always fits under it. Other languages scale the target by the same ratio." },
+  "rounds": [
+    { "id": "trim-01", "track": "general", "target": 40,
+      "q": "What's one thing you're really good at?",
+      "segments": [
+        { "t": "Okay, so, um, that's a good question, let me think.", "tag": "cut" },
+        { "t": "I guess there are a lot of things I'm decent at, like I'm okay at sports and I'm pretty good at video games, but that probably doesn't count.", "tag": "cut" },
+        { "t": "I'm really good at staying organized.", "tag": "core" },
+        { "t": "Like, really organized, my friends make fun of me for it.", "tag": "cut" },
+        { "t": "This fall I had soccer, a part-time job and two AP classes, and I planned every week on Sunday night so I never missed a shift or an assignment.", "tag": "example" },
+        { "t": "My mom says I get that from my grandma, who used to keep lists of everything, even her lists.", "tag": "cut" },
+        { "t": "So yeah, organized, I'd say that's my thing, basically.", "tag": "cut" }
+      ],
+      "why": "The strength and one real example are the whole answer. Everything else delays it or repeats it." },
+    { "id": "trim-02", "track": "general", "target": 45,
+      "q": "Tell me about yourself.",
+      "segments": [
+        { "t": "Well, I was born in Ohio, and then we moved here when I was six, and then we moved across town when I was nine because my dad got a new job.", "tag": "cut" },
+        { "t": "I'm a junior who likes figuring out how things work.", "tag": "core" },
+        { "t": "I fix bikes for kids on my street, and last summer I helped run the snack stand at our pool, so I'm used to staying friendly when it's busy.", "tag": "example" },
+        { "t": "I also like music and movies and stuff, like pretty much everyone.", "tag": "cut" },
+        { "t": "And I have a dog named Biscuit who is honestly the best dog ever, but that's not really relevant, sorry.", "tag": "cut" },
+        { "t": "Um, yeah, I think that's me, pretty much.", "tag": "cut" }
+      ],
+      "why": "They don't need your life story. A one-line intro and a couple of real details give a much clearer picture." },
+    { "id": "trim-03", "track": "general", "target": 55,
+      "q": "Tell me about a time something didn't go the way you planned.",
+      "segments": [
+        { "t": "So this one time, and this was a while ago, maybe last spring, or maybe it was the spring before, I'm not totally sure.", "tag": "cut" },
+        { "t": "Our club's bake sale got rained out, but we still made it work.", "tag": "core" },
+        { "t": "We'd made like six dozen cookies, and some brownies, and my friend's mom made these amazing lemon bars.", "tag": "cut" },
+        { "t": "When it poured, I asked the front office if we could use the lobby and made a quick sign to point people inside, and we still raised $140.", "tag": "example" },
+        { "t": "The weather forecast had said it would be sunny, which was so annoying.", "tag": "cut" },
+        { "t": "Now I always plan a backup spot.", "tag": "core" }
+      ],
+      "why": "Keep what went wrong, what you did and what you learned. Fuzzy setup and side details can go." },
+    { "id": "trim-04", "track": "general", "target": 40,
+      "q": "How do you handle having a lot to do at once?",
+      "segments": [
+        { "t": "Honestly, I have a lot going on all the time, like school is really hard this year and the teachers give so much homework.", "tag": "cut" },
+        { "t": "I write everything down and do whatever's due soonest first.", "tag": "core" },
+        { "t": "I use a planner, and sometimes my phone, and sometimes sticky notes, it depends on the week.", "tag": "cut" },
+        { "t": "During finals week I also had soccer and babysitting, so I planned each night the day before, and I got through it without panicking.", "tag": "example" },
+        { "t": "Some of my friends just cram everything the night before, which I don't really get, but it works for them I guess.", "tag": "cut" },
+        { "t": "So yeah, that's basically my system, I write it all down.", "tag": "cut" }
+      ],
+      "why": "Your method plus one busy week that proves it. Complaints and comparisons with friends don't help." },
+    { "id": "trim-05", "track": "general", "target": 45,
+      "q": "Tell me about a time you worked with a group.",
+      "segments": [
+        { "t": "Group projects are kind of hit or miss, you know, sometimes they're good and sometimes they're really bad.", "tag": "cut" },
+        { "t": "In chemistry, I helped my group get organized when we were falling behind.", "tag": "core" },
+        { "t": "The project was about chemical reactions, specifically the ones that change color, which was kind of cool.", "tag": "cut" },
+        { "t": "I suggested we split it into four parts and check in at lunch every Wednesday, and we finished a day early and got an A.", "tag": "example" },
+        { "t": "One guy barely showed up, but whatever, we got it done.", "tag": "cut" },
+        { "t": "So I think I'm good in groups, overall.", "tag": "cut" }
+      ],
+      "why": "What you did for the group, and the result, is the answer. Opinions about group work and teammates aren't." },
+    { "id": "trim-06", "track": "general", "target": 35,
+      "q": "What's something you're working on getting better at?",
+      "segments": [
+        { "t": "Hmm, there are probably a lot of things, honestly, nobody's perfect, right?", "tag": "cut" },
+        { "t": "I'm working on speaking up in class.", "tag": "core" },
+        { "t": "I'm kind of shy, I've always been shy, even as a little kid I would hide behind my mom at parties.", "tag": "cut" },
+        { "t": "This semester I set a goal to say one thing in every history discussion, and now it feels pretty normal.", "tag": "example" },
+        { "t": "History is my favorite class anyway, because the teacher is really funny and tells good stories.", "tag": "cut" },
+        { "t": "So yeah, speaking up, that's the thing I'm working on, I'd say.", "tag": "cut" }
+      ],
+      "why": "Name the weakness and show the steps you're taking. Stories from childhood and side comments dilute it." },
+    { "id": "trim-07", "track": "general", "target": 40,
+      "q": "How would your friends describe you?",
+      "segments": [
+        { "t": "That's a hard one, because I have different friend groups, like school friends and team friends and friends from my old neighborhood.", "tag": "cut" },
+        { "t": "They'd say I'm the one who shows up.", "tag": "core" },
+        { "t": "If someone needs a ride to practice or help moving, I'm usually the one they text, and my friend Maya calls me the group's backup plan.", "tag": "example" },
+        { "t": "They'd probably also say I'm loud, and that I laugh at my own jokes, which, fair.", "tag": "cut" },
+        { "t": "And that I always eat their fries.", "tag": "cut" },
+        { "t": "But mostly the showing up thing, I think.", "tag": "cut" }
+      ],
+      "why": "One quality and one example are enough. Extra jokes are fine with friends, but they water down your point here." },
+    { "id": "trim-08", "track": "general", "target": 60,
+      "q": "Tell me about a mistake you made and what you did next.",
+      "segments": [
+        { "t": "I make mistakes all the time, like everyone, so it's hard to pick one, but okay, here's one.", "tag": "cut" },
+        { "t": "I once double-booked myself and almost let my neighbor down.", "tag": "core" },
+        { "t": "I'd promised to watch her dog on the same day as an away game, so as soon as I noticed, I called her, apologized and found a friend to cover.", "tag": "example" },
+        { "t": "The game was against our biggest rival, and we lost by one point, which was brutal.", "tag": "cut" },
+        { "t": "Her dog is a golden retriever named Max, he's super sweet.", "tag": "cut" },
+        { "t": "Now everything goes in my phone calendar the moment I agree to it.", "tag": "core" }
+      ],
+      "why": "The mistake, how you fixed it and what changed. The game score and the dog's name can go." },
+    { "id": "trim-09", "track": "general", "target": 40,
+      "q": "What do you do when you feel nervous?",
+      "segments": [
+        { "t": "Honestly I'm nervous right now, ha, so this is a good question.", "tag": "cut" },
+        { "t": "I slow my breathing and remind myself I've prepared.", "tag": "core" },
+        { "t": "I read online that breathing helps, there's like a whole science to it with your nervous system and stuff, I don't totally remember.", "tag": "cut" },
+        { "t": "Before my first piano recital my hands were shaking, so I took three slow breaths and started with the bars I'd practiced most, and the nerves faded.", "tag": "example" },
+        { "t": "I've been playing piano since I was seven, my grandma taught me at first.", "tag": "cut" },
+        { "t": "So breathing, basically, and preparing.", "tag": "cut" }
+      ],
+      "why": "What you do and a time it worked. Half-remembered science and background can go." },
+    { "id": "trim-10", "track": "general", "target": 40,
+      "q": "Why should we pick you?",
+      "segments": [
+        { "t": "Well, I really, really want this, like, a lot, more than you'd think.", "tag": "cut" },
+        { "t": "You need someone dependable who's good with people, and that's me.", "tag": "core" },
+        { "t": "For the past year I've worked the front desk at my mom's salon on Saturdays, greeting people and answering the phone even when it's packed.", "tag": "example" },
+        { "t": "The salon is called Shine, it's on Main Street, maybe you've been there?", "tag": "cut" },
+        { "t": "I'm also hard-working and a team player and a fast learner.", "tag": "cut" },
+        { "t": "So I think I'd be a good fit, I really do.", "tag": "cut" }
+      ],
+      "why": "Your fit with what they need, proven by one example. Buzzwords and repeating how much you want it add nothing." },
+    { "id": "trim-11", "track": "general", "target": 50,
+      "q": "Tell me about a time you helped someone.",
+      "segments": [
+        { "t": "I like helping people in general, like holding doors and stuff, I think it's just good manners.", "tag": "cut" },
+        { "t": "I helped a new student find her place at our school.", "tag": "core" },
+        { "t": "She'd moved mid-year and ate lunch alone, so I invited her to our table and showed her where the clubs met.", "tag": "example" },
+        { "t": "She moved from Texas, which is really far, I've never been there but I want to go.", "tag": "cut" },
+        { "t": "She joined robotics with me, and now she's one of my closest friends.", "tag": "core" },
+        { "t": "So that was nice.", "tag": "cut" }
+      ],
+      "why": "Who you helped, how and what came of it. The tangent about Texas and the general manners talk can go." },
+    { "id": "trim-12", "track": "general", "target": 60,
+      "q": "Tell me about a time you had to keep going after you wanted to quit.",
+      "segments": [
+        { "t": "So I joined cross-country because my friend joined, and honestly I didn't know it was going to be that much running.", "tag": "cut" },
+        { "t": "I almost quit cross-country my first season, but I'm glad I didn't.", "tag": "core" },
+        { "t": "Like, every single day, miles and miles, in the heat, it was a lot.", "tag": "cut" },
+        { "t": "I finished last in my first three races, so my coach helped me focus on beating my own time, and by the end of the season I'd cut two minutes off.", "tag": "example" },
+        { "t": "My friend actually quit after two weeks, which is funny because it was her idea.", "tag": "cut" },
+        { "t": "Small goals keep me going when big ones feel impossible.", "tag": "core" }
+      ],
+      "why": "The struggle, what changed and the lesson. Complaints about the running and your friend's story can go." },
+    { "id": "trim-13", "track": "general", "target": 40,
+      "q": "What makes you a good teammate?",
+      "segments": [
+        { "t": "I've been on a lot of teams, like volleyball, and a club basketball team for a year, and a bowling league with my cousins once.", "tag": "cut" },
+        { "t": "I pay attention to who's struggling and help them.", "tag": "core" },
+        { "t": "On volleyball, a newer player kept missing serves, so I stayed after practice twice a week to serve with her, and she got way more consistent.", "tag": "example" },
+        { "t": "I'm also really positive, I always cheer for everyone, even the other team sometimes, which my coach doesn't love.", "tag": "cut" },
+        { "t": "And I bring snacks, which people appreciate.", "tag": "cut" }
+      ],
+      "why": "One specific thing you do for a team, with proof. A list of every team you've been on doesn't show it." },
+    { "id": "trim-14", "track": "general", "target": 60,
+      "q": "Tell me about a time you disagreed with someone.",
+      "segments": [
+        { "t": "I don't really like conflict, so I try to avoid it, but sometimes you can't, you know?", "tag": "cut" },
+        { "t": "My lab partner and I disagreed about how to run an experiment, and we settled it by testing both ways.", "tag": "core" },
+        { "t": "He's kind of a know-it-all, honestly, everyone in class thinks so.", "tag": "cut" },
+        { "t": "He wanted to skip a step to save time, so I suggested we try both methods on a small sample, and mine gave cleaner results.", "tag": "example" },
+        { "t": "He was fine with it because we'd actually checked.", "tag": "core" },
+        { "t": "We got a B on that lab, which was okay, not great.", "tag": "cut" }
+      ],
+      "why": "How you disagreed and settled it fairly. Calling him a know-it-all undoes the point." },
+    { "id": "trim-15", "track": "general", "target": 45,
+      "q": "What's something you've taught yourself?",
+      "segments": [
+        { "t": "I'm always teaching myself random stuff, like card tricks, and how to solve a Rubik's cube, and a little bit of Spanish.", "tag": "cut" },
+        { "t": "I taught myself to edit video.", "tag": "core" },
+        { "t": "It started because I wanted to make a highlight reel of my cousin's soccer season, so I watched free tutorials and practiced every weekend.", "tag": "example" },
+        { "t": "There are so many tutorials online, some are really good and some are just people talking forever.", "tag": "cut" },
+        { "t": "Now I make the highlight videos for our school's sports teams.", "tag": "core" },
+        { "t": "So video editing is my main one, I'd say.", "tag": "cut" }
+      ],
+      "why": "One skill, how you learned it and what you can do now. A list of other hobbies spreads you too thin." },
+    { "id": "trim-16", "track": "general", "target": 50,
+      "q": "What's a responsibility you have at home?",
+      "segments": [
+        { "t": "Oh, there are a lot, my parents give me a lot of chores, honestly more than my friends get.", "tag": "cut" },
+        { "t": "I take care of my two younger sisters after school.", "tag": "core" },
+        { "t": "I pick them up, make them a snack and get them started on homework until my mom gets home at six.", "tag": "example" },
+        { "t": "They're seven and nine, and they fight about literally everything, like who gets the blue cup.", "tag": "cut" },
+        { "t": "It's taught me to be on time, because they're counting on me.", "tag": "core" },
+        { "t": "So that's a big one, for sure.", "tag": "cut" }
+      ],
+      "why": "What you're responsible for, what it involves and what it taught you. The sibling fights are fun but off-topic." },
+    { "id": "trim-17", "track": "general", "target": 55,
+      "q": "Tell me about something you're proud of.",
+      "segments": [
+        { "t": "I'm proud of a lot of things, like my grades are pretty good, and I made varsity this year, and I learned to cook pasta.", "tag": "cut" },
+        { "t": "I'm most proud of the lunch club I started at my school.", "tag": "core" },
+        { "t": "Lots of people sat alone at lunch, so I started a club where people teach each other a skill, like chess or knitting, and it grew to about 30 people.", "tag": "example" },
+        { "t": "We meet in Room 204, which is the art room, so it smells like paint, but it's fine.", "tag": "cut" },
+        { "t": "It showed me I can start something from nothing.", "tag": "core" },
+        { "t": "So yeah, I'm proud of that, I think it's cool.", "tag": "cut" }
+      ],
+      "why": "Pick one thing, say what you did and why it matters to you. A list of other achievements competes with it." },
+    { "id": "trim-18", "track": "general", "target": 35,
+      "q": "Do you have any questions for me?",
+      "segments": [
+        { "t": "Um, yeah, I think so, let me remember, I had a few written down but I left them in the car.", "tag": "cut" },
+        { "t": "What does someone who does really well here do differently in their first month?", "tag": "core" },
+        { "t": "I'm asking because I want to start off strong and learn the right habits early.", "tag": "example" },
+        { "t": "Also, is there parking, and how long is the lunch break, and do you get a discount?", "tag": "cut" },
+        { "t": "Oh, and how many people usually work on the same shift, and is it the same people every week, or does it change a lot?", "tag": "cut" },
+        { "t": "Sorry, that's a lot of questions.", "tag": "cut" }
+      ],
+      "why": "One good question, plus why you're asking, makes a strong close. A pile of practical questions can wait for later." },
+    { "id": "trim-19", "track": "job", "target": 50,
+      "q": "Why do you want to work here?",
+      "segments": [
+        { "t": "Well, I need a job, obviously, like most people my age, and my parents said I have to start saving for a car.", "tag": "cut" },
+        { "t": "I want to be part of a team like yours.", "tag": "core" },
+        { "t": "My family comes here a lot, and the staff always remember our order and stay friendly even when it's packed.", "tag": "example" },
+        { "t": "The curly fries are honestly the best in town, no offense to anywhere else.", "tag": "cut" },
+        { "t": "I want to learn how to handle a busy rush like that.", "tag": "core" },
+        { "t": "And it's close to my house, so that's a bonus.", "tag": "cut" }
+      ],
+      "why": "Why this place and what you'd learn. Needing money and living nearby are true, but they're not a reason to pick you." },
+    { "id": "trim-20", "track": "job", "target": 55,
+      "q": "What would you do if a customer was upset with you?",
+      "segments": [
+        { "t": "People can be really rude sometimes, like I've seen people yell at cashiers over nothing, it's crazy.", "tag": "cut" },
+        { "t": "I'd stay calm, listen and try to fix it, or get a manager if I couldn't.", "tag": "core" },
+        { "t": "At our school book fair a parent got upset about a price, so I apologized, listened, and got the teacher in charge, and it turned out to be a wrong sticker.", "tag": "example" },
+        { "t": "The book was one of those big fantasy series with dragons on the cover.", "tag": "cut" },
+        { "t": "I think the main thing is to not take it personally, because usually they're just having a bad day, and also to stay calm, like I said.", "tag": "cut" }
+      ],
+      "why": "Your plan and a time you used it. Commentary about rude people and repeating yourself can go." },
+    { "id": "trim-21", "track": "job", "target": 50,
+      "q": "Have you ever handled money?",
+      "segments": [
+        { "t": "Like, my own money? Or for a job? I'm not totally sure what you mean, but I'll just talk about both, I guess.", "tag": "cut" },
+        { "t": "Not at a register yet, but I ran the cash box at our team's car wash.", "tag": "core" },
+        { "t": "I counted the money at the start and end of three Saturdays, and it matched every time.", "tag": "example" },
+        { "t": "We washed like 80 cars total, and one was a truck that took forever.", "tag": "cut" },
+        { "t": "For my own money, I have a savings account, and I'm saving for a car.", "tag": "cut" },
+        { "t": "I'm careful with change and happy to learn your system.", "tag": "core" }
+      ],
+      "why": "Honest about no register, then the closest experience. Your savings account isn't what they asked about." },
+    { "id": "trim-22", "track": "job", "target": 50,
+      "q": "Tell me about a time you were reliable when it counted.",
+      "segments": [
+        { "t": "I'm a really reliable person in general, I'd say that's one of my best qualities, if not the best.", "tag": "cut" },
+        { "t": "I walk my neighbor's dog every weekday, and I've never missed a day.", "tag": "core" },
+        { "t": "Last winter a snowstorm closed school, but I still walked over at noon because I knew the dog had no one else.", "tag": "example" },
+        { "t": "The snow was up to my knees, and my boots got totally soaked, and I lost a glove somewhere.", "tag": "cut" },
+        { "t": "She's kept me on for two years now.", "tag": "core" },
+        { "t": "So yeah, reliable.", "tag": "cut" }
+      ],
+      "why": "The claim, the moment that proves it and the result. Wet boots and repeating 'reliable' add words, not proof." },
+    { "id": "trim-23", "track": "job", "target": 40,
+      "q": "What would you do if you finished your tasks early?",
+      "segments": [
+        { "t": "That probably wouldn't happen much, because I like to take my time and do things right, you know?", "tag": "cut" },
+        { "t": "I'd ask my manager or a coworker what else needs doing.", "tag": "core" },
+        { "t": "At my aunt's bakery, I finished early one Saturday and started folding cake boxes, and it saved the team time during the rush.", "tag": "example" },
+        { "t": "Her bakery makes the best cinnamon rolls, they sell out by 9 every morning.", "tag": "cut" },
+        { "t": "I just don't like standing around doing nothing, it makes me feel weird.", "tag": "cut" },
+        { "t": "Like, even at home, if I'm bored I'll start cleaning something, my mom thinks it's hilarious.", "tag": "cut" }
+      ],
+      "why": "What you'd do and a time you did it. The cinnamon rolls are a tasty detour." },
+    { "id": "trim-24", "track": "job", "target": 40,
+      "q": "What's your availability?",
+      "segments": [
+        { "t": "So my schedule is kind of complicated, because I have a lot going on, and it changes depending on the season and stuff.", "tag": "cut" },
+        { "t": "I can work weekday evenings after 4 and all day Saturday.", "tag": "core" },
+        { "t": "In the fall I have soccer on Sunday mornings, so I'd be free Sunday afternoons.", "tag": "example" },
+        { "t": "Soccer is a big deal for me, I've played since I was five, and our team is actually pretty good this year.", "tag": "cut" },
+        { "t": "In the summer I'm open almost any time.", "tag": "core" },
+        { "t": "But I'd let you know if anything changes, obviously.", "tag": "cut" }
+      ],
+      "why": "Clear days and times, including limits. How long you've played soccer doesn't help them schedule you." },
+    { "id": "trim-25", "track": "college", "target": 45,
+      "q": "Why are you interested in this school?",
+      "segments": [
+        { "t": "Well, I applied to a lot of schools, like eleven, which my counselor said was too many, but I wanted options.", "tag": "cut" },
+        { "t": "Mostly because of your hands-on environmental science program.", "tag": "core" },
+        { "t": "First-years here can do field research at the nature preserve, and a student at the info session told me classes are small, which matters because I learn by asking questions.", "tag": "example" },
+        { "t": "The campus is also really pretty, especially in the fall with all the trees.", "tag": "cut" },
+        { "t": "And the food at the info session was surprisingly good.", "tag": "cut" }
+      ],
+      "why": "Your main reason and details only this school has. 'Pretty campus' fits every school." },
+    { "id": "trim-26", "track": "college", "target": 55,
+      "q": "What do you want to study?",
+      "segments": [
+        { "t": "This is the question everyone asks, my aunts ask it every Thanksgiving, and honestly I never know what to say.", "tag": "cut" },
+        { "t": "I'm undecided, but I keep coming back to psychology and education.", "tag": "core" },
+        { "t": "I volunteer at an after-school program, and I've noticed some kids light up with one tutor and shut down with another, and I want to understand why.", "tag": "example" },
+        { "t": "My parents think I should do nursing because it's stable, but I don't know.", "tag": "cut" },
+        { "t": "I'd like to take classes in both and see which fits.", "tag": "core" },
+        { "t": "I mean, I have time, right?", "tag": "cut" }
+      ],
+      "why": "Undecided is fine. Your interests, why, and how you'll explore them is the answer." },
+    { "id": "trim-27", "track": "college", "target": 60,
+      "q": "Tell me about a class that challenged you.",
+      "segments": [
+        { "t": "Math has always been hard for me, since like third grade when we started fractions, which I still don't love.", "tag": "cut" },
+        { "t": "Pre-calc challenged me more than any class so far.", "tag": "core" },
+        { "t": "I got a 61 on the first test, so I started going to help sessions on Tuesdays and redoing every problem I got wrong, and I finished with a B+.", "tag": "example" },
+        { "t": "The teacher was nice, but she talked really fast, and the room was always freezing.", "tag": "cut" },
+        { "t": "I'm not afraid of hard classes anymore, because I know what to do.", "tag": "core" }
+      ],
+      "why": "The class, the struggle, what you did and the result. Old history with fractions and the cold room can go." },
+    { "id": "trim-28", "track": "college", "target": 50,
+      "q": "How would you contribute to our campus?",
+      "segments": [
+        { "t": "I'd probably join a lot of clubs, like maybe ten, there are so many on your website and they all look fun.", "tag": "cut" },
+        { "t": "I'd bring the kind of club I started in high school.", "tag": "core" },
+        { "t": "It's a lunch club where people teach each other a skill, and it grew to about 30 people from different friend groups.", "tag": "example" },
+        { "t": "The most popular one was a guy teaching everyone to juggle, which was chaos.", "tag": "cut" },
+        { "t": "I'd love to start something like it here, or join one that's similar.", "tag": "core" },
+        { "t": "Also I'm a pretty good roommate, I think, I'm clean-ish.", "tag": "cut" }
+      ],
+      "why": "What you've done and how it carries over. Ten clubs and roommate habits aren't the point." },
+    { "id": "trim-29", "track": "college", "target": 35,
+      "q": "What do you do outside of school?",
+      "segments": [
+        { "t": "Not that much, honestly, school takes up most of my time, and I need a lot of sleep.", "tag": "cut" },
+        { "t": "I work at my family's restaurant on weekends.", "tag": "core" },
+        { "t": "Lately I've been helping my dad with the books and ordering supplies, and it's gotten me interested in business.", "tag": "example" },
+        { "t": "We serve mostly Vietnamese food, my grandma's recipes, and the pho is the most popular.", "tag": "cut" },
+        { "t": "I also watch a lot of shows, mostly cooking ones, and I play games with my cousins.", "tag": "cut" },
+        { "t": "Oh, and sometimes I go to the gym with my brother, but not every week, it depends on how much homework I have.", "tag": "cut" }
+      ],
+      "why": "One real thing you do, and why it matters for what's next. 'Not that much' undersells you." },
+    { "id": "trim-30", "track": "college", "target": 50,
+      "q": "Is there anything else you'd like us to know?",
+      "segments": [
+        { "t": "Um, let me think, I feel like I said most things already, but okay, there's one thing.", "tag": "cut" },
+        { "t": "My grades dipped in tenth grade, and I'd like to explain why.", "tag": "core" },
+        { "t": "My grandma moved in with us that year, and I helped care for her after school, so I learned to plan homework around her schedule.", "tag": "example" },
+        { "t": "She's doing better now, she even does crossword puzzles with me on Sundays.", "tag": "cut" },
+        { "t": "My grades have gone up every semester since.", "tag": "core" },
+        { "t": "So yeah, that's it, thanks for asking.", "tag": "cut" }
+      ],
+      "why": "Context and growth, said simply. Your answer is stronger without the warm-up and wrap-up." }
+  ]
+}

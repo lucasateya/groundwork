@@ -1,0 +1,326 @@
+{
+  "meta": { "game": "build", "lang": "en", "note": "Pieces have a role: answer, situation, did, result, learned, or decoy (hard rounds only). \"orders\" lists every acceptable order; the first is the model shown in the reveal." },
+  "rounds": [
+    { "id": "build-01", "track": "general", "hard": false,
+      "q": "What's one thing you're really good at?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'm really good at staying organized." },
+        { "id": "s", "role": "situation", "text": "This fall I had soccer three days a week, a part-time job and AP classes." },
+        { "id": "d", "role": "did", "text": "I kept one calendar on my phone and planned each week on Sunday night." },
+        { "id": "r", "role": "result", "text": "I didn't miss a single shift or assignment all semester." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Answer first, then prove it: say the strength, then the situation, what you did, and how it turned out." },
+    { "id": "build-02", "track": "general", "hard": false,
+      "q": "Tell me about a time something didn't go the way you planned.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "Our club's bake sale got rained out, but we still made it work." },
+        { "id": "s", "role": "situation", "text": "We'd planned to sell outside after school, and it poured that afternoon." },
+        { "id": "d", "role": "did", "text": "I asked the front office if we could use the lobby and made a quick sign to point people inside." },
+        { "id": "r", "role": "result", "text": "We raised $140, close to our goal." },
+        { "id": "l", "role": "learned", "text": "Now I always plan a backup spot." }
+      ],
+      "orders": [["a", "s", "d", "r", "l"]],
+      "why": "Lead with the short version, then tell it in order. Ending with what you learned shows you grew from it." },
+    { "id": "build-03", "track": "general", "hard": true,
+      "q": "Tell me about a time you worked with a group.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I helped my chemistry group get organized when we were falling behind." },
+        { "id": "s", "role": "situation", "text": "Two weeks before the project was due, nobody knew who was doing what." },
+        { "id": "d", "role": "did", "text": "I suggested we split it into four parts and check in at lunch every Wednesday." },
+        { "id": "r", "role": "result", "text": "We finished a day early and got an A." },
+        { "id": "x", "role": "decoy", "text": "Honestly, one guy in our group was really lazy and never did anything." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "decoyWhy": "Complaining about a teammate makes you sound hard to work with, even if it's true.",
+      "why": "Keep the story about what you did. Blaming others pulls the focus away from you." },
+    { "id": "build-04", "track": "general", "hard": false,
+      "q": "Tell me about a mistake you made and what you did next.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I once double-booked myself and almost let my neighbor down." },
+        { "id": "s", "role": "situation", "text": "I'd promised to watch her dog on the same day as an away game." },
+        { "id": "d", "role": "did", "text": "As soon as I noticed, I called her, apologized and found a friend to cover." },
+        { "id": "l", "role": "learned", "text": "Now everything goes into my phone calendar the moment I agree to it." }
+      ],
+      "orders": [["a", "s", "d", "l"]],
+      "why": "Own the mistake up front, show how you fixed it, then what you changed. That order shows responsibility." },
+    { "id": "build-05", "track": "general", "hard": false,
+      "q": "What's something you've taught yourself?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I taught myself to edit video." },
+        { "id": "s", "role": "situation", "text": "I wanted to make a highlight reel of my cousin's soccer season." },
+        { "id": "d", "role": "did", "text": "I watched free tutorials and practiced on short clips every weekend." },
+        { "id": "r", "role": "result", "text": "Now I make the highlight videos for our school's sports teams." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Say the skill first, then how you learned it and what you can do now. The result is the proof." },
+    { "id": "build-06", "track": "general", "hard": true,
+      "q": "What do you do when you feel nervous?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I slow my breathing and remind myself I've prepared." },
+        { "id": "s", "role": "situation", "text": "Before my first piano recital, my hands were shaking." },
+        { "id": "d", "role": "did", "text": "I'd practiced the first few bars until I could play them without thinking, and I took three slow breaths before I started." },
+        { "id": "r", "role": "result", "text": "Once I got going, the nerves faded and I played the whole piece." },
+        { "id": "x", "role": "decoy", "text": "I also get nervous about a lot of stuff at home, like my parents arguing." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "decoyWhy": "Too much personal detail. It's okay to keep private things private in an interview.",
+      "why": "Your answer and one example are enough. Stay on what helps you steady yourself." },
+    { "id": "build-07", "track": "general", "hard": false,
+      "q": "Tell me about a time you helped someone.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I helped a new student find her place at our school." },
+        { "id": "s", "role": "situation", "text": "She'd moved mid-year and was eating lunch alone every day." },
+        { "id": "d", "role": "did", "text": "I invited her to our table and showed her where the clubs met." },
+        { "id": "r", "role": "result", "text": "She joined robotics with me, and now she's one of my closest friends." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Start with what you did in one line, then tell the story. The ending shows why it mattered." },
+    { "id": "build-08", "track": "general", "hard": false,
+      "q": "What's something you're working on getting better at?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'm working on speaking up in class." },
+        { "id": "s", "role": "situation", "text": "I used to stay quiet even when I knew the answer." },
+        { "id": "d", "role": "did", "text": "This semester I set a goal to say one thing in every history discussion." },
+        { "id": "r", "role": "result", "text": "Now it feels pretty normal, and my participation grade went up." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Name the weakness, show where you started, then what you're doing about it. Ending on progress keeps it positive." },
+    { "id": "build-09", "track": "general", "hard": true,
+      "q": "Tell me about a time you had to keep going after you wanted to quit.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I almost quit cross-country my first season, but I'm glad I didn't." },
+        { "id": "s", "role": "situation", "text": "I finished last in my first three races." },
+        { "id": "d", "role": "did", "text": "My coach helped me focus on beating my own time instead of other runners." },
+        { "id": "r", "role": "result", "text": "By the end of the season I'd cut two minutes off." },
+        { "id": "l", "role": "learned", "text": "I learned that small goals keep me going when big ones feel impossible." },
+        { "id": "x", "role": "decoy", "text": "Cross-country is way harder than people think, and the uniforms are ugly." }
+      ],
+      "orders": [["a", "s", "d", "r", "l"]],
+      "decoyWhy": "Off-topic. Complaining about the sport doesn't help your story.",
+      "why": "Answer first, then the struggle, what changed, the result and the lesson. Extra comments just get in the way." },
+    { "id": "build-10", "track": "general", "hard": false,
+      "q": "Tell me about a time you disagreed with someone.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "My lab partner and I disagreed about how to run an experiment, and we settled it by testing both ways." },
+        { "id": "s", "role": "situation", "text": "He wanted to skip a step to finish faster, and I was worried our results would be off." },
+        { "id": "d", "role": "did", "text": "I explained why, and suggested we try both methods on a small sample." },
+        { "id": "r", "role": "result", "text": "Mine gave cleaner results, and he was fine with it because we'd checked." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "The answer up front tells them it ended well. Then the details show how calmly you handled it." },
+    { "id": "build-11", "track": "general", "hard": false,
+      "q": "What's a responsibility you have at home?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I take care of my two younger sisters after school." },
+        { "id": "d", "role": "did", "text": "I pick them up, make them a snack and get them started on homework until my mom gets home at six." },
+        { "id": "l", "role": "learned", "text": "It's taught me to be on time, because they're counting on me." }
+      ],
+      "orders": [["a", "d", "l"]],
+      "why": "Not every answer needs a long story. Say it, show what it involves, and what it taught you." },
+    { "id": "build-12", "track": "general", "hard": true,
+      "q": "Why should we pick you?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "You need someone dependable who's good with people, and that's me." },
+        { "id": "s", "role": "situation", "text": "For the past year I've worked the front desk at my mom's salon on Saturdays." },
+        { "id": "d", "role": "did", "text": "I greet people, answer the phone and keep the appointment book straight, even when it's packed." },
+        { "id": "r", "role": "result", "text": "My mom says the regulars ask for me by name now." },
+        { "id": "x", "role": "decoy", "text": "Also, I really need the money for a new phone." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "decoyWhy": "It's about what you get, not what you'd give them.",
+      "why": "Answer what they need, then prove you can do it. Keep the focus on what you offer." },
+    { "id": "build-13", "track": "general", "hard": false,
+      "q": "How do you handle having a lot to do at once?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I write everything down and do whatever's due soonest first." },
+        { "id": "s", "role": "situation", "text": "During finals week I also had soccer and two babysitting jobs." },
+        { "id": "d", "role": "did", "text": "Each night I planned the next day, down to when I'd study." },
+        { "id": "r", "role": "result", "text": "I got through all of it without missing anything or panicking." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Say your method first. The busy week is the proof that it actually works." },
+    { "id": "build-14", "track": "general", "hard": false,
+      "q": "Tell me about something you're proud of.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'm proud of the lunch club I started at my school." },
+        { "id": "s", "role": "situation", "text": "I noticed a lot of people sat alone or stared at their phones during lunch." },
+        { "id": "d", "role": "did", "text": "I started a club where people teach each other a skill, like chess or knitting." },
+        { "id": "r", "role": "result", "text": "It grew to about 30 people." },
+        { "id": "l", "role": "learned", "text": "It showed me I can start something from nothing if I just ask people to join." }
+      ],
+      "orders": [["a", "s", "d", "r", "l"], ["a", "s", "d", "l", "r"]],
+      "why": "Name it, then tell why you started it and what happened. The result and the lesson can go in either order." },
+    { "id": "build-15", "track": "general", "hard": true,
+      "q": "Tell me about a time you got feedback you didn't like.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "My English teacher told me my essays were too wordy, and she was right." },
+        { "id": "s", "role": "situation", "text": "I'd gotten a C on an essay I thought was great, and it stung." },
+        { "id": "d", "role": "did", "text": "I asked her to show me two examples, then started cutting every sentence that didn't add something." },
+        { "id": "r", "role": "result", "text": "My next two essays got A's." },
+        { "id": "x", "role": "decoy", "text": "My old English teacher never gave anyone good grades anyway." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "decoyWhy": "Blaming a teacher undercuts the whole point, which is that you can take feedback.",
+      "why": "Admitting the feedback was fair, then showing what you changed, is the strongest version." },
+    { "id": "build-16", "track": "general", "hard": false,
+      "q": "Tell me about a time you took the lead.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I took the lead on our family's yard sale this spring." },
+        { "id": "s", "role": "situation", "text": "We had a garage full of stuff and no plan, and my parents were busy." },
+        { "id": "d", "role": "did", "text": "I sorted everything, priced it, made signs and got my brothers to run the tables." },
+        { "id": "r", "role": "result", "text": "We made over $600 and cleared out the garage." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Leading can happen anywhere, even at home. Answer first, then show the steps you took." },
+    { "id": "build-17", "track": "general", "hard": false,
+      "q": "Tell me about a time you had to learn something quickly.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I had to learn to run the scoreboard in one afternoon." },
+        { "id": "s", "role": "situation", "text": "The usual volunteer got sick right before a home basketball game." },
+        { "id": "d", "role": "did", "text": "I asked the athletic director for a ten-minute walkthrough, wrote down the buttons and practiced during warm-ups." },
+        { "id": "r", "role": "result", "text": "The game ran without a single mistake on the board." },
+        { "id": "l", "role": "learned", "text": "Asking for a quick demo is faster than guessing." }
+      ],
+      "orders": [["a", "s", "d", "r", "l"], ["a", "s", "d", "l", "r"]],
+      "why": "Start with what you learned to do, then how. Your lesson can come before or after the result." },
+    { "id": "build-18", "track": "general", "hard": true,
+      "q": "How would your friends describe you?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "They'd say I'm the one who shows up." },
+        { "id": "d", "role": "did", "text": "If someone needs a ride to practice or help moving, I'm usually the one they text." },
+        { "id": "r", "role": "result", "text": "My friend Maya calls me the group's backup plan." },
+        { "id": "x", "role": "decoy", "text": "Some people at school think I'm kind of annoying, but whatever." }
+      ],
+      "orders": [["a", "d", "r"], ["a", "r", "d"]],
+      "decoyWhy": "Adds a negative nobody asked about.",
+      "why": "One quality, backed by what you do and what a friend says. That's the whole answer." },
+    { "id": "build-19", "track": "job", "hard": false,
+      "q": "Tell me about a time you were reliable when it counted.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I walk my neighbor's dog every weekday, and I've never missed a day." },
+        { "id": "s", "role": "situation", "text": "Last winter a snowstorm closed school and most roads." },
+        { "id": "d", "role": "did", "text": "I still walked over at noon, because I knew the dog had no one else." },
+        { "id": "r", "role": "result", "text": "She's kept me on for two years and recommended me to two other neighbors." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Lead with the claim, then the moment that proves it. The result shows others trust you." },
+    { "id": "build-20", "track": "job", "hard": false,
+      "q": "What would you do if a customer was upset with you?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'd stay calm, listen, and try to fix it, or get a manager if I couldn't." },
+        { "id": "s", "role": "situation", "text": "At our school book fair, a parent got upset about a price." },
+        { "id": "d", "role": "did", "text": "I apologized, listened to what she expected, and got the teacher in charge." },
+        { "id": "r", "role": "result", "text": "It turned out to be a wrong sticker, and she left happy." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "Say your plan first, then show you've done it before. That makes your plan believable." },
+    { "id": "build-21", "track": "job", "hard": true,
+      "q": "Have you ever handled money?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "Not at a register yet, but I ran the cash box at our team's car wash." },
+        { "id": "d", "role": "did", "text": "I counted the money at the start and end of each of the three Saturdays." },
+        { "id": "r", "role": "result", "text": "It matched every time." },
+        { "id": "l", "role": "learned", "text": "I'm careful with change, and I'd be glad to learn your system." },
+        { "id": "x", "role": "decoy", "text": "At my last babysitting job the parents paid me late, which was really annoying." }
+      ],
+      "orders": [["a", "d", "r", "l"]],
+      "decoyWhy": "A complaint about someone you worked for. It makes employers wonder what you'd say about them.",
+      "why": "Be honest about no register experience, then point to the closest thing you've done." },
+    { "id": "build-22", "track": "job", "hard": false,
+      "q": "Why do you want to work here?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I want to be part of a team like yours." },
+        { "id": "s", "role": "situation", "text": "My family comes here a lot, and the staff always stay friendly even when it's packed." },
+        { "id": "l", "role": "learned", "text": "I want to learn how to handle a busy rush like that." }
+      ],
+      "orders": [["a", "s", "l"]],
+      "why": "Say why, then show you know the place, then what you hope to learn." },
+    { "id": "build-23", "track": "job", "hard": false,
+      "q": "Tell me about a time you went above what was asked.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "At my aunt's bakery, I started folding cake boxes without being asked." },
+        { "id": "s", "role": "situation", "text": "I'd finished my tasks early one Saturday and everyone else was busy." },
+        { "id": "d", "role": "did", "text": "I watched how they folded the boxes and made a stack for the afternoon orders." },
+        { "id": "r", "role": "result", "text": "It saved the team about half an hour during the rush, and now it's my job every week." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "why": "The result shows the extra effort made a difference, which is what makes the story land." },
+    { "id": "build-24", "track": "job", "hard": true,
+      "q": "How would you handle a really busy shift?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'd stay calm and take things one at a time." },
+        { "id": "s", "role": "situation", "text": "Last summer I helped at the pool's snack stand on the Fourth of July." },
+        { "id": "d", "role": "did", "text": "The line was huge, so I took orders while my coworker made them, and we switched when one of us fell behind." },
+        { "id": "r", "role": "result", "text": "We sold out of almost everything and never had a mix-up." },
+        { "id": "x", "role": "decoy", "text": "To be honest, I hate crowds and loud places." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "decoyWhy": "Off-message. It argues against you for this job.",
+      "why": "Answer first, then a real busy day. Teamwork in the story shows how you'd fit in." },
+    { "id": "build-25", "track": "college", "hard": false,
+      "q": "Why are you interested in this school?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "Mostly because of your hands-on environmental science program." },
+        { "id": "s", "role": "situation", "text": "First-years here can do field research at the nature preserve, which almost no other school offers." },
+        { "id": "d", "role": "did", "text": "At the info session I talked to a student who said classes are small and professors know your name." },
+        { "id": "l", "role": "learned", "text": "That matters to me because I learn best by asking a lot of questions." }
+      ],
+      "orders": [["a", "s", "d", "l"], ["a", "d", "s", "l"]],
+      "why": "Say your main reason, give the details that only fit this school, then tie it to you." },
+    { "id": "build-26", "track": "college", "hard": false,
+      "q": "Tell me about a class that challenged you.",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "Pre-calc challenged me more than any class so far." },
+        { "id": "s", "role": "situation", "text": "I got a 61 on the first test, which honestly scared me." },
+        { "id": "d", "role": "did", "text": "I started going to my teacher's help sessions on Tuesdays and redoing every problem I got wrong." },
+        { "id": "r", "role": "result", "text": "I finished the year with a B+." },
+        { "id": "l", "role": "learned", "text": "I'm not afraid of hard classes anymore, because I know what to do." }
+      ],
+      "orders": [["a", "s", "d", "r", "l"]],
+      "why": "Name the class, then the struggle, the fix and the result. The lesson shows you'd handle college work." },
+    { "id": "build-27", "track": "college", "hard": true,
+      "q": "What do you want to study?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'm undecided, but I keep coming back to psychology and education." },
+        { "id": "s", "role": "situation", "text": "I volunteer at an after-school program twice a week." },
+        { "id": "d", "role": "did", "text": "I've noticed some kids light up with one tutor and shut down with another, and I want to understand why." },
+        { "id": "l", "role": "learned", "text": "So I'd like to take classes in both during my first year and see which fits." },
+        { "id": "x", "role": "decoy", "text": "My parents want me to be a doctor, but I don't really care what they think." }
+      ],
+      "orders": [["a", "s", "d", "l"]],
+      "decoyWhy": "Family drama that doesn't help your answer.",
+      "why": "Being undecided is fine. Show what you're drawn to and why, then your plan to explore it." },
+    { "id": "build-28", "track": "college", "hard": false,
+      "q": "How would you contribute to our campus?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I'd bring the kind of club I started in high school." },
+        { "id": "s", "role": "situation", "text": "At my school I started a lunch club where people teach each other a skill." },
+        { "id": "r", "role": "result", "text": "It grew to about 30 people from all different friend groups." },
+        { "id": "l", "role": "learned", "text": "I'd love to start something like it here, or join a club that does something similar." }
+      ],
+      "orders": [["a", "s", "r", "l"]],
+      "why": "What you've already done is the best preview of what you'd add. End by connecting it to their campus." },
+    { "id": "build-29", "track": "college", "hard": false,
+      "q": "What do you do outside of school?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "I work at my family's restaurant on weekends." },
+        { "id": "d", "role": "did", "text": "Lately I've been helping my dad with the books and ordering supplies." },
+        { "id": "l", "role": "learned", "text": "It's gotten me interested in business, which I'd like to study." }
+      ],
+      "orders": [["a", "d", "l"]],
+      "why": "Short and clear: what you do, a detail, and why it matters for what's next." },
+    { "id": "build-30", "track": "college", "hard": true,
+      "q": "Is there anything else you'd like us to know?",
+      "pieces": [
+        { "id": "a", "role": "answer", "text": "Yes. My grades dipped in tenth grade, and I'd like to explain why." },
+        { "id": "s", "role": "situation", "text": "My grandma moved in with us that year, and I helped care for her after school." },
+        { "id": "d", "role": "did", "text": "I learned to plan my homework around her schedule and to ask teachers for help early." },
+        { "id": "r", "role": "result", "text": "My grades have gone up every semester since." },
+        { "id": "x", "role": "decoy", "text": "Also, my old counselor didn't help me at all with my applications." }
+      ],
+      "orders": [["a", "s", "d", "r"]],
+      "decoyWhy": "A complaint that pulls focus from your growth.",
+      "why": "Context plus growth is a strong way to use this question. Leave out complaints." }
+  ]
+}

@@ -148,6 +148,8 @@ async function loadGameContent(id, lang){
   const rounds = (base.rounds || []).map(r => {
     const tr = items && items[r.id] ? items[r.id] : null;
     const round = mergeRoundText(r, tr);
+    // Trim: the English length, so other languages can scale the target.
+    if(r.segments) round.enStart = countUnits(r.segments.map(s => s.t).join(' '), 'en');
     if(daily && r.daily){
       const de = daily.en[r.daily] || {}, dt = (daily.tr && daily.tr[r.daily]) || {};
       // The question and the right answer come from the question of the day,
@@ -544,8 +546,10 @@ GAME_MODULES.trim = {
       const cut = st.cut[i];
       let cls = 'trim-seg' + (cut ? ' cut' : '');
       if(checked && cut && s.tag !== 'cut') cls += ' lost';
-      return '<button type="button" class="' + cls + '" data-seg="' + i + '" aria-pressed="' + cut + '"' + (checked ? ' disabled' : '') +
-        ' aria-label="' + escapeHTML((cut ? t('Crossed out: ') : '') + s.t) + '"><span translate="no">' + escapeHTML(s.t) + '</span></button>';
+      // A span (not a <button>) so the answer wraps like a normal paragraph;
+      // role, tabindex and the key handler in bind() make it act like a button.
+      return '<span class="' + cls + '" role="button" data-seg="' + i + '" aria-pressed="' + cut + '"' +
+        (checked ? ' aria-disabled="true"' : ' tabindex="0"') + ' translate="no">' + escapeHTML(s.t) + '</span>';
     }).join(isZh(lang) ? '' : ' ');
     const under = c.now <= c.target;
     return '<p class="game-instr">Tap the parts to cut. Keep the main point and the best example.</p>' +
@@ -556,6 +560,10 @@ GAME_MODULES.trim = {
   },
   bind(root, ctx){
     const { st, round, lang } = ctx;
+    if(ctx.checked) return;
+    root.querySelectorAll('[data-seg]').forEach(b => b.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); b.click(); }
+    }));
     root.querySelectorAll('[data-seg]').forEach(b => b.addEventListener('click', () => {
       const i = Number(b.dataset.seg);
       st.cut[i] = !st.cut[i];

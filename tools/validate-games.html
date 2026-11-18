@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Groundwork: check the mini game rounds</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#1C2321;}
+  h1{font-size:22px;} h2{font-size:17px;margin-top:1.5rem;}
+  .ok{color:#2B4C4A;} .bad{color:#B23A48;} .warn{color:#8f7015;}
+  li{margin:0.15rem 0;} code{background:#EDEFEA;padding:0 0.25rem;border-radius:4px;}
+</style>
+</head>
+<body>
+<h1>Mini game rounds check</h1>
+<p>Open this page from the site (for example <code>http://localhost:8000/tools/validate-games.html</code>). It reads <code>data/games/</code> and lists any problems. Nothing is changed.</p>
+<div id="out">Checking…</div>
+<script src="../games.js"></script>
+<script>
+// games.js only defines things; we just need countUnits, GAME_LIST and GAME_MODULES.trim.
+const LANG_CODES = ['es', 'zh', 'de', 'fr'];
+const TRACKS = ['general', 'job', 'college'];
+const ROLES = ['answer', 'situation', 'did', 'result', 'learned', 'decoy'];
+const out = document.getElementById('out');
+const sections = [];
+let errors = 0, warnings = 0;
+
+function section(title){ const s = { title, items: [] }; sections.push(s); return s; }
+function err(s, msg){ s.items.push(['bad', msg]); errors++; }
+function warn(s, msg){ s.items.push(['warn', msg]); warnings++; }
+function get(url){ return fetch('../' + url, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).catch(() => null); }
+
+function checkCommon(s, game, rounds){
+  const ids = new Set();
+  const tracks = { general: 0, job: 0, college: 0 };
+  rounds.forEach(r => {
+    if(!r.id) err(s, 'A round has no id.');
+    else if(ids.has(r.id)) err(s, r.id + ': id is used twice.');
+    ids.add(r.id);
+    if(!TRACKS.includes(r.track)) err(s, r.id + ': track must be general, job or college (got ' + r.track + ').');
+    else tracks[r.track]++;
+    if(!r.q && !(game === 'really-asking' && r.daily)) err(s, r.id + ': no question.');
+    if(!r.why) err(s, r.id + ': no "why".');
+  });
+  const n = rounds.length;
+  s.items.push(['ok', n + ' rounds: ' + tracks.general + ' general, ' + tracks.job + ' job, ' + tracks.college + ' college.']);
+  if(n < 25) warn(s, 'Fewer than 25 rounds. The spec asks for about 30.');
+  return ids;
+}
+
+async function run(){
+  const daily = await get('data/daily-questions.json');
+  const dailyIds = new Set(((daily && daily.questions) || []).map(q => q.id));
+  const english = {};
+  for(const g of GAME_LIST){
+    const s = section(g.name + ' (data/games/' + g.id + '.json)');
+    const file = await get('data/games/' + g.id + '.json');
+    if(!file || !Array.isArray(file.rounds)){ err(s, 'File is missing or has no "rounds" list.'); continue; }
+    english[g.id] = file;
+    const rounds = file.rounds;
+    checkCommon(s, g.id, rounds);
+
+    if(g.id === 'rank') rounds.forEach(r => {
+      if(!Array.isArray(r.answers) || r.answers.length !== 3){ err(s, r.id + ': needs exactly 3 answers.'); return; }
+      const q = r.answers.map(a => a.quality).sort().join(',');
+      if(q !== 'okay,strong,weak') err(s, r.id + ': answers must be one strong, one okay and one weak (got ' + q + ').');
+      r.answers.forEach((a, i) => { if(!a.text || !a.reason) err(s, r.id + ': answer ' + (i + 1) + ' needs text and a reason.'); });
+    });
+
+    if(g.id === 'really-asking') rounds.forEach(r => {
+      if(r.daily && !dailyIds.has(r.daily)) err(s, r.id + ': daily question "' + r.daily + '" not found in daily-questions.json.');
+      if(!r.daily && !r.right) err(s, r.id + ': needs "right" (or a "daily" id).');
+      if(!Array.isArray(r.wrong) || r.wrong.length !== 2) err(s, r.id + ': needs exactly 2 wrong options.');
+      if(!r.tip) err(s, r.id + ': no "So a good answer…" tip.');
+    });
+
+    if(g.id === 'build'){
+      let hard = 0;
+      rounds.forEach(r => {
+        const pieces = r.pieces || [];
+        const pids = new Set(pieces.map(p => p.id));
+        if(pids.size !== pieces.length) err(s, r.id + ': piece ids repeat.');
+        pieces.forEach(p => { if(!ROLES.includes(p.role)) err(s, r.id + ': piece ' + p.id + ' has unknown role ' + p.role + '.'); if(!p.text) err(s, r.id + ': piece ' + p.id + ' has no text.'); });
+        const decoys = pieces.filter(p => p.role === 'decoy').map(p => p.id);
+        const real = pieces.filter(p => p.role !== 'decoy').map(p => p.id);
+        if(r.hard){ hard++; if(decoys.length !== 1) err(s, r.id + ': hard rounds need exactly one decoy.'); if(!r.decoyWhy) err(s, r.id + ': hard round needs "decoyWhy".'); }
+        else if(decoys.length) err(s, r.id + ': only hard rounds can have a decoy.');
+        if(real.length < 3 || real.length > 5) warn(s, r.id + ': has ' + real.length + ' pieces (the spec asks for 4–5).');
+        if(!Array.isArray(r.orders) || !r.orders.length) err(s, r.id + ': needs at least one acceptable order.');
+        (r.orders || []).forEach((o, i) => {
+          o.forEach(id => { if(!pids.has(id)) err(s, r.id + ': order ' + (i + 1) + ' uses piece "' + id + '", which doesn\'t exist.'); });
+          if(o.some(id => decoys.includes(id))) err(s, r.id + ': order ' + (i + 1) + ' includes the decoy.');
+          if(new Set(o).size !== real.length || o.length !== real.length) err(s, r.id + ': order ' + (i + 1) + ' must use every non-decoy piece exactly once.');
+        });
+      });
+      s.items.push(['ok', hard + ' hard rounds (about a third is the goal).']);
+    }
+
+    if(g.id === 'trim') rounds.forEach(r => {
+      const segs = r.segments || [];
+      if(!segs.length){ err(s, r.id + ': no segments.'); return; }
+      segs.forEach((x, i) => { if(!['core', 'example', 'cut'].includes(x.tag)) err(s, r.id + ': segment ' + (i + 1) + ' has unknown tag ' + x.tag + '.'); });
+      if(!segs.some(x => x.tag === 'core')) err(s, r.id + ': needs at least one core segment.');
+      if(!segs.some(x => x.tag === 'example')) err(s, r.id + ': needs an example segment.');
+      const all = countUnits(segs.map(x => x.t).join(' '), 'en');
+      const model = countUnits(segs.filter(x => x.tag !== 'cut').map(x => x.t).join(' '), 'en');
+      if(!(r.target > 0)) err(s, r.id + ': no target.');
+      else if(model > r.target) err(s, r.id + ': the model answer (' + model + ' words) is over the target (' + r.target + ').');
+      if(r.target >= all) err(s, r.id + ': target is not below the full length.');
+      if(all < 75 || all > 135) warn(s, r.id + ': ' + all + ' words (the spec asks for about 90–130).');
+    });
+  }
+
+  // Translations: overlays keyed by round id, text only.
+  for(const lang of LANG_CODES){
+    const s = section('Translations: ' + lang);
+    for(const g of GAME_LIST){
+      const en = english[g.id];
+      const file = await get('data/games/' + lang + '/' + g.id + '.json');
+      if(!file){ warn(s, g.id + ': no translation file (the game falls back to English).'); continue; }
+      if(!file.meta || typeof file.meta.reviewed !== 'boolean') warn(s, g.id + ': meta.reviewed should be true or false.');
+      const items = file.items || {};
+      if(!en) continue;
+      const missing = en.rounds.filter(r => !items[r.id]).map(r => r.id);
+      if(missing.length) err(s, g.id + ': missing rounds ' + missing.join(', '));
+      Object.keys(items).forEach(id => { if(!en.rounds.some(r => r.id === id)) err(s, g.id + ': "' + id + '" isn\'t an English round.'); });
+      en.rounds.forEach(r => {
+        const x = items[r.id];
+        if(!x) return;
+        if(!x.why) err(s, r.id + ': no why.');
+        if(g.id !== 'really-asking' || !r.daily){ if(!x.q) err(s, r.id + ': no question.'); }
+        if(g.id === 'rank' && (!Array.isArray(x.answers) || x.answers.length !== 3 || x.answers.some(a => !a.text || !a.reason))) err(s, r.id + ': needs 3 answers with text and reason, in the English order.');
+        if(g.id === 'really-asking'){
+          if(!Array.isArray(x.wrong) || x.wrong.length !== 2) err(s, r.id + ': needs 2 wrong options.');
+          if(!x.tip) err(s, r.id + ': no tip.');
+          if(!r.daily && !x.right) err(s, r.id + ': no right answer.');
+        }
+        if(g.id === 'build'){
+          r.pieces.forEach(p => { if(!x.pieces || typeof x.pieces[p.id] !== 'string') err(s, r.id + ': piece ' + p.id + ' not translated.'); });
+          if(r.hard && !x.decoyWhy) err(s, r.id + ': no decoyWhy.');
+        }
+        if(g.id === 'trim'){
+          if(!Array.isArray(x.segments) || x.segments.length !== r.segments.length){ err(s, r.id + ': needs ' + r.segments.length + ' segments, in the English order.'); return; }
+          // The target scales with length; make sure the trimmed answer fits and a real cut is needed.
+          const round = JSON.parse(JSON.stringify(r));
+          round.segments.forEach((seg, i) => { seg.t = x.segments[i]; });
+          round.enStart = countUnits(r.segments.map(seg => seg.t).join(' '), 'en');
+          const target = GAME_MODULES.trim.target(round, lang);
+          const join = lang === 'zh' ? '' : ' ';
+          const all = countUnits(round.segments.map(seg => seg.t).join(join), lang);
+          if(target >= all) err(s, r.id + ': the scaled target (' + target + ') isn\'t below the full length (' + all + ').');
+        }
+      });
+      if(!missing.length) s.items.push(['ok', g.id + ': ' + Object.keys(items).length + ' rounds, ' + (file.meta && file.meta.reviewed ? 'reviewed' : 'not reviewed yet (Beta)') + '.']);
+    }
+  }
+
+  out.innerHTML = '<p class="' + (errors ? 'bad' : 'ok') + '"><b>' + (errors ? errors + ' problem' + (errors === 1 ? '' : 's') : 'No problems') + '</b>' + (warnings ? ', ' + warnings + ' warning' + (warnings === 1 ? '' : 's') : '') + '.</p>' +
+    sections.map(s => '<h2>' + s.title + '</h2><ul>' + s.items.map(([c, m]) => '<li class="' + c + '">' + m.replace(/</g, '&lt;') + '</li>').join('') + '</ul>').join('');
+  document.title = (errors ? 'FAIL ' : 'PASS ') + document.title;
+}
+run();
+</script>
+</body>
+</html>
