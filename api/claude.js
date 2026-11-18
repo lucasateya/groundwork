@@ -12,6 +12,14 @@ import { overLimit, visitorIp } from './_lib/ratelimit.js';
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
 const MAX_BODY_CHARS = 60000;
 
+// Structured output, plus low effort for quick chat turns on models that
+// support effort (Claude 5 family and later).
+function outputConfig(request) {
+  const cfg = { format: request.format };
+  if (request.chat && /^claude-(opus|sonnet|haiku|fable)-([5-9])/.test(MODEL)) cfg.effort = 'low';
+  return cfg;
+}
+
 function isSameSite(req) {
   const origin = req.headers.origin || req.headers.referer;
   if (!origin) return false;
@@ -57,12 +65,14 @@ export default async function handler(req, res) {
         'x-api-key': process.env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01'
       },
-      body: JSON.stringify({
+      body: JSON.stringify(Object.assign({
         model: MODEL,
-        max_tokens: request.maxTokens,
+        // Chat replies are short, but the model's thinking counts toward
+        // max_tokens too, so leave room or the reply gets cut off mid-way.
+        max_tokens: request.chat ? Math.max(request.maxTokens, 4000) : request.maxTokens,
         system: request.system,
         messages: request.messages
-      })
+      }, request.format ? { output_config: outputConfig(request) } : {}))
     });
     const data = await response.json();
     if (!response.ok) {

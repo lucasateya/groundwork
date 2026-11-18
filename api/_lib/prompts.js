@@ -166,9 +166,11 @@ function interviewSetup(p, userTurns) {
       (schoolExtraFacts(school).length ? ' More background: ' + schoolExtraFacts(school).join('; ') + '.' : '') +
       ' If they ask about something not covered here, answer in general terms or suggest they ask the admissions office.';
   let flow = ' Over the conversation, cover typical college interview topics: who they are, their academic interests (being undecided is fine), their activities and what they learned from them, a challenge they faced, why this school, and what they do for fun.';
-  if (userTurns >= 8) flow += ' The interview is nearly over: answer anything they just asked, then start wrapping up warmly and thank them for their time.';
-  else if (userTurns >= 6) flow += ' You\'ve asked what questions they have. If they asked you something, answer it briefly and genuinely' + (alumni ? ', and you can share a short, general memory from your own time as a student (nothing that states new school facts)' : '') + ', then ask if they have any other questions.';
-  else if (userTurns >= 5) flow += ' You\'ve covered a lot, so in this reply briefly react to their answer and then ask: "What questions do you have for me?" (or a natural close variant).';
+  const answerTheirs = ' If they asked you something, answer it briefly and genuinely' + (alumni ? ', and you can share a short, general memory from your own time as a student (nothing that states new school facts)' : '') + '.';
+  const invites = Number(p.questionInvites) || 0; // how many times you've already invited their questions
+  if (userTurns >= 7 || invites >= 2) flow += ' The interview is over.' + answerTheirs + ' Then wrap up warmly: thank them for their time and say goodbye. Do NOT ask whether they have more questions, and don\'t ask any new interview questions.';
+  else if (userTurns === 6 || invites === 1) flow += ' You\'ve already asked what questions they have.' + answerTheirs + ' Then ask, once, whether there\'s anything else they\'d like to know.';
+  else if (userTurns === 5) flow += ' You\'ve covered a lot, so in this reply briefly react to their answer and then ask: "What questions do you have for me?" (or a natural close variant).';
   const status = clip(p.status, 40);
   const opening = d.openingFor(lang, persona, track, student) || persona.opening(student, name);
   const system = 'You are ' + who + ', ' + persona.role(name, interviewType) + '. You\'re meeting the student ' + persona.place + '.' +
@@ -181,8 +183,13 @@ function interviewSetup(p, userTurns) {
 function interviewChat(p) {
   const msgs = conversation(p.messages);
   if (msgs[msgs.length - 1].role !== 'user') throw new BadRequest('Last message must be the student\'s');
-  const setup = interviewSetup(p, msgs.filter(m => m.role === 'user').length);
-  return { system: setup.system + GUARDRAILS + CHAT_FORMAT, messages: forApi(msgs), maxTokens: 400, chat: true };
+  // Count how often the interviewer has already invited the student's
+  // questions (English wording; other languages rely on the turn count).
+  const invites = msgs.filter(m => m.role === 'assistant' &&
+    /\bquestions?\b[^.?!]{0,40}\b(for me|you have|you might have|else|other)\b|\banything else you('d| would) like to (ask|know)\b/i.test(m.content)).length;
+  const setup = interviewSetup(Object.assign({}, p, { questionInvites: invites }), msgs.filter(m => m.role === 'user').length);
+  const once = ' Invite the student\'s questions ("Do you have any questions for me?") at most twice in the whole interview. Once you\'ve answered theirs, wrap up instead of asking again.';
+  return { system: setup.system + once + GUARDRAILS + CHAT_FORMAT, messages: forApi(msgs), maxTokens: 400, chat: true };
 }
 
 function interviewGrade(p) {
@@ -422,6 +429,10 @@ export function buildRequest(body) {
   const build = BUILDERS[body && body.type];
   if (!build) throw new BadRequest('Unknown request type');
   const request = build(body);
+  // Chat replies (interviewer, lesson partner, coach) must come back as one
+  // {"say", "flag"} object. The API enforces this schema, so the model can't
+  // add notes, repeat itself or wrap the reply in extra text.
+  if (request.chat) request.format = CHAT_SCHEMA;
   // Job and school suggestions are read on the site, so they follow the site language.
   const ui = pickLang(body.uiLang);
   if (ui !== 'en' && ['jobs', 'schools', 'job-scenario'].includes(body.type)) {
@@ -430,15 +441,59 @@ export function buildRequest(body) {
   return request;
 }
 
-// Interviewer and lesson replies come back as {"say", "flag"}.
-export function parseChat(text) {
-  let obj = null;
-  const cleaned = text.trim().replace(/^```json\s*/i, '').replace(/^```\s*/, '').replace(/```\s*$/, '');
-  try { obj = JSON.parse(cleaned); } catch (e) {
-    const a = cleaned.indexOf('{'), b = cleaned.lastIndexOf('}');
-    if (a !== -1 && b > a) { try { obj = JSON.parse(cleaned.slice(a, b + 1)); } catch (e2) { obj = null; } }
+const CHAT_SCHEMA = {
+  type: 'json_schema',
+  schema: {
+    type: 'object',
+    properties: {
+      say: { type: 'string' },
+      flag: { type: 'string', enum: ['ok', 'redirect', 'crisis'] }
+    },
+    required: ['say', 'flag'],
+    additionalProperties: false
   }
-  if (!obj || typeof obj !== 'object') return { say: text.trim(), flag: 'ok' };
+};
+
+// Every top-level {...} object in a piece of text, in order.
+function jsonObjects(text) {
+  const out = [];
+  let depth = 0, start = -1, inStr = false, esc = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inStr) {
+      if (esc) esc = false;
+      else if (ch === '\\') esc = true;
+      else if (ch === '"') inStr = false;
+      continue;
+    }
+    if (ch === '"') { if (depth > 0) inStr = true; }
+    else if (ch === '{') { if (depth === 0) start = i; depth++; }
+    else if (ch === '}' && depth > 0) {
+      depth--;
+      if (depth === 0 && start !== -1) {
+        try { out.push(JSON.parse(text.slice(start, i + 1))); } catch (e) { /* not JSON */ }
+        start = -1;
+      }
+    }
+  }
+  return out;
+}
+
+// Interviewer and lesson replies come back as {"say", "flag"}. The schema
+// above normally guarantees that; this is a backup if a reply ever slips
+// through in another shape (it takes the first {"say": ...} object it finds,
+// and never shows raw JSON or notes to the student).
+export function parseChat(text) {
+  const cleaned = String(text || '').trim().replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '').trim();
+  let obj = null;
+  try { obj = JSON.parse(cleaned); } catch (e) {
+    obj = jsonObjects(cleaned).find(o => o && typeof o === 'object' && typeof o.say === 'string') || null;
+  }
+  if (!obj || typeof obj !== 'object' || typeof obj.say !== 'string') {
+    // No JSON at all: plain text is the line itself, unless it looks like code.
+    const plain = /[{}]/.test(cleaned) ? '' : cleaned;
+    return { say: plain, flag: 'ok' };
+  }
   const flag = ['ok', 'redirect', 'crisis'].includes(obj.flag) ? obj.flag : 'ok';
-  return { say: typeof obj.say === 'string' ? obj.say.trim() : '', flag };
+  return { say: obj.say.trim(), flag };
 }

@@ -171,24 +171,43 @@ async function i18nLoadFile(code){
 // Fonts with Chinese characters, only when Chinese is on. They're added under
 // the same family names the page already uses (for Chinese characters only),
 // so every heading and paragraph picks them up.
-let i18nCjkFonts = false;
-async function i18nLoadChineseFonts(){
-  if(i18nCjkFonts) return;
-  i18nCjkFonts = true;
-  try{
-    const r = await fetch('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap');
-    const css = (await r.text())
-      .replace(/font-family:\s*'Noto Serif SC'/g, "font-family: 'Fraunces'")
-      .replace(/font-family:\s*'Noto Sans SC'/g, "font-family: 'Inter'");
-    const style = document.createElement('style');
-    style.textContent = css;
-    document.head.appendChild(style);
-  } catch(e){
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap';
-    document.head.appendChild(link);
-  }
+// Google splits the fonts into many slices, and a few slices also cover
+// English letters and punctuation. Those slices are dropped, so English text
+// always keeps the site's own fonts. The style is switched off whenever
+// Chinese isn't the site language.
+let i18nCjkStyle = null;
+let i18nCjkLoading = false;
+function i18nCjkOnlyCss(css){
+  return css.split(/(?=@font-face)/).map(block => {
+    if(!/@font-face/.test(block)) return '';
+    const m = block.match(/unicode-range:\s*([^;]+);/);
+    if(!m) return '';
+    // Keep only the ranges from U+2E80 (Chinese characters and punctuation) up.
+    const keep = m[1].split(',').map(s => s.trim()).filter(part => {
+      const start = parseInt(part.replace(/^U\+/i, '').split('-')[0].replace(/\?/g, '0'), 16);
+      return start >= 0x2E80;
+    });
+    return keep.length ? block.replace(m[0], 'unicode-range: ' + keep.join(', ') + ';') : '';
+  }).join('\n');
+}
+function i18nSetChineseFonts(on){
+  if(i18nCjkStyle) i18nCjkStyle.media = on ? 'all' : 'not all';
+  if(!on || i18nCjkStyle || i18nCjkLoading) return;
+  i18nCjkLoading = true;
+  fetch('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap')
+    .then(r => r.text())
+    .then(text => {
+      const css = i18nCjkOnlyCss(text)
+        .replace(/font-family:\s*'Noto Serif SC'/g, "font-family: 'Fraunces'")
+        .replace(/font-family:\s*'Noto Sans SC'/g, "font-family: 'Inter'");
+      const style = document.createElement('style');
+      style.textContent = css;
+      style.media = I18N.lang === 'zh' ? 'all' : 'not all';
+      document.head.appendChild(style);
+      i18nCjkStyle = style;
+    })
+    .catch(() => {}) // without these fonts, the browser's own Chinese font is used
+    .finally(() => { i18nCjkLoading = false; });
 }
 
 function i18nRefreshAll(){
@@ -207,7 +226,7 @@ async function setSiteLang(code, opts){
   i18nCompile(file);
   document.documentElement.lang = LANGS[code].html;
   document.documentElement.classList.toggle('lang-long', code === 'de' || code === 'fr');
-  if(code === 'zh') i18nLoadChineseFonts();
+  i18nSetChineseFonts(code === 'zh');
   if(!(opts && opts.noSave)){ try{ localStorage.setItem(SITE_LANG_KEY, code); } catch(e){} }
   i18nRefreshAll();
   document.dispatchEvent(new CustomEvent('langchange', { detail:{ lang:code } }));
@@ -232,7 +251,7 @@ function siteLang(){ return I18N.lang; }
   } catch(e){}
   document.documentElement.lang = LANGS[code].html;
   document.documentElement.classList.toggle('lang-long', code === 'de' || code === 'fr');
-  if(code === 'zh') i18nLoadChineseFonts();
+  i18nSetChineseFonts(code === 'zh');
   const cachedFile = I18N.files[code];
   delete I18N.files[code];
   i18nLoadFile(code).then(file => {

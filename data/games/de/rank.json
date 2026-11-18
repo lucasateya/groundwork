@@ -1,0 +1,155 @@
+{
+  "meta": { "game": "rank", "lang": "de", "reviewed": false, "note": "Entwurf. Antworten in derselben Reihenfolge wie im Englischen (stark, okay, schwach)." },
+  "items": {
+    "rank-01": { "q": "Erzähl mir etwas über dich.", "answers": [
+      { "text": "Ich bin in der elften Klasse und finde gern heraus, wie Dinge funktionieren. Ich repariere die Fahrräder der Kinder in meiner Straße, und letzten Sommer habe ich am Kiosk im Freibad geholfen, also bleibe ich freundlich, auch wenn viel los ist.", "reason": "Kurz, echt und mit zwei konkreten Dingen, die die Person gemacht hat." },
+      { "text": "Ich bin in der elften Klasse. Ich mag Sport und treffe mich gern mit Freunden, und ich bin ziemlich verantwortungsbewusst. Ich glaube, ich wäre gut hier.", "reason": "Freundlich, aber 'ziemlich verantwortungsbewusst' wird durch nichts belegt." },
+      { "text": "Ähm, keine Ahnung, ich bin halt ein ganz normaler Mensch? Ich gehe zur Schule und so. Meine Mutter meinte, ich soll mich bewerben.", "reason": "Nichts, woran man sich erinnert, und es klingt, als wäre es nicht die eigene Idee gewesen." } ],
+      "why": "Eine gute Vorstellung ist ein kurzes, echtes Bild von dir mit ein oder zwei Details. An Details erinnern sich die Leute." },
+    "rank-02": { "q": "Was kannst du richtig gut?", "answers": [
+      { "text": "Ich kann gut erklären. Ich gebe meinem kleinen Bruder Nachhilfe in Mathe, und seine Note ist dieses Jahr von einer 5 auf eine 3 gestiegen, weil ich die Schritte mit Sachen erklärt habe, die er mag, zum Beispiel Basketball-Statistiken.", "reason": "Nennt eine Stärke und belegt sie mit einem Ergebnis." },
+      { "text": "Ich kann gut erklären. Andere sagen, ich bin geduldig, wenn ich bei den Hausaufgaben helfe.", "reason": "Die richtige Idee, aber ohne Beispiel." },
+      { "text": "Ehrlich gesagt kann ich viele Sachen gut. Ich bin fleißig, teamfähig, lerne schnell, bin organisiert, kreativ …", "reason": "Eine Liste von Schlagwörtern ohne irgendetwas dahinter." } ],
+      "why": "Eine Stärke auswählen und beweisen ist besser als fünf aufzuzählen. Das Beispiel überzeugt." },
+    "rank-03": { "q": "Erzähl mir von einem Mal, als etwas nicht so lief wie geplant.", "answers": [
+      { "text": "Ich hatte für unsere AG einen Kuchenverkauf geplant, aber es hat geregnet und niemand kam nach draußen. Ich habe im Sekretariat gefragt, ob wir ins Foyer dürfen, schnell ein Schild gemalt, und wir haben trotzdem 140 Euro eingenommen. Jetzt habe ich immer einen Ersatzort.", "reason": "Klares Problem, was die Person getan hat, das Ergebnis und was sie gelernt hat." },
+      { "text": "Unser Kuchenverkauf ist ins Wasser gefallen. Das war ärgerlich, aber wir sind nach drinnen gegangen, und am Ende war es okay.", "reason": "Es gibt eine Geschichte, aber es fehlt, was die Person getan hat und was dabei herauskam." },
+      { "text": "Ehrlich gesagt läuft es bei mir meistens wie geplant. Ich bin sehr organisiert, deshalb passiert das kaum.", "reason": "Weicht der Frage aus. Jeder hat so eine Geschichte." } ],
+      "why": "Sie wollen sehen, wie du reagierst, wenn etwas schiefgeht. 'Passiert mir nie' sagt ihnen nichts." },
+    "rank-04": { "q": "Wie gehst du damit um, wenn du viel gleichzeitig zu tun hast?", "answers": [
+      { "text": "Ich schreibe alles auf und mache zuerst, was am frühesten fällig ist. In der Prüfungswoche hatte ich auch noch Fußball und Babysitten, also habe ich jeden Abend den nächsten Tag geplant. So bin ich nicht in Panik geraten.", "reason": "Eine echte Methode, gezeigt an einer echten, vollen Woche." },
+      { "text": "Ich mache eine Liste und arbeite sie ab. Ich versuche, mich nicht zu sehr zu stressen.", "reason": "Vernünftig, aber ohne Beispiel, dass es funktioniert." },
+      { "text": "Ich mache das eher spontan. Unter Druck arbeite ich am besten, deshalb erledige ich meistens alles am Abend vorher.", "reason": "Klingt, als würde die Person Fristen verpassen." } ],
+      "why": "'Ich mache eine Liste' ist ein Anfang. Zu zeigen, dass die Liste in einer echten Woche funktioniert hat, macht es glaubwürdig." },
+    "rank-05": { "q": "Erzähl mir von einem Mal, als du in einer Gruppe gearbeitet hast.", "answers": [
+      { "text": "In Chemie hing unsere Gruppe beim Projekt hinterher, weil niemand wusste, wer was macht. Ich habe vorgeschlagen, es in vier Teile aufzuteilen und uns am Mittwoch in der Mittagspause abzustimmen. Wir waren einen Tag früher fertig und haben eine 1 bekommen.", "reason": "Zeigt, was die Person für die Gruppe getan hat, und das Ergebnis." },
+      { "text": "Wir hatten ein Gruppenprojekt in Chemie. Jeder hat seinen Teil gemacht, und wir haben eine gute Note bekommen.", "reason": "Nett, aber man erfährt nicht, was diese Person gemacht hat." },
+      { "text": "Ich mag Gruppenarbeit nicht so. Meistens mache ich am Ende alles allein, weil die anderen faul sind.", "reason": "Gibt anderen die Schuld und klingt schwierig im Team." } ],
+      "why": "Bei einer Gruppengeschichte wollen sie wissen, was du gemacht hast. 'Wir' versteckt dich." },
+    "rank-06": { "q": "Woran arbeitest du gerade, um besser zu werden?", "answers": [
+      { "text": "Daran, mich im Unterricht mehr zu melden. Früher war ich still, selbst wenn ich die Antwort wusste. Dieses Halbjahr habe ich mir vorgenommen, in jeder Geschichtsdiskussion etwas zu sagen, und jetzt fühlt es sich ziemlich normal an.", "reason": "Ehrlich, echt und mit konkreten Schritten." },
+      { "text": "Wahrscheinlich Zeitmanagement. Manchmal schiebe ich Sachen auf, aber ich versuche, besser zu werden.", "reason": "Ehrlich, aber 'ich versuche' ohne Details klingt geraten." },
+      { "text": "Ich bin Perfektionist. Mir ist es einfach zu wichtig, alles richtig zu machen.", "reason": "Verstecktes Angeben. Das haben sie schon sehr oft gehört." } ],
+      "why": "Eine echte Schwäche und was du dagegen tust, zeigen Ehrlichkeit und Entwicklung. Eine vorgeschobene klingt auswendig gelernt." },
+    "rank-07": { "q": "Wie würden deine Freunde dich beschreiben?", "answers": [
+      { "text": "Wahrscheinlich als die Person, die immer da ist. Wenn jemand eine Fahrt zum Training oder Hilfe beim Umzug braucht, schreiben sie meistens mir. Meine Freundin Maya nennt mich den Plan B der Gruppe.", "reason": "Eine Eigenschaft mit einem konkreten, echten Detail." },
+      { "text": "Sie würden sagen, ich bin lustig, loyal und kann gut zuhören.", "reason": "Schöne Wörter, aber nichts, was sie belegt." },
+      { "text": "Keine Ahnung, da müsstest du sie fragen. Komisch vielleicht? Haha.", "reason": "Verschenkt die Chance, etwas Gutes über sich zu sagen." } ],
+      "why": "Diese Frage ist eine Chance, eine Stärke mit den Worten anderer zu zeigen. Eine Eigenschaft und ein kurzes Beispiel reichen." },
+    "rank-08": { "q": "Erzähl mir von einem Fehler, den du gemacht hast, und was du danach getan hast.", "answers": [
+      { "text": "Ich hatte vergessen, dass ich versprochen hatte, auf den Hund meiner Nachbarin aufzupassen, und gleichzeitig ein Spiel zugesagt. Sobald ich es gemerkt habe, habe ich sie angerufen, mich entschuldigt und einen Freund als Vertretung gefunden. Jetzt kommt alles sofort in meinen Handykalender.", "reason": "Steht dazu, bringt es in Ordnung und ändert etwas für die Zukunft." },
+      { "text": "Ich hatte mal zwei Termine gleichzeitig und musste meiner Nachbarin absagen. Es tat mir leid, aber sie war okay damit.", "reason": "Ehrlich, aber ohne, wie es in Ordnung gebracht wurde und was sich geändert hat." },
+      { "text": "Das war eigentlich nicht meine Schuld. Mein Trainer hat den Plan kurzfristig geändert, deshalb konnte ich nicht machen, was ich gesagt hatte.", "reason": "Schiebt die Schuld auf jemand anderen, statt dazu zu stehen." } ],
+      "why": "Jeder macht Fehler. Sie wollen sehen, dass du dazu stehst, sie behebst und daraus lernst." },
+    "rank-09": { "q": "Warum sollten wir dich nehmen?", "answers": [
+      { "text": "Sie brauchen jemanden, der zuverlässig ist und gut mit Menschen kann. Ich arbeite seit einem Jahr samstags am Empfang im Friseursalon meiner Mutter, also bin ich es gewohnt, Leute zu begrüßen, ans Telefon zu gehen und ruhig zu bleiben, wenn viel los ist.", "reason": "Verbindet, was die Person mitbringt, mit dem, was gebraucht wird." },
+      { "text": "Ich arbeite hart und will das wirklich. Ich gebe jeden Tag mein Bestes.", "reason": "Ehrlich gemeint, aber das könnte jeder sagen." },
+      { "text": "Na ja, ich brauche das Geld, und es ist nah bei mir zu Hause.", "reason": "Nur darüber, was die Person bekommt, nicht was sie gibt." } ],
+      "why": "Die beste Antwort verbindet, was du gut kannst, mit dem, was sie brauchen, mit Beweis. Es zu wollen heißt nicht, gut zu passen." },
+    "rank-10": { "q": "Was machst du, wenn du nervös bist?", "answers": [
+      { "text": "Ich atme langsamer und erinnere mich daran, dass ich vorbereitet bin. Vor meinem ersten Klaviervorspiel habe ich gezittert, also habe ich die ersten Takte geübt, bis ich sie im Halbschlaf spielen konnte. Sobald ich anfange, legt sich die Nervosität.", "reason": "Echte Werkzeuge und ein echtes Beispiel, wie sie eingesetzt wurden." },
+      { "text": "Ich atme tief durch und versuche, positiv zu bleiben.", "reason": "In Ordnung, aber sehr allgemein." },
+      { "text": "Ich werde eigentlich nicht nervös. Mich bringt nichts aus der Ruhe.", "reason": "Schwer zu glauben, und es geht an der Frage vorbei." } ],
+      "why": "Nervosität ist normal. Wichtig ist zu zeigen, dass du einen Weg hast, dich zu beruhigen." },
+    "rank-11": { "q": "Erzähl mir von einem Mal, als du jemandem geholfen hast.", "answers": [
+      { "text": "Eine neue Schülerin in meiner Stufe kannte niemanden und hat allein gegessen. Ich habe sie an unseren Tisch eingeladen und ihr gezeigt, wo sich die AGs treffen. Sie ist mit mir in die Robotik-AG gegangen, und jetzt ist sie eine meiner engsten Freundinnen.", "reason": "Zeigt, dass die Person andere bemerkt und handelt, mit echtem Ergebnis." },
+      { "text": "Ich helfe ständig Leuten, zum Beispiel Türen aufhalten oder Freunden bei den Hausaufgaben helfen.", "reason": "Nett, aber keine einzelne Geschichte, an die man sich erinnert." },
+      { "text": "Ich habe mal einem Freund beim Spicken geholfen, zählt das? Spaß. Keine Ahnung.", "reason": "Ein Witz, der nach hinten losgeht, und keine echte Antwort." } ],
+      "why": "Eine konkrete Geschichte ist besser als eine allgemeine Behauptung. Sie zeigt, dass du merkst, wenn jemand Hilfe braucht." },
+    "rank-12": { "q": "Wo siehst du dich in ein paar Jahren?", "answers": [
+      { "text": "Den genauen Beruf weiß ich noch nicht, aber ich weiß, dass ich gern mit den Händen arbeite und Probleme löse. In ein paar Jahren wäre ich gern in einer Ausbildung im Handwerk oder im Ingenieurstudium, und das hier würde mir helfen herauszufinden, was besser passt.", "reason": "Ehrlich darüber, es noch nicht zu wissen, aber mit Richtung und Nachdenken." },
+      { "text": "Wahrscheinlich an der Uni, wo ich etwas studiere, das mir gefällt. Ich habe mich noch nicht entschieden.", "reason": "Ehrlich, aber zeigt wenig Nachdenken." },
+      { "text": "Reich, hoffentlich. Oder berühmt. Irgendwo, nur nicht hier.", "reason": "Ein Witz, der klingt, als wäre die Person bei der ersten Gelegenheit weg." } ],
+      "why": "Du brauchst keinen perfekten Plan. Es reicht zu zeigen, dass du darüber nachgedacht hast und wie das hier dazu passt." },
+    "rank-13": { "q": "Erzähl mir von einem Mal, als du weitergemacht hast, obwohl du aufhören wolltest.", "answers": [
+      { "text": "Ich wollte mit dem Crosslauf aufhören, nachdem ich in meinen ersten drei Rennen Letzter geworden bin. Mein Trainer hat mir geholfen, mir stattdessen das Ziel zu setzen, meine eigene Zeit zu schlagen. Am Saisonende war ich zwei Minuten schneller, und dieses Jahr laufe ich wieder.", "reason": "Klare Schwierigkeit, eine neue Herangehensweise und ein messbares Ergebnis." },
+      { "text": "Crosslauf war am Anfang richtig hart und ich wollte aufhören, aber ich bin drangeblieben und besser geworden.", "reason": "Gute Geschichte, aber ohne Details, wie die Person durchgehalten hat." },
+      { "text": "Ich höre meistens auf, wenn mir etwas nicht gefällt. Das Leben ist zu kurz für Sachen, die man hasst.", "reason": "Sagt ihnen, dass die Person auch hier aufhören könnte." } ],
+      "why": "Sie wollen wissen, ob du bei schwierigen Dingen dranbleibst. Wie du weitergemacht hast, zählt mehr als dass du es getan hast." },
+    "rank-14": { "q": "Was macht dich zu einem guten Teammitglied?", "answers": [
+      { "text": "Ich achte darauf, wer Probleme hat. In meinem Volleyballteam habe ich gemerkt, dass eine neuere Spielerin oft ihre Aufschläge verpatzt, also bin ich zweimal die Woche nach dem Training geblieben und habe mit ihr geübt. Ihre Aufschläge wurden viel sicherer.", "reason": "Ein konkreter Grund, belegt durch das, was die Person getan hat." },
+      { "text": "Ich unterstütze andere und versuche immer, alle anzufeuern.", "reason": "Nett, aber klingt wie fast jeder." },
+      { "text": "Ich bin der beste Spieler in meinem Team, also brauchen sie mich irgendwie.", "reason": "Es geht darum, gut zu sein, nicht darum, ein gutes Teammitglied zu sein." } ],
+      "why": "'Ich bin nett' ist nicht konkret. Zeig eine Sache, die du tust und die das Team besser macht." },
+    "rank-15": { "q": "Hast du noch Fragen an mich?", "answers": [
+      { "text": "Ja. Was machen Leute, die hier richtig gut sind, in ihrem ersten Monat anders?", "reason": "Neugierig, konkret und zeigt, dass die Person es gut machen will." },
+      { "text": "Wie sind die Arbeitszeiten?", "reason": "Darf man fragen, aber es geht um die Person, nicht um die Aufgabe." },
+      { "text": "Nein, ich glaube, Sie haben alles erklärt.", "reason": "Kann wirken, als wäre die Person nicht wirklich interessiert." } ],
+      "why": "Hab immer eine Frage parat. Die besten zeigen, dass du dir vorstellst, dort gut zu sein." },
+    "rank-16": { "q": "Erzähl mir von einem Mal, als du anderer Meinung warst als jemand anderes.", "answers": [
+      { "text": "Mein Laborpartner wollte einen Schritt auslassen, um schneller fertig zu sein. Ich habe erklärt, dass ich Angst hatte, dass unsere Ergebnisse dann falsch sind, und vorgeschlagen, beide Wege an einer kleinen Probe zu testen. Meiner hat besser funktioniert, und er war einverstanden, weil wir es getestet hatten.", "reason": "Widerspricht ruhig und findet einen fairen Weg, es zu klären." },
+      { "text": "Mein Laborpartner und ich waren uns uneinig, wie wir ein Experiment machen sollen. Wir haben darüber geredet und eine Lösung gefunden.", "reason": "Ruhig, aber ohne, wie sie die Lösung gefunden haben." },
+      { "text": "Mein Laborpartner war echt dumm, also habe ich es einfach auf meine Art gemacht. Ich hatte sowieso recht.", "reason": "Herablassend und ohne jede Teamarbeit." } ],
+      "why": "Sie wollen sehen, dass du widersprechen kannst, ohne dass es zum Streit wird. Wie du damit umgegangen bist, ist die ganze Antwort." },
+    "rank-17": { "q": "Was hast du dir selbst beigebracht?", "answers": [
+      { "text": "Ich habe mir selbst Videoschnitt beigebracht. Ich habe kostenlose Tutorials geschaut und mit Clips von den Fußballspielen meines kleinen Cousins geübt. Jetzt mache ich jede Saison das Highlight-Video für die Sportteams meiner Schule.", "reason": "Zeigt, wie die Person es gelernt hat und was sie jetzt kann." },
+      { "text": "Ich habe mir ein bisschen Videoschnitt über YouTube beigebracht. Das macht ziemlich Spaß.", "reason": "Gutes Thema, hört aber auf, bevor es zeigt, was daraus wurde." },
+      { "text": "Eigentlich nichts. Ich lerne das meiste in der Schule.", "reason": "Verpasst die Chance, Neugier zu zeigen." } ],
+      "why": "Das zeigt, ob du von dir aus Dinge anpackst. Sag, wie du es gelernt hast und was du jetzt damit kannst." },
+    "rank-18": { "q": "Welche Verantwortung hast du zu Hause oder in deinem Umfeld?", "answers": [
+      { "text": "Ich hole jeden Tag meine zwei jüngeren Schwestern von der Schule ab, mache ihnen einen Snack und setze sie an die Hausaufgaben, bis meine Mutter um sechs nach Hause kommt. Dadurch habe ich gelernt, pünktlich zu sein, weil sie sich auf mich verlassen.", "reason": "Eine echte Verantwortung, was dazugehört und was die Person daraus gelernt hat." },
+      { "text": "Ich helfe nach der Schule, auf meine jüngeren Schwestern aufzupassen.", "reason": "Echt und gut, braucht aber etwas mehr Detail." },
+      { "text": "Ich muss mein Zimmer aufräumen, aber ehrlich gesagt mache ich das nicht so oft.", "reason": "Wählt etwas Kleines und gibt dann zu, es nicht zu tun." } ],
+      "why": "Verantwortung zu Hause zählt. Zu sagen, was du tust und was es dich gelehrt hat, zeigt, dass man sich auf dich verlassen kann." },
+    "rank-19": { "q": "Warum willst du hier arbeiten?", "answers": [
+      { "text": "Ich komme oft mit meiner Familie her, und das Team merkt sich immer unsere Bestellung und ist freundlich, auch wenn es voll ist. Ich wäre gern Teil von so einem Team, und ich will lernen, wie man mit einem großen Ansturm umgeht.", "reason": "Zeigt, dass die Person den Ort kennt und etwas lernen will." },
+      { "text": "Es scheint ein netter Ort zum Arbeiten zu sein, und ich mag das Essen.", "reason": "Positiv, aber das könnte man über jeden Ort sagen." },
+      { "text": "Ich habe mich bei einem Haufen Läden beworben, und Sie haben sich als Erste gemeldet.", "reason": "Ehrlich, sagt ihnen aber, dass sie nicht wirklich gemeint sind." } ],
+      "why": "Zu zeigen, dass du etwas über den Ort weißt und was du dort lernen würdest, ist besser als 'es scheint nett'." },
+    "rank-20": { "q": "Was würdest du tun, wenn ein Kunde unhöflich zu dir wäre?", "answers": [
+      { "text": "Ich würde ruhig bleiben, zuhören und versuchen, das Problem zu lösen. Wenn ich das nicht schaffe, würde ich jemanden aus der Leitung holen. Beim Bücherbasar an meiner Schule hat sich ein Vater über einen Preis aufgeregt, und höflich bleiben und die zuständige Lehrerin holen hat es geklärt.", "reason": "Ruhige Schritte, weiß, wann man Hilfe holt, und hat ein Beispiel." },
+      { "text": "Ich würde einfach ruhig und höflich bleiben.", "reason": "Die richtige Haltung, aber kein Plan darüber hinaus." },
+      { "text": "Ehrlich gesagt würde ich wahrscheinlich etwas zurücksagen. Ich lasse mich nicht respektlos behandeln.", "reason": "Sagt dem Arbeitgeber, dass die Person es schlimmer machen könnte." } ],
+      "why": "Sie wollen wissen, dass du respektvoll bleibst und es löst oder Hilfe holst. Ein echtes Beispiel macht es glaubwürdig." },
+    "rank-21": { "q": "Wann hast du Zeit zu arbeiten?", "answers": [
+      { "text": "Ich kann unter der Woche ab 16 Uhr und samstags den ganzen Tag. Im Herbst habe ich sonntagvormittags Fußball, aber sonntagnachmittags bin ich frei. In den Sommerferien kann ich fast immer.", "reason": "Klar und konkret, inklusive Grenzen." },
+      { "text": "Eigentlich immer, ich bin flexibel.", "reason": "Freundlich, aber vage. Sie müssen noch mal nachfragen." },
+      { "text": "Meinen Plan weiß ich noch nicht. Kann ich Ihnen das später sagen?", "reason": "Klingt unvorbereitet für eine Grundfrage." } ],
+      "why": "Klare, ehrliche Zeiten machen dich leicht einplanbar. Grenzen offen zu sagen ist etwas Gutes." },
+    "rank-22": { "q": "Erzähl mir von einem Mal, als du zuverlässig warst, als es darauf ankam.", "answers": [
+      { "text": "Ich gehe jeden Werktag mit dem Hund meiner Nachbarin raus, während sie arbeitet. Einmal gab es einen heftigen Schneesturm und die Schule fiel aus, aber ich bin trotzdem mittags rübergestapft, weil ich wusste, dass der Hund sonst niemanden hat. Sie bucht mich jetzt seit zwei Jahren.", "reason": "Ein konkreter Moment, in dem Dasein wichtig war." },
+      { "text": "Ich gehe seit zwei Jahren mit dem Hund meiner Nachbarin raus und habe nie einen Tag verpasst.", "reason": "Guter Beweis für Zuverlässigkeit, aber kein einzelner Moment." },
+      { "text": "Ich bin immer zuverlässig. So bin ich einfach.", "reason": "Eine Behauptung ohne Beleg." } ],
+      "why": "Zu sagen, dass du zuverlässig bist, ist kein Beweis. Ein Moment, in dem es schwer war zu erscheinen, und du es trotzdem getan hast, schon." },
+    "rank-23": { "q": "Hast du schon mal mit Geld gearbeitet oder an einer Kasse gestanden?", "answers": [
+      { "text": "An einer echten Kasse noch nicht, aber ich habe bei der Autowaschaktion meines Teams drei Samstage lang die Kasse geführt. Ich habe das Geld am Anfang und am Ende gezählt, und es hat jedes Mal gestimmt. Ich bin sorgfältig mit Wechselgeld und lerne gern Ihr System.", "reason": "Ehrlich, findet passende Erfahrung und zeigt Sorgfalt." },
+      { "text": "Nein, aber ich bin gut in Mathe, also würde ich es wohl schnell lernen.", "reason": "Ehrlich und positiv, aber ohne passendes Beispiel." },
+      { "text": "Nein. Ist das ein großer Teil des Jobs?", "reason": "Gibt auf, statt etwas Ähnliches zu finden." } ],
+      "why": "Keine Erfahrung ist okay. Nenn das Ähnlichste, was du gemacht hast, und zeig, dass du lernen würdest." },
+    "rank-24": { "q": "Was würdest du tun, wenn du mit deinen Aufgaben früher fertig wärst?", "answers": [
+      { "text": "Ich würde meine Chefin oder einen Kollegen fragen, was noch zu tun ist. Wenn alle beschäftigt wären, würde ich nach etwas Offensichtlichem suchen, zum Beispiel Regale auffüllen oder Theken abwischen. In der Bäckerei meiner Tante habe ich so gelernt, Tortenkartons zu falten.", "reason": "Ergreift die Initiative und gibt ein Beispiel dafür." },
+      { "text": "Ich würde fragen, ob ich noch bei etwas helfen kann.", "reason": "Guter Instinkt, aber knapp." },
+      { "text": "Wahrscheinlich eine kleine Pause machen. Die hätte ich mir verdient.", "reason": "Signalisiert, dass die Person nur das Nötigste tun würde." } ],
+      "why": "Sie prüfen, ob du mehr als das Nötigste tust. Nach mehr Arbeit zu fragen oder sie selbst zu sehen, wollen sie hören." },
+    "rank-25": { "q": "Warum interessierst du dich für diese Hochschule?", "answers": [
+      { "text": "Ich möchte Umweltwissenschaften studieren, und bei Ihnen dürfen Erstsemester schon Feldforschung im Naturschutzgebiet machen. Beim Infotag habe ich mit einer Studentin gesprochen, die gesagt hat, die Kurse sind klein, und das ist mir wichtig, weil ich am besten lerne, wenn ich Fragen stelle.", "reason": "Speziell für diese Hochschule und verbunden damit, wie die Person lernt." },
+      { "text": "Sie hat einen guten Ruf und einen schönen Campus.", "reason": "Das gilt für viele Hochschulen. Nichts Konkretes." },
+      { "text": "Meine Eltern waren hier, also muss ich mich irgendwie bewerben.", "reason": "Klingt, als wäre es nicht die eigene Entscheidung." } ],
+      "why": "'Warum wir?' braucht Details, die nur zu dieser Hochschule passen, und warum sie dir wichtig sind." },
+    "rank-26": { "q": "Was möchtest du studieren?", "answers": [
+      { "text": "Ich bin noch unentschieden, aber ich lande immer wieder bei Psychologie und Pädagogik. Ich helfe ehrenamtlich in einer Nachmittagsbetreuung und frage mich, warum manche Kinder bei einer Betreuerin aufblühen und bei einer anderen dichtmachen. Ich würde im ersten Jahr gern beides ausprobieren.", "reason": "Ehrlich über die Unentschlossenheit, zeigt aber echte Neugier." },
+      { "text": "Ich weiß es noch nicht. Vielleicht Psychologie, vielleicht etwas anderes.", "reason": "Ehrlich, gibt ihnen aber nichts in die Hand." },
+      { "text": "Was am meisten Geld bringt, schätze ich.", "reason": "Klingt, als hätte die Person nicht darüber nachgedacht, was sie interessiert." } ],
+      "why": "Unentschieden zu sein ist normal. Zeig, worauf du neugierig bist und warum." },
+    "rank-27": { "q": "Was würdest du zu unserem Campusleben beitragen?", "answers": [
+      { "text": "Ich habe an meiner Schule eine Mittagspausen-AG gegründet, in der sich Leute gegenseitig etwas beibringen, zum Beispiel Stricken oder Schach. Sie ist auf etwa 30 Leute gewachsen. Ich würde hier gern etwas Ähnliches starten oder bei einer Gruppe mitmachen, die so etwas macht.", "reason": "Verweist auf etwas Selbstaufgebautes und verbindet es mit dem Campus." },
+      { "text": "Ich würde bei ein paar Gruppen mitmachen und mich einbringen.", "reason": "In Ordnung, sagt aber nicht, was die Person mitbringt." },
+      { "text": "Ich konzentriere mich vor allem auf meine Kurse. Ich bin nicht so der Vereinstyp.", "reason": "Verfehlt den Sinn der Frage." } ],
+      "why": "Sie wollen sich vorstellen, was du beitragen würdest. Etwas, das du schon gemacht hast, ist die beste Vorschau." },
+    "rank-28": { "q": "Erzähl mir von einem Fach, das dich gefordert hat.", "answers": [
+      { "text": "Mathe in der Oberstufe. In der ersten Klausur hatte ich nur 61 Prozent, das hat mir Angst gemacht. Ich bin dienstags in die Förderstunde meiner Lehrerin gegangen und habe jede falsche Aufgabe noch mal gerechnet. Am Ende des Jahres hatte ich eine 2, und Mathe macht mir keine Angst mehr.", "reason": "Ehrliche Schwierigkeit, was die Person getan hat und das Ergebnis." },
+      { "text": "Mathe war schwer für mich, aber ich habe daran gearbeitet und es lief ganz okay.", "reason": "Ehrlich, aber ohne, wie die Person daran gearbeitet hat." },
+      { "text": "Keins meiner Fächer ist wirklich schwer. Ich bin einfach von Natur aus schlau.", "reason": "Klingt arrogant und weicht der Frage aus." } ],
+      "why": "Hochschulen wollen sehen, wie du mit Schwierigem umgehst. Die Geschichte, wie du besser geworden bist, ist die Antwort." },
+    "rank-29": { "q": "Was machst du außerhalb der Schule?", "answers": [
+      { "text": "Am Wochenende arbeite ich im Restaurant meiner Familie, und ich helfe meinem Vater inzwischen bei der Buchhaltung, wodurch ich mich für Wirtschaft interessiere. In meiner Freizeit zeichne ich Comics und poste jede Woche einen für meine Freunde.", "reason": "Zeigt Verantwortung und ein Interesse, mit echten Details." },
+      { "text": "Ich arbeite im Restaurant meiner Familie und zeichne gern.", "reason": "Gute Dinge, aber es braucht mehr, um aufzufallen." },
+      { "text": "Hauptsächlich zocken und schlafen. Schule ist echt viel.", "reason": "Ehrlich, verkauft sich aber unter Wert." } ],
+      "why": "Was du außerhalb der Schule machst, zeigt, wer du bist. Aufgaben in der Familie und Hobbys zählen. Füg ein Detail hinzu, das sie zu deinen macht." },
+    "rank-30": { "q": "Gibt es noch etwas, das wir über dich wissen sollten?", "answers": [
+      { "text": "Ja. Meine Noten sind in der zehnten Klasse gesunken, als meine Oma bei uns eingezogen ist und ich bei ihrer Pflege geholfen habe. Es war ein schweres Jahr, aber ich habe gelernt, meine Zeit einzuteilen, und meine Noten sind seitdem jedes Halbjahr besser geworden.", "reason": "Nutzt die Chance für Hintergrund und zeigt Entwicklung." },
+      { "text": "Nur, dass ich wirklich hierher will und mich anstrengen würde.", "reason": "Ehrlich, wiederholt aber, was sie schon wissen." },
+      { "text": "Nein, ich glaube, das war's.", "reason": "Verschenkt die Chance, etwas Wichtiges zu erzählen." } ],
+      "why": "Das ist eine Chance, etwas zu erzählen, das deine Bewerbung nicht zeigt. Nutz sie, wenn du etwas Echtes hinzuzufügen hast." }
+  }
+}
