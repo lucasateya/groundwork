@@ -1,0 +1,305 @@
+{
+  "meta": { "game": "rank", "lang": "en", "note": "Each round: one question, three answers (strong, okay, weak), a reason for each, and a why." },
+  "rounds": [
+    {
+      "id": "rank-01", "track": "general",
+      "q": "Tell me about yourself.",
+      "answers": [
+        { "quality": "strong", "text": "I'm a junior who likes figuring out how things work. I fix bikes for kids on my street, and last summer I helped run the snack stand at our pool, so I'm used to staying friendly when it gets busy.", "reason": "Short, real, and backed by two specific things they've done." },
+        { "quality": "okay", "text": "I'm a junior. I like sports and hanging out with friends, and I'm pretty responsible. I think I'd be good at this.", "reason": "Friendly, but 'pretty responsible' has nothing to back it up." },
+        { "quality": "weak", "text": "Um, I don't know, I'm just kind of a normal person? I go to school and stuff. My mom said I should apply.", "reason": "Gives them nothing to remember, and makes it sound like it wasn't their idea." }
+      ],
+      "why": "A good intro is a quick, true picture of you with one or two real details. Details are what people remember."
+    },
+    {
+      "id": "rank-02", "track": "general",
+      "q": "What's one thing you're really good at?",
+      "answers": [
+        { "quality": "strong", "text": "I'm good at explaining things. I tutor my little brother in math, and his grade went from a D to a B this year because I found ways to show him the steps with things he likes, like basketball stats.", "reason": "Names one strength and proves it with a result." },
+        { "quality": "okay", "text": "I'm good at explaining things. People say I'm patient when I help them with homework.", "reason": "Right idea, but no example to show it." },
+        { "quality": "weak", "text": "Honestly, I'm good at a lot of things. I'm hard-working, a team player, a fast learner, organized, creative...", "reason": "A list of buzzwords with nothing behind any of them." }
+      ],
+      "why": "Picking one strength and proving it beats listing five. The example does the convincing."
+    },
+    {
+      "id": "rank-03", "track": "general",
+      "q": "Tell me about a time something didn't go the way you planned.",
+      "answers": [
+        { "quality": "strong", "text": "I planned a bake sale for our club, but it rained and nobody came outside. I asked the front office if we could move to the lobby, made a quick sign, and we still raised $140. Now I always have a backup spot.", "reason": "Clear problem, what they did, the result, and what they learned." },
+        { "quality": "okay", "text": "Our bake sale got rained out. It was annoying, but we moved it inside and it was fine in the end.", "reason": "Has a story, but skips what they actually did and what came of it." },
+        { "quality": "weak", "text": "Things usually go how I plan, to be honest. I'm really organized so that doesn't happen much.", "reason": "Dodges the question. Everyone has a story like this." }
+      ],
+      "why": "They want to see how you react when things go wrong. 'It never happens' tells them nothing."
+    },
+    {
+      "id": "rank-04", "track": "general",
+      "q": "How do you handle having a lot to do at once?",
+      "answers": [
+        { "quality": "strong", "text": "I write everything down and do the thing that's due soonest first. During finals week I also had soccer and babysitting, so I planned each night the day before. It kept me from panicking.", "reason": "A real method, shown in a real busy week." },
+        { "quality": "okay", "text": "I make a list and work through it. I try not to stress too much.", "reason": "Sensible, but no example of it working." },
+        { "quality": "weak", "text": "I kind of just wing it. I work best under pressure, so I usually do everything the night before.", "reason": "Sounds like they'll miss deadlines." }
+      ],
+      "why": "'I make a list' is a start. Showing the list working in a real week is what makes it believable."
+    },
+    {
+      "id": "rank-05", "track": "general",
+      "q": "Tell me about a time you worked with a group.",
+      "answers": [
+        { "quality": "strong", "text": "In chemistry, my group's project was falling behind because nobody knew who was doing what. I suggested we split it into four parts and check in at lunch on Wednesday. We finished a day early and got an A.", "reason": "Shows what they did to help the group, and the result." },
+        { "quality": "okay", "text": "We did a group project in chemistry. Everyone did their part and we got a good grade.", "reason": "Pleasant, but you can't tell what this person did." },
+        { "quality": "weak", "text": "I don't love group projects. Usually I end up doing all the work because other people are lazy.", "reason": "Blames others and sounds hard to work with." }
+      ],
+      "why": "In a group story, the interviewer wants to know what you did. 'We' hides you."
+    },
+    {
+      "id": "rank-06", "track": "general",
+      "q": "What's something you're working on getting better at?",
+      "answers": [
+        { "quality": "strong", "text": "Speaking up in class. I used to stay quiet even when I knew the answer. This semester I set a goal to say one thing in every history discussion, and now it feels pretty normal.", "reason": "Honest, real, and shows steps they're taking." },
+        { "quality": "okay", "text": "Probably time management. I sometimes leave things to the last minute, but I'm trying to get better.", "reason": "Honest, but 'trying' with no details sounds like a guess." },
+        { "quality": "weak", "text": "I'm a perfectionist. I just care too much about doing things right.", "reason": "A disguised brag. Interviewers have heard it many times." }
+      ],
+      "why": "A real weakness plus what you're doing about it shows honesty and growth. A fake one sounds rehearsed."
+    },
+    {
+      "id": "rank-07", "track": "general",
+      "q": "How would your friends describe you?",
+      "answers": [
+        { "quality": "strong", "text": "Probably as the one who shows up. If someone needs a ride to practice or help moving, I'm usually the person they text. My friend Maya calls me the group's backup plan.", "reason": "One quality with a specific, real detail." },
+        { "quality": "okay", "text": "They'd say I'm funny and loyal and a good listener.", "reason": "Nice words, but nothing to back them up." },
+        { "quality": "weak", "text": "I don't really know, you'd have to ask them. Maybe weird? Ha.", "reason": "Throws away the chance to say something good about yourself." }
+      ],
+      "why": "This question is a chance to share a strength in someone else's words. One quality and a quick example is enough."
+    },
+    {
+      "id": "rank-08", "track": "general",
+      "q": "Tell me about a mistake you made and what you did next.",
+      "answers": [
+        { "quality": "strong", "text": "I forgot I'd promised to watch my neighbor's dog and double-booked with a game. As soon as I realized, I called her, apologized and found a friend to cover. Now everything goes in my phone calendar right away.", "reason": "Owns it, fixes it, and changes something going forward." },
+        { "quality": "okay", "text": "I double-booked once and had to cancel on my neighbor. I felt bad, but she was okay about it.", "reason": "Honest, but skips how they fixed it and what changed." },
+        { "quality": "weak", "text": "It wasn't really my fault. My coach changed the schedule last minute, so I couldn't do what I said I'd do.", "reason": "Blames someone else instead of owning it." }
+      ],
+      "why": "Everyone makes mistakes. They want to see you own it, fix it and learn from it."
+    },
+    {
+      "id": "rank-09", "track": "general",
+      "q": "Why should we pick you?",
+      "answers": [
+        { "quality": "strong", "text": "You need someone dependable who's good with people. I've worked the front desk at my mom's salon on Saturdays for a year, so I'm used to greeting people, answering the phone and staying calm when it's busy.", "reason": "Connects what they offer to what the place needs." },
+        { "quality": "okay", "text": "I'm a hard worker and I really want this. I'll do my best every day.", "reason": "Sincere, but anyone could say it." },
+        { "quality": "weak", "text": "I mean, I need the money, and this place is close to my house.", "reason": "Only about what they get, not what they'd give." }
+      ],
+      "why": "The best answer links what you're good at to what they need, with proof. Wanting it isn't the same as being a good fit."
+    },
+    {
+      "id": "rank-10", "track": "general",
+      "q": "What do you do when you feel nervous?",
+      "answers": [
+        { "quality": "strong", "text": "I slow my breathing and remind myself I've prepared. Before my first piano recital I was shaking, so I practiced the first few bars until I could play them half asleep. Once I start, the nerves fade.", "reason": "Real tools and a real example of using them." },
+        { "quality": "okay", "text": "I take a deep breath and try to stay positive.", "reason": "Fine, but very general." },
+        { "quality": "weak", "text": "I don't really get nervous. Nothing really bothers me.", "reason": "Hard to believe, and it skips what they're asking." }
+      ],
+      "why": "It's normal to get nervous. Showing you have a way to steady yourself is what matters."
+    },
+    {
+      "id": "rank-11", "track": "general",
+      "q": "Tell me about a time you helped someone.",
+      "answers": [
+        { "quality": "strong", "text": "A new student in my grade didn't know anyone and ate lunch alone. I invited her to our table and showed her where the clubs met. She joined robotics with me, and now she's one of my closest friends.", "reason": "Shows they notice others and act, with a real outcome." },
+        { "quality": "okay", "text": "I help people all the time, like holding doors or helping friends with homework.", "reason": "Kind, but no single story to remember." },
+        { "quality": "weak", "text": "I helped my friend cheat on a test once, does that count? Kidding. I don't know.", "reason": "A joke that backfires and no real answer." }
+      ],
+      "why": "One specific story beats a general claim. It shows you notice when someone needs a hand."
+    },
+    {
+      "id": "rank-12", "track": "general",
+      "q": "Where do you see yourself in a few years?",
+      "answers": [
+        { "quality": "strong", "text": "I'm not sure of the exact job yet, but I know I like working with my hands and solving problems. In a few years I'd like to be in a trade program or studying engineering, and this would help me find out which fits.", "reason": "Honest about not knowing, but shows direction and thought." },
+        { "quality": "okay", "text": "Probably in college, studying something I like. I haven't really decided yet.", "reason": "Honest, but doesn't show much thinking." },
+        { "quality": "weak", "text": "Rich, hopefully. Or famous. Somewhere not here.", "reason": "A joke that sounds like they'll leave the first chance they get." }
+      ],
+      "why": "You don't need a perfect plan. Showing you've thought about it, and how this fits in, is enough."
+    },
+    {
+      "id": "rank-13", "track": "general",
+      "q": "Tell me about a time you had to keep going after you wanted to quit.",
+      "answers": [
+        { "quality": "strong", "text": "I wanted to quit cross-country after I finished last in my first three races. My coach helped me set a goal of beating my own time instead. By the end of the season I'd cut two minutes off, and I'm running again this year.", "reason": "Clear struggle, a change in approach, and a measurable result." },
+        { "quality": "okay", "text": "Cross-country was really hard at first and I wanted to quit, but I stuck with it and got better.", "reason": "Good story, but no details on how they got through it." },
+        { "quality": "weak", "text": "I usually quit things if I don't like them. Life's too short to do stuff you hate.", "reason": "Tells them you might quit this too." }
+      ],
+      "why": "They want to know if you stick with hard things. How you kept going matters more than that you did."
+    },
+    {
+      "id": "rank-14", "track": "general",
+      "q": "What makes you a good teammate?",
+      "answers": [
+        { "quality": "strong", "text": "I pay attention to who's struggling. On my volleyball team, I noticed a newer player kept missing serves, so I stayed after practice twice a week to serve with her. Her serves got way more consistent.", "reason": "A specific reason, proven with what they did." },
+        { "quality": "okay", "text": "I'm supportive and I always try to cheer people on.", "reason": "Nice, but sounds like most people." },
+        { "quality": "weak", "text": "I'm the best player on my team, so they kind of need me.", "reason": "About being good, not about being a good teammate." }
+      ],
+      "why": "'I'm nice' isn't specific. Show one thing you do that makes the team better."
+    },
+    {
+      "id": "rank-15", "track": "general",
+      "q": "Do you have any questions for me?",
+      "answers": [
+        { "quality": "strong", "text": "Yes. What does someone who does really well here do differently in their first month?", "reason": "Curious, specific, and shows they want to do well." },
+        { "quality": "okay", "text": "What are the hours like?", "reason": "Fair to ask, but it's about them, not the role." },
+        { "quality": "weak", "text": "No, I think you covered everything.", "reason": "Can sound like they're not that interested." }
+      ],
+      "why": "Always have a question ready. The best ones show you're picturing yourself doing well there."
+    },
+    {
+      "id": "rank-16", "track": "general",
+      "q": "Tell me about a time you disagreed with someone.",
+      "answers": [
+        { "quality": "strong", "text": "My lab partner wanted to skip a step to finish faster. I explained I was worried our results would be off, and suggested we try it both ways on a small sample. Mine worked better, and he was fine with it because we tested it.", "reason": "Disagrees calmly, finds a fair way to settle it." },
+        { "quality": "okay", "text": "My lab partner and I disagreed on how to do an experiment. We talked about it and figured it out.", "reason": "Calm, but skips how they figured it out." },
+        { "quality": "weak", "text": "My lab partner was being dumb, so I just did it my way. I was right anyway.", "reason": "Dismissive and doesn't show any teamwork." }
+      ],
+      "why": "They want to see you can disagree without it turning into a fight. How you handled it is the whole answer."
+    },
+    {
+      "id": "rank-17", "track": "general",
+      "q": "What's something you've taught yourself?",
+      "answers": [
+        { "quality": "strong", "text": "I taught myself to edit video. I watched free tutorials and practiced on clips of my little cousin's soccer games. Now I make the highlight video for our school's sports teams every season.", "reason": "Shows how they learned, and what they can do now." },
+        { "quality": "okay", "text": "I taught myself some video editing from YouTube. It's pretty fun.", "reason": "Good topic, but it stops before showing what came of it." },
+        { "quality": "weak", "text": "Nothing really. I mostly learn stuff at school.", "reason": "Misses the chance to show curiosity." }
+      ],
+      "why": "This shows if you go after things on your own. Say how you learned it and what you can do with it now."
+    },
+    {
+      "id": "rank-18", "track": "general",
+      "q": "What's a responsibility you have at home or in your community?",
+      "answers": [
+        { "quality": "strong", "text": "I pick up my two younger sisters from school every day and make them a snack and get them started on homework until my mom gets home at six. It's taught me to be on time, because they're counting on me.", "reason": "A real responsibility, what it involves, and what it taught them." },
+        { "quality": "okay", "text": "I help take care of my younger sisters after school.", "reason": "Real and good, but it needs a little more detail." },
+        { "quality": "weak", "text": "I have to clean my room, but honestly I don't do it that much.", "reason": "Picks a small thing and then admits to not doing it." }
+      ],
+      "why": "Responsibilities at home count. Saying what you do and what it's taught you shows you can be counted on."
+    },
+    {
+      "id": "rank-19", "track": "job",
+      "q": "Why do you want to work here?",
+      "answers": [
+        { "quality": "strong", "text": "I come here with my family a lot, and the staff always remember our order and are friendly even when it's packed. I'd like to be part of a team like that, and I want to learn how to handle a busy rush.", "reason": "Shows they know the place and want to learn something." },
+        { "quality": "okay", "text": "It seems like a nice place to work, and I like the food.", "reason": "Positive, but could be said about anywhere." },
+        { "quality": "weak", "text": "I applied to a bunch of places and you called back first.", "reason": "Honest, but tells them they aren't really wanted here." }
+      ],
+      "why": "Showing you know something about the place, and what you'd learn, beats 'it seems nice'."
+    },
+    {
+      "id": "rank-20", "track": "job",
+      "q": "What would you do if a customer was rude to you?",
+      "answers": [
+        { "quality": "strong", "text": "I'd stay calm, listen, and try to fix what's wrong. If I couldn't, I'd get a manager. When I helped at our school's book fair, a parent got upset about a price, and staying polite and getting the teacher in charge sorted it out.", "reason": "Calm steps, knows when to get help, and has an example." },
+        { "quality": "okay", "text": "I'd just stay calm and be polite.", "reason": "Right attitude, but no plan beyond that." },
+        { "quality": "weak", "text": "Honestly, I'd probably say something back. I don't let people disrespect me.", "reason": "Tells an employer you might make it worse." }
+      ],
+      "why": "They want to know you'll stay respectful and solve it, or get help. A real example makes it believable."
+    },
+    {
+      "id": "rank-21", "track": "job",
+      "q": "What's your availability?",
+      "answers": [
+        { "quality": "strong", "text": "I can work weekday evenings after 4 and all day Saturday. I have soccer on Sunday mornings in the fall, but I'm free Sunday afternoons. During the summer I'm open almost any time.", "reason": "Clear and specific, including limits." },
+        { "quality": "okay", "text": "Pretty much whenever, I'm flexible.", "reason": "Friendly, but vague. They'll have to ask again." },
+        { "quality": "weak", "text": "I don't know my schedule yet. Can I let you know later?", "reason": "Sounds unprepared for a basic question." }
+      ],
+      "why": "Clear, honest availability makes you easy to schedule. Being upfront about limits is a good thing."
+    },
+    {
+      "id": "rank-22", "track": "job",
+      "q": "Tell me about a time you were reliable when it counted.",
+      "answers": [
+        { "quality": "strong", "text": "I walk my neighbor's dog every weekday while she's at work. Once there was a big snowstorm and school was canceled, but I still trudged over at noon because I knew the dog had no one else. She's hired me for two years now.", "reason": "A specific moment where showing up mattered." },
+        { "quality": "okay", "text": "I've been walking my neighbor's dog for two years and I've never missed a day.", "reason": "Good proof of reliability, but no single moment." },
+        { "quality": "weak", "text": "I'm always reliable. I just am that kind of person.", "reason": "A claim with nothing to support it." }
+      ],
+      "why": "Saying you're reliable isn't proof. A moment where it was hard to show up, and you did, is."
+    },
+    {
+      "id": "rank-23", "track": "job",
+      "q": "Have you ever handled money or worked a register?",
+      "answers": [
+        { "quality": "strong", "text": "Not a real register yet, but I ran the cash box at our team's car wash for three Saturdays. I counted the money at the start and end, and it matched every time. I'm careful with change and happy to learn your system.", "reason": "Honest, finds related experience, and shows care." },
+        { "quality": "okay", "text": "No, but I'm good at math, so I think I'd pick it up.", "reason": "Honest and positive, but no related example." },
+        { "quality": "weak", "text": "No. Is that a big part of the job?", "reason": "Gives up instead of finding something related." }
+      ],
+      "why": "No experience is fine. Point to the closest thing you've done and show you'd learn."
+    },
+    {
+      "id": "rank-24", "track": "job",
+      "q": "What would you do if you finished your tasks early?",
+      "answers": [
+        { "quality": "strong", "text": "I'd ask my manager or a coworker what else needs doing. If everyone was busy, I'd look for something obvious, like restocking or wiping counters. At my aunt's bakery, that's how I learned how to fold boxes for cakes.", "reason": "Takes initiative and gives an example of doing it." },
+        { "quality": "okay", "text": "I'd ask if there's anything else I could help with.", "reason": "Good instinct, but brief." },
+        { "quality": "weak", "text": "Probably take a little break. I'd have earned it.", "reason": "Signals they'd do the minimum." }
+      ],
+      "why": "They're checking if you do more than the minimum. Asking for more work, or spotting it yourself, is what they hope to hear."
+    },
+    {
+      "id": "rank-25", "track": "college",
+      "q": "Why are you interested in this school?",
+      "answers": [
+        { "quality": "strong", "text": "I want to study environmental science, and your program lets first-years do field research at the nature preserve. I also talked to a student at the info session who said classes are small, which matters to me because I learn best by asking questions.", "reason": "Specific to this school and tied to how they learn." },
+        { "quality": "okay", "text": "It has a good reputation and a beautiful campus.", "reason": "True of many schools. Nothing specific." },
+        { "quality": "weak", "text": "My parents went here, so I kind of have to apply.", "reason": "Sounds like it isn't their choice." }
+      ],
+      "why": "'Why us?' needs details that only fit this school, plus why they matter to you."
+    },
+    {
+      "id": "rank-26", "track": "college",
+      "q": "What do you want to study?",
+      "answers": [
+        { "quality": "strong", "text": "I'm undecided, but I keep coming back to psychology and education. I volunteer at an after-school program, and I'm curious why some kids light up with one teacher and shut down with another. I'd like to explore both in my first year.", "reason": "Honest about being undecided, but shows real curiosity." },
+        { "quality": "okay", "text": "I'm not sure yet. Maybe psychology, maybe something else.", "reason": "Honest, but gives them nothing to go on." },
+        { "quality": "weak", "text": "Whatever makes the most money, I guess.", "reason": "Sounds like they haven't thought about what interests them." }
+      ],
+      "why": "Being undecided is normal. Show what you're curious about and why."
+    },
+    {
+      "id": "rank-27", "track": "college",
+      "q": "How would you contribute to our campus community?",
+      "answers": [
+        { "quality": "strong", "text": "I started a lunch club at my school where people teach each other a skill, like knitting or chess. It grew to about 30 people. I'd love to start something like that here, or join a club that does it.", "reason": "Points to something they've built and connects it to campus." },
+        { "quality": "okay", "text": "I'd join a few clubs and get involved.", "reason": "Fine, but it doesn't say what they'd bring." },
+        { "quality": "weak", "text": "I'm mostly going to focus on my classes. I'm not really a club person.", "reason": "Misses the point of the question." }
+      ],
+      "why": "They want to picture what you'd add. Something you've already done is the best preview."
+    },
+    {
+      "id": "rank-28", "track": "college",
+      "q": "Tell me about a class that challenged you.",
+      "answers": [
+        { "quality": "strong", "text": "Pre-calc. I got a 61 on the first test, which scared me. I started going to my teacher's help sessions on Tuesdays and redoing problems I got wrong. I finished the year with a B+, and I'm not afraid of math anymore.", "reason": "Honest struggle, what they did, and the result." },
+        { "quality": "okay", "text": "Pre-calc was hard for me, but I worked at it and did okay.", "reason": "Honest, but skips how they worked at it." },
+        { "quality": "weak", "text": "None of my classes are really hard. I'm kind of naturally smart.", "reason": "Sounds arrogant, and avoids the question." }
+      ],
+      "why": "Colleges want to see how you handle hard work. The story of getting better is the answer."
+    },
+    {
+      "id": "rank-29", "track": "college",
+      "q": "What do you do outside of school?",
+      "answers": [
+        { "quality": "strong", "text": "I work at my family's restaurant on weekends, and I've started helping my dad with the books, which got me interested in business. In my free time I draw comics, and I post one a week for my friends.", "reason": "Shows responsibility and an interest, with real detail." },
+        { "quality": "okay", "text": "I work at my family's restaurant, and I like drawing.", "reason": "Good things, but it needs more to stand out." },
+        { "quality": "weak", "text": "Mostly just play games and sleep. School is a lot.", "reason": "Honest, but undersells them." }
+      ],
+      "why": "Outside activities show who you are. Family duties and hobbies count. Add one detail that makes them yours."
+    },
+    {
+      "id": "rank-30", "track": "college",
+      "q": "Is there anything else you'd like us to know about you?",
+      "answers": [
+        { "quality": "strong", "text": "Yes. My grades dipped in tenth grade when my grandma moved in with us and I helped care for her. It was a hard year, but it taught me to manage my time, and my grades have gone up every semester since.", "reason": "Uses the chance to add context, and shows growth." },
+        { "quality": "okay", "text": "Just that I really want to come here, and I'd work hard.", "reason": "Sincere, but repeats things they already know." },
+        { "quality": "weak", "text": "No, I think that's it.", "reason": "Wastes a chance to share something important." }
+      ],
+      "why": "This is a chance to share something your application doesn't show. Use it if you have something real to add."
+    }
+  ]
+}

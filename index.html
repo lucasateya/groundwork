@@ -651,10 +651,7 @@
   .tool-about{background:#F6F1E2;}
   .tool-video{background:#EAF0EE;}
   .tool-calm{background:#F3EEE9;}
-  .tool-games{background:#EFEBF2;cursor:default;}
-  .tool-games:hover{border-color:var(--border);}
-  .tool-games.ready{cursor:pointer;}
-  .tool-games.ready:hover{border-color:var(--ink-soft);}
+  .tool-games{background:#EFEBF2;}
   .tool-time{font-size:13px;font-weight:500;color:var(--muted);margin:0;}
   .tool-card h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3vw,30px);line-height:1.15;margin:0;color:var(--ink);}
   .tool-card p{font-size:15px;line-height:1.55;color:var(--body-text);margin:0;max-width:34ch;}
@@ -662,6 +659,129 @@
   .tool-card .tool-meta:empty{display:none;}
   .tool-foot{display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;margin-top:auto;padding-top:1rem;}
   @media (max-width:700px){.tool-card{min-height:190px;}}
+  /* ---------- Mini games ---------- */
+  .games-entry{margin-top:0.75rem;}
+  .games-filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:0.6rem 0.9rem;margin:-0.75rem 0 1.5rem;}
+  .games-filter-label{font-size:14px;color:var(--muted);}
+  .games-filter{display:inline-flex;background:var(--paper-raised);border:1px solid var(--border);border-radius:999px;padding:3px;}
+  .games-filter button{min-height:40px;min-width:64px;border:none;background:transparent;border-radius:999px;padding:0 1rem;font:inherit;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;}
+  .games-filter button:hover{color:var(--ink);}
+  .games-filter button[aria-pressed="true"]{background:var(--ink);color:var(--paper);}
+  .games-grid{grid-auto-rows:minmax(230px, auto);}
+  .game-card-meta{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;}
+  .game-card-stars{color:var(--gold-deep);letter-spacing:2px;font-size:15px;}
+  .game-wrap{padding-top:1.25rem;}
+  .game-head{margin-bottom:1rem;}
+  .game-head-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+  .game-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(22px,3vw,28px);line-height:1.2;margin:0;}
+  .game-quit{width:44px;height:44px;flex-shrink:0;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--ink);font-size:24px;line-height:1;cursor:pointer;}
+  .game-quit:hover{background:rgba(28,35,33,0.06);}
+  .game-progress-row{display:flex;align-items:center;gap:0.8rem;margin-top:0.6rem;}
+  .game-progress-row .progress{flex:1;height:4px;}
+  .game-round-label{font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap;}
+  .game-lang-note{font-size:13px;color:var(--muted);margin:0 0 0.75rem;}
+  .game-stage{padding:clamp(1.1rem,3vw,1.75rem);border-radius:18px;}
+  .game-loading{display:flex;align-items:center;gap:0.6rem;color:var(--muted);margin:0;}
+  .game-q{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(21px,3vw,25px);line-height:1.3;margin:0 0 0.9rem;color:var(--ink);}
+  .game-q:focus{outline:none;}
+  .game-instr{font-size:14.5px;color:var(--muted);margin:0 0 0.9rem;line-height:1.5;}
+  .game-hint{font-size:13px;color:var(--muted);margin:0.75rem 0 0;}
+  .hard-hint{color:var(--gold-deep);font-weight:600;margin:-0.4rem 0 0.9rem;}
+  .drag-hint{display:none;}
+  @media (hover:hover) and (pointer:fine){.drag-hint{display:block;}}
+  .game-actions{display:flex;flex-wrap:wrap;align-items:center;gap:0.75rem;margin-top:1.25rem;}
+  .game-actions .btn{min-height:44px;min-width:120px;}
+  .game-ready-note{font-size:13.5px;color:var(--muted);}
+  .dragging{opacity:0.5;}
+  .drop-before{box-shadow:0 -3px 0 var(--gold-deep);}
+  .drop-after{box-shadow:0 3px 0 var(--gold-deep);}
+  /* Rank */
+  .rank-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.65rem;}
+  .rank-item{border-radius:12px;}
+  .rank-btn{width:100%;display:flex;align-items:flex-start;gap:0.85rem;text-align:left;font:inherit;color:var(--ink);background:var(--paper-raised);border:1px solid var(--border);border-radius:12px;padding:0.85rem 1rem;min-height:56px;cursor:pointer;}
+  .rank-btn:hover:not(:disabled){border-color:var(--ink-soft);}
+  .rank-btn:disabled{cursor:default;}
+  .ranked .rank-btn{background:var(--gold-pale);border-color:var(--gold-deep);}
+  .rank-badge{width:30px;height:30px;flex-shrink:0;border-radius:50%;border:1.5px dashed var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;}
+  .ranked .rank-badge{border:none;background:var(--ink);color:var(--paper);}
+  .rank-body{display:flex;gap:0.5rem;flex:1;min-width:0;}
+  .rank-letter{font-weight:600;color:var(--muted);font-size:14px;line-height:1.6;}
+  .rank-text{font-size:15.5px;line-height:1.6;overflow-wrap:anywhere;}
+  /* Really asking */
+  .ra-options{display:flex;flex-direction:column;gap:0.65rem;}
+  .ra-option{display:flex;align-items:flex-start;gap:0.8rem;text-align:left;font:inherit;font-size:15.5px;line-height:1.55;color:var(--ink);background:var(--paper-raised);border:1px solid var(--border);border-radius:12px;padding:0.85rem 1rem;min-height:52px;cursor:pointer;}
+  .ra-option:hover:not(:disabled){border-color:var(--ink-soft);}
+  .ra-option:disabled{cursor:default;}
+  .ra-option.picked{background:var(--gold-pale);border-color:var(--gold-deep);}
+  .ra-option.right{background:var(--teal-pale);border-color:var(--teal);}
+  .ra-option.wrong{background:var(--red-pale);border-color:var(--red);}
+  .ra-dot{width:18px;height:18px;flex-shrink:0;margin-top:3px;border-radius:50%;border:2px solid var(--muted);}
+  .ra-option.picked .ra-dot{border-color:var(--ink);background:radial-gradient(circle, var(--ink) 0 4px, transparent 5px);}
+  .ra-text{display:flex;flex-direction:column;gap:0.25rem;overflow-wrap:anywhere;}
+  .ra-mark{font-size:13px;font-weight:600;}
+  .ra-option.right .ra-mark{color:var(--teal);}
+  .ra-option.wrong .ra-mark{color:var(--red);}
+  /* Build */
+  .build-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  @media (max-width:760px){.build-cols{grid-template-columns:1fr;}}
+  .build-zone{min-width:0;}
+  .build-label{font-size:13.5px !important;font-weight:600 !important;color:var(--ink) !important;margin:0 0 0.5rem !important;display:flex;justify-content:space-between;gap:0.5rem;}
+  .build-count{font-weight:500;color:var(--muted);}
+  .build-answer,.build-pool{list-style:none;margin:0;padding:0.5rem;display:flex;flex-direction:column;gap:0.5rem;border-radius:12px;min-height:120px;}
+  .build-answer{background:var(--paper);border:1px dashed var(--border);}
+  .build-pool{background:transparent;border:1px dashed transparent;padding-left:0;padding-right:0;}
+  .build-empty{font-size:13.5px;color:var(--muted);padding:0.6rem;}
+  .build-item{display:flex;align-items:stretch;gap:0.4rem;background:var(--paper-raised);border:1px solid var(--border);border-radius:10px;padding:0.3rem;}
+  .build-num{width:26px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--gold-deep);}
+  .build-text,.build-add{flex:1;min-width:0;text-align:left;font:inherit;font-size:14.5px;line-height:1.5;color:var(--ink);background:transparent;border:none;border-radius:8px;padding:0.45rem 0.5rem;min-height:44px;cursor:pointer;overflow-wrap:anywhere;}
+  .build-add{width:100%;background:var(--paper-raised);border:1px solid var(--border);padding:0.65rem 0.85rem;}
+  .build-add:hover:not(:disabled),.build-text:hover:not(:disabled){background:rgba(28,35,33,0.05);}
+  .build-text:disabled,.build-add:disabled{cursor:default;}
+  .build-moves{display:flex;flex-direction:column;gap:2px;flex-shrink:0;}
+  .build-move{width:44px;flex:1;min-height:22px;border:1px solid var(--border);background:transparent;border-radius:6px;font-size:14px;color:var(--ink);cursor:pointer;padding:0;}
+  .build-move:disabled{opacity:0.3;cursor:default;}
+  .build-move:hover:not(:disabled){background:rgba(28,35,33,0.06);}
+  /* Trim */
+  .trim-counter{display:flex;flex-wrap:wrap;align-items:center;gap:0.35rem 0.75rem;font-size:14px;font-weight:600;color:var(--ink);margin:0 0 0.9rem;padding:0.55rem 0.8rem;background:var(--paper);border-radius:10px;}
+  .trim-target{font-weight:500;color:var(--muted);}
+  .trim-ok{color:var(--teal);font-weight:600;}
+  .trim-text{font-size:16px;line-height:1.9;}
+  .trim-seg{display:inline;font:inherit;line-height:inherit;color:var(--ink);background:transparent;border:none;border-radius:4px;padding:0.2em 0.1em;margin:0;cursor:pointer;text-align:left;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
+  .trim-seg:hover:not(:disabled){background:rgba(28,35,33,0.07);}
+  .trim-seg:disabled{cursor:default;}
+  .trim-seg.cut{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px;opacity:0.6;transition:opacity .2s ease,color .2s ease;}
+  .trim-seg.lost{background:var(--red-pale);opacity:1;color:#5c1d26;}
+  .trim-model{font-size:15.5px;line-height:1.65;margin:0 0 0.75rem;padding:0.75rem 0.9rem;background:var(--teal-pale);border-radius:10px;color:#173330;}
+  .trim-lost p{font-size:14.5px;line-height:1.55;margin:0 0 0.5rem;padding:0.6rem 0.8rem;background:var(--red-pale);border-radius:10px;color:#5c1d26;}
+  /* Reveal (shared) */
+  .game-reveal{margin-top:1.1rem;padding:1rem 1.1rem;border-radius:14px;border:1px solid var(--border);background:var(--paper-raised);}
+  .game-reveal.ok{border-left:4px solid var(--teal);}
+  .game-reveal.miss{border-left:4px solid var(--red);}
+  .game-verdict{font-weight:600;font-size:15.5px;margin:0 0 0.8rem;}
+  .game-reveal.ok .game-verdict{color:var(--teal);}
+  .game-reveal.miss .game-verdict{color:var(--red);}
+  .reveal-list{list-style:none;margin:0 0 0.75rem;padding:0;display:flex;flex-direction:column;gap:0.6rem;}
+  .reveal-item{display:flex;gap:0.75rem;padding:0.65rem 0.75rem;border-radius:10px;background:var(--teal-pale);}
+  .reveal-item.miss{background:var(--red-pale);}
+  .reveal-num{width:24px;flex-shrink:0;font-weight:700;color:var(--ink);text-align:center;}
+  .reveal-role{font-size:13px;font-weight:600;color:var(--gold-deep);margin:0 0 0.2rem;}
+  .reveal-mark{font-size:12.5px;font-weight:600;color:var(--muted);margin-left:0.35rem;}
+  .reveal-item.miss .reveal-mark,.trim-lost .reveal-mark{color:var(--red);margin-left:0;}
+  .reveal-text{font-size:14.5px;line-height:1.55;margin:0;color:var(--ink);overflow-wrap:anywhere;}
+  .reveal-reason{font-size:13.5px;line-height:1.5;margin:0.3rem 0 0;color:var(--body-text);font-style:italic;}
+  .reveal-answer,.reveal-tip,.game-why{font-size:15px;line-height:1.6;margin:0 0 0.6rem;color:var(--body-text);}
+  .reveal-answer .reveal-role,.reveal-tip .reveal-role,.game-why .reveal-role{display:block;}
+  .game-skill{font-size:12.5px;font-weight:600;color:var(--gold-deep);margin:0.4rem 0 0;}
+  /* End screen */
+  .game-end{text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.6rem;}
+  .game-end-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,3.5vw,30px);margin:0;}
+  .game-end-title:focus{outline:none;}
+  .game-end-stars{font-size:34px;letter-spacing:6px;}
+  .game-best{font-size:13.5px;font-weight:600;color:var(--gold-deep);margin:0;}
+  .game-end-line{font-size:15.5px;color:var(--body-text);margin:0;max-width:44ch;}
+  .game-end .fb-block{text-align:left;align-self:stretch;margin-top:0.5rem;}
+  .game-end .game-actions{justify-content:center;}
+  @media (prefers-reduced-motion: reduce){.trim-seg.cut{transition:none;}}
   .back-row{margin:0 0 0.25rem;}
   .coach-panel{background:var(--paper-raised);border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;height:min(72vh, 680px);min-height:440px;overflow:hidden;position:relative;}
   .coach-avatar{background:var(--gold-pale);color:var(--gold-deep);}
@@ -849,6 +969,12 @@
           <span class="getready-entry-sub">Find what to say about yourself, check your camera and mic, and calm your nerves.</span>
         </span>
       </a>
+      <a class="card getready-entry games-entry" href="#/games">
+        <span class="getready-entry-text">
+          <span class="getready-entry-title">Mini games: sharpen one skill in two minutes</span>
+          <span class="getready-entry-sub">Four short games. No typing needed.</span>
+        </span>
+      </a>
 
       <section class="home-progress" id="home-progress" aria-label="Your progress">
         <h2 class="section-title">Your progress</h2>
@@ -873,6 +999,7 @@
         </div>
         <div class="badge-grid" id="home-badges"></div>
         <p class="fine xp-how">XP depends on how well you do: 10 for every lesson star, 12–60 for a mock interview based on your score (25% more on the harder level or with Sunshine), and 5 for every star on the question of the day. Legend starts at Level 100.</p>
+        <p class="fine xp-how">Mini games give 2 XP for every star in a finished set.</p>
         <p class="fine xp-how">Your progress is saved in this browser. Nothing goes to a server unless you sign in, and then only your progress, grades and quiz answers, never your conversations or your voice. <a href="#/privacy">Privacy</a></p>
       </section>
 
@@ -1128,16 +1255,54 @@
             <a class="btn btn-primary" href="#/get-ready/calm">Take a breath</a>
           </div>
         </div>
-        <div class="card tool-card tool-games" id="tool-games">
+        <div class="card tool-card tool-games" id="tool-games" data-go="#/games">
           <p class="tool-time">2 minutes a game</p>
           <h2>Mini games</h2>
-          <p>Warm up with a quick game to sharpen your answers.</p>
+          <p>Four two-minute games to sharpen your answers.</p>
           <p class="tool-meta" id="tool-games-meta"></p>
           <div class="tool-foot" id="tool-games-foot">
-            <span class="soon-badge">Coming soon</span>
+            <a class="btn btn-primary" href="#/games">Play a game</a>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== MINI GAMES: HUB ===================== -->
+  <section class="view" id="view-games" hidden>
+    <div class="container">
+      <div class="page-head">
+        <h1>Pick a game</h1>
+        <p class="lede">Each one takes about two minutes. No typing needed.</p>
+      </div>
+      <div class="games-filter-row">
+        <span class="games-filter-label" id="games-filter-label">Questions for</span>
+        <div class="games-filter" id="games-filter" role="group" aria-labelledby="games-filter-label">
+          <button type="button" data-track="all" aria-pressed="true">All</button>
+          <button type="button" data-track="job" aria-pressed="false">Job</button>
+          <button type="button" data-track="college" aria-pressed="false">College</button>
+        </div>
+      </div>
+      <div class="tool-grid games-grid" id="games-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===================== MINI GAMES: ONE GAME ===================== -->
+  <section class="view" id="view-game" hidden>
+    <div class="container narrow game-wrap">
+      <div class="game-head">
+        <div class="game-head-row">
+          <h1 class="game-title" id="game-title"></h1>
+          <button type="button" class="game-quit" id="game-quit" aria-label="Quit this game"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="game-progress-row">
+          <span class="game-round-label" id="game-round-label"></span>
+          <div class="progress"><span id="game-bar"></span></div>
+        </div>
+      </div>
+      <p class="game-lang-note" id="game-lang-note" hidden></p>
+      <div class="card game-stage" id="game-stage"></div>
+      <div class="sr-only" aria-live="polite" id="game-live"></div>
     </div>
   </section>
 
@@ -1429,6 +1594,7 @@
 <script src="shared/interview-data.js"></script>
 <script src="shared/openings-i18n.js"></script>
 <script src="lessons.js"></script>
+<script src="games.js"></script>
 <script>
 // =====================================================================
 // Content
@@ -1936,7 +2102,7 @@ async function applyInterviewLang(){
 // When the site language changes: redraw pages that show dates.
 document.addEventListener('langchange', () => {
   renderLangMenu();
-  if(['home', 'get-ready', 'about-page'].includes(currentView) && !(currentView === 'about-page' && aboutEditing)) route();
+  if(['home', 'get-ready', 'about-page', 'games'].includes(currentView) && !(currentView === 'about-page' && aboutEditing)) route();
 });
 
 // Every AI request goes through the server, which writes the instructions
@@ -2104,6 +2270,14 @@ function route(){
     return;
   }
 
+  if(section === 'games'){
+    if(!sub){ renderGamesHub(); showView('games'); return; }
+    if(!gameInfo(sub) || leaf){ go('#/games', true); return; }
+    showView('game');
+    openGame(sub);
+    return;
+  }
+
   if(section === 'privacy' || section === 'terms'){ showView(section); return; }
   if(section === 'contact'){ openContact(); showView('contact'); return; }
 
@@ -2236,6 +2410,7 @@ function renderDaily(){
           '<div class="phrase after"><b>A stronger version</b>' + escapeHTML(done.stronger) + '</div>' +
         '</div>' +
         '<p class="qotd-next">New question tomorrow.</p>' +
+        '<p class="qotd-next"><a class="btn-link" href="#/games">Want more? Play a quick game</a></p>' +
       '</div>';
     return;
   }
@@ -2326,6 +2501,13 @@ document.querySelectorAll('.choice-card[data-go], .tool-card[data-go]').forEach(
     go(card.dataset.go);
   });
 });
+
+// Mini games: the All / Job / College filter and the quit button.
+document.querySelectorAll('#games-filter [data-track]').forEach(b => b.addEventListener('click', () => {
+  setGameTrack(b.dataset.track);
+  renderGamesHub();
+}));
+el('game-quit').addEventListener('click', quitGame);
 
 // =====================================================================
 // Practice: Job or College
@@ -4666,6 +4848,8 @@ function renderGetReady(){
   el('tool-about-view').hidden = !page;
   el('tool-about-btn').textContent = page ? 'Add more' : 'Talk to the coach';
   el('tool-about-btn').setAttribute('href', page ? '#/get-ready/about-you/more' : '#/get-ready/about-you');
+  const games = gameBestTotals();
+  el('tool-games-meta').textContent = games.played ? t('{1} of {2} stars', games.stars, games.max) : '';
 }
 
 // ---- Coach ----
@@ -5323,6 +5507,7 @@ function levelTitle(n){ let t = LEVEL_TITLES[0][1]; LEVEL_TITLES.forEach(([at, n
 //   mock interviews: 12 per point of your average score (1-5), so 12-60,
 //     plus 25% on the harder difficulty and 25% more with Sunshine
 //   question of the day: 5 per star (0-3 stars)
+//   mini games: 2 per star for every finished set (games.js)
 const LESSON_STAR_XP = 10;
 const DAILY_STAR_XP = 5;
 const GRADE_AVG = { A:4.7, B:4, C:3, D:2, F:1 }; // for grades saved without an average
@@ -5403,7 +5588,8 @@ function gameState(){
   });
   const practiceXP = allAttempts.reduce((sum, a) => sum + interviewXP(a), 0);
   const dailyXP = Object.values(loadDailyLog()).reduce((sum, s) => sum + (Number(s) || 0) * DAILY_STAR_XP, 0);
-  const baseXP = lessonXP + practiceXP + dailyXP;
+  const gamesXP = gameStarsEarned() * GAME_STAR_XP;
+  const baseXP = lessonXP + practiceXP + dailyXP + gamesXP;
   const xp = baseXP + bonusXP();
   const level = levelForXP(xp);
   const streak = streakInfo();
@@ -5458,7 +5644,7 @@ function renderHomeProgress(){
   el('home-streak').textContent = g.streak;
   el('home-streak-unit').textContent = g.streak === 1 ? 'day streak' : 'day streak';
   el('home-streak-note').textContent = g.streak === 0
-    ? 'Do a lesson, a mock interview or the question of the day to start a streak.'
+    ? 'Do a lesson, a mock interview, the question of the day or a mini game to start a streak.'
     : (g.practicedToday ? 'You practiced today. ' : 'Practice today to keep it going. ') + 'Best: ' + g.bestStreak + (g.bestStreak === 1 ? ' day.' : ' days.');
   document.querySelector('.streak-card').classList.toggle('cold', g.streak === 0);
   el('home-badges').innerHTML = BADGES.map(b => {
@@ -5796,6 +5982,7 @@ function collectLocal(){
   out.dailyLog = loadDailyLog();
   out.activity = loadActivity();
   out.aboutYou = loadAboutPage();
+  out.games = loadGames();
   out.langs = {
     site: siteLang(), interview: localStorage.getItem(INTERVIEW_LANG_KEY) || 'en', linked: langLinked(),
     updatedAt: Number(localStorage.getItem(LANG_UPDATED_KEY)) || 0
@@ -5826,6 +6013,9 @@ function mergeProgress(local, remote){
   // The About you page: the most recently updated copy wins.
   const pa = cleanAboutPage(a.aboutYou), pb = cleanAboutPage(b.aboutYou);
   m.aboutYou = !pa ? pb : !pb ? pa : (pb.updatedAt > pa.updatedAt ? pb : pa);
+  // Mini games: best stars, sets played and stars earned take the higher
+  // number; seen rounds are combined.
+  m.games = mergeGames(a.games, b.games);
   // Language settings: whichever device changed them last wins.
   const la = a.langs, lb = b.langs;
   m.langs = !la ? (lb || null) : !lb ? la : ((lb.updatedAt || 0) > (la.updatedAt || 0) ? lb : la);
@@ -5850,6 +6040,7 @@ function applyLocal(m){
   if(Object.keys(m.dailyLog).length) put(DAILY_LOG_KEY, m.dailyLog);
   put(ACTIVITY_KEY, m.activity);
   if(m.aboutYou) put(ABOUT_KEY, m.aboutYou);
+  if(m.games && Object.keys(m.games.games).length) put(GAMES_KEY, m.games);
   const L = m.langs;
   if(L && L.updatedAt && L.updatedAt > (Number(localStorage.getItem(LANG_UPDATED_KEY)) || 0)){
     const before = interviewLang();
@@ -5865,7 +6056,7 @@ function applyLocal(m){
 async function refreshFromStorage(){
   await Promise.all([loadSkillProgress(), loadHistory(), loadQuizProfile()]);
   updateXpChip();
-  if(['home', 'learn', 'choice', 'get-ready'].includes(currentView) || (currentView === 'about-page' && !aboutEditing)) route();
+  if(['home', 'learn', 'choice', 'get-ready', 'games'].includes(currentView) || (currentView === 'about-page' && !aboutEditing)) route();
 }
 
 async function syncNow(){
